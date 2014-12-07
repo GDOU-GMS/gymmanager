@@ -27,7 +27,7 @@ public class DAOFactory
 	 * @param clazz
 	 * @return
 	 */
-	public static <T> T createDAO(String className)
+	public  <T> T createDAO(String className)
 	{
 		try
 		{

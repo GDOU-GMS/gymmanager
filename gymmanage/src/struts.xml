@@ -4,6 +4,15 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+	
+	<package name="base" extends="struts-default">
+		<global-results>
+			<result name="message">/message.jsp</result>
+		</global-results>
+	</package>
+	
+	
 	<include file="user.xml"></include>
+	<include file="site.xml"></include>
 	
 </struts>
