@@ -8,5 +8,8 @@
 	<package name="site" namespace="/site" extends="base">
 		<action name="addSiteType" class="com.gms.web.action.SiteAction" method="addSiteType">
 		</action>
+		<action name="getAllSiteType" class="com.gms.web.action.SiteAction" method="getAllSiteType">
+			<result name="success">/manager/showAllSiteType.jsp</result>
+		</action>
 	</package>
 </struts>
