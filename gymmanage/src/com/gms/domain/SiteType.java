@@ -17,5 +17,6 @@ public class SiteType {
 		this.type = type;
 	}
 	
+
 	
 }

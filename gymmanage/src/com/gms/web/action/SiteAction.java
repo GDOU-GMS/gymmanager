@@ -1,14 +1,20 @@
 package com.gms.web.action;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import net.sf.json.JSONObject;
 
 import com.gms.domain.SiteType;
 import com.gms.service.impl.SiteBusinessServiceImpl;
+import com.gms.utils.JSONTools;
 import com.opensymphony.xwork2.ActionContext;
 
 public class SiteAction {
 
+	private JSONObject result;
 	private String message;
 	private SiteType siteType;
 
@@ -36,10 +42,10 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.addSiteType(siteType);
-			message = "添加成功！";
+			message = JSONTools.getJSONString("200", "添加成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = "添加失败！";
+			message = JSONTools.getJSONString("300", "添加失败！");
 		}
 		return "message";
 	}
