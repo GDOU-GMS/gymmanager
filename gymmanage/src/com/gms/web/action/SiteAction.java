@@ -1,5 +1,6 @@
 package com.gms.web.action;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import com.gms.domain.SiteType;
@@ -35,7 +36,6 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.addSiteType(siteType);
-			System.out.println(siteType.getType());
 			message = "Ìí¼Ó³É¹¦£¡";
 		} catch (Exception e) {
 			e.printStackTrace();

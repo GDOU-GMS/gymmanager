@@ -13,6 +13,11 @@
   </head>
   
   <body>
+  	<script type="text/javascript">
+  		
+  		window.alert("${message}");
+  		window.history.back(-1);
+  	</script>	
   	${message }
   </body>
 </html>

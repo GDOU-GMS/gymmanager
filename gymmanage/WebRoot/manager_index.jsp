@@ -150,13 +150,17 @@
 						<ul class="tree treeFolder">
 							<li><a>人员管理</a>
 								<ul>
-									<li><a href="#" target="navTab">添加场地管理员</a></li>
+									<li><a href="index.jsp" target="navTab">添加场地管理员</a></li>
 								</ul></li>
 
 							<li><a>场地管理</a>
 								<ul>
-									<li><a href="${pageContext.request.contextPath }/manager/addSiteType.jsp" target="navTab">添加场地类型</a></li>
-									<li><a href="${pageContext.request.contextPath }/site/getAllSiteType.action" target="navTab">所有场地类型</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/manager/addSiteType.jsp"
+										target="navTab" rel="addSiteType">添加场地类型</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/site/getAllSiteType.action"
+										target="navTab" rel="getAllSiteType" >所有场地类型</a></li>
 									<li><a href="#" target="navTab">添加场地</a></li>
 									<li><a href="#" target="navTab">所有场地</a></li>
 									<li><a href="#" target="navTab">收费标准</a></li>
@@ -202,17 +206,15 @@
 				</ul>
 				<div class="navTab-panel tabsPageContent layoutBox">
 					<div class="page unitBox">
-						<div class="pageFormContent" style="margin-right:">
-							欢迎来到广东海洋大学体育馆管理系统后台
-						</div>
-						<div class="divider">
-							
-						</div>
-						<div>
-						welcome
-						</div>
+						<div class="pageFormContent" >
+							欢迎来到广东海洋大学体育馆管理系统后台</div>
+						<div class="divider"></div>
+						<div>welcome</div>
 					</div>
 
+				</div>
+				<div class="tabsFooter">
+					<div class="tabsFooterContent"></div>
 				</div>
 			</div>
 		</div>
