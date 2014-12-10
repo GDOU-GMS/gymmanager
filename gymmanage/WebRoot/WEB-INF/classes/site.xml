@@ -9,7 +9,9 @@
 		<action name="addSiteType" class="com.gms.web.action.SiteAction" method="addSiteType">
 		</action>
 		<action name="getAllSiteType" class="com.gms.web.action.SiteAction" method="getAllSiteType">
-			<result name="success">/manager/showAllSiteType.jsp</result>
+			<result name="success">/manager/getAllSiteType.jsp</result>
+		</action>
+		<action name="deleteSiteType" class="com.gms.web.action.SiteAction" method="deleteSiteType">
 		</action>
 	</package>
 </struts>

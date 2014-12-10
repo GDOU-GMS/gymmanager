@@ -47,7 +47,7 @@ public class SiteTypeDAOImpl implements SiteTypeDAO {
 	public void deleteType(int id){
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "delete tb_siteType where id=?";
+			String sql = "delete from tb_siteType where id=?";
 			qr.update(sql, id);
 		} catch (Exception e) {
 			throw new RuntimeException(e);

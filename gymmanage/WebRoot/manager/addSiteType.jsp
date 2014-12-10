@@ -17,8 +17,8 @@
 </head>
 
 <body>
-	<div class="container">
-		<%-- <div class="form" style="margin:150px 350PX;">
+	<%-- <div class="container">
+		<div class="form" style="margin:150px 350PX;">
 			<form
 				action="${pageContext.request.contextPath }/site/addSiteType.action"
 				method="post" class="pageForm required-validate"
@@ -26,42 +26,52 @@
 				请输入场地类型名称：<input type="text" name="siteType.type"> <input
 					type="submit" name="submit" value="提交">
 			</form>
-		</div> --%>
-	</div>
+		</div>
+	</div> --%>
 
 	<h2 class="contentTitle">添加场地类型</h2>
 
 
 	<div class="pageContent">
 
-		<form method="post" action="${pageContext.request.contextPath }/site/addSiteType.action"
+		<form method="post"
+			action="${pageContext.request.contextPath }/site/addSiteType.action"
 			class="pageForm required-validate"
-			onsubmit="return validateCallback(this)">
+			onsubmit="return validateCallback(this,dialogAjaxDone)">
 			<div class="pageFormContent nowrap" layoutH="97">
 				<dl>
 					<dt>请输入场地类型名称</dt>
 					<dd>
-						<input type="text" name="siteType.type"  class="required">
+						<input type="text" name="siteType.type" class="required">
 					</dd>
 				</dl>
 			</div>
 			<div class="formBar">
-			<ul>
-				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
-				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
-			</ul>
-		</div>
+				<ul>
+					<li><div class="buttonActive">
+							<div class="buttonContent">
+								<button type="submit">提交</button>
+							</div>
+						</div></li>
+					<li><div class="button">
+							<div class="buttonContent">
+								<button type="button" class="close">取消</button>
+							</div>
+						</div></li>
+				</ul>
+			</div>
 		</form>
 
 	</div>
 
 
 	<script type="text/javascript">
-function customvalidXxx(element){
-	if ($(element).val() == "xxx") return false;
-	return true;
-}
-</script>
+		function customvalidXxx(element) {
+			if ($(element).val() == "xxx")
+				return false;
+			return true;
+		}
+	</script>
 
 </body>
 </html>

@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebRoot/js/dwz.ajax.js=UTF-8
 encoding//src/com/gms/dao/SiteDAO.java=GBK
 encoding//src/com/gms/filter/CharacterEncodingFilter.java=UTF-8
 encoding//src/com/gms/filter/HTMLCharacterFilter.java=UTF-8
