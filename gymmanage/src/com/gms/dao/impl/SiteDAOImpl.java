@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.gms.dao.SiteDAO;
 import com.gms.domain.Site;
 import com.gms.utils.JDBCUtils;
+import com.gms.vo.SiteVo;
 
 public class SiteDAOImpl implements SiteDAO {
 
@@ -74,5 +76,34 @@ public class SiteDAOImpl implements SiteDAO {
 			throw new RuntimeException(e);
 		}
 	}
-
+	/**
+	 * 获得场地的分页数据
+	 * @param beginIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public List<SiteVo> getSitePageData(int startIndex,int pageSize){
+		try{
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select tb_site.*,tb_sitetype.type from tb_site,tb_sitetype where tb_site.typeid=tb_sitetype.id order by typeId limit ?,?";
+			Object params[] = {startIndex,pageSize};
+			return (List<SiteVo>) qr.query(sql, params, new BeanListHandler(SiteVo.class));
+		}catch(Exception e){
+			throw new RuntimeException(e);
+		}
+	}
+	/**
+	 * 获取数据库中场地的总记录数
+	 * @return
+	 */
+	public int getTotalRecord(){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select count(*) from tb_site";
+			long l = (Long) qr.query(sql, new ScalarHandler());
+			return (int) l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

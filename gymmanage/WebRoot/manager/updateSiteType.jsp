@@ -1,52 +1,37 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"
+	contentType="text/html;charset=UTF-8"%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 
-<title>addSite</title>
+<title>updateSiteType</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+
 
 </head>
 
 <body>
-	<h2 class="contentTitle">添加场地类型</h2>
+	<h2 class="contentTitle">修改场地类型</h2>
 
 
 	<div class="pageContent">
-
 		<form method="post"
-			action="${pageContext.request.contextPath }/site/addSiteType.action"
+			action="${pageContext.request.contextPath }/site/updateSiteType.action"
 			class="pageForm required-validate"
 			onsubmit="return validateCallback(this,dialogAjaxDone)">
 			<div class="pageFormContent nowrap" layoutH="97">
 				<dl>
-					<dt>场地类型</dt>
+					<dt>请修改场地类型名称</dt>
 					<dd>
-						<select name="site.typeId">
-							<c:forEach items="${siteTypes }" var="siteType">
-								<option value="${siteType.id}" >${siteType.type}</option>
-							</c:forEach>
-						</select>
+						<input type="text" name="siteType.type" class="required" value="${siteType.type}"> 
+						<input type="text" name="siteType.id" class="required" value="${siteType.id}" style="display: none;">
 					</dd>
-					
-				</dl>
-				<dl>
-					<dt>名称</dt>
-					<dd>
-						<input type="text" name="site." class="required">
-					</dd>
-					
-				</dl>
-				<dl>
-					<dt>名称</dt>
-					<dd>
-						<input type="text" name="site.name" class="required">
-					</dd>
-					
 				</dl>
 			</div>
 			<div class="formBar">
@@ -64,7 +49,6 @@
 				</ul>
 			</div>
 		</form>
-
 	</div>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.gms.dao.impl;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.gms.dao.SiteTypeDAO;
@@ -62,6 +63,20 @@ public class SiteTypeDAOImpl implements SiteTypeDAO {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
 			String sql = "select * from tb_siteType";
 			return (List<SiteType>) qr.query(sql, new BeanListHandler(SiteType.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	/**
+	 * 根据id查找场地
+	 * @param id
+	 * @return
+	 */
+	public SiteType getSiteTypeById(int id){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_siteType where id=?";
+			return (SiteType) qr.query(sql, id, new BeanHandler(SiteType.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

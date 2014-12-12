@@ -4,9 +4,11 @@ import java.util.List;
 
 import com.gms.dao.SiteDAO;
 import com.gms.dao.SiteTypeDAO;
+import com.gms.domain.Page;
 import com.gms.domain.Site;
 import com.gms.domain.SiteType;
 import com.gms.factory.DAOFactory;
+import com.gms.vo.SiteVo;
 
 public class SiteBusinessServiceImpl {
 
@@ -72,9 +74,28 @@ public class SiteBusinessServiceImpl {
 	/**
 	 * 获取所哟的场地
 	 */
-	public void getAllSite() {
-		siteDAO.getAllSite();
+	public List<Site> getAllSite() {
+		return siteDAO.getAllSite();
 	}
-	
+	/**
+	 * 根据id查找场地
+	 * @param id
+	 * @return
+	 */
+	public SiteType getSiteTypeById(int id){
+		return siteTypeDAO.getSiteTypeById(id);
+	}
+	/**
+	 * 
+	 * @param pageNum
+	 * @return
+	 */
+	public Page getSitePageData(int pageNum,int pageSize ){
+		int totalRecord = siteDAO.getTotalRecord();
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<SiteVo> list = siteDAO.getSitePageData(page.getStartIndex(), pageSize);
+		page.setList(list);
+		return page;
+	}
 	
 }

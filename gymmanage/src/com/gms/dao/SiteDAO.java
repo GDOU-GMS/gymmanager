@@ -3,6 +3,7 @@ package com.gms.dao;
 import java.util.List;
 
 import com.gms.domain.Site;
+import com.gms.vo.SiteVo;
 
 public interface SiteDAO {
 
@@ -33,5 +34,16 @@ public interface SiteDAO {
 	 * @return
 	 */
 	public abstract List<Site> getAllSite();
-
+	/**
+	 * 获得场地的分页数据
+	 * @param beginIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public abstract List<SiteVo> getSitePageData(int beginIndex,int pageSize);
+	/**
+	 * 获取数据库中场地的总记录数
+	 * @return
+	 */
+	public abstract int getTotalRecord();
 }

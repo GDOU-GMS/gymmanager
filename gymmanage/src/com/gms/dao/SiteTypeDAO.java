@@ -30,4 +30,10 @@ public interface SiteTypeDAO {
 	 */
 	public abstract List<SiteType> getAllSiteType();
 
+	/**
+	 * 根据id查找场地
+	 * @param id
+	 * @return
+	 */
+	public abstract SiteType getSiteTypeById(int id);
 }

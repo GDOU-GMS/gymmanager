@@ -13,5 +13,16 @@
 		</action>
 		<action name="deleteSiteType" class="com.gms.web.action.SiteAction" method="deleteSiteType">
 		</action>
+		<action name="echoData" class="com.gms.web.action.SiteAction" method="echoData">
+			<result name="success">/manager/updateSiteType.jsp</result>
+		</action>
+		<action name="updateSiteType" class="com.gms.web.action.SiteAction" method="updateSiteType">
+		</action>
+		<action name="getAllSite" class="com.gms.web.action.SiteAction" method="getAllSite">
+			<result name="success">/manager/getAllSite.jsp</result>
+		</action>
+		<action name="getDataForAddSite" class="com.gms.web.action.SiteAction" method="getDataForAddSite">
+			<result name="success">/manager/addSite.jsp</result>
+		</action>
 	</package>
 </struts>

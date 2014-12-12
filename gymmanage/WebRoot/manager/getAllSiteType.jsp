@@ -83,11 +83,11 @@
 				<li><a class="delete"
 					href="${pageContext.request.contextPath }/site/deleteSiteType.action?id={siteType}"
 					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-				<li><a class="edit" href="demo_page4.html?uid={sid_user}"
-					target="navTab"><span>修改</span></a></li>
-				<li class="line">line</li>
+				<li><a class="edit" href="${pageContext.request.contextPath }/site/echoData.action?id={siteType}"
+					target="dialog"><span>修改</span></a></li>
+				<!-- <li class="line">line</li>
 				<li><a class="icon" href="demo/common/dwz-team.xls"
-					target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
+					target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li> -->
 			</ul>
 		</div>
 		<table class="table" width="100%" layoutH="138">

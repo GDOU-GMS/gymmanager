@@ -156,12 +156,9 @@
 							<li><a>场地管理</a>
 								<ul>
 									<li><a
-										href="${pageContext.request.contextPath }/manager/addSiteType.jsp"
-										target="navTab" rel="addSiteType">添加场地类型</a></li>
-									<li><a
 										href="${pageContext.request.contextPath }/site/getAllSiteType.action"
-										target="navTab" rel="getAllSiteType" >所有场地类型</a></li>
-									<li><a href="${pageContext.request.contextPath }/manager/demo.jsp" target="navTab">添加场地</a></li>
+										target="navTab" rel="getAllSiteType" >场地类型管理</a></li>
+									<li><a href="${pageContext.request.contextPath }/site/getAllSite.action" target="navTab" rel="getAllSite">场地管理</a></li>
 									<li><a href="#" target="navTab">所有场地</a></li>
 									<li><a href="#" target="navTab">收费标准</a></li>
 								</ul></li>
