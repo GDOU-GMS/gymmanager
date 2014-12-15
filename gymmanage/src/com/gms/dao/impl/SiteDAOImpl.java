@@ -86,7 +86,7 @@ public class SiteDAOImpl implements SiteDAO {
 	public List<SiteVo> getSitePageData(int startIndex,int pageSize){
 		try{
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select tb_site.*,tb_sitetype.type from tb_site,tb_sitetype where tb_site.typeid=tb_sitetype.id order by typeId limit ?,?";
+			String sql = "select tb_site.*,tb_sitetype.type from tb_site,tb_sitetype where tb_site.typeid=tb_sitetype.id order by typeId,statue desc  limit ?,?";
 			Object params[] = {startIndex,pageSize};
 			return (List<SiteVo>) qr.query(sql, params, new BeanListHandler(SiteVo.class));
 		}catch(Exception e){
@@ -121,5 +121,30 @@ public class SiteDAOImpl implements SiteDAO {
 			throw new RuntimeException(e);
 		}
 	}
-	
+	/**
+	 * 将删除的场地从数据库中恢复
+	 * @param id
+	 */
+	public void recoverSite(int id){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "update tb_site set statue='undeleted' where id=?";
+			qr.update(sql, id);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	/**
+	 * 彻底删除场地
+	 * @param id
+	 */
+	public void removeSite(int id){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "delete from tb_site where id=?";
+			qr.update(sql, id);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

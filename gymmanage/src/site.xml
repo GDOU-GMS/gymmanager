@@ -37,6 +37,16 @@
 		</action>
 		<action name="updateSite" class="com.gms.web.action.SiteAction" method="updateSite">
 		</action>
+		<action name="recoverSite" class="com.gms.web.action.SiteAction" method="recoverSite">
+		</action>
+		<action name="removeSite" class="com.gms.web.action.SiteAction" method="removeSite">
+		</action>
+		
+		
+		<!-- 场地预约 -->
+		<action name="getAllSiteOrder" class="com.gms.web.action.SiteAction" method="getAllSiteOrder">
+			<result name="success">/manager/getAllSiteOrder.jsp</result>
+		</action>
 		
 	</package>
 </struts>

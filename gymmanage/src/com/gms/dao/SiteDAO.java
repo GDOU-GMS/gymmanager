@@ -52,4 +52,14 @@ public interface SiteDAO {
 	 * @return
 	 */
 	public abstract Site getSiteDetailById(int id);
+	/**
+	 * 将删除的场地从数据库中恢复
+	 * @param id
+	 */
+	public void recoverSite(int id);
+	/**
+	 * 彻底删除场地
+	 * @param id
+	 */
+	public abstract void removeSite(int id);
 }

@@ -156,12 +156,12 @@
 							<li><a>场地管理</a>
 								<ul>
 									<li><a
-										href="${pageContext.request.contextPath }/site/getAllSiteType.action"
-										target="navTab" rel="getAllSiteType">场地类型管理</a></li>
-									<li><a
 										href="${pageContext.request.contextPath }/site/getAllSite.action"
 										target="navTab" rel="getAllSite">场地管理</a></li>
-									<li><a href="#" target="navTab">所有场地</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/site/getAllSiteType.action"
+										target="navTab" rel="getAllSiteType">类型管理</a></li>
+									<li><a href="${pageContext.request.contextPath }/site/getAllSiteOrder.action" target="navTab" rel="getAllSiteOrder">预约管理</a></li>
 									<li><a href="#" target="navTab">收费标准</a></li>
 								</ul></li>
 

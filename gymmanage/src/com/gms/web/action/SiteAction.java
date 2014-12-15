@@ -26,9 +26,8 @@ public class SiteAction {
 	private Site site;
 	private int id;
 	private int pageNum = 1;
-	private int numPerPage =20;
+	private int numPerPage = 20;
 
-	
 	public int getNumPerPage() {
 		return numPerPage;
 	}
@@ -260,23 +259,78 @@ public class SiteAction {
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "删除失败！", "getAllSite", "","");
+			message = JSONTools.getJSONString("300", "删除失败！", "getAllSite", "",
+					"");
 			return "message";
 		}
 	}
 
 	/**
 	 * 更新场地
+	 * 
 	 * @return
 	 */
 	public String updateSite() {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.updateSte(site);
-			message = JSONTools.getJSONString("200", "修改成功", "getAllSite", "closeCurrent", "");
+			message = JSONTools.getJSONString("200", "修改成功", "getAllSite",
+					"closeCurrent", "");
 		} catch (Exception e) {
 			message = JSONTools.getJSONString("300", "修改失败，系统异常", "", "", "");
 		}
 		return "message";
+	}
+
+	/**
+	 * 将删除的场地恢复
+	 * 
+	 * @return
+	 */
+	public String recoverSite() {
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			service.recoverSite(id);
+			message = JSONTools.getJSONString("200", "恢复成功！", "getAllSite", "",
+					"");
+		} catch (Exception e) {
+			message = JSONTools.getJSONString("300", "恢复失败，系统异常", "", "", "");
+		}
+		return "message";
+	}
+
+	/**
+	 * 彻底删除场地
+	 * 
+	 * @return
+	 */
+	public String removeSite() {
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			service.removeSite(id);
+			message = JSONTools.getJSONString("200", "删除成功", "getAllSite", "",
+					"");
+		} catch (Exception e) {
+			message = JSONTools.getJSONString("300", "删除失败，该场地无法删除，系统异常！", "",
+					"", "");
+		}
+		return "message";
+	}
+
+	/**
+	 * 获得所有的场地预约
+	 * 
+	 * @return
+	 */
+	public String getAllSiteOrder() {
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			service.getAllSiteOrder();
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "获取失败，系统异常！", "", "", "");
+			return "message";
+		}
 	}
 }
