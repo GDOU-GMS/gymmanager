@@ -150,7 +150,7 @@
 						<ul class="tree treeFolder">
 							<li><a>人员管理</a>
 								<ul>
-									<li><a href="index.jsp" target="navTab">添加场地管理员</a></li>
+									<li><a href="${pageContext.request.contextPath }/manager/getAllUsers.action" target="navTab">添加场地管理员</a></li>
 								</ul></li>
 
 							<li><a>场地管理</a>
