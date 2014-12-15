@@ -4,6 +4,19 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+	<package name="manager" namespace="/manager" extends="base">
+		<action name="getUsers" class="com.gms.web.action.UserAction" method="getUsers">
+			<result name="success">/manager/user_info.jsp</result>
+		</action>
+		<action name="deleteUser" class="com.gms.web.action.UserAction" method="deleteUser">
+		
+		</action>
+		<action name="getAllUsers" class="com.gms.web.action.UserAction" method="getAllUsers">
+			<result name="success">/manager/user_info.jsp</result>
+		</action>
+		
+	</package>
+  
 
 	
 </struts>

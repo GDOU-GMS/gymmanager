@@ -1,6 +1,81 @@
 package com.gms.dao.impl;
 
-public class UserDAOImpl {
 
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+
+import com.gms.dao.UserDAO;
+import com.gms.domain.SiteType;
+import com.gms.domain.User;
+import com.gms.utils.JDBCUtils;
+
+public class UserDAOImpl implements UserDAO{
+	
+	/**
+	 * 删除用户
+	 * @param id
+	 */
+  
+   
+   public boolean deleteUser(int id){
+	   QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+	   String sql="delete from tb_user where id=?";
+	   Object param[]={id};
+	   try {
+		qr.update(sql,id);
+		return true;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		throw new RuntimeException(e);
+	}
+	   
+   }
+   
+   /**
+    * 查询得到用户信息
+    * @param studentNo
+    * @param name
+    * @param academy
+    */
+   public List<User> getUsers(String studentNo,String name,String academy){
+	   QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+	   String sql="select * from tb_user where studentNo like ? and name like ? and academy like?";
+	  
+	   Object param[]={"%"+studentNo+"%","%"+name+"%","%"+academy+"%"};
+	   try {
+		   return (List<User>)qr.query(sql, param,new BeanListHandler(User.class));
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		throw new RuntimeException(e);
+	}
+	  
+	   
+	   
+   }
+   /**
+    * 获得所有用户
+    */
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+		   String sql="select * from tb_user";
+		   try {
+			 
+			return (List<User>)qr.query(sql,new BeanListHandler(User.class));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+		  
+	}
 	
 }

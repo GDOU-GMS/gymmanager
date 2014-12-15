@@ -1,5 +1,13 @@
 eclipse.preferences.version=1
 encoding//WebRoot/js/dwz.ajax.js=UTF-8
+<<<<<<< HEAD
+=======
+encoding//WebRoot/js/jquery-1.7.2.min.js=UTF-8
+encoding//src/com/gms/dao/SiteDAO.java=GBK
+>>>>>>> branch 'master' of https://github.com/GDOU-GMS/gymmanager.git
 encoding//src/com/gms/filter/CharacterEncodingFilter.java=UTF-8
 encoding//src/com/gms/filter/HTMLCharacterFilter.java=UTF-8
+<<<<<<< HEAD
 encoding/<project>=UTF-8
+=======
+>>>>>>> branch 'master' of https://github.com/GDOU-GMS/gymmanager.git
