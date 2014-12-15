@@ -46,4 +46,10 @@ public interface SiteDAO {
 	 * @return
 	 */
 	public abstract int getTotalRecord();
+	/**
+	 * 获得回想数据给修改场地使用
+	 * @param id
+	 * @return
+	 */
+	public abstract Site getSiteDetailById(int id);
 }

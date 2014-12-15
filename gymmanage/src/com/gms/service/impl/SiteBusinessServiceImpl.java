@@ -97,5 +97,12 @@ public class SiteBusinessServiceImpl {
 		page.setList(list);
 		return page;
 	}
-	
+	/**
+	 * 获得回想数据给修改场地使用
+	 * @param id
+	 * @return
+	 */
+	public Site getSiteDetailById(int id){
+		return siteDAO.getSiteDetailById(id);
+	}
 }

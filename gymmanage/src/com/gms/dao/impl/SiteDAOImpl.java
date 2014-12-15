@@ -3,6 +3,7 @@ package com.gms.dao.impl;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
@@ -106,4 +107,19 @@ public class SiteDAOImpl implements SiteDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	/**
+	 * 获得回想数据给修改场地使用
+	 * @param id
+	 * @return
+	 */
+	public Site getSiteDetailById(int id){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_site where id=?";
+			return (Site) qr.query(sql, id, new BeanHandler(Site.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 }

@@ -157,8 +157,10 @@
 								<ul>
 									<li><a
 										href="${pageContext.request.contextPath }/site/getAllSiteType.action"
-										target="navTab" rel="getAllSiteType" >场地类型管理</a></li>
-									<li><a href="${pageContext.request.contextPath }/site/getAllSite.action" target="navTab" rel="getAllSite">场地管理</a></li>
+										target="navTab" rel="getAllSiteType">场地类型管理</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/site/getAllSite.action"
+										target="navTab" rel="getAllSite">场地管理</a></li>
 									<li><a href="#" target="navTab">所有场地</a></li>
 									<li><a href="#" target="navTab">收费标准</a></li>
 								</ul></li>
@@ -203,8 +205,7 @@
 				</ul>
 				<div class="navTab-panel tabsPageContent layoutBox">
 					<div class="page unitBox">
-						<div class="pageFormContent" >
-							欢迎来到广东海洋大学体育馆管理系统后台</div>
+						<div class="pageFormContent">欢迎来到广东海洋大学体育馆管理系统后台</div>
 						<div class="divider"></div>
 						<div>welcome</div>
 					</div>

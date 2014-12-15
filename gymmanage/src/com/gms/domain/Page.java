@@ -7,7 +7,7 @@ public class Page {
 	private int totalPage;// 记住总页数
 	private int startPage;// 开始页
 	private int endPage;// 结束页
-	private int pageSize;// 页面大小,也就是多少数据
+	private int pageSize ;// 页面大小,也就是多少数据
 	private int totalRecord;// 总记录数
 	private int pageNum;// 记住当前页
 	private int startIndex;// 记录从数据库哪个地方开始

@@ -15,6 +15,7 @@ import com.gms.domain.Site;
 import com.gms.domain.SiteType;
 import com.gms.service.impl.SiteBusinessServiceImpl;
 import com.gms.utils.JSONTools;
+import com.gms.vo.SiteVo;
 import com.opensymphony.xwork2.ActionContext;
 import com.sun.mail.iap.Response;
 
@@ -22,10 +23,27 @@ public class SiteAction {
 
 	private String message;
 	private SiteType siteType;
+	private Site site;
 	private int id;
 	private int pageNum = 1;
-	private int pageSize = 20; 
+	private int numPerPage =20;
+
 	
+	public int getNumPerPage() {
+		return numPerPage;
+	}
+
+	public void setNumPerPage(int numPerPage) {
+		this.numPerPage = numPerPage;
+	}
+
+	public Site getSite() {
+		return site;
+	}
+
+	public void setSite(Site site) {
+		this.site = site;
+	}
 
 	public int getPageNum() {
 		return pageNum;
@@ -153,16 +171,18 @@ public class SiteAction {
 		}
 		return "message";
 	}
+
 	/**
 	 * 获取所有的场地的分页数据
+	 * 
 	 * @return
 	 */
-	public String getAllSite(){
+	public String getAllSite() {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			List<SiteType> siteTypes = service.getAllSiteType();
-			Page page = service.getSitePageData(pageNum,pageSize);
-			ActionContext.getContext().put("page",page);
+			Page page = service.getSitePageData(pageNum, numPerPage);
+			ActionContext.getContext().put("page", page);
 			ActionContext.getContext().put("siteTypes", siteTypes);
 			return "success";
 		} catch (Exception e) {
@@ -171,10 +191,11 @@ public class SiteAction {
 			return "message";
 		}
 	}
+
 	/**
 	 * 添加场地之前获取场地类型数据
 	 */
-	public String getDataForAddSite(){
+	public String getDataForAddSite() {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			List<SiteType> siteTypes = service.getAllSiteType();
@@ -185,5 +206,77 @@ public class SiteAction {
 			message = JSONTools.getJSONString("300", "获取失败！", "", "", "");
 			return "message";
 		}
+	}
+
+	/**
+	 * 添加新的场地
+	 * 
+	 * @return
+	 */
+	public String addSite() {
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			service.addSite(site);
+			message = JSONTools.getJSONString("200", "添加成功", "getAllSite",
+					"closeCurrent", "");
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "获取失败，系统异常！", "", "", "");
+		}
+		return "message";
+	}
+
+	/**
+	 * 删除场地
+	 * 
+	 * @return
+	 */
+	public String deleteSite() {
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			service.deleteSite(id);
+			message = JSONTools.getJSONString("200", "删除成功！", "getAllSite", "",
+					"");
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "删除失败！", "getAllSite", "",
+					"");
+		}
+		return "message";
+	}
+
+	/**
+	 * 更新场地前获取数据用于回显
+	 * 
+	 * @return
+	 */
+	public String getDataForUpdateSite() {
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			Site site = service.getSiteDetailById(id);
+			List<SiteType> siteTypes = service.getAllSiteType();
+			ActionContext.getContext().put("site", site);
+			ActionContext.getContext().put("siteTypes", siteTypes);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "删除失败！", "getAllSite", "","");
+			return "message";
+		}
+	}
+
+	/**
+	 * 更新场地
+	 * @return
+	 */
+	public String updateSite() {
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			service.updateSte(site);
+			message = JSONTools.getJSONString("200", "修改成功", "getAllSite", "closeCurrent", "");
+		} catch (Exception e) {
+			message = JSONTools.getJSONString("300", "修改失败，系统异常", "", "", "");
+		}
+		return "message";
 	}
 }

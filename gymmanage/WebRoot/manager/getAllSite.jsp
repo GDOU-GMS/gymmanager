@@ -13,17 +13,18 @@
 </head>
 
 <body>
-	<form id="pagerForm" method="post" action="demo_page1.html">
-		<input type="hidden" name="status" value="${param.status}"> <input
-			type="hidden" name="keywords" value="${param.keywords}" /> <input
-			type="hidden" name="pageNum" value="1" /> <input type="hidden"
-			name="numPerPage" value="${model.numPerPage}" /> <input
-			type="hidden" name="orderField" value="${param.orderField}" />
+	<form id="pagerForm" method="post"
+		action="${pageContext.request.contextPath }/site/getAllSite.action">
+		<input type="hidden" name="pageNum" value="1" /> <!--【必须】value=1可以写死-->
+		<input type="hidden" name="numPerPage" value="${page.pageSize}" /><!--【可选】每页显示多少条--> 
+		<%-- <input type="hidden" name="status" value="${param.status}"> 
+		<input type="hidden" name="keywords" value="${param.keywords}" /> 
+		<input type="hidden" name="orderField" value="${param.orderField}" /><!--【可选】查询排序--> --%>
 	</form>
 
 
 	<div class="pageHeader">
-		<form onsubmit="return navTabSearch(this);" action="demo_page1.html"
+		<form onsubmit="return navTabSearch(this);" action="#"
 			method="post">
 			<div class="searchBar">
 				<table class="searchContent">
@@ -54,15 +55,17 @@
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">
-				<li><a class="add" href="${pageContext.request.contextPath }/site/getDataForAddSite.action" target="navTab"><span>添加</span></a></li>
+				<li><a class="add"
+					href="${pageContext.request.contextPath }/site/getDataForAddSite.action"
+					target="navTab"><span>添加</span></a></li>
 				<li><a class="delete"
-					href="demo/common/ajaxDone.html?uid={sid_user}" target="ajaxTodo"
-					title="确定要删除吗?"><span>删除</span></a></li>
-				<li><a class="edit" href="demo_page4.html?uid={sid_user}"
+					href="${pageContext.request.contextPath }/site/deleteSite.action?id={site}"
+					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+				<li><a class="edit"
+					href="${pageContext.request.contextPath}/site/getDataForUpdateSite.action?id={site}"
 					target="navTab"><span>修改</span></a></li>
-				<!-- <li class="line">line</li>
-				<li><a class="icon" href="demo/common/dwz-team.xls"
-					target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li> -->
+				<li><a class="edit" href="demo_page4.html?uid={sid_user}"
+					target="navTab"><span>恢复</span></a></li>
 			</ul>
 		</div>
 		<table class="table" width="100%" layoutH="138">
@@ -92,6 +95,7 @@
 				<span>显示</span> <select class="combox" name="numPerPage"
 					onchange="navTabPageBreak({numPerPage:this.value})">
 					<option value="20">20</option>
+					<option value="10">10</option>
 					<option value="50">50</option>
 					<option value="100">100</option>
 					<option value="200">200</option>
@@ -99,8 +103,8 @@
 			</div>
 
 			<div class="pagination" targetType="navTab"
-				totalCount="${page.totalRecord}" numPerPage="20" pageNumShown="10"
-				currentPage="1"></div>
+				totalCount="${page.totalRecord}" numPerPage="${page.pageSize }" pageNumShown="10"
+				currentPage="${page.pageNum }"></div>
 
 		</div>
 	</div>

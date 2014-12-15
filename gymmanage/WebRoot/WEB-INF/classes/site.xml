@@ -6,6 +6,8 @@
 <struts>
 	
 	<package name="site" namespace="/site" extends="base">
+	
+		<!--场地类型管理-->
 		<action name="addSiteType" class="com.gms.web.action.SiteAction" method="addSiteType">
 		</action>
 		<action name="getAllSiteType" class="com.gms.web.action.SiteAction" method="getAllSiteType">
@@ -18,11 +20,23 @@
 		</action>
 		<action name="updateSiteType" class="com.gms.web.action.SiteAction" method="updateSiteType">
 		</action>
+		
+		<!--场地管理-->
 		<action name="getAllSite" class="com.gms.web.action.SiteAction" method="getAllSite">
 			<result name="success">/manager/getAllSite.jsp</result>
 		</action>
 		<action name="getDataForAddSite" class="com.gms.web.action.SiteAction" method="getDataForAddSite">
 			<result name="success">/manager/addSite.jsp</result>
 		</action>
+		<action name="addSite" class="com.gms.web.action.SiteAction" method="addSite">
+		</action>
+		<action name="deleteSite" class="com.gms.web.action.SiteAction" method="deleteSite">
+		</action>
+		<action name="getDataForUpdateSite" class="com.gms.web.action.SiteAction" method="getDataForUpdateSite">
+			<result name="success">/manager/updateSite.jsp</result>
+		</action>
+		<action name="updateSite" class="com.gms.web.action.SiteAction" method="updateSite">
+		</action>
+		
 	</package>
 </struts>
