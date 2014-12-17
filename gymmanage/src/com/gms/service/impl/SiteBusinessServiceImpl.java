@@ -169,4 +169,17 @@ public class SiteBusinessServiceImpl {
 	public List<SiteOrder> getSiteOrderByStaue(String statue) {
 		return siteOrderDAO.getSiteOrderByStaue(statue);
 	}
+	/**
+	 * 获得分页数据
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public Page getSiteOrderPageDate(int pageNum,int pageSize){
+		int totalRecord = siteOrderDAO.getTotalRecord();
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<SiteOrder> list = siteOrderDAO.getSiteOrderPageData(page.getStartIndex(), pageSize);
+		page.setList(list);
+		return page;
+	}
 }

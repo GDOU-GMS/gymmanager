@@ -44,4 +44,17 @@ public interface SiteOrderDAO {
 	 */
 	public abstract List<SiteOrder> getSiteOrderByStaue(String statue);
 
+	/**
+	 * 获得场地预约分页数据
+	 * @param startIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public  List<SiteOrder> getSiteOrderPageData(int startIndex, int pageSize);
+	
+	/**
+	 * 获得数据库的总记录数
+	 * @return
+	 */
+	public abstract int getTotalRecord();
 }

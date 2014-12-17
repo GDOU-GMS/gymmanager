@@ -12,6 +12,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.gms.domain.Page;
 import com.gms.domain.Site;
+import com.gms.domain.SiteOrder;
 import com.gms.domain.SiteType;
 import com.gms.service.impl.SiteBusinessServiceImpl;
 import com.gms.utils.JSONTools;
@@ -325,7 +326,8 @@ public class SiteAction {
 	public String getAllSiteOrder() {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-			service.getAllSiteOrder();
+			List<SiteOrder> siteOrders = service.getAllSiteOrder();
+			ActionContext.getContext().put("siteOrders", siteOrders);
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();

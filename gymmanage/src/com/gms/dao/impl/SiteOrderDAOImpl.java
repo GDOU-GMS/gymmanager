@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.gms.dao.SiteOrderDAO;
 import com.gms.domain.SiteOrder;
@@ -111,6 +112,40 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 					SiteOrder.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * 获得场地预约分页数据
+	 * @param startIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public List<SiteOrder> getSiteOrderPageData(int startIndex, int pageSize) {
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_siteorder limit ?,?";
+			Object params[] = { startIndex, pageSize };
+			return (List<SiteOrder>) qr.query(sql, params, new BeanListHandler(
+					SiteOrder.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * 获得数据库的总记录数
+	 * @return
+	 */
+	public int getTotalRecord() {
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select count(*) from tb_siteorder";
+			long l = (Long) qr.query(sql, new ScalarHandler());
+			return (int) l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+
 		}
 	}
 }
