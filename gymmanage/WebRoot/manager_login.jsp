@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -12,23 +13,28 @@
 
 
 <!--- CSS --->
-<link rel="stylesheet" href="./css/style.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css" type="text/css" />
 
 
 <!--- Javascript libraries (jQuery and Selectivizr) used for the custom checkbox --->
 
 <!--[if (gte IE 6)&(lte IE 8)]>
-		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="selectivizr.js"></script>
-		<noscript><link rel="stylesheet" href="fallback.css" /></noscript>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/selectivizr.js"></script>
+		<noscript><link rel="stylesheet" href="${pageContext.request.contextPath }/css/fallback.css" /></noscript>
 	<![endif]-->
 
 </head>
 
 <body>
+	<c:if test="${flag}">
+		<script type="text/javascript">
+			alert("${alert}");
+		</script>
+	</c:if>
 	<div id="container">
+	<div class="login">登录</div>
 		<form action="welcome.html">
-			<div class="login">登录</div>
 			<div class="username-text">用户名:</div>
 			<div class="password-text">密码:</div>
 			<div class="username-field">

@@ -20,6 +20,14 @@
 		<filter-name>HTMLCharacterFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<filter>
+		<filter-name>CheckManagerLoginFilter</filter-name>
+		<filter-class>com.gms.filter.CheckManagerLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CheckManagerLoginFilter</filter-name>
+		<url-pattern>/manager/*</url-pattern>
+	</filter-mapping>
 
 	<filter>
 		<filter-name>struts2</filter-name>
