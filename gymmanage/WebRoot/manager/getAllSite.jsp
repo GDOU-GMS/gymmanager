@@ -73,9 +73,11 @@
 				<li><a class="edit"
 					href="${pageContext.request.contextPath}/site/getDataForUpdateSite.action?id={site}"
 					target="navTab"><span>修改</span></a></li>
-				<li><a class="edit" href="${pageContext.request.contextPath }/site/recoverSite.action?id={site}"
+				<li><a class="edit"
+					href="${pageContext.request.contextPath }/site/recoverSite.action?id={site}"
 					target="ajaxTodo"><span>恢复</span></a></li>
-				<li><a class="delete" href="${pageContext.request.contextPath }/site/removeSite.action?id={site}"
+				<li><a class="delete"
+					href="${pageContext.request.contextPath }/site/removeSite.action?id={site}"
 					target="ajaxTodo" title="确定要彻底删除吗?"><span>彻底删除</span></a></li>
 			</ul>
 		</div>

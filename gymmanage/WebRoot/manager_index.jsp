@@ -150,7 +150,9 @@
 						<ul class="tree treeFolder">
 							<li><a>人员管理</a>
 								<ul>
-									<li><a href="${pageContext.request.contextPath }/manager/getAllUsers.action" target="navTab">添加场地管理员</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/manager/getAllUsers.action"
+										target="navTab">添加场地管理员</a></li>
 								</ul></li>
 
 							<li><a>场地管理</a>
@@ -161,7 +163,9 @@
 									<li><a
 										href="${pageContext.request.contextPath }/site/getAllSiteType.action"
 										target="navTab" rel="getAllSiteType">类型管理</a></li>
-									<li><a href="${pageContext.request.contextPath }/site/getAllSiteOrder.action" target="navTab" rel="getAllSiteOrder">预约管理</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/site/getAllSiteOrder.action"
+										target="navTab" rel="getAllSiteOrder">预约管理</a></li>
 									<li><a href="#" target="navTab">收费标准</a></li>
 								</ul></li>
 

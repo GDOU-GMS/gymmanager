@@ -13,7 +13,7 @@ import com.gms.utils.JDBCUtils;
 public class SiteTypeDAOImpl implements SiteTypeDAO {
 
 	/**
-	 * 添加场地类型
+	 * 娣诲姞鍦哄湴绫诲瀷
 	 * @param siteType
 	 */
 	public void addType(SiteType siteType){
@@ -28,7 +28,7 @@ public class SiteTypeDAOImpl implements SiteTypeDAO {
 	}
 	
 	/**
-	 *修改场地类型
+	 *淇敼鍦哄湴绫诲瀷
 	 * @param siteType
 	 */
 	public void updateType(SiteType siteType){
@@ -42,7 +42,7 @@ public class SiteTypeDAOImpl implements SiteTypeDAO {
 		}
 	}
 	/**
-	 * 删除场地类型
+	 * 鍒犻櫎鍦哄湴绫诲瀷
 	 * @param id
 	 */
 	public void deleteType(int id){
@@ -55,7 +55,7 @@ public class SiteTypeDAOImpl implements SiteTypeDAO {
 		}
 	}
 	/**
-	 * 获取所有的场地类型
+	 * 鑾峰彇鎵�鏈夌殑鍦哄湴绫诲瀷
 	 * @return
 	 */
 	public List<SiteType> getAllSiteType(){
@@ -68,7 +68,7 @@ public class SiteTypeDAOImpl implements SiteTypeDAO {
 		}
 	}
 	/**
-	 * 根据id查找场地
+	 * 鏍规嵁id鏌ユ壘鍦哄湴
 	 * @param id
 	 * @return
 	 */
