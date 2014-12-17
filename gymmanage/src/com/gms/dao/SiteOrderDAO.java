@@ -7,44 +7,41 @@ import com.gms.domain.SiteOrder;
 public interface SiteOrderDAO {
 
 	/**
-	 * ����һ������ԤԼ
+	 * 添加场地预约
 	 * @param siteOrder
 	 */
 	public abstract void addSiteOrder(SiteOrder siteOrder);
 
 	/**
-	 * ɾ������ԤԼ
+	 * 删除场地预约
 	 * @param id
 	 */
 	public abstract void deleteSiteOrder(int id);
 
 	/**
-	 * �޸ĳ���ԤԼ
+	 * 更改场地预约
 	 * @param siteOrder
 	 */
 	public abstract void updateSiteOrder(SiteOrder siteOrder);
 
 	/**
-	 * ��ȡ���еĳ���ԤԼ
+	 * 过得所哟场地预约
 	 * @return
 	 */
 	public abstract List<SiteOrder> getAllSiteOrder();
 
 	/**
-	 * ����û������еĳ���ԤԼ
+	 * 查询用户所有的预约
 	 * @param userId
 	 * @return
 	 */
 	public abstract List<SiteOrder> getSiteOrderByUserId(int userId);
 
 	/**
-	 * ����ԤԼ��״̬���ҳ���ԤԼ
+	 * 根据预约状态查找预约
 	 * @param statue
 	 * @return
 	 */
 	public abstract List<SiteOrder> getSiteOrderByStaue(String statue);
-	/**
-	 * ��ȡ����ʧԼ�ĳ���ԤԼ
-	 */
 
 }
