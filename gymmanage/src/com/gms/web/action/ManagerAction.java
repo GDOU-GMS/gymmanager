@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.gms.domain.Manager;
 import com.gms.service.impl.ManagerBusinessServiceImpl;
+import com.opensymphony.xwork2.ActionContext;
 
 import freemarker.core.ReturnInstruction.Return;
 
@@ -143,7 +144,30 @@ public class ManagerAction {
 		return "";
 		
 	}
-	
-	
+	/**
+	 * –£—Èµ«¬º
+	 * @return
+	 */
+	public String loginCheck(){
+		try {
+			ManagerBusinessServiceImpl service = new ManagerBusinessServiceImpl();
+			Manager result = service.verifyManager(manager);
+			if(result==null){
+				ActionContext.getContext().getSession().put("message", " ‰»Î’À∫≈ªÚ√‹¬Î¥ÌŒÛ£°");
+				return "loginFailed";
+			}else{
+				ActionContext.getContext().getSession().put("manager", manager);
+				if("superAdmin".equals(result.getPermission())){
+					return "superAdmin";
+				}else{
+					return "manager";
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			ActionContext.getContext().getSession().put("message", "œµÕ≥“Ï≥££¨µ«¬º ß∞‹£°");
+			return "loginFailed";
+		}
+	}
 	
 }

@@ -38,6 +38,12 @@ public interface ManagerDAO {
 	/**
 	 * 获得所有管理员用户
 	 */
-	public abstract List<Manager>  getAllManager();
+	public  List<Manager>  getAllManager();
+	/**
+	 * 校验登录
+	 * @param manager
+	 * @return
+	 */
+	public abstract Manager verifyManager(Manager manager);
 
 }

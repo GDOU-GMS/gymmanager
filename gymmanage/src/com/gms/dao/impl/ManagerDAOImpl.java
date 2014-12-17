@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.gms.dao.ManagerDAO;
 import com.gms.domain.Manager;
@@ -52,6 +54,22 @@ public class ManagerDAOImpl implements ManagerDAO{
 	public List<Manager> getAllManager() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	/**
+	 * Ð£ÑéµÇÂ¼
+	 * @param manager
+	 * @return
+	 */
+	public Manager verifyManager(Manager manager){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_admin where permission=? and account=? and password=?";
+			Object params[] = {manager.getPermission(),manager.getAccount(),manager.getPassword()};
+			return (Manager)qr.query(sql, params, new BeanHandler(Manager.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 

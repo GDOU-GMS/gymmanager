@@ -30,12 +30,12 @@ public class CheckManagerLoginFilter implements Filter {
 		
 		Manager manager = (Manager) request.getSession().getAttribute("manager");
 		
+		
 		/**
 		 * 没有登录就跳转到指定
 		 */
 		if(manager==null){
-			request.setAttribute("flag", true);
-			request.setAttribute("alert", "请先登录！");
+			//request.setAttribute("message", "请先登录！");
 			request.getRequestDispatcher("/manager_login.jsp").forward(request, response);
 			return;
 		}else{

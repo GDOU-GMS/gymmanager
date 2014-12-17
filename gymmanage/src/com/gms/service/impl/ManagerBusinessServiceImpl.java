@@ -55,4 +55,13 @@ public class ManagerBusinessServiceImpl {
 		return managerDAO.getAllManager();
 	}
 	
+	/**
+	 * Ğ£ÑéµÇÂ¼
+	 * @param manager
+	 * @return
+	 */
+	public Manager verifyManager(Manager manager){
+		return managerDAO.verifyManager(manager);
+	}
+	
 }

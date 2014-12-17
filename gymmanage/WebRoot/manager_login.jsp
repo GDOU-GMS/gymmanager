@@ -27,26 +27,30 @@
 </head>
 
 <body>
-	<c:if test="${flag}">
+	<c:if test="${!empty message}">
 		<script type="text/javascript">
-			alert("${alert}");
+			alert("${message}");
 		</script>
 	</c:if>
 	<div id="container">
 	<div class="login">登录</div>
-		<form action="welcome.html">
+		<form action="${pageContext.request.contextPath }/managerAction/loginCheck.action" method="post">
 			<div class="username-text">用户名:</div>
 			<div class="password-text">密码:</div>
 			<div class="username-field">
-				<input type="text" name="username"  placeholder="请输入用户名" />
+				<input type="text" name="manager.account"  placeholder="请输入用户名" />
 			</div>
 			<div class="password-field">
-				<input type="password" name="password" placeholder="请输入密码" />
+				<input type="password" name="manager.password" placeholder="请输入密码" />
 			</div>
-			<input type="checkbox" name="remember-me" id="remember-me" /><label
-				for="remember-me">记住我</label>
+			<div class="permission" >
+				<input class="superAdmin" type="radio" name="manager.permission" value="superAdmin"><span>超级管理员</span>
+				<input class="manager" type="radio" name="manager.permission" value="manager" checked="checked"><span>管理员</span>
+			</div>
+			<!-- <input type="checkbox" name="remember-me" id="remember-me" /><label
+				for="remember-me">记住我</label> -->
 			<div class="forgot-usr-pwd">
-				  <a href="#">忘记密码</a>?
+				  <a href="#">忘记密码</a>
 			</div>
 			<input type="submit" name="submit" value="GO" />
 		</form>
