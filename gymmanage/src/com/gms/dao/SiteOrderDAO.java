@@ -3,6 +3,7 @@ package com.gms.dao;
 import java.util.List;
 
 import com.gms.domain.SiteOrder;
+import com.gms.vo.SiteOrderVo;
 
 public interface SiteOrderDAO {
 
@@ -10,8 +11,7 @@ public interface SiteOrderDAO {
 	 * 添加场地预约
 	 * @param siteOrder
 	 */
-	public abstract void addSiteOrder(SiteOrder siteOrder);
-
+	public  void addSiteOrder(SiteOrder siteOrder);
 	/**
 	 * 删除场地预约
 	 * @param id
@@ -50,11 +50,18 @@ public interface SiteOrderDAO {
 	 * @param pageSize
 	 * @return
 	 */
-	public  List<SiteOrder> getSiteOrderPageData(int startIndex, int pageSize);
+	public  List<SiteOrderVo> getSiteOrderPageData(int startIndex, int pageSize);
 	
 	/**
 	 * 获得数据库的总记录数
 	 * @return
 	 */
-	public abstract int getTotalRecord();
+	public  int getTotalRecord();
+	
+	/**
+	 * 根据id查找预约
+	 * @param id
+	 * @return
+	 */
+	public abstract SiteOrder getsiteOrderById(int id);
 }

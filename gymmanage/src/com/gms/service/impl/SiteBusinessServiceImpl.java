@@ -10,6 +10,7 @@ import com.gms.domain.Site;
 import com.gms.domain.SiteOrder;
 import com.gms.domain.SiteType;
 import com.gms.factory.DAOFactory;
+import com.gms.vo.SiteOrderVo;
 import com.gms.vo.SiteVo;
 
 public class SiteBusinessServiceImpl {
@@ -178,8 +179,17 @@ public class SiteBusinessServiceImpl {
 	public Page getSiteOrderPageDate(int pageNum,int pageSize){
 		int totalRecord = siteOrderDAO.getTotalRecord();
 		Page page = new Page(pageSize, pageNum, totalRecord);
-		List<SiteOrder> list = siteOrderDAO.getSiteOrderPageData(page.getStartIndex(), pageSize);
+		List<SiteOrderVo> list = siteOrderDAO.getSiteOrderPageData(page.getStartIndex(), pageSize);
 		page.setList(list);
 		return page;
+	}
+	
+	/**
+	 * 根据id查找预约
+	 * @param id
+	 * @return
+	 */
+	public SiteOrder getsiteOrderById(int id){
+		return siteOrderDAO.getsiteOrderById(id);
 	}
 }

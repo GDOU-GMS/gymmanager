@@ -2,7 +2,10 @@ package com.gms.web.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +17,9 @@ import com.gms.domain.Page;
 import com.gms.domain.Site;
 import com.gms.domain.SiteOrder;
 import com.gms.domain.SiteType;
+import com.gms.domain.User;
 import com.gms.service.impl.SiteBusinessServiceImpl;
+import com.gms.service.impl.UserBusinessServiceImpl;
 import com.gms.utils.JSONTools;
 import com.gms.vo.SiteVo;
 import com.opensymphony.xwork2.ActionContext;
@@ -27,7 +32,27 @@ public class SiteAction {
 	private Site site;
 	private int id;
 	private int pageNum = 1;
-	private int numPerPage = 20;
+	private int numPerPage = 20;//相当于pagesize
+	private SiteOrder siteOrder;
+	private String studentNo;
+	
+
+
+	public String getStudentNo() {
+		return studentNo;
+	}
+
+	public void setStudentNo(String studentNo) {
+		this.studentNo = studentNo;
+	}
+
+	public SiteOrder getSiteOrder() {
+		return siteOrder;
+	}
+
+	public void setSiteOrder(SiteOrder siteOrder) {
+		this.siteOrder = siteOrder;
+	}
 
 	public int getNumPerPage() {
 		return numPerPage;
@@ -326,13 +351,157 @@ public class SiteAction {
 	public String getAllSiteOrder() {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-			List<SiteOrder> siteOrders = service.getAllSiteOrder();
-			ActionContext.getContext().put("siteOrders", siteOrders);
+			Page page = service.getSiteOrderPageDate(pageNum, numPerPage);
+			ActionContext.getContext().put("page", page);
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
 			message = JSONTools.getJSONString("300", "获取失败，系统异常！", "", "", "");
 			return "message";
 		}
+	}
+	
+	/**
+	 * 添加、预留场地之前获得数据
+	 * @return
+	 */
+	public String getDataForAddSiteOrder(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			List<Site> sites = service.getAllSite();
+			List<SiteType> siteTypes = service.getAllSiteType();
+			ActionContext.getContext().put("sites", sites);
+			ActionContext.getContext().put("siteTypes", siteTypes);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "获取失败，系统异常！", "", "", "");
+			return "message";
+		}
+	}
+	
+	/**
+	 * 预留场地
+	 * @return
+	 */
+	/*public String reserveSiteOrder(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			
+			Date orderTime = new Date();
+			siteOrder.setOrderTime(orderTime);
+			service.addSiteOrder(siteOrder);
+			message = JSONTools.getJSONString("200", "添加成功", "getAllSiteOrder", "closeCurrent", "");
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "获取失败，系统异常！", "", "", "");
+		}
+		return "message";
+	}*/
+	
+	/**
+	 * 管理员添加场地预约
+	 * @return
+	 */
+	public String addSiteOrderByManager(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			UserBusinessServiceImpl userService = new UserBusinessServiceImpl();
+			//List<User> users = userService.getUsers(studentNo, " ", " ");
+			User user = userService.getUserByStudentNo(studentNo);
+			if(user!=null){
+				siteOrder.setUserId(user.getId());
+				Date orderTime = new Date();
+				siteOrder.setOrderTime(orderTime);
+				service.addSiteOrder(siteOrder);
+				message = JSONTools.getJSONString("200", "添加成功", "getAllSiteOrder", "closeCurrent", "");
+			}else{
+				message = JSONTools.getJSONString("300", "输入学号有误", "", "", "");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "获取失败，系统异常！", "", "", "");
+		}
+		return "message";
+	}
+	
+	/**
+	 * 删除预约信息
+	 */
+	public String deleteSiteOrder(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			service.deleteSiteOrder(id);
+			message = JSONTools.getJSONString("200", "删除成功", "getAllSiteOrder", "", "");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			message = JSONTools.getJSONString("200", "删除失败，系统异常!", "", "", "");
+		}
+		return "message";
+	}
+	
+	/**
+	 * 获取数据回显给预约更新
+	 * @return
+	 */
+	public String getDataForUpdateSiteOrder(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			UserBusinessServiceImpl userService = new UserBusinessServiceImpl();
+			
+			//获得场地和场类型的数据
+			List<Site> sites = service.getAllSite();
+			List<SiteType> siteTypes = service.getAllSiteType();
+			ActionContext.getContext().put("sites", sites);
+			ActionContext.getContext().put("siteTypes", siteTypes);
+			//获得回显数据
+			SiteOrder siteOrder = service.getsiteOrderById(id);
+			Site site = service.getSiteDetailById(siteOrder.getSiteId());
+			SiteType type = service.getSiteTypeById(site.getTypeId());
+			User user = userService.getUserById(siteOrder.getUserId());
+			
+			/*//规格书日期格式
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String stratTime = sdf.format(siteOrder.getStratTime());
+			String endTime = sdf.format(siteOrder.getEndTime());
+			siteOrder.setStratTime(sdf.parse(stratTime));
+			siteOrder.setEndTime(sdf.parse(endTime));*/
+			
+			ActionContext.getContext().put("siteOrder",siteOrder);
+			ActionContext.getContext().put("site", site);
+			ActionContext.getContext().put("type", type);
+			ActionContext.getContext().put("user", user);
+			return "success";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "查询出错，系统异常！", "", "", "");
+			return "message";
+		}
+	}
+	/**
+	 * 更新场地预约
+	 * @return
+	 */
+	public String updateSiteOrder(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			UserBusinessServiceImpl userService = new UserBusinessServiceImpl();
+			User user = userService.getUserByStudentNo(studentNo);
+			if(user!=null){
+				siteOrder.setUserId(user.getId());
+			/*	Date orderTime = new Date();
+				siteOrder.setOrderTime(orderTime);*/
+				service.updateSiteOrder(siteOrder);
+				message = JSONTools.getJSONString("200", "修改成功！", "getAllSiteOrder", "closeCurrent", "");
+			}else{
+				message = JSONTools.getJSONString("300", "输入学号有误", "", "", "");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "更新出错，系统异常！", "", "", "");
+		}
+		return  "message";
 	}
 }

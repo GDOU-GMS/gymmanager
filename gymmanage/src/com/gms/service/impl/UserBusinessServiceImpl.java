@@ -22,5 +22,20 @@ public class UserBusinessServiceImpl {
 		return userDAO.getAllUsers();
 	
 	}
-
+	/**
+	 * 更具学号查找用户
+	 * @param studentNo
+	 * @return
+	 */
+	public User getUserByStudentNo(String studentNo){
+		return userDAO.getUserByStudentNo(studentNo);
+	}
+	/**
+	 * 根据id查找用户
+	 * @param studentNo
+	 * @return
+	 */
+	public User getUserById(int id){
+		return userDAO.getUserById(id);
+	}
 }

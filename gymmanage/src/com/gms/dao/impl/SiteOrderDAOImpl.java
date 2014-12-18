@@ -10,6 +10,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import com.gms.dao.SiteOrderDAO;
 import com.gms.domain.SiteOrder;
 import com.gms.utils.JDBCUtils;
+import com.gms.vo.SiteOrderVo;
 
 public class SiteOrderDAOImpl implements SiteOrderDAO {
 
@@ -21,17 +22,18 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 	public void addSiteOrder(SiteOrder siteOrder) {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "insert into tb_siteorder(stratTime,endTime,userId,siteId,staue,orderTime) where values(?,?,?,?,?,?)";
+			String sql = "insert into tb_siteorder(stratTime,endTime,userId,siteId,statue,orderTime)  values(?,?,?,?,?,?)";
 			Object params[] = { siteOrder.getStratTime(),
 					siteOrder.getEndTime(), siteOrder.getUserId(),
-					siteOrder.getSiteId(), siteOrder.getOrderTime() };
+					siteOrder.getSiteId(),siteOrder.getStatue(), siteOrder.getOrderTime() };
 			qr.update(sql, params);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 
 	}
-
+	
+	
 	/**
 	 * 删除预约
 	 * 
@@ -55,8 +57,8 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 	public void updateSiteOrder(SiteOrder siteOrder) {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "update tb_siteorder set stratTime=?,endTime=?,siteId=? where id=?";
-			Object params[] = { siteOrder.getStratTime(),
+			String sql = "update tb_siteorder set userId=?,stratTime=?,endTime=?,siteId=? where id=?";
+			Object params[] = { siteOrder.getUserId(),siteOrder.getStratTime(),
 					siteOrder.getEndTime(), siteOrder.getSiteId(),
 					siteOrder.getId() };
 			qr.update(sql, params);
@@ -121,13 +123,13 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 	 * @param pageSize
 	 * @return
 	 */
-	public List<SiteOrder> getSiteOrderPageData(int startIndex, int pageSize) {
+	public List<SiteOrderVo> getSiteOrderPageData(int startIndex, int pageSize) {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select * from tb_siteorder limit ?,?";
+			String sql = "select tb_siteorder.*,tb_user.studentNo as studentNo ,tb_user.name as username,tb_site.name as sitename from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId limit ?,?";
 			Object params[] = { startIndex, pageSize };
-			return (List<SiteOrder>) qr.query(sql, params, new BeanListHandler(
-					SiteOrder.class));
+			return (List<SiteOrderVo>) qr.query(sql, params, new BeanListHandler(
+					SiteOrderVo.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -146,6 +148,21 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 
+		}
+	}
+	/**
+	 * 根据id查找预约
+	 * @param id
+	 * @return
+	 */
+	public SiteOrder getsiteOrderById(int id){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_siteOrder where id=?";
+			return (SiteOrder)qr.query(sql, id, new BeanHandler(SiteOrder.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+			
 		}
 	}
 }

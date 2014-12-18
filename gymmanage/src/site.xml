@@ -46,6 +46,21 @@
 		<action name="getAllSiteOrder" class="com.gms.web.action.SiteAction" method="getAllSiteOrder">
 			<result name="success">/manager/getAllSiteOrder.jsp</result>
 		</action>
+		<action name="getDataForAddSiteOrder" class="com.gms.web.action.SiteAction" method="getDataForAddSiteOrder">
+			<result name="success">/manager/addSiteOrder.jsp</result>
+		</action>
+		<action name="addSiteOrderByManager" class="com.gms.web.action.SiteAction" method="addSiteOrderByManager">
+		</action>
+		<action name="deleteSiteOrder" class="com.gms.web.action.SiteAction" method="deleteSiteOrder">
+		</action>
+		<action name="getDataForUpdateSiteOrder" class="com.gms.web.action.SiteAction" method="getDataForUpdateSiteOrder">
+			<result name="success">/manager/updateSiteOrder.jsp</result>
+		</action>
+		<action name="updateSiteOrder" class="com.gms.web.action.SiteAction" method="updateSiteOrder">
+			<result name="success">/manager/updateSiteOrder.jsp</result>
+		</action>
+		
+		
 		
 	</package>
 </struts>
