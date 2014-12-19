@@ -9,41 +9,57 @@ import com.gms.domain.Manager;
 public interface ManagerDAO {
 	
 	
-	/**
-	 * ²éÑ¯¹ÜÀíÔ±ĞÅÏ¢
-	 * @param name
-	 */
-	public abstract List<Manager> selectManager(String account,String name);
+	
 	
 	/**
-	 * Ôö¼Ó¹ÜÀíÔ±
+	 * ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½Ô±
 	 * 
 	 * @param Manager
 	 */
 	public abstract void addManager(Manager mannager);
 	
 	/**
-	 * ¸üĞÂ¹ÜÀíÔ±ĞÅÏ¢
+	 * ï¿½ï¿½ï¿½Â¹ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 * 
 	 * @param Manager
 	 */
 	public abstract void updateManager(Manager mannager);
 	
-	/**É¾³ı¹ÜÀíÔ±ĞÅÏ¢
+	/**É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 * 
 	 * @param name
 	 */
 	public abstract void deleteManager(int id);
 	
 	/**
-	 * »ñµÃËùÓĞ¹ÜÀíÔ±ÓÃ»§
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¹ï¿½ï¿½ï¿½Ô±ï¿½Ã»ï¿½
 	 */
 	public  List<Manager>  getAllManager();
 	/**
-	 * Ğ£ÑéµÇÂ¼
+	 * Ğ£ï¿½ï¿½ï¿½Â¼
 	 * @param manager
 	 * @return
 	 */
 	public abstract Manager verifyManager(Manager manager);
+	/**
+	 * æŸ¥è¯¢ç®¡ç†å‘˜
+	 * @param account
+	 * @param name
+	 * @return
+	 */
+	
+	public abstract List<Manager> getManagers(String account,String name);
+	/**
+	 * æ›´æ–°ç®¡ç†å‘˜å¯†ç 
+	 * @param id
+	 * @param opassword
+	 * @param npassword
+	 * @return
+	 */
+	public abstract boolean updatePassword(int id,String oPassword,String  nPassword);
+	
+	
+	public abstract Manager getManagerById(int id);
+	
 
 }

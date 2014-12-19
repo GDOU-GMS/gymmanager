@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.gms.domain.Manager;
 import com.gms.service.impl.ManagerBusinessServiceImpl;
+import com.gms.utils.JSONTools;
 import com.opensymphony.xwork2.ActionContext;
 
 import freemarker.core.ReturnInstruction.Return;
@@ -15,9 +16,23 @@ public class ManagerAction {
 	private Manager manager;
 	private String message;
 	private String account;
+	public String getoPassword() {
+		return oPassword;
+	}
+	public void setoPassword(String oPassword) {
+		this.oPassword = oPassword;
+	}
+	public String getnPassword() {
+		return nPassword;
+	}
+	public void setnPassword(String nPassword) {
+		this.nPassword = nPassword;
+	}
 	private String name;
 	private int id;
 	private List<Manager> listManager;
+	private String oPassword;
+	private String nPassword;
 	
 	
 	public List<Manager> getListManager() {
@@ -57,95 +72,83 @@ public class ManagerAction {
 	public void setId(int id) {
 		this.id = id;
 	}
-	  
-	/**
-	 * Ìí¼Ó¹ÜÀíÔ±
-	 * @return
-	 */
-	public String selectManager(){
-		try{
-			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
-			managerBusinessServiceImpl.selectManager(account, name);
-			message="Ìí¼Ó³É¹¦£¡";
-		}catch(Exception e){
-			e.printStackTrace();
-			message="Ìí¼ÓÊ§°Ü£¡";
-			
-		}
-		return message;
-		
-	}
+	
 	
 	
 	/**
-	 * Ìí¼Ó¹ÜÀíÔ±
+	 * ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½Ô±
 	 * @return
 	 */
 	public String addManager(){
 		try{
 			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
 			managerBusinessServiceImpl.addManager(manager);
-			message="Ìí¼Ó³É¹¦£¡";
+			message=JSONTools.getJSONString("200","æ·»åŠ æˆåŠŸ","getAllManager","closeCurrent","");
 		}catch(Exception e){
 			e.printStackTrace();
-			message="É¾³ı³É¹¦£¡";
+			message=JSONTools.getJSONString("300", "æ·»åŠ å¤±è´¥", "", "", "");
 		}
-		return message;
+		return "message";
+		
 		
 	}
 	
 	/**
-	 * ¸üĞÂ¹ÜÀíÔ±
+	 * ï¿½ï¿½ï¿½Â¹ï¿½ï¿½ï¿½Ô±
 	 * @return
 	 */
 	public String updateManager(){
 		try{
+			System.out.println("ç®¡ç†å‘˜çš„idä¸º"+manager.getId());
+			System.out.println("ç®¡ç†å‘˜çš„åå­—"+manager.getName());
+			System.out.println("ç®¡ç†å‘˜çš„ç”¨æˆ·åä¸º"+manager.getAccount());
+			System.out.println("ç®¡ç†å‘˜çš„åœ°å€ä¸º"+manager.getAddress());
 			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
 			managerBusinessServiceImpl.updateManager(manager);
-			message="¸üĞÂ³É¹¦£¡";
+			message = JSONTools.getJSONString("200", "æ›´æ–°æˆåŠŸ", "getManagerSelf","closeCurrent", "");
 		}catch(Exception e){
 			e.printStackTrace();
-			message="¸üĞÂÊ§°Ü£¡";
+			message = JSONTools.getJSONString("300", "æ›´æ–°å¤±è´¥", "", "", "");
 		}
-		return message;
+		return "message";
 		
 	}
 	
 	/**
-	 * É¾³ı¹ÜÀíÔ±ĞÅÏ¢
+	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 * @return
 	 */
 	public String deleteManager(){
 		try{
 			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
 			managerBusinessServiceImpl.deleteManger(id);
-			message="É¾³ı³É¹¦£¡";
+		    JSONTools.getJSONString("200", "åˆ é™¤æˆåŠŸ", "getAllManager", "", "");
 		}catch(Exception e){
-			e.printStackTrace();
-			message="É¾³ıÊ§°Ü£¡";
+		
+			JSONTools.getJSONString("300", "åˆ é™¤å¤±è´¥","", "", "");
 		}
-		return message;
+		return "message";
 	}
 	
 	
 	
 	/**
-	 * »ñµÃËùÓĞ¹ÜÀíÔ±
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¹ï¿½ï¿½ï¿½Ô±
 	 * @return
 	 */
 	public String getAllManager(){ 
 		try{
-		ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
-		listManager=managerBusinessServiceImpl.getAllManager();
-		
+			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
+			listManager=managerBusinessServiceImpl.getAllManager();
+			return "success";
 		}catch(Exception e){
-			e.printStackTrace();
+			return "error";
 		}
-		return "";
+		
 		
 	}
 	/**
-	 * Ğ£ÑéµÇÂ¼
+	 * Ğ£ï¿½ï¿½ï¿½Â¼
 	 * @return
 	 */
 	public String loginCheck(){
@@ -153,10 +156,10 @@ public class ManagerAction {
 			ManagerBusinessServiceImpl service = new ManagerBusinessServiceImpl();
 			Manager result = service.verifyManager(manager);
 			if(result==null){
-				ActionContext.getContext().getSession().put("message", "ÊäÈëÕËºÅ»òÃÜÂë´íÎó£¡");
+				ActionContext.getContext().getSession().put("message", "ï¿½ï¿½ï¿½ï¿½ï¿½ËºÅ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				return "loginFailed";
 			}else{
-				ActionContext.getContext().getSession().put("manager", manager);
+				ActionContext.getContext().getSession().put("manager", result);
 				if("superAdmin".equals(result.getPermission())){
 					return "superAdmin";
 				}else{
@@ -165,9 +168,92 @@ public class ManagerAction {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			ActionContext.getContext().getSession().put("message", "ÏµÍ³Òì³££¬µÇÂ¼Ê§°Ü£¡");
+			ActionContext.getContext().getSession().put("message", "ÏµÍ³ï¿½ì³£ï¿½ï¿½ï¿½ï¿½Â¼Ê§ï¿½Ü£ï¿½");
 			return "loginFailed";
 		}
 	}
+	
+	
+	/**
+	 * æ›´æ”¹ç®¡ç†å‘˜å¯†ç 
+	 * @return
+	 */
+	public String updatePassword(){
+		
+		ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
+		//å‡å®šid=1
+		id=1;
+		boolean flag=false;
+		flag=managerBusinessServiceImpl.updatePassword(id, oPassword, nPassword);
+		if(flag){
+			message=JSONTools.getJSONString("200", "æ›´æ–°æˆåŠŸ","getAllUsers", "", "");
+		}else{
+			message=JSONTools.getJSONString("300", "æ›´æ–°å¤±è´¥","","","");
+		}
+		
+		return "message";
+		
+	}
+	/*
+	 * æŸ¥è¯¢ç®¡ç†å‘˜
+	 */
+	public String getManagers(){
+		
+		 ManagerBusinessServiceImpl managerBusinessServiceImpl =new ManagerBusinessServiceImpl();
+		 try{
+			if(account==null){
+				account="";
+			}
+			if(name==null){
+				name="";
+			}
+			listManager=managerBusinessServiceImpl.getManagers(account, name);
+			return "success";
+			 
+		 }catch(Exception e){
+			 
+			return "error";
+		 }
+		 
+	}
+	
+	
+	/**
+	 * ç®¡ç†å‘˜ç™»é™†åè·å¾—è‡ªå·±çš„ä¿¡æ¯
+	 * @return
+	 */
+	public String  getManagerSelf(){
+		
+		manager=(Manager) ActionContext.getContext().getSession().get("manager");
+		ManagerBusinessServiceImpl managerBusinessServiceImpl =new ManagerBusinessServiceImpl();
+		 try{
+				manager=managerBusinessServiceImpl.getManagerById(manager.getId());
+				return "success";
+				 
+			 }catch(Exception e){
+				 
+				return "error";
+			 }
+	
+	}
+	
+	
+	
+//	public String getManagerSelfInfo(){
+//		 ManagerBusinessServiceImpl managerBusinessServiceImpl =new ManagerBusinessServiceImpl();
+//		try{
+//			listManager=managerBusinessServiceImpl.getManagers(manager.getAccount(),manager.getName());
+//			return "success";
+//			 
+//		 }catch(Exception e){
+//			 
+//			return "error";
+//		 }
+//	}
+//	
+	
+	
+	
+	
 	
 }

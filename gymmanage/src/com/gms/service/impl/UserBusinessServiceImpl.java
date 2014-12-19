@@ -23,7 +23,7 @@ public class UserBusinessServiceImpl {
 	
 	}
 	/**
-	 * ¸ü¾ßÑ§ºÅ²éÕÒÓÃ»§
+	 * ï¿½ï¿½ï¿½Ñ§ï¿½Å²ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * @param studentNo
 	 * @return
 	 */
@@ -31,11 +31,21 @@ public class UserBusinessServiceImpl {
 		return userDAO.getUserByStudentNo(studentNo);
 	}
 	/**
-	 * ¸ù¾Ýid²éÕÒÓÃ»§
+	 * ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * @param studentNo
 	 * @return
 	 */
 	public User getUserById(int id){
 		return userDAO.getUserById(id);
+	}
+	
+	
+	public void updateUser(User user){
+		 userDAO.updateUser(user);
+	}
+	
+	
+	public boolean updatePassword(int id,String oPassword,String nPassword){
+		return userDAO.updatePassword(id, oPassword, nPassword);
 	}
 }

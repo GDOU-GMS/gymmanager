@@ -32,10 +32,10 @@ public class CheckManagerLoginFilter implements Filter {
 		
 		
 		/**
-		 * Ã»ÓÐµÇÂ¼¾ÍÌø×ªµ½Ö¸¶¨
+		 * Ã»ï¿½Ðµï¿½Â¼ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Ö¸ï¿½ï¿½
 		 */
 		if(manager==null){
-			//request.setAttribute("message", "ÇëÏÈµÇÂ¼£¡");
+			//request.setAttribute("message", "ï¿½ï¿½ï¿½Èµï¿½Â¼ï¿½ï¿½");
 			request.getRequestDispatcher("/manager_login.jsp").forward(request, response);
 			return;
 		}else{

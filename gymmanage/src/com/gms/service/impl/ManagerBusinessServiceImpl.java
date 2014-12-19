@@ -14,17 +14,17 @@ public class ManagerBusinessServiceImpl {
     
 	
 	/**
-	 * ²éÑ¯¹ÜÀíÔ±ĞÅÏ¢
+	 * ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 * @param account
 	 * @param name
 	 */
-	public void selectManager(String account,String name){
-		managerDAO.selectManager(account, name);
+	public  List<Manager> getManagers(String account,String name){
+		return managerDAO.getManagers(account, name);
 	}
 	
 	
 	/**
-	 * Ôö¼Ó¹ÜÀíÔ±
+	 * ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½Ô±
 	 * @param manager
 	 */
 	public void addManager(Manager manager){
@@ -33,7 +33,7 @@ public class ManagerBusinessServiceImpl {
 	
 	
 	/**
-	 * ¸üĞÂ¹ÜÀíÔ±ĞÅÏ¢
+	 * ï¿½ï¿½ï¿½Â¹ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 * @param manager
 	 */
 	public void updateManager(Manager manager){
@@ -42,7 +42,7 @@ public class ManagerBusinessServiceImpl {
 	
 	
 	/**
-	 * É¾³ı¹ÜÀíÔ±
+	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ô±
 	 * @param id
 	 */
 	public void deleteManger(int id ){
@@ -56,12 +56,24 @@ public class ManagerBusinessServiceImpl {
 	}
 	
 	/**
-	 * Ğ£ÑéµÇÂ¼
+	 * Ğ£ï¿½ï¿½ï¿½Â¼
 	 * @param manager
 	 * @return
 	 */
 	public Manager verifyManager(Manager manager){
 		return managerDAO.verifyManager(manager);
 	}
+	
+	
+	
+	public boolean updatePassword(int id,String oPassword,String nPassword){
+		return managerDAO.updatePassword(id, oPassword, nPassword);
+	}
+
+	
+	public Manager getManagerById(int id){
+		return managerDAO.getManagerById(id);
+	}
+
 	
 }

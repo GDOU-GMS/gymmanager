@@ -11,6 +11,7 @@
 <meta http-equiv="expires" content="0" />
 
 
+ 
 <link href="${pageContext.request.contextPath }/themes/default/style.css" rel="stylesheet" type="text/css"
 	media="screen" />
 <link href="${pageContext.request.contextPath }/themes/css/core.css" rel="stylesheet" type="text/css"
@@ -151,8 +152,8 @@
 							<li><a>人员管理</a>
 								<ul>
 									<li><a
-										href="${pageContext.request.contextPath }/manager/getAllUsers.action"
-										target="navTab">添加场地管理员</a></li>
+										href="${pageContext.request.contextPath }/useraction/getAllUsers.action"
+										target="navTab">用户信息查询</a></li>
 								</ul></li>
 
 							<li><a>场地管理</a>
@@ -182,7 +183,7 @@
 								</ul></li>
 							<li><a>个人信息管理</a>
 								<ul>
-									<li><a href="#" target="navTab">个人信息</a></li>
+									<li><a href="${pageContext.request.contextPath }/managerAction/getManagerSelf.action" target="navTab">个人信息</a></li>
 									<li><a href="#" target="navTab">修改密码</a></li>
 								</ul></li>
 							<li><a>其他</a>
