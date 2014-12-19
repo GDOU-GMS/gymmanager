@@ -26,22 +26,22 @@
 
 
 	<div class="pageHeader">
-		<form onsubmit="return navTabSearch(this);" action="#" method="post">
+		<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath }/site/querySite.action" method="post">
 			<div class="searchBar">
 				<table class="searchContent">
 					<tr>
-						<td>场地名称：<input type="text" name="keyword" />
+						<td>场地名称：<input type="text" name="site.name" />
 						</td>
 						<td>场地类型：</td>
-						<td><select class="combox" name="site.typeId">
-								<option value="0">--请选择--</option>
+						<td><select class="combox" name="siteType.type">
+								<option value="none">--请选择--</option>
 								<c:forEach items="${siteTypes}" var="siteType">
-									<option value="${siteType.id }">${siteType.type }</option>
+									<option value="${siteType.type }">${siteType.type }</option>
 								</c:forEach>
 						</select></td>
 						<td>状态</td>
 						<td><select class="combox" name="site.statue">
-								<option value="noon">--请选择--</option>
+								<option value="none">--请选择--</option>
 								<option value="undeleted">未删除</option>
 								<option value="deleted">已删除</option>
 						</select></td>

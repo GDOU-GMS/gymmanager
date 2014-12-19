@@ -40,6 +40,9 @@
 		</action>
 		<action name="removeSite" class="com.gms.web.action.SiteAction" method="removeSite">
 		</action>
+		<action name="querySite" class="com.gms.web.action.SiteAction" method="querySite">
+			<result name="success">/manager/getAllSite.jsp</result>
+		</action>
 		
 		
 		<!-- 场地预约 -->

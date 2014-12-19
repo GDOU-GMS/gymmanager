@@ -29,7 +29,7 @@
 						<input name="studentNo" type="text" class="number required" minlength="12" maxlength="12">
 					</dd>
 				</dl>
-				<dl>
+				<%-- <dl>
 					<dt>选择场地类型</dt>
 					<dd>
 						<select name="siteType">
@@ -45,6 +45,22 @@
 						<select name="siteOrder.siteId">
 							<c:forEach items="${sites }" var="site">
 								<option value="${site.id}" >${site.name}</option>
+							</c:forEach>
+						</select>
+					</dd>
+				</dl> --%>
+				<dl>
+					<dt>选择场地</dt>
+					<dd>
+						<select name="siteOrder.siteId">
+							<c:forEach items="${siteTypes }" var="siteType">
+								<optgroup label="${siteType.type }">
+									<c:forEach items="${sites }" var="site">
+										<c:if test="${siteType.id==site.typeId }">
+											<option value="${site.id }">${site.name }</option>
+										</c:if>
+									</c:forEach>
+								</optgroup>
 							</c:forEach>
 						</select>
 					</dd>

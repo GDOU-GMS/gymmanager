@@ -62,4 +62,22 @@ public interface SiteDAO {
 	 * @param id
 	 */
 	public abstract void removeSite(int id);
+	
+	/**
+	 * 模糊查询出场地
+	 * @param name
+	 * @param typeId
+	 * @param statue
+	 * @return
+	 */
+	public  List<SiteVo> querySite(String name,String type,String statue,int startIndex,int pageSize);
+	/**
+	 * 获得模糊查询的总记录数
+	 * @param name
+	 * @param type
+	 * @param statue
+	 * @return
+	 */
+	public abstract int getQueryResultTotalRecord(String name,String type,String statue);
+
 }
