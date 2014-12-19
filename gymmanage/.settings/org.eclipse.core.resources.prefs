@@ -12,4 +12,5 @@ encoding//src/com/gms/dao/impl/UserDAOImpl.java=UTF-8
 encoding//src/com/gms/domain/SiteOrder.java=UTF-8
 encoding//src/com/gms/filter/CharacterEncodingFilter.java=UTF-8
 encoding//src/com/gms/filter/HTMLCharacterFilter.java=UTF-8
+encoding//src/com/gms/web/action/ManagerAction.java=UTF-8
 encoding/<project>=UTF-8

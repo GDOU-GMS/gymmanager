@@ -12,15 +12,30 @@ public interface UserDAO {
 	public  List<User> getAllUsers();
 
 	/**
-	 * ¸ü¾ßÑ§ºÅ²éÕÒÓÃ»§
+	 * ï¿½ï¿½ï¿½Ñ§ï¿½Å²ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * @param studentNo
 	 * @return
 	 */
 	public  User getUserByStudentNo(String studentNo);
 	/**
-	 * ¸ù¾İid²éÕÒÓÃ»§
+	 * ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * @param studentNo
 	 * @return
 	 */
 	public abstract User getUserById(int id);
+	
+	/**
+	 * æ›´æ–°ç”¨æˆ·ä¿¡æ¯
+	 * @param user
+	 */
+	public abstract void updateUser(User user);
+	   
+	/**
+	 * æ›´æ–°ç”¨æˆ·å¯†ç 
+	 * @param id
+	 * @param oPassword
+	 * @param nPassword
+	 * @return
+	 */
+	public abstract boolean updatePassword(int id,String oPassword,String nPassword);
 }

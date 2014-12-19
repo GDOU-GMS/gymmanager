@@ -13,5 +13,16 @@
 			<result name="superAdmin" type="redirect">/manager/superAdmin_index.jsp</result>
 			<result name="manager" type="redirect">/manager/manager_index.jsp</result>
 		</action>
-	</package>
+		<action name="updateManager" class="com.gms.web.action.ManagerAction" method="updateManager">
+		
+		</action>
+		<action name="getManagerSelf" class="com.gms.web.action.ManagerAction" method="getManagerSelf">
+			<result name="success">/manager/selfInfo.jsp</result>
+		</action>
+		<!--  <action name="getManagerSelfInfo" class="com.gms.web.action.ManagerAction" method="getManagerSelfInfo">
+			<result name="success">/manager/selfInfo.jsp</result>
+		</action>-->
+		
+		
+	</package> 
 </struts>

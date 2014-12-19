@@ -26,29 +26,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<div class="pageContent">
   		<div class="pageFormContent" layoutH="56">
+  			 <dl class="nowrap">
+				<dt></dt>
+				<dd>
+				<a class="buttonActive" href="${pageContext.request.contextPath}/manager/updateSelfInfo.jsp"
+				 target="dialog" width="750" height="500">
+				<span>编辑个人信息</span></a>
+			 </dd>
+			</dl>
   			<p>
 				<label>用户名：</label>
-				<input name="sn" type="text" size="30" value="100001" readonly="readonly"/>
+				<span>${manager.account}</span>
 			</p>
 			<p>
 				<label>姓名：</label>
-				<input name="sn" type="text" size="30" value="100001" readonly="readonly"/>
+				<span>${manager.name}</span>
 			</p>
 			<p>
 				<label>联系方式：</label>
-				<input name="sn" type="text" size="30" value="100001" readonly="readonly"/>
+				<span>${manager.telephone}</span>
 			</p>
 			<p>
 				<label>生日：</label>
-				<input name="sn" type="text" size="30" value="100001" readonly="readonly"/>
+				<span>${manager.birthday}</span>
 			</p>
 			<p>
 				<label>E-mail：</label>
-				<input name="sn" type="text" size="30" value="100001" readonly="readonly"/>
+				<span>${manager.email}</span>
 			</p>
 			<p>
 				<label>家庭地址：</label>
-				<input name="sn" type="text" size="30" value="100001" readonly="readonly"/>
+				<span>${manager.address}</span>
 			</p>
   		</div>
   	</div>

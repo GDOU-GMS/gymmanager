@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.gms.dao.UserDAO;
 import com.gms.domain.SiteType;
@@ -18,6 +19,8 @@ import com.gms.utils.JDBCUtils;
 
 public class UserDAOImpl implements UserDAO{
 	
+	
+	boolean flag;
 	/**
 	 * 删除用户
 	 * @param id
@@ -48,6 +51,8 @@ public class UserDAOImpl implements UserDAO{
 	   QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
 	   String sql="select * from tb_user where studentNo like ? and name like ? and academy like ?";
 	   Object param[]={"%"+studentNo+"%","%"+name+"%","%"+academy+"%"};
+//	   String sql="select * from tb_user where studentNo =?and name =?and academy=?";
+//	   Object param[]={studentNo,name,academy};
 	   try {
 		    List list = (List<User>)qr.query(sql, param,new BeanListHandler(User.class));
 		    System.out.println(list.isEmpty());
@@ -108,4 +113,57 @@ public class UserDAOImpl implements UserDAO{
 			throw new RuntimeException(e);
 		}
 	}
-}
+
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+		String sql="update tb_user set studentNo=?, name=?,academy=?,major=?"
+				+ "className=?,gender=?,telephone=?where id=? ";
+		Object param[]={user.getStudentNo(),user.getName(),user.getAcademy(),
+				user.getMajor(),user.getClassName(),user.getGender(),user.getTelephone()};
+		try {
+			
+			qr.update(sql, param);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException();
+		}
+		
+	}
+
+	@Override
+	public boolean updatePassword(int id, String oPassword, String nPassword) {
+		// TODO Auto-generated method stub
+		
+				QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+				String sql="select password from tb_user where id=?";
+				Object param1=id;
+				String pwd;
+				try {
+					pwd = (String)qr.query(sql, param1,new ScalarHandler());
+					if(pwd.equals(oPassword)){
+						flag=true;
+					}
+					else{
+					   return flag;
+					}
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					throw new RuntimeException();
+				}
+				sql="update db_user set password=?where id=?";
+				Object param2[]={nPassword,id};
+				try {
+					qr.update(sql, param2);
+					flag=true;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					throw new RuntimeException();
+				}
+				return flag;
+			}
+	}
+

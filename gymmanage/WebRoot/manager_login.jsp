@@ -38,10 +38,10 @@
 			<div class="username-text">用户名:</div>
 			<div class="password-text">密码:</div>
 			<div class="username-field">
-				<input type="text" name="manager.account"  placeholder="请输入用户名" />
+				<input type="text" name="manager.account" value="1" placeholder="请输入用户名" />
 			</div>
 			<div class="password-field">
-				<input type="password" name="manager.password" placeholder="请输入密码" />
+				<input type="password" name="manager.password" value="1" placeholder="请输入密码" />
 			</div>
 			<div class="permission" >
 				<input class="superAdmin" type="radio" name="manager.permission" value="superAdmin"><span>超级管理员</span>

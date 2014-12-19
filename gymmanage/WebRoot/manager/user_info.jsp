@@ -18,7 +18,8 @@
 </script>
 
 <div class="pageHeader">
-	<form action="${pageContext.request.contextPath}/manager/getUsers.action" method="post" onsubmit="return navTabSearch(this);" >
+	<form action="${pageContext.request.contextPath}/useraction/getUsers.action" method="post" 
+	onsubmit="return navTabSearch(this);" >
 	<div class="searchBar">
 		<table class="searchContent">
 			<tr>
@@ -47,8 +48,8 @@
 	<div class="panelBar">
 		<ul class="toolBar">
 			<li><a class="delete"
-				href="${pageContext.request.contextPath}/manager/deleteUser.action?id={userId}" target="ajaxTodo"
-				title="确定要删除吗?"><span>删除</span></a></li>
+				href="${pageContext.request.contextPath}/useraction/deleteUser.action?id={userId}" target="ajaxTodo"
+				title="确定要删除吗?" ><span>删除</span></a></li>
 			</span></a></li>
 			
 		</ul>

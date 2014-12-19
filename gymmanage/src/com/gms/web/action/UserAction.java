@@ -25,6 +25,7 @@ public class UserAction {
 	private Map map;
 	private List<User> listUsers;
 	private String message;
+	private boolean flag;
 	public List<User> getListUsers() {
 		return listUsers;
 	}
@@ -122,6 +123,40 @@ public class UserAction {
     	return "message";
     
     }
+    public String updateUser(){
+    	try{
+	    	UserBusinessServiceImpl userBusinessServiceImpl=new UserBusinessServiceImpl();
+	    	userBusinessServiceImpl.updateUser(user);
+	    	message=JSONTools.getJSONString("200","更新成功", "getUsers","closeCurrent", "");
+	    	
+    	}catch(Exception e){
+    		
+    		message=JSONTools.getJSONString("300", "更新失败", "", "", "");
+    		
+    	}
+    	return "message";
+    	
+    }
+    
+    
+    
+    public String updatePassword(){
+    	try{
+    		UserBusinessServiceImpl userBusinessServiceImpl=new UserBusinessServiceImpl();
+    		userBusinessServiceImpl.updateUser(user);
+    		if(flag){
+    			message=JSONTools.getJSONString("200", "密码修改成功","", "","");
+    		}else{
+    			message=JSONTools.getJSONString("300", "密码修改失败", "","", "");
+    		}
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	  return "message";
+    		
+    }
+    
+    
 	
 
 }
