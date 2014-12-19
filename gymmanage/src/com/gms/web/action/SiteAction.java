@@ -504,4 +504,24 @@ public class SiteAction {
 		}
 		return  "message";
 	}
+	
+	/**
+	 * 模糊查询场地
+	 * @return
+	 */
+	public String querySite(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			List<SiteType> siteTypes = service.getAllSiteType();
+			ActionContext.getContext().put("siteTypes", siteTypes);
+			Page page = service.querySite(site.getName(), siteType.getType(), site.getStatue(),pageNum,numPerPage);
+			ActionContext.getContext().put("page", page);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "查询出错，系统异常！", "", "", "");
+			return "message";
+		}
+		
+	}
 }

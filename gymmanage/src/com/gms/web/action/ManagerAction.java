@@ -156,7 +156,7 @@ public class ManagerAction {
 			ManagerBusinessServiceImpl service = new ManagerBusinessServiceImpl();
 			Manager result = service.verifyManager(manager);
 			if(result==null){
-				ActionContext.getContext().getSession().put("message", "�����˺Ż��������");
+				ActionContext.getContext().getSession().put("message", "账号密码有误，请重新登录！");
 				return "loginFailed";
 			}else{
 				ActionContext.getContext().getSession().put("manager", result);
@@ -168,7 +168,7 @@ public class ManagerAction {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			ActionContext.getContext().getSession().put("message", "ϵͳ�쳣����¼ʧ�ܣ�");
+			ActionContext.getContext().getSession().put("message", "登录失败，系统异常！");
 			return "loginFailed";
 		}
 	}

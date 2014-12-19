@@ -192,4 +192,24 @@ public class SiteBusinessServiceImpl {
 	public SiteOrder getsiteOrderById(int id){
 		return siteOrderDAO.getsiteOrderById(id);
 	}
+	/**
+	 * 模糊查询出场地
+	 * @param name
+	 * @param typeId
+	 * @param statue
+	 * @return
+	 */
+	public Page querySite(String name,String type,String statue,int pageNum,int pageSize){
+		if("none".equals(type)){
+			type="";
+		}
+		if("none".equals(statue)){
+			statue="";
+		}
+		int totalRecord = siteDAO.getQueryResultTotalRecord(name, type, statue);
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<SiteVo> list = siteDAO.querySite(name, type, statue,page.getStartIndex(),pageSize);
+		page.setList(list);
+		return page;
+	}
 }

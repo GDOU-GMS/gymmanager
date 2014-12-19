@@ -147,4 +147,39 @@ public class SiteDAOImpl implements SiteDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	/**
+	 * 模糊查询出场地
+	 * @param name
+	 * @param typeId
+	 * @param statue
+	 * @return
+	 */
+	public List<SiteVo> querySite(String name,String type,String statue,int startIndex,int pageSize){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select tb_site.*,tb_sitetype.type from tb_site,tb_sitetype where tb_site.name like ? and tb_sitetype.type like ? and tb_site.statue like ? and tb_site.typeId=tb_sitetype.id limit ?,?";
+			Object params[] = {"%"+name+"%","%"+type+"%","%"+statue+"%",startIndex,pageSize};
+			return (List<SiteVo>)qr.query(sql, params, new BeanListHandler(SiteVo.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	/**
+	 * 获得模糊查询的总记录数
+	 * @param name
+	 * @param type
+	 * @param statue
+	 * @return
+	 */
+	public int getQueryResultTotalRecord(String name,String type,String statue){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select count(*) from tb_site,tb_sitetype where tb_site.name like ? and tb_sitetype.type like ? and tb_site.statue like ? and tb_site.typeId=tb_sitetype.id";
+			Object params[] = {"%"+name+"%","%"+type+"%","%"+statue+"%"};
+			long l = (Long)qr.query(sql, params, new ScalarHandler());
+			return (int) l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
