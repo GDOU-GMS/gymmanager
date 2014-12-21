@@ -86,7 +86,7 @@ public class ManagerDAOImpl implements ManagerDAO{
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 				QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
-				String sql="select * from tb_admin where account like ? and String name like ?";
+				String sql="select * from tb_admin where account like ? and  name like ?";
 				Object param[]={"%"+account+"","%"+name+"%"};
 				try {
 					return (List<Manager>)qr.query(sql, param,new BeanListHandler(Manager.class));
