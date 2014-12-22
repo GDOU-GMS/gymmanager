@@ -16,6 +16,19 @@ public class ManagerAction {
 	private Manager manager;
 	private String message;
 	private String account;
+	private String name;
+	private int id;
+	private List<Manager> listManager;
+	private String oPassword;
+	private String nPassword;
+	private String rnPassword;
+	
+	public String getRnPassword() {
+		return rnPassword;
+	}
+	public void setRnPassword(String rnPassword) {
+		this.rnPassword = rnPassword;
+	}
 	public String getoPassword() {
 		return oPassword;
 	}
@@ -28,11 +41,6 @@ public class ManagerAction {
 	public void setnPassword(String nPassword) {
 		this.nPassword = nPassword;
 	}
-	private String name;
-	private int id;
-	private List<Manager> listManager;
-	private String oPassword;
-	private String nPassword;
 	
 	
 	public List<Manager> getListManager() {
@@ -188,18 +196,26 @@ public class ManagerAction {
 	 */
 	public String updatePassword(){
 		
-		ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
-		//假定id=1
-		id=1;
-		boolean flag=false;
-		flag=managerBusinessServiceImpl.updatePassword(id, oPassword, nPassword);
-		if(flag){
-			message=JSONTools.getJSONString("200", "更新成功","getAllUsers", "", "");
-		}else{
-			message=JSONTools.getJSONString("300", "更新失败","","","");
-		}
+		manager=(Manager) ActionContext.getContext().getSession().get("manager");
 		
-		return "message";
+		ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
+		if(!nPassword.equals(rnPassword)){
+			message=JSONTools.getJSONString("300", "新密码与确定密码不一致","","","");
+			return "message";
+			
+		}else{
+			boolean flag=false;
+			
+			flag=managerBusinessServiceImpl.updatePassword(manager.getId(), oPassword, nPassword);
+			if(flag){
+				message=JSONTools.getJSONString("200", "更新成功","getAllUsers", "closeCurrent", "");
+			}else{
+				message=JSONTools.getJSONString("300", "更新失败","","","");
+				
+			}
+			return "message";
+			
+		}
 		
 	}
 	/*
@@ -245,21 +261,7 @@ public class ManagerAction {
 	
 	}
 	
-	
-	
-//	public String getManagerSelfInfo(){
-//		 ManagerBusinessServiceImpl managerBusinessServiceImpl =new ManagerBusinessServiceImpl();
-//		try{
-//			listManager=managerBusinessServiceImpl.getManagers(manager.getAccount(),manager.getName());
-//			return "success";
-//			 
-//		 }catch(Exception e){
-//			 
-//			return "error";
-//		 }
-//	}
-//	
-	
+
 	
 	
 	

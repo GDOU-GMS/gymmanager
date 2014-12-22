@@ -22,6 +22,8 @@
 		<!--  <action name="getManagerSelfInfo" class="com.gms.web.action.ManagerAction" method="getManagerSelfInfo">
 			<result name="success">/manager/selfInfo.jsp</result>
 		</action>-->
+		<action name="updatePassword" class="com.gms.web.action.ManagerAction" method="updatePassword">
+		</action>
 		
 		
 	</package> 

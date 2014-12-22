@@ -184,7 +184,7 @@
 							<li><a>个人信息管理</a>
 								<ul>
 									<li><a href="${pageContext.request.contextPath }/managerAction/getManagerSelf.action" target="navTab">个人信息</a></li>
-									<li><a href="#" target="navTab">修改密码</a></li>
+									<li><a href="${pageContext.request.contextPath }/manager/updatePassword.jsp" target="navTab">修改密码</a></li>
 								</ul></li>
 							<li><a>其他</a>
 								<ul>
