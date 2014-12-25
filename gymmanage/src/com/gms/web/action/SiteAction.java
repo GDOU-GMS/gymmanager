@@ -524,4 +524,36 @@ public class SiteAction {
 		}
 		
 	}
+	
+	/**
+	 * 获得系统当前预约
+	 * @return
+	 */
+	public String getCurrentSiteOrder(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			List<SiteOrder> siteOrders = service.getCurrentSiteOrder();
+			ActionContext.getContext().put("siteOrders", siteOrders);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "抱歉，查询出错，系统异常！", "", "", "");
+			return "message";
+		}
+	}
+	
+	/**
+	 * 处理过期预约，提前10分钟到
+	 */
+	public String dealBreach(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			int count = service.dealBreach();
+			message = JSONTools.getJSONString("200", "处理成功,一共处理"+count+"条数据！", "getCurrentSiteOrder", "", "");
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "抱歉，处理出错，系统异常！", "", "", "");
+		}
+		return "message";
+	}
 }

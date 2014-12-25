@@ -11,7 +11,7 @@ public interface SiteOrderDAO {
 	 * 添加场地预约
 	 * @param siteOrder
 	 */
-	public  void addSiteOrder(SiteOrder siteOrder);
+	public abstract void addSiteOrder(SiteOrder siteOrder);
 	/**
 	 * 删除场地预约
 	 * @param id
@@ -50,13 +50,13 @@ public interface SiteOrderDAO {
 	 * @param pageSize
 	 * @return
 	 */
-	public  List<SiteOrderVo> getSiteOrderPageData(int startIndex, int pageSize);
+	public abstract List<SiteOrderVo> getSiteOrderPageData(int startIndex, int pageSize);
 	
 	/**
 	 * 获得数据库的总记录数
 	 * @return
 	 */
-	public  int getTotalRecord();
+	public abstract int getTotalRecord();
 	
 	/**
 	 * 根据id查找预约
@@ -64,4 +64,13 @@ public interface SiteOrderDAO {
 	 * @return
 	 */
 	public abstract SiteOrder getsiteOrderById(int id);
+	/**
+	 * 获取当前预约
+	 * @return
+	 */
+	public abstract List<SiteOrder> getCurrentSiteOrder();
+	/**
+	 * 处理过期预约，提前10分钟到
+	 */
+	public abstract int dealBreach();
 }

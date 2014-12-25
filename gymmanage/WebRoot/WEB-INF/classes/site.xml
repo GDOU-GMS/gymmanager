@@ -62,6 +62,11 @@
 		<action name="updateSiteOrder" class="com.gms.web.action.SiteAction" method="updateSiteOrder">
 			<result name="success">/manager/updateSiteOrder.jsp</result>
 		</action>
+		<action name="getCurrentSiteOrder" class="com.gms.web.action.SiteAction" method="getCurrentSiteOrder">
+			<result name="success">/manager/getCurrentSiteOrder.jsp</result>
+		</action>
+		<action name="dealBreach" class="com.gms.web.action.SiteAction" method="dealBreach">
+		</action>
 		
 		
 		

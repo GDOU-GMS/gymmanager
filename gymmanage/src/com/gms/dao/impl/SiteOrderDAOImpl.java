@@ -1,5 +1,8 @@
 package com.gms.dao.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
@@ -163,6 +166,45 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 			
+		}
+	}
+	
+	/**
+	 * 获取当前预约
+	 * @return
+	 */
+	public List<SiteOrder> getCurrentSiteOrder(){
+		try {
+			Date currentDate = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String date = sdf.format(currentDate);
+			Date today = sdf.parse(date);
+			Date tomorrow = new Date(today.getTime()+24*60*60*1000);
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource()); 
+			String sql = "select tb_siteorder.*,tb_user.studentNo as studentNo ,tb_user.name as username,tb_site.name as sitename from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId and stratTime>? and endTime<?";
+			Object params[] = {today,tomorrow};
+			return (List<SiteOrder>)qr.query(sql, params, new BeanListHandler(SiteOrderVo.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	/**
+	 * 处理过期预约，提前10分钟到
+	 */
+	public int dealBreach(){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			
+			Date date = new Date();
+			Date passedTime = new Date(date.getTime()+10*60*1000);
+			String sql1 = "select count(*) from tb_siteOrder where stratTime>? and stratTime<? and statue='unpassed' ";
+			Object params[] = {date,passedTime};
+			long l =(Long) qr.query(sql1, params, new ScalarHandler());
+			String sql2 = "update tb_siteorder set statue='passed' where stratTime>? and stratTime<? and statue='unpassed'";
+			qr.update(sql2, params);
+			return (int)l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 }

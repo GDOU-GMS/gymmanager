@@ -212,4 +212,18 @@ public class SiteBusinessServiceImpl {
 		page.setList(list);
 		return page;
 	}
+	/**
+	 * 获取当前预约
+	 * @return
+	 */
+	public List<SiteOrder> getCurrentSiteOrder(){
+		return siteOrderDAO.getCurrentSiteOrder();
+	}
+	
+	/**
+	 * 处理过期预约，提前10分钟到
+	 */
+	public int dealBreach(){
+		return siteOrderDAO.dealBreach();
+	}
 }
