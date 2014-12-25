@@ -1,16 +1,20 @@
 package com.gms.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import com.gms.dao.SiteDAO;
 import com.gms.dao.SiteOrderDAO;
 import com.gms.dao.SiteTypeDAO;
+import com.gms.dao.SiteUsageDAO;
 import com.gms.domain.Page;
 import com.gms.domain.Site;
 import com.gms.domain.SiteOrder;
 import com.gms.domain.SiteType;
+import com.gms.domain.SiteUsage;
 import com.gms.factory.DAOFactory;
 import com.gms.vo.SiteOrderVo;
+import com.gms.vo.SiteUsageVo;
 import com.gms.vo.SiteVo;
 
 public class SiteBusinessServiceImpl {
@@ -19,6 +23,7 @@ public class SiteBusinessServiceImpl {
 	private SiteDAO siteDAO = daoFactory.createDAO("com.gms.dao.impl.SiteDAOImpl");
 	private SiteTypeDAO siteTypeDAO = daoFactory.createDAO("com.gms.dao.impl.SiteTypeDAOImpl");
 	private SiteOrderDAO siteOrderDAO= daoFactory.createDAO("com.gms.dao.impl.SiteOrderDAOImpl");
+	private SiteUsageDAO siteUsageDAO= daoFactory.createDAO("com.gms.dao.impl.SiteUsageDAOImpl");
 	
 	/**
 	 * 添加场地类型
@@ -216,8 +221,12 @@ public class SiteBusinessServiceImpl {
 	 * 获取当前预约
 	 * @return
 	 */
-	public List<SiteOrder> getCurrentSiteOrder(){
-		return siteOrderDAO.getCurrentSiteOrder();
+	public Page getCurrentSiteOrder(int pageNum,int pageSize){
+		int totalRecord = siteOrderDAO.getCurrentSiteOrderTotalRecord();
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<SiteOrderVo> list = siteOrderDAO.getCurrentSiteOrder(page.getStartIndex(), pageSize);
+		page.setList(list);
+		return page;
 	}
 	
 	/**
@@ -226,4 +235,97 @@ public class SiteBusinessServiceImpl {
 	public int dealBreach(){
 		return siteOrderDAO.dealBreach();
 	}
+	
+	/**
+	 * 查询场地预约
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public Page querySiteOrderResultPageData(String sitename,String username,String statue,int pageNum,int pageSize){
+		if("none".equals(statue)){
+			statue="";
+		}
+		int totalRecord = siteOrderDAO.getQueryResultTotalRecord(sitename, username, statue);
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<SiteOrderVo> list = siteOrderDAO.querySiteOrderPageDate(sitename, username, statue, page.getStartIndex(), page.getPageSize());
+		page.setList(list);
+		return page;
+	}
+	
+	/**
+	 * 
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public Page getQueryCurrentSiteOrderPage(String sitename,String username,String statue,int pageNum,int pageSize){
+		if("none".equals(statue)){
+			statue="";
+		}
+		
+		int totalRecord = siteOrderDAO.getQueryCurrentSiteOrderTotalRecord(sitename, username, statue);
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<SiteOrderVo> list = siteOrderDAO.getQueryCurrentSiteOrder(sitename, username, statue, page.getStartIndex(), pageSize);
+		page.setList(list);
+		return page;
+	}
+	
+	/**
+	 * 增加场地使用
+	 * @param siteUsage
+	 */
+	public void addSiteUsage(SiteUsage siteUsage){
+		siteUsageDAO.addSiteUsage(siteUsage);
+	}
+	/**
+	 * 删除场地使用
+	 * @param id
+	 */
+	public void deleteSiteUsage(int id){
+		siteUsageDAO.deleteSiteUsageById(id);
+	}
+	/**
+	 * 删除所有的场地使用
+	 */
+	public void deleteAllSiteUsage(){
+		siteUsageDAO.deleteAllPassedSiteUsage();
+	}
+	/**
+	 * 获得当前场地使用的使用情况
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public Page getAllSiteUsagePageData(int pageNum,int pageSize){
+		int totalRecord = siteUsageDAO.getCurrentSiteUsageTotalRecord();
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<SiteUsageVo> list = siteUsageDAO.getAllCurrentSiteUsage(page.getStartIndex(),page.getPageSize());
+		page.setList(list);
+		return page;
+	}
+	/**
+	 * 更新场地使用的信息
+	 * @param siteUsage
+	 */
+	public void updateSiteUsage(SiteUsage siteUsage){
+		siteUsageDAO.updateSiteUsage(siteUsage);
+	}
+	/**
+	 * 查询是否存在规定时间段的场地预约
+	 * @param stratTime
+	 * @param endTime
+	 * @param siteId
+	 * @return
+	 */
+	public boolean getSiteOrderByTime(Date stratTime,Date endTime,int siteId){
+		return siteOrderDAO.getSiteOrderByTime(stratTime, endTime, siteId);
+	}
+	
 }

@@ -17,10 +17,12 @@ import com.gms.domain.Page;
 import com.gms.domain.Site;
 import com.gms.domain.SiteOrder;
 import com.gms.domain.SiteType;
+import com.gms.domain.SiteUsage;
 import com.gms.domain.User;
 import com.gms.service.impl.SiteBusinessServiceImpl;
 import com.gms.service.impl.UserBusinessServiceImpl;
 import com.gms.utils.JSONTools;
+import com.gms.vo.SiteOrderVo;
 import com.gms.vo.SiteVo;
 import com.opensymphony.xwork2.ActionContext;
 import com.sun.mail.iap.Response;
@@ -35,8 +37,19 @@ public class SiteAction {
 	private int numPerPage = 20;//相当于pagesize
 	private SiteOrder siteOrder;
 	private String studentNo;
+	private String username;
+	
+	
 	
 
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public String getStudentNo() {
 		return studentNo;
@@ -406,8 +419,12 @@ public class SiteAction {
 	public String addSiteOrderByManager(){
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			boolean flat = service.getSiteOrderByTime(siteOrder.getStratTime(), siteOrder.getEndTime(),siteOrder.getSiteId());
+			if(flat==false){
+				message = JSONTools.getJSONString("300", "您选择的时间已经被预约", "", "", "");
+				return "message";
+			}
 			UserBusinessServiceImpl userService = new UserBusinessServiceImpl();
-			//List<User> users = userService.getUsers(studentNo, " ", " ");
 			User user = userService.getUserByStudentNo(studentNo);
 			if(user!=null){
 				siteOrder.setUserId(user.getId());
@@ -532,8 +549,8 @@ public class SiteAction {
 	public String getCurrentSiteOrder(){
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-			List<SiteOrder> siteOrders = service.getCurrentSiteOrder();
-			ActionContext.getContext().put("siteOrders", siteOrders);
+			Page page =  service.getCurrentSiteOrder(pageNum,numPerPage);
+			ActionContext.getContext().put("page", page);
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -549,11 +566,114 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			int count = service.dealBreach();
+			message = JSONTools.getJSONString("200", "处理成功,一共处理"+count+"条数据！", "getAllSiteOrder", "", "");
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "抱歉，处理出错，系统异常！", "", "", "");
+		}
+		return "message";
+	}
+	/**
+	 * 处理过期预约，提前10分钟到
+	 */
+	public String dealBreachByCurrentPage(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			int count = service.dealBreach();
 			message = JSONTools.getJSONString("200", "处理成功,一共处理"+count+"条数据！", "getCurrentSiteOrder", "", "");
 		} catch (Exception e) {
 			e.printStackTrace();
 			message = JSONTools.getJSONString("300", "抱歉，处理出错，系统异常！", "", "", "");
 		}
 		return "message";
+	}
+	
+	/**
+	 * 查询场地预约
+	 * @return
+	 */
+	public String querySiteOrder(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			Page page = service.querySiteOrderResultPageData(site.getName(), username, siteOrder.getStatue(), pageNum, numPerPage);
+			ActionContext.getContext().put("page", page);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "抱歉，查询出错，系统异常！", "", "", "");
+		}
+		return "message";
+	}
+	
+	/**
+	 * 查询当前场地预约
+	 * @return
+	 */
+	public String queryCurrentSiteOrder(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			Page page  = service.getQueryCurrentSiteOrderPage(site.getName(), username, siteOrder.getStatue(), pageNum, numPerPage);
+			ActionContext.getContext().put("page", page);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "抱歉，查询出错，系统异常！", "", "", "");
+			return "message";
+		}
+	}
+	/**
+	 * 将场地预约投入到场地使用中
+	 * @return
+	 */
+	public String putIntoSiteUsage(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			SiteOrder siteOrder = service.getsiteOrderById(id);
+			//如果是过期场地的话，不允许投入使用
+			if("passed".equals(siteOrder.getStatue())){
+				message =  JSONTools.getJSONString("300", "投入失败，该预约已经过期", "", "", "");
+				return "message";
+			}
+			Site site = service.getSiteDetailById(siteOrder.getSiteId());
+			//得到使用时间
+			float hour = (siteOrder.getEndTime().getTime()-siteOrder.getStratTime().getTime())/(60*60*1000);
+			//新建场地使用
+			SiteUsage siteUsage = new SiteUsage();
+			siteUsage.setStratTime(siteOrder.getStratTime());
+			siteUsage.setEndTime(siteOrder.getEndTime());
+			siteUsage.setPrice(site.getFeeScale()*hour);
+			siteUsage.setStatue("notimeout");
+			siteUsage.setSiteId(siteOrder.getSiteId());
+			siteUsage.setUserId(siteOrder.getUserId());
+			
+			service.addSiteUsage(siteUsage);
+			//修改场地预约状态
+			siteOrder.setStatue("passed");
+			service.updateSiteOrder(siteOrder);
+			
+			message = JSONTools.getJSONString("200", "投入使用成功！", "getCurrentSiteOrder", "", "");
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "抱歉，查询出错，系统异常！", "", "", "");
+			
+		}
+		return "message";
+	}
+	
+	/**
+	 * 获得所有场地使用
+	 * @return
+	 */
+	public String getAllSiteUsage(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			Page page = service.getAllSiteUsagePageData(pageNum, numPerPage);
+			ActionContext.getContext().put("page", page);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "抱歉，查询出错，系统异常！", "", "", "");
+			return "message";
+		}
 	}
 }

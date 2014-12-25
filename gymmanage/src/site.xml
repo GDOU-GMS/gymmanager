@@ -67,8 +67,22 @@
 		</action>
 		<action name="dealBreach" class="com.gms.web.action.SiteAction" method="dealBreach">
 		</action>
+		<action name="dealBreachByCurrentPage" class="com.gms.web.action.SiteAction" method="dealBreachByCurrentPage">
+		</action>
 		
+		<action name="querySiteOrder" class="com.gms.web.action.SiteAction" method="querySiteOrder">
+			<result name="success">/manager/getAllSiteOrder.jsp</result>
+		</action>
+		<action name="queryCurrentSiteOrder" class="com.gms.web.action.SiteAction" method="queryCurrentSiteOrder">
+			<result name="success">/manager/getCurrentSiteOrder.jsp</result>
+		</action>
+		<action name="putIntoSiteUsage" class="com.gms.web.action.SiteAction" method="putIntoSiteUsage">
+		</action>
 		
+		<!-- 场地使用 -->
+		<action name="getAllSiteUsage" class="com.gms.web.action.SiteAction" method="getAllSiteUsage">
+			<result name="success">/manager/getAllSiteUsage.jsp</result>
+		</action>
 		
 	</package>
 </struts>

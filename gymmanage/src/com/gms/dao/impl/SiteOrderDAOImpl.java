@@ -60,9 +60,9 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 	public void updateSiteOrder(SiteOrder siteOrder) {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "update tb_siteorder set userId=?,stratTime=?,endTime=?,siteId=? where id=?";
+			String sql = "update tb_siteorder set userId=?,stratTime=?,endTime=?,siteId=? ,statue=? where id=?";
 			Object params[] = { siteOrder.getUserId(),siteOrder.getStratTime(),
-					siteOrder.getEndTime(), siteOrder.getSiteId(),
+					siteOrder.getEndTime(), siteOrder.getSiteId(),siteOrder.getStatue(),
 					siteOrder.getId() };
 			qr.update(sql, params);
 		} catch (Exception e) {
@@ -78,7 +78,7 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 	public List<SiteOrder> getAllSiteOrder() {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select * from tb_siteorder order by orderTime";
+			String sql = "select * from tb_siteorder order by orderTime desc";
 			return (List<SiteOrder>) qr.query(sql, new BeanListHandler(
 					SiteOrder.class));
 		} catch (Exception e) {
@@ -129,7 +129,7 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 	public List<SiteOrderVo> getSiteOrderPageData(int startIndex, int pageSize) {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select tb_siteorder.*,tb_user.studentNo as studentNo ,tb_user.name as username,tb_site.name as sitename from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId limit ?,?";
+			String sql = "select tb_siteorder.*,tb_user.studentNo as studentNo ,tb_user.name as username,tb_site.name as sitename from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId  order by orderTime desc limit ?,?";
 			Object params[] = { startIndex, pageSize };
 			return (List<SiteOrderVo>) qr.query(sql, params, new BeanListHandler(
 					SiteOrderVo.class));
@@ -173,7 +173,7 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 	 * 获取当前预约
 	 * @return
 	 */
-	public List<SiteOrder> getCurrentSiteOrder(){
+	public List<SiteOrderVo> getCurrentSiteOrder(int startIndex,int pageSize){
 		try {
 			Date currentDate = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -181,9 +181,9 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 			Date today = sdf.parse(date);
 			Date tomorrow = new Date(today.getTime()+24*60*60*1000);
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource()); 
-			String sql = "select tb_siteorder.*,tb_user.studentNo as studentNo ,tb_user.name as username,tb_site.name as sitename from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId and stratTime>? and endTime<?";
-			Object params[] = {today,tomorrow};
-			return (List<SiteOrder>)qr.query(sql, params, new BeanListHandler(SiteOrderVo.class));
+			String sql = "select tb_siteorder.*,tb_user.studentNo as studentNo ,tb_user.name as username,tb_site.name as sitename from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId and stratTime>? and endTime<? limit ?,?";
+			Object params[] = {today,tomorrow,startIndex,pageSize};
+			return (List<SiteOrderVo>)qr.query(sql, params, new BeanListHandler(SiteOrderVo.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -197,12 +197,147 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 			
 			Date date = new Date();
 			Date passedTime = new Date(date.getTime()+10*60*1000);
-			String sql1 = "select count(*) from tb_siteOrder where stratTime>? and stratTime<? and statue='unpassed' ";
-			Object params[] = {date,passedTime};
+			String sql1 = "select count(*) from tb_siteOrder where stratTime<? and statue='unpassed' ";
+			Object params[] = {passedTime};
 			long l =(Long) qr.query(sql1, params, new ScalarHandler());
-			String sql2 = "update tb_siteorder set statue='passed' where stratTime>? and stratTime<? and statue='unpassed'";
+			String sql2 = "update tb_siteorder set statue='passed' where stratTime<? and statue='unpassed'";
 			qr.update(sql2, params);
 			return (int)l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	/**
+	 * 查询场地预约信息
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @param startIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public List<SiteOrderVo> querySiteOrderPageDate(String sitename,String username,String statue, int startIndex,int pageSize){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select tb_siteorder.*,tb_user.studentNo as studentNo ,tb_user.name as username,tb_site.name as sitename from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId and tb_site.name like ? and tb_user.name like ? AND tb_siteOrder.statue like ? limit ?,?";
+			Object params[] = {"%"+sitename+"%","%"+username+"%",statue+"%",startIndex,pageSize};
+			return (List<SiteOrderVo>)qr.query(sql, params, new BeanListHandler(SiteOrderVo.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 * 获得查询结果的总记录数
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @return
+	 */
+	public int getQueryResultTotalRecord(String sitename,String username,String statue){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select count(*) from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId and tb_site.name like ? and tb_user.name like ? AND tb_siteOrder.statue like ?";
+			Object params[] = {"%"+sitename+"%","%"+username+"%",statue+"%"};
+			long l = (Long) qr.query(sql, params,new ScalarHandler());
+			return (int) l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	/**
+	 * 获得查询今天的总预约的总记录数
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @return
+	 */
+	public int getCurrentSiteOrderTotalRecord(){
+		try {
+			Date currentDate = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String date = sdf.format(currentDate);
+			Date today = sdf.parse(date);
+			Date tomorrow = new Date(today.getTime()+24*60*60*1000);
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource()); 
+			String sql = "select count(*) from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId and stratTime>? and endTime<?";
+			Object params[] = {today,tomorrow};
+			long l =  (Long)qr.query(sql, params, new ScalarHandler());
+			return (int)l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 * 条件查询当前的场地预约
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @param startIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public List<SiteOrderVo> getQueryCurrentSiteOrder(String sitename,String username,String statue,int startIndex,int pageSize){
+		try {
+			Date currentDate = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String date = sdf.format(currentDate);
+			Date today = sdf.parse(date);
+			Date tomorrow = new Date(today.getTime()+24*60*60*1000);
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource()); 
+			String sql = "select tb_siteorder.*,tb_user.studentNo as studentNo ,tb_user.name as username,tb_site.name as sitename from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId and stratTime>? and endTime<? and tb_site.name like ? and tb_user.name like ? AND tb_siteOrder.statue like ? limit ?,?";
+			Object params[] = {today,tomorrow,"%"+sitename+"%","%"+username+"%",statue+"%",startIndex,pageSize};
+			return (List<SiteOrderVo>)qr.query(sql, params, new BeanListHandler(SiteOrderVo.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 * 获得查询当前预约的总记录数
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @return
+	 */
+	public int getQueryCurrentSiteOrderTotalRecord(String sitename,String username,String statue){
+		try {
+			Date currentDate = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String date = sdf.format(currentDate);
+			Date today = sdf.parse(date);
+			Date tomorrow = new Date(today.getTime()+24*60*60*1000);
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource()); 
+			String sql = "select count(*) from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId and stratTime>? and endTime<? and tb_site.name like ? and tb_user.name like ? AND tb_siteOrder.statue like ?";
+			Object params[] = {today,tomorrow,"%"+sitename+"%","%"+username+"%",statue+"%"};
+			long l = (Long)qr.query(sql, params, new ScalarHandler());
+			return (int)l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 *  查询是否存在规定时间段的场地预约
+	 * @param stratTime
+	 * @param endTime
+	 * @param siteId
+	 * @return
+	 */
+	public boolean getSiteOrderByTime(Date stratTime,Date endTime,int siteId){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_siteorder where (?>=stratTime and ?<=endTime) or (?=stratTime and ?<=endTime) and siteId=?";
+			Object params[] = {stratTime,stratTime,endTime,endTime,siteId};
+			List<SiteOrder> list = (List<SiteOrder>)qr.query(sql, params, new BeanListHandler(SiteOrder.class));
+			if(list.isEmpty()){
+				return true;
+			}else{
+				return false;
+			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

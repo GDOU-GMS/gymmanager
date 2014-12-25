@@ -1,16 +1,28 @@
-package com.gms.domain;
+package com.gms.vo;
 
 import java.util.Date;
 
-public class SiteUsage {
+public class SiteUsageVo {
 
 	private int id;
 	private Date stratTime;
 	private Date endTime;
 	private float price;
 	private int userId;
+	private String username;
+	private String  studentNo;
 	private int siteId;
+	private String sitename;
 	private String  statue;// timeout notimeout
+	
+	
+	
+	public String getStudentNo() {
+		return studentNo;
+	}
+	public void setStudentNo(String studentNo) {
+		this.studentNo = studentNo;
+	}
 	public int getId() {
 		return id;
 	}
@@ -41,11 +53,23 @@ public class SiteUsage {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public int getSiteId() {
 		return siteId;
 	}
 	public void setSiteId(int siteId) {
 		this.siteId = siteId;
+	}
+	public String getSitename() {
+		return sitename;
+	}
+	public void setSitename(String sitename) {
+		this.sitename = sitename;
 	}
 	public String getStatue() {
 		return statue;

@@ -158,7 +158,7 @@ public class SiteDAOImpl implements SiteDAO {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
 			String sql = "select tb_site.*,tb_sitetype.type from tb_site,tb_sitetype where tb_site.name like ? and tb_sitetype.type like ? and tb_site.statue like ? and tb_site.typeId=tb_sitetype.id limit ?,?";
-			Object params[] = {"%"+name+"%","%"+type+"%","%"+statue+"%",startIndex,pageSize};
+			Object params[] = {"%"+name+"%","%"+type+"%",statue+"%",startIndex,pageSize};
 			return (List<SiteVo>)qr.query(sql, params, new BeanListHandler(SiteVo.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -175,7 +175,7 @@ public class SiteDAOImpl implements SiteDAO {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
 			String sql = "select count(*) from tb_site,tb_sitetype where tb_site.name like ? and tb_sitetype.type like ? and tb_site.statue like ? and tb_site.typeId=tb_sitetype.id";
-			Object params[] = {"%"+name+"%","%"+type+"%","%"+statue+"%"};
+			Object params[] = {"%"+name+"%","%"+type+"%",statue+"%"};
 			long l = (Long)qr.query(sql, params, new ScalarHandler());
 			return (int) l;
 		} catch (Exception e) {

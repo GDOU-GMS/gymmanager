@@ -5,7 +5,7 @@
 <html>
 <head>
 
-<title>My JSP 'getAllSiteOrder.jsp' starting page</title>
+<title>My JSP 'getAllSiteUsage.jsp' starting page</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -34,16 +34,11 @@
 						</td>
 						<td>用户名称：<input type="text" name="username" />
 						</td>
-						<!-- <td>预约开始时间：<input type="text" name="siteOrder.stratTime" />
-						</td>
-						<td>~</td>
-						<td>结束时间：<input type="text" name="siteOrder.endTime" /> -->
-						</td>
 						<td>状态</td>
 						<td><select class="combox" name="siteOrder.statue">
 								<option value="none">--请选择--</option>
-								<option value="unpassed">未过期</option>
-								<option value="passed">已过期</option>
+								<option value="notimeout">未超时</option>
+								<option value="timeout">已超时</option>
 						</select></td>
 					</tr>
 				</table>
@@ -54,8 +49,8 @@
 									<button type="submit">检索</button>
 								</div>
 							</div></li>
-					 <li><a class="button" href="${pageContext.request.contextPath }/manager/advancedSearchSiteOrder.jsp" target="dialog"
-							mask="true" title="查询框"><span>高级检索</span></a></li>
+					<%--  <li><a class="button" href="${pageContext.request.contextPath }/manager/advancedSearchSiteOrder.jsp" target="dialog"
+							mask="true" title="查询框"><span>高级检索</span></a></li> --%>
 					</ul>
 				</div>
 			</div>
@@ -67,18 +62,18 @@
 				<li><a class="add"
 					href="${pageContext.request.contextPath }/site/getDataForAddSiteOrder.action"
 					target="navTab"><span>添加</span></a></li>
-				<li><a class="add"
-					href="#"
-					target="navTab"><span>预留</span></a></li>
 				<li><a class="edit"
 					href="${pageContext.request.contextPath}/site/getDataForUpdateSiteOrder.action?id={siteOrder}"
 					target="navTab"><span>修改</span></a></li>
 				<li><a class="delete"
 					href="${pageContext.request.contextPath }/site/deleteSiteOrder.action?id={siteOrder}"
 					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-					<li><a class="delete"
-					href="${pageContext.request.contextPath }/site/dealBreach.action"
-					target="ajaxTodo" title="确定要删除吗?"><span>一键处理失约</span></a></li>
+				<li><a class="delete"
+					href="${pageContext.request.contextPath }/site/deleteSiteOrder.action?id={siteOrder}"
+					target="ajaxTodo" title="确定要删除吗?"><span>处理到时间场地</span></a></li>
+				<li><a class="delete"
+					href="${pageContext.request.contextPath }/site/deleteSiteOrder.action?id={siteOrder}"
+					target="ajaxTodo" title="确定要删除吗?"><span>删除到时间的所有场地使用</span></a></li>
 				<%-- <li><a class="edit"
 					href="${pageContext.request.contextPath}/site/getDataForUpdateSiteOrder.action?id={siteOrder}"
 					target="ajaxTodo"><span>使用</span></a></li> --%>
@@ -87,30 +82,28 @@
 		<table class="table" width="100%" layoutH="138">
 			<thead>
 				<tr>
-					<th width="80">预约ID</th>
+					<th width="80">ID</th>
 					<th width="80">学号</th>
 					<th width="100">预约用户</th>
-					<th width="120">预约开始时间</th>
-					<th width="120">预约结束时间</th>
-					<th width="120">预定场地</th>
-					<th width="100">预约时间</th>
+					<th width="120">开始时间</th>
+					<th width="120">结束时间</th>
+					<th width="120">使用场地</th>
 					<th width="100">状态</th>
 					
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${page.list }" var="siteOrder">
-					<tr target="siteOrder" rel="${siteOrder.id}">
-						<td>${siteOrder.id }</td>
-						<td>${siteOrder.studentNo }</td>
-						<td>${siteOrder.username }</td>
-						<td>${siteOrder.stratTime }</td>
-						<td>${siteOrder.endTime }</td>
-						<td>${siteOrder.sitename }</td>
-						<td>${siteOrder.orderTime }</td>
+				<c:forEach items="${page.list }" var="siteUsage">
+					<tr target="siteUsage" rel="${siteUsage.id}">
+						<td>${siteUsage.id }</td>
+						<td>${siteUsage.studentNo }</td>
+						<td>${siteUsage.username }</td>
+						<td>${siteUsage.stratTime }</td>
+						<td>${siteUsage.endTime }</td>
+						<td>${siteUsage.sitename }</td>
 						<td>
-							<c:if test="${siteOrder.statue eq 'passed' }" ><p style="color:red;">已过期</p></c:if>
-							<c:if test="${siteOrder.statue eq 'unpassed' }"><P>未过期</P></c:if>
+							<c:if test="${siteOrder.siteUsage eq 'timeout' }" ><p style="color:red;">已超时</p></c:if>
+							<c:if test="${siteUsage.statue eq 'notimeout' }"><p>未超时</p></c:if>
 						</td>
 					</tr>
 				</c:forEach>
@@ -131,9 +124,7 @@
 			<div class="pagination" targetType="navTab"
 				totalCount="${page.totalRecord}" numPerPage="${page.pageSize }"
 				pageNumShown="10" currentPage="${page.pageNum }"></div>
-
 		</div>
 	</div>
-
 </body>
 </html>

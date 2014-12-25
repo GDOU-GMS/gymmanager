@@ -3,6 +3,7 @@ package com.gms.dao;
 import java.util.List;
 
 import com.gms.domain.Site;
+import com.gms.vo.SiteOrderVo;
 import com.gms.vo.SiteVo;
 
 public interface SiteDAO {
@@ -80,4 +81,5 @@ public interface SiteDAO {
 	 */
 	public abstract int getQueryResultTotalRecord(String name,String type,String statue);
 
+	
 }

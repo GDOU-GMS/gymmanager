@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<%-- <form id="pagerForm" method="post"
+	<form id="pagerForm" method="post"
 		action="${pageContext.request.contextPath }/site/getAllSiteOrder.action">
 		<input type="hidden" name="pageNum" value="1" />
 		<!--【必须】value=1可以写死-->
@@ -22,28 +22,28 @@
 		<input type="hidden" name="status" value="${param.status}"> 
 		<input type="hidden" name="keywords" value="${param.keywords}" /> 
 		<input type="hidden" name="orderField" value="${param.orderField}" /><!--【可选】查询排序-->
-	</form> --%>
+	</form>
 
 
 	<div class="pageHeader">
-		<!-- <form onsubmit="return navTabSearch(this);" action="#" method="post">
+		 <form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath }/site/queryCurrentSiteOrder.action" method="post">
 			<div class="searchBar">
 				<table class="searchContent">
 					<tr>
-						<td>场地名称：<input type="text" name="keyword" />
+						<td>场地名称：<input type="text" name="site.name" />
 						</td>
-						<td>用户名称：<input type="text" name="keyword" />
+						<td>用户名称：<input type="text" name="username" />
 						</td>
-						<td>预约开始时间：<input type="text" name="keyword" />
+						<!-- <td>预约开始时间：<input type="text" name="siteOrder.stratTime" />
 						</td>
 						<td>~</td>
-						<td>结束时间：<input type="text" name="keyword" />
-						</td>
+						<td>结束时间：<input type="text" name="siteOrder.endTime" /> 
+						</td>-->
 						<td>状态</td>
-						<td><select class="combox" name="site.statue">
-								<option value="noon">--请选择--</option>
-								<option value="undeleted">未删除</option>
-								<option value="deleted">已删除</option>
+						<td><select class="combox" name="siteOrder.statue">
+								<option value="none">--请选择--</option>
+								<option value="unpassed">未过期</option>
+								<option value="passed">已过期</option>
 						</select></td>
 					</tr>
 				</table>
@@ -54,23 +54,24 @@
 									<button type="submit">检索</button>
 								</div>
 							</div></li>
-						<li><a class="button" href="demo_page6.html" target="dialog"
-							mask="true" title="查询框"><span>高级检索</span></a></li>
 					</ul>
 				</div>
 			</div>
-		</form> -->
+		</form>
 	</div>
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">
 				
 				<li><a class="add"
-					href="#"
+					href="${pageContext.request.contextPath }/site/putIntoSiteUsage.action?id={siteOrder}"
 					target="ajaxTodo"><span>投入使用</span></a></li>
+				<%-- <li><a class="delete"
+					href="${pageContext.request.contextPath }/site/dealBreachById.action?id={siteOrder}"
+					target="ajaxTodo"><span>处理失约</span></a></li> --%>
 				<li><a class="delete"
-					href="${pageContext.request.contextPath }/site/dealBreach.action"
-					target="ajaxTodo"><span>处理过期预约</span></a></li>
+					href="${pageContext.request.contextPath }/site/dealBreachByCurrentPage.action"
+					target="ajaxTodo"><span>一键处理失约</span></a></li>
 				<%-- <li><a class="delete"
 					href="${pageContext.request.contextPath }/site/deleteSiteOrder.action?id={siteOrder}"
 					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
@@ -97,7 +98,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${siteOrders }" var="siteOrder">
+				<c:forEach items="${page.list }" var="siteOrder">
 					<tr target="siteOrder" rel="${siteOrder.id}">
 						<td>${siteOrder.id }</td>
 						<td>${siteOrder.studentNo }</td>
@@ -106,12 +107,15 @@
 						<td>${siteOrder.endTime }</td>
 						<td>${siteOrder.sitename }</td>
 						<td>${siteOrder.orderTime }</td>
-						<td>${siteOrder.statue }</td>
+						<td>
+							<c:if test="${siteOrder.statue eq 'passed' }" ><p style="color:red;">已过期</p></c:if>
+							<c:if test="${siteOrder.statue eq 'unpassed' }"><p>未过期</p></c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<%-- <div class="panelBar">
+		<div class="panelBar">
 			<div class="pages">
 				<span>显示</span> <select class="combox" name="numPerPage"
 					onchange="navTabPageBreak({numPerPage:this.value})">
@@ -127,7 +131,7 @@
 				totalCount="${page.totalRecord}" numPerPage="${page.pageSize }"
 				pageNumShown="10" currentPage="${page.pageNum }"></div>
 
-		</div> --%>
+		</div> 
 	</div>
 
 </body>

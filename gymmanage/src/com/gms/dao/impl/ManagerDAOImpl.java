@@ -21,7 +21,7 @@ public class ManagerDAOImpl implements ManagerDAO{
 		QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
 		String sql="insert into tb_admin(account,password,permission,"
 				+ "name,telephone,birthday,email,address)values(?,?,?,?,?,?,?,?)";
-		Object param[]={manager.getAccount(),manager.getPassword(),"����Ա",manager.getName(),
+		Object param[]={manager.getAccount(),manager.getPassword(),"锟斤拷锟斤拷员",manager.getName(),
 				manager.getTelephone(),manager.getBirthday(),manager.getEmail(),
 				manager.getAddress()};
 		try {
@@ -65,7 +65,7 @@ public class ManagerDAOImpl implements ManagerDAO{
 	}
 	
 	/**
-	 * У���¼
+	 * 校锟斤拷锟铰�
 	 * @param manager
 	 * @return
 	 */
@@ -73,7 +73,6 @@ public class ManagerDAOImpl implements ManagerDAO{
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
 			String sql = "select * from tb_admin where permission=? and account=? and password=?";
-			System.out.println(manager.getPermission());
 			Object params[] = {manager.getPermission(),manager.getAccount(),manager.getPassword()};
 			return (Manager)qr.query(sql, params, new BeanHandler(Manager.class));
 		} catch (Exception e) {
