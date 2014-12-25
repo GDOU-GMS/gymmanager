@@ -83,6 +83,9 @@
 		<action name="getAllSiteUsage" class="com.gms.web.action.SiteAction" method="getAllSiteUsage">
 			<result name="success">/manager/getAllSiteUsage.jsp</result>
 		</action>
+		<action name="getDataForAddSiteUsage" class="com.gms.web.action.SiteAction" method="getDataForAddSiteUsage">
+			<result name="success">/manager/addSiteUsage.jsp</result>
+		</action>
 		
 	</package>
 </struts>

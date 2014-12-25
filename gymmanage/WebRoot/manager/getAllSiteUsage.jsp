@@ -60,7 +60,7 @@
 		<div class="panelBar">
 			<ul class="toolBar">
 				<li><a class="add"
-					href="${pageContext.request.contextPath }/site/getDataForAddSiteOrder.action"
+					href="${pageContext.request.contextPath }/site/getDataForAddSiteUsage.action"
 					target="navTab"><span>添加</span></a></li>
 				<li><a class="edit"
 					href="${pageContext.request.contextPath}/site/getDataForUpdateSiteOrder.action?id={siteOrder}"

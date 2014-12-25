@@ -38,10 +38,18 @@ public class SiteAction {
 	private SiteOrder siteOrder;
 	private String studentNo;
 	private String username;
-	
+	private SiteUsage siteUsage;
 	
 	
 
+
+	public SiteUsage getSiteUsage() {
+		return siteUsage;
+	}
+
+	public void setSiteUsage(SiteUsage siteUsage) {
+		this.siteUsage = siteUsage;
+	}
 
 	public String getUsername() {
 		return username;
@@ -669,6 +677,25 @@ public class SiteAction {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			Page page = service.getAllSiteUsagePageData(pageNum, numPerPage);
 			ActionContext.getContext().put("page", page);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "抱歉，查询出错，系统异常！", "", "", "");
+			return "message";
+		}
+	}
+	
+	/**
+	 * 获取数据给添加场地
+	 * @return
+	 */
+	public String getDataForAddSiteUsage(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			List<Site> sites = service.getAllSite();
+			List<SiteType> siteTypes = service.getAllSiteType();
+			ActionContext.getContext().put("sites", sites);
+			ActionContext.getContext().put("siteTypes", siteTypes);
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
