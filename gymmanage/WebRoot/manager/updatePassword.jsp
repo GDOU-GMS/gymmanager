@@ -31,20 +31,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  			<dl>
 					<dt>旧密码：</dt>
 					<dd>
-						<input name="oPassword" type="password" size="30" />
+						<!--  <input name="oPassword" type="password" value="" size="30" />-->
+						<input name="oPassword" type="password" value="" size="30" />
 					</dd>
 				</dl>
 				<dl>
 					<dt>新密码：</dt>
 					<dd>
-						<input name="nPassword" type="password" size="30" />
+						<input name="nPassword" type="password" value="" size="30" />
 					</dd>
 					
 				</dl>
 				<dl>
 					<dt>确定新密码：</dt>
 					<dd>
-						<input name="rnPassword" type="password" size="30" />
+						<input name="rnPassword" type="password" value=""size="30" />
 					</dd>
 				</dl>
 				
