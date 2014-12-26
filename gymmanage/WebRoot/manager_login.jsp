@@ -32,6 +32,9 @@
 			alert("${message}");
 		</script>
 	</c:if>
+	<div class="top">
+	   <img alt="" src="../images/toplogo3.png"> 
+	</div>
 	<div id="container">
 	<div class="login">登录</div>
 		<form action="${pageContext.request.contextPath }/managerAction/loginCheck.action" method="post">

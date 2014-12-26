@@ -109,11 +109,7 @@ public class ManagerAction {
 	 */
 	public String addManager(){
 		try{
-//		    String birthday=manager.getBirthday();
-//		    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		    if(!"".equals(birthday)){
-//		    	manager.setBirthday(sdf.parse(birthday));
-//		    }
+
 			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
 			managerBusinessServiceImpl.addManager(manager);
 			message=JSONTools.getJSONString("200","添加成功","getAllManager","closeCurrent","");

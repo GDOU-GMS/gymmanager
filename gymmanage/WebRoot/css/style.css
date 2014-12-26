@@ -72,7 +72,7 @@ input {
 /* ------- Body ------- */
 
 body {
-	background: #eeeeee url(../images/bg.jpg) top left repeat;
+	background: #eeeeee url(../images/bg2.png) top left repeat;
 }
 
 
@@ -80,7 +80,8 @@ body {
 
 #container {
 	margin: auto;
-	margin-top: 180px;
+	/*margin-top: 180px;*/
+	margin-top:5px;
 	width: 524px;
 	height: 262px;
 	text-align: left;
@@ -98,6 +99,7 @@ form, .welcome {
 	width: 524px;
 	height: 262px;
 	padding-top: 1px;
+	padding-top:1px;
 }
 
 .login, .welcome-user {
@@ -286,4 +288,13 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 	text-decoration: none;
 	color: #2d2d2d;
 }
+
+
+.top{
+    margin-top:60px;
+	margin-left:430px;
+	font-size: 20px;
+	
+}
+
 
