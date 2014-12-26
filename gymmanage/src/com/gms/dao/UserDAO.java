@@ -38,4 +38,44 @@ public interface UserDAO {
 	 * @return
 	 */
 	public abstract boolean updatePassword(int id,String oPassword,String nPassword);
+	
+	
+	/**
+	 * 条件查询获得记录
+	 * @param studentNo
+	 * @param name
+	 * @param academy
+	 * @return
+	 */
+	public abstract int getTotalRecord(String studentNo,String name,String academy);
+	
+	/**
+	 * 获得所有记录
+	 * @return
+	 */
+	public abstract int getTotalRecords();
+	
+	/**
+	 * 条件查询部分用户分页获取数据
+	 * @param startIndex
+	 * @param pageSize
+	 * @param studentNo
+	 * @param name
+	 * @param academy
+	 * @return
+	 */
+	public List<User> getUsersPageData(int startIndex,int pageSize,String studentNo,String name,String academy);
+	
+	
+	/**
+	 *所有用户分页获取数据
+	 * @param startIndex
+	 * @param pageSize
+	 * @return
+	 */
+	
+	public List<User> getAllUsersPageData(int startIndex,int pageSize);
+	
+	
+	
 }

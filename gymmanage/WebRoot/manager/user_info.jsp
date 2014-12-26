@@ -18,9 +18,19 @@
 </script>
 
 <div class="pageHeader">
-	<form action="${pageContext.request.contextPath}/useraction/getUsers.action" method="post" 
-	onsubmit="return navTabSearch(this);" >
-	<div class="searchBar">
+	<form id="pagerForm"  action="${pageContext.request.contextPath}/useraction/getUsers.action" 
+	method="post" onsubmit="return navTabSearch(this)">
+		<input type="hidden" name="pageNum" value="1" />
+		<!--【必须】value=1可以写死-->
+		<input type="hidden" name="numPerPage" value="${page.pageSize}" />
+		<!--【可选】每页显示多少条-->
+		<%-- <input type="hidden" name="status" value="${param.status}"> 
+		<input type="hidden" name="keywords" value="${param.keywords}" /> 
+		<input type="hidden" name="orderField" value="${param.orderField}" /><!--【可选】查询排序--> --%>
+    </from>
+	 <div class="searchBar">
+	 	<form rel="pagerForm" action="${pageContext.request.contextPath}/useraction/getUsers.action" 
+	 	 method="post" onsubmit="return navTabSearch(this)">
 		<table class="searchContent">
 			<tr>
 				<td>
@@ -41,6 +51,7 @@
 				<li><div class="buttonActive"><div class="buttonContent"><button type="reset">重置</button></div></div></li>
 			 </ul>
 		</div>
+		</form>
 	</div>
 	</form>
 </div>
@@ -68,7 +79,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="user" items="${listUsers}">
+			<!--<c:forEach var="user" items="${listUsers}">
+				<tr target="userId" rel="${user.id}">
+					<td>${user.id}</td>
+					<td>${user.studentNo}</td>
+					<td>${user.name}</td>
+					<td>${user.academy}</td>
+					<td>${user.major}</td>
+				    <td>${user.className}</td>
+				    <td>${user.gender}</td>
+				    <td>${user.telephone}</td>
+				</tr>
+			</c:forEach>-->
+			<c:forEach var="user" items="${page.list}">
 				<tr target="userId" rel="${user.id}">
 					<td>${user.id}</td>
 					<td>${user.studentNo}</td>
@@ -80,6 +103,7 @@
 				    <td>${user.telephone}</td>
 				</tr>
 			</c:forEach>
+			
 		</tbody>
 	</table>
 	<div class="panelBar">
@@ -91,11 +115,13 @@
 				<option value="100">100</option>
 				<option value="200">200</option>
 			</select>
-			<span>条，共${totalCount}条</span>
+			<span>条，共${page.totalRecord}条</span>
 		</div>
 		
-		<div class="pagination" targetType="navTab" totalCount="200" numPerPage="20" pageNumShown="10" currentPage="1"></div>
+		<div class="pagination" targetType="navTab"
+				totalCount="${page.totalRecord}" numPerPage="${page.pageSize}"
+				pageNumShown="10" currentPage="${page.pageNum}"></div>
 
 	</div>
 </div>
-<c:remove var="qresult" scope="session" />
+

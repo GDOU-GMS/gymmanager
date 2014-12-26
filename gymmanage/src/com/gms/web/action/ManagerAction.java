@@ -2,10 +2,14 @@ package com.gms.web.action;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.gms.domain.Manager;
+import com.gms.domain.Page;
 import com.gms.service.impl.ManagerBusinessServiceImpl;
+import com.gms.service.impl.UserBusinessServiceImpl;
 import com.gms.utils.JSONTools;
 import com.opensymphony.xwork2.ActionContext;
 
@@ -22,6 +26,22 @@ public class ManagerAction {
 	private String oPassword;
 	private String nPassword;
 	private String rnPassword;
+	private int pageNum = 1;
+	private int numPerPage = 20;//�൱��pagesize
+	
+	public int getPageNum() {
+		return pageNum;
+	}
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
+	public int getNumPerPage() {
+		return numPerPage;
+	}
+	public void setNumPerPage(int numPerPage) {
+		this.numPerPage = numPerPage;
+	}
+
 	
 	public String getRnPassword() {
 		return rnPassword;
@@ -84,11 +104,16 @@ public class ManagerAction {
 	
 	
 	/**
-	 * ��ӹ���Ա
+	 * 添加管理员
 	 * @return
 	 */
 	public String addManager(){
 		try{
+//		    String birthday=manager.getBirthday();
+//		    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		    if(!"".equals(birthday)){
+//		    	manager.setBirthday(sdf.parse(birthday));
+//		    }
 			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
 			managerBusinessServiceImpl.addManager(manager);
 			message=JSONTools.getJSONString("200","添加成功","getAllManager","closeCurrent","");
@@ -102,7 +127,7 @@ public class ManagerAction {
 	}
 	
 	/**
-	 * ���¹���Ա
+	 * 更新管理员信息
 	 * @return
 	 */
 	public String updateManager(){
@@ -123,17 +148,22 @@ public class ManagerAction {
 	}
 	
 	/**
-	 * ɾ�����Ա��Ϣ
+	 * 删除管理员
 	 * @return
 	 */
 	public String deleteManager(){
 		try{
+			boolean flag=false;
 			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
-			managerBusinessServiceImpl.deleteManger(id);
-		    JSONTools.getJSONString("200", "删除成功", "getAllManager", "", "");
+			flag=managerBusinessServiceImpl.deleteManger(id);
+		   if(flag){
+			 message=JSONTools.getJSONString("200", "删除成功", "getAllManager", "", "");
+			 
+		   }else{
+			   message=JSONTools.getJSONString("300", "删除失败","", "", "");
+		   }
 		}catch(Exception e){
-		
-			JSONTools.getJSONString("300", "删除失败","", "", "");
+			message=JSONTools.getJSONString("300", "删除失败","", "", "");
 		}
 		return "message";
 	}
@@ -141,17 +171,28 @@ public class ManagerAction {
 	
 	
 	/**
-	 * ������й���Ա
+	 * 获得所有管理员
 	 * @return
 	 */
 	public String getAllManager(){ 
-		try{
-			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
-			listManager=managerBusinessServiceImpl.getAllManager();
-			return "success";
-		}catch(Exception e){
-			return "error";
-		}
+//		try{
+//			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
+//			listManager=managerBusinessServiceImpl.getAllManager();
+//			return "success";
+//		}catch(Exception e){
+//			return "error";
+//		}
+		 try {
+				ManagerBusinessServiceImpl service = new ManagerBusinessServiceImpl();
+				Page page = service.getAllManagersPageDate(pageNum,numPerPage);
+				ActionContext.getContext().put("page",page);
+				return "success";
+			} catch (Exception e) {
+				e.printStackTrace();
+				message = JSONTools.getJSONString("300", "查询失败", "", "", "");
+				return "message";
+			}
+		
 		
 		
 	}
@@ -199,6 +240,7 @@ public class ManagerAction {
 		manager=(Manager) ActionContext.getContext().getSession().get("manager");
 		
 		ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
+		System.out.println(nPassword.equals(rnPassword));
 		if(!nPassword.equals(rnPassword)){
 			message=JSONTools.getJSONString("300", "新密码与确定密码不一致","","","");
 			return "message";
@@ -231,13 +273,22 @@ public class ManagerAction {
 			if(name==null){
 				name="";
 			}
-			listManager=managerBusinessServiceImpl.getManagers(account, name);
+//			listManager=managerBusinessServiceImpl.getManagers(account, name);
+//			return "success";
+//			 
+//		 }catch(Exception e){
+//			 
+//			return "error";
+//		 }
+			ManagerBusinessServiceImpl service = new ManagerBusinessServiceImpl();
+			Page page = service.getManagersPageDate(account,name,pageNum,numPerPage);
+			ActionContext.getContext().put("page",page);
 			return "success";
-			 
-		 }catch(Exception e){
-			 
-			return "error";
-		 }
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "查询失败", "", "", "");
+			return "message";
+		}
 		 
 	}
 	

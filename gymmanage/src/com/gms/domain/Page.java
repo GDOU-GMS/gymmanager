@@ -4,25 +4,26 @@ import java.util.List;
 
 public class Page {
 
-	private int totalPage;// ¼Ç×¡×ÜÒ³Êý
-	private int startPage;// ¿ªÊ¼Ò³
-	private int endPage;// ½áÊøÒ³
-	private int pageSize ;// Ò³Ãæ´óÐ¡,Ò²¾ÍÊÇ¶àÉÙÊý¾Ý
-	private int totalRecord;// ×Ü¼ÇÂ¼Êý
-	private int pageNum;// ¼Ç×¡µ±Ç°Ò³
-	private int startIndex;// ¼ÇÂ¼´ÓÊý¾Ý¿âÄÄ¸öµØ·½¿ªÊ¼
-	private List list;// ±£´æÒ³ÃæµÄÊý¾Ý
+	private int totalPage;// ï¿½ï¿½×¡ï¿½ï¿½Ò³ï¿½ï¿½
+	private int startPage;// ï¿½ï¿½Ê¼Ò³
+	private int endPage;// ï¿½ï¿½ï¿½ï¿½Ò³
+	private int pageSize ;// Ò³ï¿½ï¿½ï¿½Ð¡,Ò²ï¿½ï¿½ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int totalRecord;// ï¿½Ü¼ï¿½Â¼ï¿½ï¿½
+	private int pageNum;// ï¿½ï¿½×¡ï¿½ï¿½Ç°Ò³
+	private int startIndex;// ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ä¸ï¿½ï¿½Ø·ï¿½ï¿½ï¿½Ê¼
+	private List list;// ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	public Page(int pageSize, int pageNum, int totalRecord) {
+		
 		this.pageSize = pageSize;
 		this.pageNum = pageNum;
 		this.totalRecord = totalRecord;
 
-		// Ëã³ö×ÜÒ³Êý
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 		this.totalPage = (this.totalRecord + this.pageSize - 1) / this.pageSize;
-		// Ëã³ö´ÓÊý¾Ý¿âÄÄ¸öµØ·½¿ªÊ¼¶ÁÈ¡Êý¾Ý
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ä¸ï¿½ï¿½Ø·ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½È¡ï¿½ï¿½ï¿½
 		this.startIndex = this.pageSize * (this.pageNum - 1);
-		// Ëã³ö¿ªÊ¼Ò³ÂëºÍ½áÊøÒ³Âë
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Ò³ï¿½ï¿½Í½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 		if (this.totalPage <= 10) {
 			this.startPage = 1;
 			this.endPage = this.totalPage;

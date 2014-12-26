@@ -186,7 +186,7 @@
 									<li><a href="${pageContext.request.contextPath }/managerAction/getManagerSelf.action" target="navTab">个人信息</a></li>
 									<li><a href="${pageContext.request.contextPath }/manager/updatePassword.jsp" target="navTab">修改密码</a></li>
 								</ul></li>
-							<li><a>其他</a>
+							<li><a href="#">其他</a>
 								<ul>
 									<li><a href="#" target="navTab">管内设施惩罚条例</a></li>
 								</ul></li>

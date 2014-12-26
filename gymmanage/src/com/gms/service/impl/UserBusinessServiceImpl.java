@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.gms.dao.SiteDAO;
 import com.gms.dao.UserDAO;
+import com.gms.domain.Page;
 import com.gms.domain.User;
 import com.gms.factory.DAOFactory;
+import com.gms.vo.SiteVo;
 
 public class UserBusinessServiceImpl {
 	DAOFactory daoFactory=DAOFactory.getInstance();
@@ -48,4 +50,23 @@ public class UserBusinessServiceImpl {
 	public boolean updatePassword(int id,String oPassword,String nPassword){
 		return userDAO.updatePassword(id, oPassword, nPassword);
 	}
+	
+	public Page getAllUsersPageDate(int pageNum,int pageSize){
+		int totalRecord = userDAO.getTotalRecords();
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<User> list = userDAO.getAllUsersPageData(page.getStartIndex(), pageSize);
+		page.setList(list);
+		return page;
+	}
+	
+	
+	
+	public Page getUsersPageDate(int pageNum,int pageSize,String studentNo,String name,String academy){
+		int totalRecord = userDAO.getTotalRecord(studentNo,name,academy);
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<User> list = userDAO.getUsersPageData(page.getStartIndex(), pageSize,studentNo,name,academy);
+		page.setList(list);
+		return page;
+	}
 }
+

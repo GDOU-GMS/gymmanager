@@ -19,12 +19,22 @@
 		<action name="getManagerSelf" class="com.gms.web.action.ManagerAction" method="getManagerSelf">
 			<result name="success">/manager/selfInfo.jsp</result>
 		</action>
+		<action name="getManagerSelfs" class="com.gms.web.action.ManagerAction" method="getManagerSelf">
+			<result name="success">/manager/updateSelfInfo.jsp</result>
+		</action>
 		<!--  <action name="getManagerSelfInfo" class="com.gms.web.action.ManagerAction" method="getManagerSelfInfo">
 			<result name="success">/manager/selfInfo.jsp</result>
 		</action>-->
 		<action name="updatePassword" class="com.gms.web.action.ManagerAction" method="updatePassword">
 		</action>
-		
+		<action name="getAllManager" class="com.gms.web.action.ManagerAction" method="getAllManager">
+			<result name="success">/manager/managerInfo.jsp</result>
+		</action>
+		<action name="getManagers" class="com.gms.web.action.ManagerAction" method="getManagers">
+			<result name="success">/manager/managerInfo.jsp</result>
+		</action>
+		<action name="deleteManager" class="com.gms.web.action.ManagerAction" method="deleteManager">
+		</action>
 		
 	</package> 
 </struts>
