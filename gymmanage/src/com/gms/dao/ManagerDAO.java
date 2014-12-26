@@ -5,6 +5,7 @@ package com.gms.dao;
 import java.util.List;
 
 import com.gms.domain.Manager;
+import com.gms.domain.User;
 
 public interface ManagerDAO {
 	
@@ -29,7 +30,7 @@ public interface ManagerDAO {
 	 * 
 	 * @param name
 	 */
-	public abstract void deleteManager(int id);
+	public abstract boolean deleteManager(int id);
 	
 	/**
 	 * ������й���Ա�û�
@@ -61,5 +62,13 @@ public interface ManagerDAO {
 	
 	public abstract Manager getManagerById(int id);
 	
+	public abstract int getTotalRecords();
+	
+	public List<Manager> getAllManagersPageData(int startIndex,int pageSize);
+	
+	
+	public abstract int getTotalRecord(String account,String name);
+	
+	public List<Manager> getManagersPageData(String account,String name,int startIndex,int pageSize);
 
 }

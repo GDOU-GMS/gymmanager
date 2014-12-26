@@ -34,7 +34,7 @@ public class SiteAction {
 	private Site site;
 	private int id;
 	private int pageNum = 1;
-	private int numPerPage = 20;//Ïàµ±ÓÚpagesize
+	private int numPerPage = 20;//ï¿½àµ±ï¿½ï¿½pagesize
 	private SiteOrder siteOrder;
 	private String studentNo;
 	private String username;
@@ -124,7 +124,7 @@ public class SiteAction {
 	}
 
 	/**
-	 * Ìí¼Ó³¡µØÀàÐÍ
+	 * ï¿½ï¿½Ó³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -132,17 +132,17 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.addSiteType(siteType);
-			message = JSONTools.getJSONString("200", "Ìí¼Ó³É¹¦£¡", "getAllSiteType",
+			message = JSONTools.getJSONString("200", "ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½", "getAllSiteType",
 					"closeCurrent", "");
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "Ìí¼ÓÊ§°Ü£¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½", "", "", "");
 		}
 		return "message";
 	}
 
 	/**
-	 * »ñÈ¡ËùÓÐ³¡µØÀàÐÍ
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -154,13 +154,13 @@ public class SiteAction {
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "»ñÈ¡Ê§°Ü!", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½È¡Ê§ï¿½ï¿½!", "", "", "");
 			return "message";
 		}
 	}
 
 	/**
-	 * É¾³ý³¡µØÀàÐÍ
+	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 * @throws IOException
@@ -171,11 +171,11 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.deleteSiteType(id);
-			message = JSONTools.getJSONString("200", "É¾³ý³É¹¦£¡", "getAllSiteType",
+			message = JSONTools.getJSONString("200", "É¾ï¿½ï¿½É¹ï¿½ï¿½ï¿½", "getAllSiteType",
 					"", "");
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "É¾³ýÊ§°Ü£¬¿ÉÄÜÊÇ¸Ã³¡µØÀàÐÍÔÚ³¡µØÖÐÊ¹ÓÃ£¡",
+			message = JSONTools.getJSONString("300", "É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã£ï¿½",
 					"", "", "");
 		}
 		return "message";
@@ -183,7 +183,7 @@ public class SiteAction {
 
 	/**
 	 * 
-	 * ¸üÐÂ³¡µØÀàÐÍÇ°µÄÊý¾Ý»ØÏÔ
+	 * ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -195,13 +195,13 @@ public class SiteAction {
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "»ñÈ¡Ê§°Ü£¬ÇëÖØÊÔ£¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½È¡Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½", "", "", "");
 			return "message";
 		}
 	}
 
 	/**
-	 * ¸úÐÂ³¡µØÀàÐÍ
+	 * ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -209,17 +209,17 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.updateSiteType(siteType);
-			message = JSONTools.getJSONString("200", "¸üÐÂ³É¹¦£¡", "getAllSiteType",
+			message = JSONTools.getJSONString("200", "ï¿½ï¿½ï¿½Â³É¹ï¿½ï¿½ï¿½", "getAllSiteType",
 					"closeCurrent", "");
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "¸üÐÂÊ§°Ü£¬ÇëÖØÊÔ£¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½", "", "", "");
 		}
 		return "message";
 	}
 
 	/**
-	 * »ñÈ¡ËùÓÐµÄ³¡µØµÄ·ÖÒ³Êý¾Ý
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ÐµÄ³ï¿½ï¿½ØµÄ·ï¿½Ò³ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -233,13 +233,13 @@ public class SiteAction {
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "»ñÈ¡Ê§°Ü£¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½È¡Ê§ï¿½Ü£ï¿½", "", "", "");
 			return "message";
 		}
 	}
 
 	/**
-	 * Ìí¼Ó³¡µØÖ®Ç°»ñÈ¡³¡µØÀàÐÍÊý¾Ý
+	 * ï¿½ï¿½Ó³ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public String getDataForAddSite() {
 		try {
@@ -249,13 +249,13 @@ public class SiteAction {
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "»ñÈ¡Ê§°Ü£¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½È¡Ê§ï¿½Ü£ï¿½", "", "", "");
 			return "message";
 		}
 	}
 
 	/**
-	 * Ìí¼ÓÐÂµÄ³¡µØ
+	 * ï¿½ï¿½ï¿½ï¿½ÂµÄ³ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -263,17 +263,17 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.addSite(site);
-			message = JSONTools.getJSONString("200", "Ìí¼Ó³É¹¦", "getAllSite",
+			message = JSONTools.getJSONString("200", "ï¿½ï¿½Ó³É¹ï¿½", "getAllSite",
 					"closeCurrent", "");
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "»ñÈ¡Ê§°Ü£¬ÏµÍ³Òì³££¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½È¡Ê§ï¿½Ü£ï¿½ÏµÍ³ï¿½ì³£ï¿½ï¿½", "", "", "");
 		}
 		return "message";
 	}
 
 	/**
-	 * É¾³ý³¡µØ
+	 * É¾ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -281,18 +281,18 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.deleteSite(id);
-			message = JSONTools.getJSONString("200", "É¾³ý³É¹¦£¡", "getAllSite", "",
+			message = JSONTools.getJSONString("200", "É¾ï¿½ï¿½É¹ï¿½ï¿½ï¿½", "getAllSite", "",
 					"");
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "É¾³ýÊ§°Ü£¡", "getAllSite", "",
+			message = JSONTools.getJSONString("300", "É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½", "getAllSite", "",
 					"");
 		}
 		return "message";
 	}
 
 	/**
-	 * ¸üÐÂ³¡µØÇ°»ñÈ¡Êý¾ÝÓÃÓÚ»ØÏÔ
+	 * ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½Ç°ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -306,14 +306,14 @@ public class SiteAction {
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "É¾³ýÊ§°Ü£¡", "getAllSite", "",
+			message = JSONTools.getJSONString("300", "É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½", "getAllSite", "",
 					"");
 			return "message";
 		}
 	}
 
 	/**
-	 * ¸üÐÂ³¡µØ
+	 * ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -321,16 +321,16 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.updateSte(site);
-			message = JSONTools.getJSONString("200", "ÐÞ¸Ä³É¹¦", "getAllSite",
+			message = JSONTools.getJSONString("200", "ï¿½Þ¸Ä³É¹ï¿½", "getAllSite",
 					"closeCurrent", "");
 		} catch (Exception e) {
-			message = JSONTools.getJSONString("300", "ÐÞ¸ÄÊ§°Ü£¬ÏµÍ³Òì³£", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½Þ¸ï¿½Ê§ï¿½Ü£ï¿½ÏµÍ³ï¿½ì³£", "", "", "");
 		}
 		return "message";
 	}
 
 	/**
-	 * ½«É¾³ýµÄ³¡µØ»Ö¸´
+	 * ï¿½ï¿½É¾ï¿½ï¿½Ä³ï¿½ï¿½Ø»Ö¸ï¿½
 	 * 
 	 * @return
 	 */
@@ -338,16 +338,16 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.recoverSite(id);
-			message = JSONTools.getJSONString("200", "»Ö¸´³É¹¦£¡", "getAllSite", "",
+			message = JSONTools.getJSONString("200", "ï¿½Ö¸ï¿½ï¿½É¹ï¿½ï¿½ï¿½", "getAllSite", "",
 					"");
 		} catch (Exception e) {
-			message = JSONTools.getJSONString("300", "»Ö¸´Ê§°Ü£¬ÏµÍ³Òì³£", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½Ö¸ï¿½Ê§ï¿½Ü£ï¿½ÏµÍ³ï¿½ì³£", "", "", "");
 		}
 		return "message";
 	}
 
 	/**
-	 * ³¹µ×É¾³ý³¡µØ
+	 * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -355,17 +355,17 @@ public class SiteAction {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.removeSite(id);
-			message = JSONTools.getJSONString("200", "É¾³ý³É¹¦", "getAllSite", "",
+			message = JSONTools.getJSONString("200", "É¾ï¿½ï¿½É¹ï¿½", "getAllSite", "",
 					"");
 		} catch (Exception e) {
-			message = JSONTools.getJSONString("300", "É¾³ýÊ§°Ü£¬¸Ã³¡µØÎÞ·¨É¾³ý£¬ÏµÍ³Òì³££¡", "",
+			message = JSONTools.getJSONString("300", "É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½Þ·ï¿½É¾ï¿½ï¿½ÏµÍ³ï¿½ì³£ï¿½ï¿½", "",
 					"", "");
 		}
 		return "message";
 	}
 
 	/**
-	 * »ñµÃËùÓÐµÄ³¡µØÔ¤Ô¼
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ³ï¿½ï¿½ï¿½Ô¤Ô¼
 	 * 
 	 * @return
 	 */
@@ -377,13 +377,13 @@ public class SiteAction {
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "»ñÈ¡Ê§°Ü£¬ÏµÍ³Òì³££¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½È¡Ê§ï¿½Ü£ï¿½ÏµÍ³ï¿½ì³£ï¿½ï¿½", "", "", "");
 			return "message";
 		}
 	}
 	
 	/**
-	 * Ìí¼Ó¡¢Ô¤Áô³¡µØÖ®Ç°»ñµÃÊý¾Ý
+	 * ï¿½ï¿½Ó¡ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public String getDataForAddSiteOrder(){
@@ -396,13 +396,13 @@ public class SiteAction {
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "»ñÈ¡Ê§°Ü£¬ÏµÍ³Òì³££¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½È¡Ê§ï¿½Ü£ï¿½ÏµÍ³ï¿½ì³£ï¿½ï¿½", "", "", "");
 			return "message";
 		}
 	}
 	
 	/**
-	 * Ô¤Áô³¡µØ
+	 * Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	/*public String reserveSiteOrder(){
@@ -412,16 +412,16 @@ public class SiteAction {
 			Date orderTime = new Date();
 			siteOrder.setOrderTime(orderTime);
 			service.addSiteOrder(siteOrder);
-			message = JSONTools.getJSONString("200", "Ìí¼Ó³É¹¦", "getAllSiteOrder", "closeCurrent", "");
+			message = JSONTools.getJSONString("200", "ï¿½ï¿½Ó³É¹ï¿½", "getAllSiteOrder", "closeCurrent", "");
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "»ñÈ¡Ê§°Ü£¬ÏµÍ³Òì³££¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½È¡Ê§ï¿½Ü£ï¿½ÏµÍ³ï¿½ì³£ï¿½ï¿½", "", "", "");
 		}
 		return "message";
 	}*/
 	
 	/**
-	 * ¹ÜÀíÔ±Ìí¼Ó³¡µØÔ¤Ô¼
+	 * ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ó³ï¿½ï¿½ï¿½Ô¤Ô¼
 	 * @return
 	 */
 	public String addSiteOrderByManager(){
@@ -439,35 +439,35 @@ public class SiteAction {
 				Date orderTime = new Date();
 				siteOrder.setOrderTime(orderTime);
 				service.addSiteOrder(siteOrder);
-				message = JSONTools.getJSONString("200", "Ìí¼Ó³É¹¦", "getAllSiteOrder", "closeCurrent", "");
+				message = JSONTools.getJSONString("200", "ï¿½ï¿½Ó³É¹ï¿½", "getAllSiteOrder", "closeCurrent", "");
 			}else{
-				message = JSONTools.getJSONString("300", "ÊäÈëÑ§ºÅÓÐÎó", "", "", "");
+				message = JSONTools.getJSONString("300", "ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "", "", "");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "»ñÈ¡Ê§°Ü£¬ÏµÍ³Òì³££¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½È¡Ê§ï¿½Ü£ï¿½ÏµÍ³ï¿½ì³£ï¿½ï¿½", "", "", "");
 		}
 		return "message";
 	}
 	
 	/**
-	 * É¾³ýÔ¤Ô¼ÐÅÏ¢
+	 * É¾ï¿½ï¿½Ô¤Ô¼ï¿½ï¿½Ï¢
 	 */
 	public String deleteSiteOrder(){
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			service.deleteSiteOrder(id);
-			message = JSONTools.getJSONString("200", "É¾³ý³É¹¦", "getAllSiteOrder", "", "");
+			message = JSONTools.getJSONString("200", "É¾ï¿½ï¿½É¹ï¿½", "getAllSiteOrder", "", "");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			message = JSONTools.getJSONString("200", "É¾³ýÊ§°Ü£¬ÏµÍ³Òì³£!", "", "", "");
+			message = JSONTools.getJSONString("200", "É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ÏµÍ³ï¿½ì³£!", "", "", "");
 		}
 		return "message";
 	}
 	
 	/**
-	 * »ñÈ¡Êý¾Ý»ØÏÔ¸øÔ¤Ô¼¸üÐÂ
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ý»ï¿½ï¿½Ô¸ï¿½Ô¤Ô¼ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public String getDataForUpdateSiteOrder(){
@@ -475,18 +475,18 @@ public class SiteAction {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			UserBusinessServiceImpl userService = new UserBusinessServiceImpl();
 			
-			//»ñµÃ³¡µØºÍ³¡ÀàÐÍµÄÊý¾Ý
+			//ï¿½ï¿½Ã³ï¿½ï¿½ØºÍ³ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½
 			List<Site> sites = service.getAllSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);
-			//»ñµÃ»ØÏÔÊý¾Ý
+			//ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			SiteOrder siteOrder = service.getsiteOrderById(id);
 			Site site = service.getSiteDetailById(siteOrder.getSiteId());
 			SiteType type = service.getSiteTypeById(site.getTypeId());
 			User user = userService.getUserById(siteOrder.getUserId());
 			
-			/*//¹æ¸ñÊéÈÕÆÚ¸ñÊ½
+			/*//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½Ê½
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String stratTime = sdf.format(siteOrder.getStratTime());
 			String endTime = sdf.format(siteOrder.getEndTime());
@@ -501,12 +501,12 @@ public class SiteAction {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "²éÑ¯³ö´í£¬ÏµÍ³Òì³££¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½?ÏµÍ³ï¿½ì³£ï¿½ï¿½", "", "", "");
 			return "message";
 		}
 	}
 	/**
-	 * ¸üÐÂ³¡µØÔ¤Ô¼
+	 * ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½Ô¤Ô¼
 	 * @return
 	 */
 	public String updateSiteOrder(){
@@ -519,19 +519,19 @@ public class SiteAction {
 			/*	Date orderTime = new Date();
 				siteOrder.setOrderTime(orderTime);*/
 				service.updateSiteOrder(siteOrder);
-				message = JSONTools.getJSONString("200", "ÐÞ¸Ä³É¹¦£¡", "getAllSiteOrder", "closeCurrent", "");
+				message = JSONTools.getJSONString("200", "ï¿½Þ¸Ä³É¹ï¿½ï¿½ï¿½", "getAllSiteOrder", "closeCurrent", "");
 			}else{
-				message = JSONTools.getJSONString("300", "ÊäÈëÑ§ºÅÓÐÎó", "", "", "");
+				message = JSONTools.getJSONString("300", "ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "", "", "");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "¸üÐÂ³ö´í£¬ÏµÍ³Òì³££¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½ï¿½Â³ï¿½ï¿½?ÏµÍ³ï¿½ì³£ï¿½ï¿½", "", "", "");
 		}
 		return  "message";
 	}
 	
 	/**
-	 * Ä£ºý²éÑ¯³¡µØ
+	 * Ä£ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public String querySite(){
@@ -544,7 +544,7 @@ public class SiteAction {
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "²éÑ¯³ö´í£¬ÏµÍ³Òì³££¡", "", "", "");
+			message = JSONTools.getJSONString("300", "ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½?ÏµÍ³ï¿½ì³£ï¿½ï¿½", "", "", "");
 			return "message";
 		}
 		

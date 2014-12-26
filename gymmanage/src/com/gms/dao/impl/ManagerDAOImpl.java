@@ -10,6 +10,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.gms.dao.ManagerDAO;
 import com.gms.domain.Manager;
+import com.gms.domain.User;
 import com.gms.utils.JDBCUtils;
 
 public class ManagerDAOImpl implements ManagerDAO{
@@ -21,7 +22,7 @@ public class ManagerDAOImpl implements ManagerDAO{
 		QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
 		String sql="insert into tb_admin(account,password,permission,"
 				+ "name,telephone,birthday,email,address)values(?,?,?,?,?,?,?,?)";
-		Object param[]={manager.getAccount(),manager.getPassword(),"锟斤拷锟斤拷员",manager.getName(),
+		Object param[]={manager.getAccount(),manager.getPassword(),"manager",manager.getName(),
 				manager.getTelephone(),manager.getBirthday(),manager.getEmail(),
 				manager.getAddress()};
 		try {
@@ -37,10 +38,10 @@ public class ManagerDAOImpl implements ManagerDAO{
 	public void updateManager(Manager manager) {
 		// TODO Auto-generated method stub
 		QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
-		String sql="update tb_admin set account =?,permission=?,name=?,telephone =?,birthday=?,email=?,address=? "
+		String sql="update tb_admin set account =?,name=?,telephone =?,birthday=?,email=?,address=? "
 				+ "where id=? ";
 		System.out.println(manager.getId());
-		Object param[]={manager.getAccount(),"manager",manager.getName(),manager.getTelephone(),
+		Object param[]={manager.getAccount(),manager.getName(),manager.getTelephone(),
 				manager.getBirthday(),manager.getEmail(),manager.getAddress(),manager.getId()};
 		try {
 			qr.update(sql,param);
@@ -53,19 +54,39 @@ public class ManagerDAOImpl implements ManagerDAO{
 	}
 
 	@Override
-	public void deleteManager(int id) {
+	public boolean deleteManager(int id) {
 		// TODO Auto-generated method stub
+		 QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+		   String sql="delete from tb_admin where id=?";
+		   Object param[]={id};
+		   try {
+			qr.update(sql,id);
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
 		
 	}
 
 	@Override
 	public List<Manager> getAllManager() {
 		// TODO Auto-generated method stub
-		return null;
+				QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+				   String sql="select * from tb_admin where permission=?";
+				   Object param="manager";
+				   try {
+					 
+					   return (List<Manager>)qr.query(sql, param,new BeanListHandler(Manager.class));
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					throw new RuntimeException(e);
+				}
 	}
 	
 	/**
-	 * 校锟斤拷锟铰�
+	 * 
 	 * @param manager
 	 * @return
 	 */
@@ -83,10 +104,9 @@ public class ManagerDAOImpl implements ManagerDAO{
 	@Override
 	public List<Manager> getManagers(String account, String name) {
 		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
 				QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
-				String sql="select * from tb_admin where account like ? and String name like ?";
-				Object param[]={"%"+account+"","%"+name+"%"};
+				String sql="select * from tb_admin where account like ? and  name like ?and permission=?";
+				Object param[]={"%"+account+"","%"+name+"%","manager"};
 				try {
 					return (List<Manager>)qr.query(sql, param,new BeanListHandler(Manager.class));
 					
@@ -141,6 +161,71 @@ public class ManagerDAOImpl implements ManagerDAO{
 			throw new RuntimeException(e);
 		}
 		
+	}
+
+	@Override
+	public int getTotalRecords() {
+		// TODO Auto-generated method stub
+		QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+		String sql="select count(*) from tb_admin where permission=?";
+		Object param="manager";
+		try {
+			long l=(Long) qr.query(sql,param, new ScalarHandler());
+			System.out.println(l);
+			return (int)l;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+		
+	}
+
+	@Override
+	public List<Manager> getAllManagersPageData(int startIndex, int pageSize) {
+		// TODO Auto-generated method stub
+		QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+		   String sql="select * from tb_admin where permission=? limit ?,?";
+		   Object param[]={"manager",startIndex,pageSize};
+		   try {
+			   return (List<Manager>)qr.query(sql,param,new BeanListHandler(Manager.class));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public int getTotalRecord(String account, String name) {
+		// TODO Auto-generated method stub
+		 QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+		 String sql="select count(*) from tb_admin where account like ? and  name like ?and permission=?";
+		 Object param[]={"%"+account+"%","%"+name+"%","manager"};
+		 try {
+			    long l =   (Long) qr.query(sql, param,new ScalarHandler());
+			    return (int)l;
+		 } catch (SQLException e) {
+			throw new RuntimeException(e);
+		 }
+		
+	}
+
+	@Override
+	public List<Manager> getManagersPageData(String account, String name,
+			int startIndex, int pageSize) {
+		// TODO Auto-generated method stub
+		try{
+			
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_admin where account like ? and  name like ?and permission=? limit ?,?";
+			Object params[] = {"%"+account+"","%"+name+"%","manager",startIndex,pageSize};
+			return (List<Manager>) qr.query(sql, params, new BeanListHandler(Manager.class));
+			
+		}catch(Exception e){
+			
+			throw new RuntimeException(e);
+		}
+	
 	}
 
 	

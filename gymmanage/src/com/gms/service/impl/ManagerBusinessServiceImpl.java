@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.gms.dao.ManagerDAO;
 import com.gms.domain.Manager;
+import com.gms.domain.Page;
+import com.gms.domain.User;
 import com.gms.factory.DAOFactory;
 
 public class ManagerBusinessServiceImpl {
@@ -45,8 +47,8 @@ public class ManagerBusinessServiceImpl {
 	 * ɾ�����Ա
 	 * @param id
 	 */
-	public void deleteManger(int id ){
-		managerDAO.deleteManager(id);
+	public boolean deleteManger(int id ){
+		return managerDAO.deleteManager(id);
 	}
 	
 	
@@ -74,6 +76,22 @@ public class ManagerBusinessServiceImpl {
 	public Manager getManagerById(int id){
 		return managerDAO.getManagerById(id);
 	}
-
+	
+	
+	
+	public Page getAllManagersPageDate(int pageNum,int pageSize){
+		int totalRecord = managerDAO.getTotalRecords();
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<Manager> list = managerDAO.getAllManagersPageData(page.getStartIndex(), pageSize);
+		page.setList(list);
+		return page;
+	}
+	public Page getManagersPageDate(String account,String name,int pageNum,int pageSize){
+		int totalRecord = managerDAO.getTotalRecord(account, name);
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<Manager> list = managerDAO.getManagersPageData(account,name,page.getStartIndex(), pageSize);
+		page.setList(list);
+		return page;
+	}
 	
 }

@@ -16,6 +16,7 @@ import com.gms.dao.UserDAO;
 import com.gms.domain.SiteType;
 import com.gms.domain.User;
 import com.gms.utils.JDBCUtils;
+import com.gms.vo.SiteVo;
 
 public class UserDAOImpl implements UserDAO{
 	
@@ -165,5 +166,71 @@ public class UserDAOImpl implements UserDAO{
 				}
 				return flag;
 			}
+	  
+		public int getTotalRecord(String studentNo,String name,String academy){
+			 QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+			 String sql="select count(*) from tb_user where studentNo like ? and name like ? and academy like ?";
+			 Object param[]={"%"+studentNo+"%","%"+name+"%","%"+academy+"%"};
+			 try {
+				    long l =   (Long) qr.query(sql, param,new ScalarHandler());
+				    return (int)l;
+			 } catch (SQLException e) {
+				throw new RuntimeException(e);
+			 }
+			
+			
+		}
+		
+		public List<User> getUsersPageData(int startIndex,int pageSize,String studentNo,String name,String academy){
+//			try{
+//				QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+//				String sql = "select * from tb_user limit ?,?";
+//				Object params[] = {startIndex,pageSize};
+//				return (List<User>) qr.query(sql, params, new BeanListHandler(User.class));
+//			}catch(Exception e){
+//				throw new RuntimeException(e);
+//			}
+//		}
+			try{
+				
+				QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+				String sql = "select * from tb_user where studentNo like ? and name like ? and academy like ? limit ?,?";
+				Object params[] = {"%"+studentNo+"%","%"+name+"%","%"+academy+"%",startIndex,pageSize};
+				return (List<User>) qr.query(sql, params, new BeanListHandler(User.class));
+				
+			}catch(Exception e){
+				
+				throw new RuntimeException(e);
+			}
+		}
+
+		@Override
+		public int getTotalRecords() {
+			// TODO Auto-generated method stub
+			try {
+				QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+				String sql = "select count(*) from tb_user";
+				long l = (Long) qr.query(sql, new ScalarHandler());
+				return (int) l;
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+			
+		}
+
+		@Override
+		public List<User> getAllUsersPageData(int startIndex, int pageSize) {
+			// TODO Auto-generated method stub
+			try{
+				QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+				String sql = "select * from tb_user limit ?,?";
+				Object params[] = {startIndex,pageSize};
+				return (List<User>) qr.query(sql, params, new BeanListHandler(User.class));
+			}catch(Exception e){
+				throw new RuntimeException(e);
+			}
+		
+		}
+		 
 	}
 

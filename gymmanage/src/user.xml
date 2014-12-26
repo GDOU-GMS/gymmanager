@@ -14,7 +14,8 @@
 		<action name="getAllUsers" class="com.gms.web.action.UserAction" method="getAllUsers">
 			<result name="success">/manager/user_info.jsp</result>
 		</action>
-		
+		<action name="getUserSelf" class="com.gms.web.action.UserAction" method="getUserSelf">
+		</action>
 	</package>
   
 

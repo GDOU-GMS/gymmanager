@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%
 String path = request.getContextPath();
@@ -29,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			 <dl class="nowrap">
 				<dt></dt>
 				<dd>
-				<a class="buttonActive" href="${pageContext.request.contextPath}/manager/updateSelfInfo.jsp"
+				<a class="buttonActive" href="${pageContext.request.contextPath}/managerAction/getManagerSelfs.action"
 				 target="dialog" width="750" height="500">
 				<span>编辑个人信息</span></a>
 			 </dd>

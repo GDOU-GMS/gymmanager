@@ -31,27 +31,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  			 <dl>
 					<dt>用户名：</dt>
 					<dd>
-						<input name="manager.account" value="${manager.account }"type="text" size="30" />
+						<input name="manager.account" class="required" value="${manager.account }"type="text" size="30" />
 					</dd>
 				</dl> 
 				<dl>
 					<dt>姓名：</dt>
 					<dd>
-						<input name="manager.name" value="${manager.name}"type="text" size="30" />
+						<input name="manager.name"class="required" value="${manager.name}"type="text" size="30" />
 					</dd>
 					
 				</dl>
 				<dl>
 					<dt>联系方式：</dt>
 					<dd>
-						<input name="manager.telephone"value="${manager.telephone}" type="text" size="30" />
+						<input name="manager.telephone"  class="phone textInput" value="${manager.telephone}" type="text" size="30" />
 					</dd>
 				</dl>
 				<dl>
 					<dt>生日：</dt>
 					<dd>
-						<input name="manager.birthday" value="${manager.birthday}" type="text" size="30"/>
-						<span class="info">生日日期的格式为2014/01/01</span>
+					    <!--  <input name="manager.birthday" value="${manager.birthday}" type="text" size="30"/>
+						<span class="info">生日日期的格式为2014/01/01</span>-->
+						<input type="text" name="manager.birthday" class="date" readonly="true"/>
+						<a class="inputDateButton" href="javascript:;">选择</a>
+						<span class="info">日期格式为yyyy-MM-dd</span>
 					    
 					
 					</dd>
@@ -59,7 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<dl>
 					<dt>E-mail：</dt>
 					<dd>
-						<input name="manager.email" value="${manager.email}" type="text" size="30" />
+						<!-- <input name="manager.email" value="${manager.email}" type="text" size="30" /> -->
+						 <input type="text" alt="请输入您的电子邮件" class="email textInput" size="30" name="manager.email" value="${manager.email}">
 					</dd>
 				</dl>
 				<dl>
