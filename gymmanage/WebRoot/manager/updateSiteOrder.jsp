@@ -30,7 +30,7 @@
 						<input name="studentNo" type="text" class="number required" minlength="12" maxlength="12" value="${user.studentNo }">
 					</dd>
 				</dl>
-				<dl>
+				<%-- <dl>
 					<dt>选择场地类型</dt>
 					<dd>
 						<select name="siteType">
@@ -49,12 +49,28 @@
 							</c:forEach>
 						</select>
 					</dd>
+				</dl> --%>
+				<dl>
+					<dt>选择场地</dt>
+					<dd>
+						<select name="siteUsage.siteId">
+							<c:forEach items="${siteTypes }" var="siteType">
+								<optgroup label="${siteType.type }">
+									<c:forEach items="${sites }" var="s">
+										<c:if test="${siteType.id==s.typeId }">
+											<option value="${s.id }" <c:if test="${site.id eq s.id }">selected="selected"</c:if>>${s.name }</option>
+										</c:if>
+									</c:forEach>
+								</optgroup>
+							</c:forEach>
+						</select>
+					</dd>
 				</dl>
 				<dl>
 					<dt>预约开始时间：</dt>
 				
 					<dd>
-						<input type="text" name="siteOrder.stratTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${siteOrder.stratTime }"/>
+						<input type="text" name="siteOrder.stratTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${stratTime }"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 					</dd>
 					
@@ -62,7 +78,7 @@
 				<dl>
 					<dt>预约结束时间：</dt>
 					<dd>
-						<input type="text" name="siteOrder.endTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${siteOrder.endTime }"/>
+						<input type="text" name="siteOrder.endTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${endTime }"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 					</dd>
 					

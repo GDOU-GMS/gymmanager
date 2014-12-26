@@ -78,6 +78,25 @@
 		</action>
 		<action name="putIntoSiteUsage" class="com.gms.web.action.SiteAction" method="putIntoSiteUsage">
 		</action>
+		<action name="getDataForReserveSiteOrder" class="com.gms.web.action.SiteAction" method="getDataForReserveSiteOrder">
+			<result name="success">/manager/reserverSiteOrder.jsp</result>
+		</action>
+		<action name="reserveSiteOrder" class="com.gms.web.action.SiteAction" method="reserveSiteOrder">
+		</action>
+		<action name="getAllReserveSiteOrder" class="com.gms.web.action.SiteAction" method="getAllReserveSiteOrder">
+			<result name="success">/manager/getAllReserverSiteOrder.jsp</result>
+		</action>
+		<action name="getDataForUpdateReserveSiteOrder" class="com.gms.web.action.SiteAction" method="getDataForUpdateReserveSiteOrder">
+			<result name="success">/manager/updateReserverSiteOrder.jsp</result>
+		</action>
+		<action name="updateReserveSiteOrder" class="com.gms.web.action.SiteAction" method="updateReserveSiteOrder">
+		</action>
+		<action name="queryReserveSiteOrderPageDate" class="com.gms.web.action.SiteAction" method="queryReserveSiteOrderPageDate">
+			<result name="success">/manager/getAllReserverSiteOrder.jsp</result>
+		</action>
+		
+		
+		
 		
 		<!-- 场地使用 -->
 		<action name="getAllSiteUsage" class="com.gms.web.action.SiteAction" method="getAllSiteUsage">
@@ -86,6 +105,26 @@
 		<action name="getDataForAddSiteUsage" class="com.gms.web.action.SiteAction" method="getDataForAddSiteUsage">
 			<result name="success">/manager/addSiteUsage.jsp</result>
 		</action>
+		<action name="addSiteUsage" class="com.gms.web.action.SiteAction" method="addSiteUsage">
+		</action>
+		<action name="getDataForUpdateSiteUsage" class="com.gms.web.action.SiteAction" method="getDataForUpdateSiteUsage">
+			<result name="success">/manager/updateSiteUsage.jsp</result>
+		</action>
+		<action name="updateSiteUsage" class="com.gms.web.action.SiteAction" method="updateSiteUsage">
+		</action>
+		<action name="deleteSiteUsage" class="com.gms.web.action.SiteAction" method="deleteSiteUsage">
+		</action>
+		<action name="dealTimeOutSiteUsage" class="com.gms.web.action.SiteAction" method="dealTimeOutSiteUsage">
+		</action>
+		<action name="deleteAllTimeOutSiteUsage" class="com.gms.web.action.SiteAction" method="deleteAllTimeOutSiteUsage">
+		</action>
+		<action name="querySiteUsage" class="com.gms.web.action.SiteAction" method="querySiteUsage">
+			<result name="success">/manager/getAllSiteUsage.jsp</result>
+		</action>
+		
+		
+		
+	
 		
 	</package>
 </struts>

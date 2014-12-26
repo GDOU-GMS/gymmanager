@@ -129,4 +129,43 @@ public interface SiteOrderDAO {
 	 * @return
 	 */
 	public abstract boolean getSiteOrderByTime(Date stratTime,Date endTime,int siteId);
+
+	/**
+	 * 管理员预留场地
+	 */
+	public abstract void reserveSiteOrder(SiteOrder siteOrder);
+	/**
+	 * 获得所有的预留信息
+	 * @return
+	 */
+	public abstract List<SiteOrderVo> getAllReserveSiteOrder(int startIndex,int pageSize);
+	/**
+	 * 获得预留场地的总记录数
+	 * @return
+	 */
+	public abstract int getReserveSiteOrderTotalRecord();
+	/**
+	 * 更新场地预留
+	 * @param siteOrder
+	 */
+	public abstract void updateReserveSiteOrder(SiteOrder siteOrder);
+	
+	/**
+	 * 查询场地预留信息
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @param startIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public abstract List<SiteOrderVo> queryReserveSiteOrder(String sitename,String statue, int startIndex,int pageSize);
+	/**
+	 * 获得查询场地预留的总记录数
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @return
+	 */
+	public abstract int getQueryReserveSiteOrderTotalRecord(String sitename,String statue);
 }

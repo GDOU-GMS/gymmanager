@@ -26,7 +26,7 @@
 	</form>
 
 	<div class="pageHeader">
-		<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath }/site/querySiteOrder.action" method="post">
+		<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath }/site/querySiteUsage.action" method="post">
 			<div class="searchBar">
 				<table class="searchContent">
 					<tr>
@@ -35,7 +35,7 @@
 						<td>用户名称：<input type="text" name="username" />
 						</td>
 						<td>状态</td>
-						<td><select class="combox" name="siteOrder.statue">
+						<td><select class="combox" name="siteUsage.statue">
 								<option value="none">--请选择--</option>
 								<option value="notimeout">未超时</option>
 								<option value="timeout">已超时</option>
@@ -63,16 +63,16 @@
 					href="${pageContext.request.contextPath }/site/getDataForAddSiteUsage.action"
 					target="navTab"><span>添加</span></a></li>
 				<li><a class="edit"
-					href="${pageContext.request.contextPath}/site/getDataForUpdateSiteOrder.action?id={siteOrder}"
+					href="${pageContext.request.contextPath}/site/getDataForUpdateSiteUsage.action?id={siteUsage}"
 					target="navTab"><span>修改</span></a></li>
 				<li><a class="delete"
-					href="${pageContext.request.contextPath }/site/deleteSiteOrder.action?id={siteOrder}"
+					href="${pageContext.request.contextPath }/site/deleteSiteUsage.action?id={siteUsage}"
 					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
 				<li><a class="delete"
-					href="${pageContext.request.contextPath }/site/deleteSiteOrder.action?id={siteOrder}"
-					target="ajaxTodo" title="确定要删除吗?"><span>处理到时间场地</span></a></li>
+					href="${pageContext.request.contextPath }/site/dealTimeOutSiteUsage.action"
+					target="ajaxTodo" title="确定要处理吗?"><span>处理到时间场地</span></a></li>
 				<li><a class="delete"
-					href="${pageContext.request.contextPath }/site/deleteSiteOrder.action?id={siteOrder}"
+					href="${pageContext.request.contextPath }/site/deleteAllTimeOutSiteUsage.action"
 					target="ajaxTodo" title="确定要删除吗?"><span>删除到时间的所有场地使用</span></a></li>
 				<%-- <li><a class="edit"
 					href="${pageContext.request.contextPath}/site/getDataForUpdateSiteOrder.action?id={siteOrder}"
@@ -88,6 +88,7 @@
 					<th width="120">开始时间</th>
 					<th width="120">结束时间</th>
 					<th width="120">使用场地</th>
+					<th width="120">总价</th>
 					<th width="100">状态</th>
 					
 				</tr>
@@ -101,8 +102,9 @@
 						<td>${siteUsage.stratTime }</td>
 						<td>${siteUsage.endTime }</td>
 						<td>${siteUsage.sitename }</td>
+						<td>${siteUsage.price }</td>
 						<td>
-							<c:if test="${siteOrder.siteUsage eq 'timeout' }" ><p style="color:red;">已超时</p></c:if>
+							<c:if test="${siteUsage.statue eq 'timeout' }" ><p style="color:red;">已超时</p></c:if>
 							<c:if test="${siteUsage.statue eq 'notimeout' }"><p>未超时</p></c:if>
 						</td>
 					</tr>

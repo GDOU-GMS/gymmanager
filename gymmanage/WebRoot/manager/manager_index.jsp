@@ -168,6 +168,9 @@
 									<li><a
 										href="${pageContext.request.contextPath }/site/getAllSiteOrder.action"
 										target="navTab" rel="getAllSiteOrder">预约管理</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/site/getAllReserveSiteOrder.action"
+										target="navTab" rel="getAllReserveSiteOrder">预留管理</a></li>
 									<li><a href="${pageContext.request.contextPath }/site/getCurrentSiteOrder.action" rel="getCurrentSiteOrder" target="navTab">今日预约</a></li>
 									<li><a href="${pageContext.request.contextPath }/site/getAllSiteUsage.action" target="navTab" rel="getAllSiteUsage">场地使用</a></li>
 								</ul></li>

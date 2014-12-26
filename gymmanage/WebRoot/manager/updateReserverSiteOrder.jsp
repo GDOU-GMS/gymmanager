@@ -13,31 +13,46 @@
 </head>
 
 <body>
-	<h2 class="contentTitle">添加场地使用</h2>
+	<h2 class="contentTitle">添加场地预约</h2>
 
 
 	<div class="pageContent">
 
 		<form method="post"
-			action="${pageContext.request.contextPath }/site/addSiteUsage.action"
+			action="${pageContext.request.contextPath }/site/updateReserveSiteOrder.action"
 			class="pageForm required-validate"
 			onsubmit="return validateCallback(this,navTabAjaxDone)">
 			<div class="pageFormContent nowrap" layoutH="97">
-				<dl>
-					<dt>学生学号</dt>
+			<input type="text" name="siteOrder.id" value="${siteOrder.id }" style="display: none">
+				<%-- <dl>
+					<dt>选择场地类型</dt>
 					<dd>
-						<input name="studentNo" type="text" class="number required" minlength="12" maxlength="12">
+						<select name="siteType">
+							<c:forEach items="${siteTypes }" var="siteType">
+								<option value="${siteType.id}" <c:if test="${siteType.id eq type.id }">selected="selected"</c:if> >${siteType.type}</option>
+							</c:forEach>
+						</select>
 					</dd>
 				</dl>
+				<dl>
+					<dt>选择场地</dt>
+					<dd>
+						<select name="siteOrder.siteId">
+							<c:forEach items="${sites }" var="s">
+								<option value="${s.id}" <c:if test="${s.id eq site.id }">selected="selected"</c:if> >${s.name}</option>
+							</c:forEach>
+						</select>
+					</dd>
+				</dl> --%>
 				<dl>
 					<dt>选择场地</dt>
 					<dd>
 						<select name="siteUsage.siteId">
 							<c:forEach items="${siteTypes }" var="siteType">
 								<optgroup label="${siteType.type }">
-									<c:forEach items="${sites }" var="site">
-										<c:if test="${siteType.id==site.typeId }">
-											<option value="${site.id }">${site.name }</option>
+									<c:forEach items="${sites }" var="s">
+										<c:if test="${siteType.id==s.typeId }">
+											<option value="${s.id }" <c:if test="${site.id eq s.id }">selected="selected"</c:if>>${s.name }</option>
 										</c:if>
 									</c:forEach>
 								</optgroup>
@@ -46,18 +61,18 @@
 					</dd>
 				</dl>
 				<dl>
-					<dt>开始使用时间：</dt>
+					<dt>预约开始时间：</dt>
 				
 					<dd>
-						<input type="text" name="siteUsage.stratTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" />
+						<input type="text" name="siteOrder.stratTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${stratTime }"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 					</dd>
 					
 				</dl>
 				<dl>
-					<dt>结束时间：</dt>
+					<dt>预约结束时间：</dt>
 					<dd>
-						<input type="text" name="siteUsage.endTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" />
+						<input type="text" name="siteOrder.endTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${endTime }"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 					</dd>
 					
@@ -65,8 +80,8 @@
 				<dl>
 					<dt>状态</dt>
 					<dd>
-						<select name="siteUsage.statue">
-							<option value="notimeout" >未超时</option>
+						<select name="siteOrder.statue">
+							<option value="${siteOrder.statue }" >${siteOrder.statue }</option>
 						</select>
 					</dd>
 					

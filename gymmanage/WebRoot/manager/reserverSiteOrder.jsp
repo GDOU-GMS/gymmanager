@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<title>addSite</title>
+<title>reserverSiteOrder</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -13,26 +13,20 @@
 </head>
 
 <body>
-	<h2 class="contentTitle">添加场地使用</h2>
+	<h2 class="contentTitle">添加场地预约</h2>
 
 
 	<div class="pageContent">
 
 		<form method="post"
-			action="${pageContext.request.contextPath }/site/addSiteUsage.action"
+			action="${pageContext.request.contextPath }/site/reserveSiteOrder.action"
 			class="pageForm required-validate"
 			onsubmit="return validateCallback(this,navTabAjaxDone)">
 			<div class="pageFormContent nowrap" layoutH="97">
 				<dl>
-					<dt>学生学号</dt>
-					<dd>
-						<input name="studentNo" type="text" class="number required" minlength="12" maxlength="12">
-					</dd>
-				</dl>
-				<dl>
 					<dt>选择场地</dt>
 					<dd>
-						<select name="siteUsage.siteId">
+						<select name="siteOrder.siteId">
 							<c:forEach items="${siteTypes }" var="siteType">
 								<optgroup label="${siteType.type }">
 									<c:forEach items="${sites }" var="site">
@@ -46,18 +40,18 @@
 					</dd>
 				</dl>
 				<dl>
-					<dt>开始使用时间：</dt>
+					<dt>预约开始时间：</dt>
 				
 					<dd>
-						<input type="text" name="siteUsage.stratTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" />
+						<input type="text" name="siteOrder.stratTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 					</dd>
 					
 				</dl>
 				<dl>
-					<dt>结束时间：</dt>
+					<dt>预约结束时间：</dt>
 					<dd>
-						<input type="text" name="siteUsage.endTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" />
+						<input type="text" name="siteOrder.endTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 					</dd>
 					
@@ -65,8 +59,8 @@
 				<dl>
 					<dt>状态</dt>
 					<dd>
-						<select name="siteUsage.statue">
-							<option value="notimeout" >未超时</option>
+						<select name="siteOrder.statue">
+							<option value="unpassed" >未过期</option>
 						</select>
 					</dd>
 					

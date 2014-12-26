@@ -38,14 +38,14 @@
 			<div class="username-text">用户名:</div>
 			<div class="password-text">密码:</div>
 			<div class="username-field">
-				<input type="text" name="manager.account" value="3" placeholder="请输入用户名" />
+				<input type="text" name="manager.account" value="1" placeholder="请输入用户名" />
 			</div>
 			<div class="password-field">
-				<input type="password" name="manager.password" value="3" placeholder="请输入密码" />
+				<input type="password" name="manager.password" value="1" placeholder="请输入密码" />
 			</div>
 			<div class="permission" >
-				<input class="superAdmin" type="radio" name="manager.permission" value="superAdmin" checked="checked"><span>超级管理员</span>
-				<input class="manager" type="radio" name="manager.permission" value="manager" ><span>管理员</span>
+				<input class="superAdmin" type="radio" name="manager.permission" value="superAdmin" ><span>超级管理员</span>
+				<input class="manager" type="radio" name="manager.permission" value="manager" checked="checked" ><span>管理员</span>
 			</div>
 			<!-- <input type="checkbox" name="remember-me" id="remember-me" /><label
 				for="remember-me">记住我</label> -->

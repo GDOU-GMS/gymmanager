@@ -80,6 +80,11 @@ public interface SiteDAO {
 	 * @return
 	 */
 	public abstract int getQueryResultTotalRecord(String name,String type,String statue);
-
+	/**
+	 * 查找指定场地类型的场地
+	 * @param siteTypeId
+	 * @return
+	 */
+	public abstract List<Site> getSiteBySiteTypeId(int typeId);
 	
 }

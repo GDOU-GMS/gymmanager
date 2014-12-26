@@ -5,7 +5,7 @@
 <html>
 <head>
 
-<title>My JSP 'getAllSiteOrder.jsp' starting page</title>
+<title>My JSP 'getAllReserveSiteOrder.jsp' starting page</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -26,13 +26,11 @@
 	</form>
 
 	<div class="pageHeader">
-		<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath }/site/querySiteOrder.action" method="post">
+		<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath }/site/queryReserveSiteOrderPageDate.action" method="post">
 			<div class="searchBar">
 				<table class="searchContent">
 					<tr>
 						<td>场地名称：<input type="text" name="site.name" />
-						</td>
-						<td>用户名称：<input type="text" name="username" />
 						</td>
 						<!-- <td>预约开始时间：<input type="text" name="siteOrder.stratTime" />
 						</td>
@@ -54,8 +52,6 @@
 									<button type="submit">检索</button>
 								</div>
 							</div></li>
-					 <li><a class="button" href="${pageContext.request.contextPath }/manager/advancedSearchSiteOrder.jsp" target="dialog"
-							mask="true" title="查询框"><span>高级检索</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -65,35 +61,25 @@
 		<div class="panelBar">
 			<ul class="toolBar">
 				<li><a class="add"
-					href="${pageContext.request.contextPath }/site/getDataForAddSiteOrder.action"
-					target="navTab"><span>添加</span></a></li>
-				<%-- <li><a class="add"
 					href="${pageContext.request.contextPath }/site/getDataForReserveSiteOrder.action"
-					target="navTab"><span>预留</span></a></li> --%>
+					target="navTab"><span>预留</span></a></li>
 				<li><a class="edit"
-					href="${pageContext.request.contextPath}/site/getDataForUpdateSiteOrder.action?id={siteOrder}"
+					href="${pageContext.request.contextPath}/site/getDataForUpdateReserveSiteOrder.action?id={siteOrder}"
 					target="navTab"><span>修改</span></a></li>
 				<li><a class="delete"
 					href="${pageContext.request.contextPath }/site/deleteSiteOrder.action?id={siteOrder}"
 					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-					<li><a class="delete"
-					href="${pageContext.request.contextPath }/site/dealBreach.action"
-					target="ajaxTodo" title="确定要删除吗?"><span>一键处理失约</span></a></li>
-				<%-- <li><a class="edit"
-					href="${pageContext.request.contextPath}/site/getDataForUpdateSiteOrder.action?id={siteOrder}"
-					target="ajaxTodo"><span>使用</span></a></li> --%>
 			</ul>
 		</div>
 		<table class="table" width="100%" layoutH="138">
 			<thead>
 				<tr>
-					<th width="80">预约ID</th>
-					<th width="80">学号</th>
-					<th width="100">预约用户</th>
-					<th width="120">预约开始时间</th>
-					<th width="120">预约结束时间</th>
-					<th width="120">预定场地</th>
-					<th width="100">预约时间</th>
+					<th width="80">预留ID</th>
+					<th width="100">预留用户</th>
+					<th width="120">预留开始时间</th>
+					<th width="120">预留结束时间</th>
+					<th width="120">预留场地</th>
+					<th width="100">预留时间</th>
 					<th width="100">状态</th>
 					
 				</tr>
@@ -102,11 +88,7 @@
 				<c:forEach items="${page.list }" var="siteOrder">
 					<tr target="siteOrder" rel="${siteOrder.id}">
 						<td>${siteOrder.id }</td>
-						<td>${siteOrder.studentNo }</td>
-						<td>
-							<c:if test="${empty siteOrder.username}">管理员</c:if>
-							<c:if test="${!empty siteOrder.username}">${siteOrder.username }</c:if>
-						</td>
+						<td>管理员</td>
 						<td>${siteOrder.stratTime }</td>
 						<td>${siteOrder.endTime }</td>
 						<td>${siteOrder.sitename }</td>

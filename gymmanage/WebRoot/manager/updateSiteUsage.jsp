@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<title>addSite</title>
+<title>updateSiteUsage</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -19,14 +19,15 @@
 	<div class="pageContent">
 
 		<form method="post"
-			action="${pageContext.request.contextPath }/site/addSiteUsage.action"
+			action="${pageContext.request.contextPath }/site/updateSiteUsage.action"
 			class="pageForm required-validate"
 			onsubmit="return validateCallback(this,navTabAjaxDone)">
 			<div class="pageFormContent nowrap" layoutH="97">
 				<dl>
 					<dt>学生学号</dt>
 					<dd>
-						<input name="studentNo" type="text" class="number required" minlength="12" maxlength="12">
+						<input name="studentNo" type="text" class="number required" minlength="12" maxlength="12" value="${user.studentNo }">
+						<input type="text" name="siteUsage.id" value="${siteUsage.id }" style="display: none;">
 					</dd>
 				</dl>
 				<dl>
@@ -35,9 +36,9 @@
 						<select name="siteUsage.siteId">
 							<c:forEach items="${siteTypes }" var="siteType">
 								<optgroup label="${siteType.type }">
-									<c:forEach items="${sites }" var="site">
-										<c:if test="${siteType.id==site.typeId }">
-											<option value="${site.id }">${site.name }</option>
+									<c:forEach items="${sites }" var="s">
+										<c:if test="${siteType.id==s.typeId }">
+											<option value="${s.id }" <c:if test="${site.id eq s.id }">selected="selected"</c:if>>${s.name }</option>
 										</c:if>
 									</c:forEach>
 								</optgroup>
@@ -49,7 +50,7 @@
 					<dt>开始使用时间：</dt>
 				
 					<dd>
-						<input type="text" name="siteUsage.stratTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" />
+						<input type="text" name="siteUsage.stratTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${stratTime }"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 					</dd>
 					
@@ -57,7 +58,7 @@
 				<dl>
 					<dt>结束时间：</dt>
 					<dd>
-						<input type="text" name="siteUsage.endTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" />
+						<input type="text" name="siteUsage.endTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${endTime }"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 					</dd>
 					
@@ -66,7 +67,7 @@
 					<dt>状态</dt>
 					<dd>
 						<select name="siteUsage.statue">
-							<option value="notimeout" >未超时</option>
+							<option value="${siteUsage.statue }" >未超时</option>
 						</select>
 					</dd>
 					

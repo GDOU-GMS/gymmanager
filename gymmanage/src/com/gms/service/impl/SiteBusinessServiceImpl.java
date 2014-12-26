@@ -134,6 +134,23 @@ public class SiteBusinessServiceImpl {
 		siteOrderDAO.addSiteOrder(siteOrder);
 	}
 	/**
+	 * 管理员预留场地
+	 */
+	public void reserveSiteOrder(SiteOrder siteOrder){
+		siteOrderDAO.reserveSiteOrder(siteOrder);
+	}
+	/**
+	 * 获得所有的预留信息
+	 * @return
+	 */
+	public Page getAllReserveSiteOrderPageDate(int pageNum,int pageSize){
+		int totalRecord = siteOrderDAO.getReserveSiteOrderTotalRecord();
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<SiteOrderVo> list = siteOrderDAO.getAllReserveSiteOrder(page.getStartIndex(), pageSize);
+		page.setList(list);
+		return page;
+	}
+	/**
 	 * 删除场地预约
 	 * 
 	 * @param id
@@ -148,6 +165,13 @@ public class SiteBusinessServiceImpl {
 	 */
 	public void updateSiteOrder(SiteOrder siteOrder) {
 		siteOrderDAO.updateSiteOrder(siteOrder);
+	}
+	/**
+	 * 更新场地预留
+	 * @param siteOrder
+	 */
+	public void updateReserveSiteOrder(SiteOrder siteOrder){
+		siteOrderDAO.updateReserveSiteOrder(siteOrder);
 	}
 	/**
 	 * 获取所有的场地预约
@@ -327,5 +351,84 @@ public class SiteBusinessServiceImpl {
 	public boolean getSiteOrderByTime(Date stratTime,Date endTime,int siteId){
 		return siteOrderDAO.getSiteOrderByTime(stratTime, endTime, siteId);
 	}
+	/**
+	 * 查找指定场地类型的场地
+	 * @param siteTypeId
+	 * @return
+	 */
+	public List<Site> getSiteBySiteTypeId(int typeId){
+		return siteDAO.getSiteBySiteTypeId(typeId);
+	}
+	/**
+	 * 获得指定时间段的场地使用
+	 * @param stratTime
+	 * @param endTime
+	 * @param siteId
+	 * @return 
+	 */
+	public boolean getSiteUsageByTime(Date stratTime,Date endTime,int siteId){
+		return siteUsageDAO.getSiteUsageByTime(stratTime, endTime, siteId);
+	}
 	
+	/**
+	 * 根据id过得场地使用信息
+	 * @param id
+	 * @return
+	 */
+	public SiteUsage getSiteUsageById(int id){
+		return siteUsageDAO.getSiteUsageById(id);
+	}
+	/**
+	 * 处理时间到的场地使用
+	 * @return
+	 */
+	public int dealTimeOutSiteUsage(){
+		return siteUsageDAO.dealTimeOutSiteUsage();
+	}
+	/**
+	 * 删除所有超时的场地使用信息
+	 * @return
+	 */
+	public int deleteAllTimeOutSiteUsage(){
+		return siteUsageDAO.deleteAllTimeOutSiteUsage();
+	}
+	
+	/**
+	 * 查询场地使用信息
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public Page querySiteUsage(String sitename,String username,String statue,int pageNum,int pageSize){
+		if("none".equals(statue)){
+			statue="";
+		}
+		int totalRecord = siteUsageDAO.getQuerySiteUsageTotalRecord(sitename, username, statue);
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<SiteUsageVo> list = siteUsageDAO.querySiteUsage(sitename, username, statue, page.getStartIndex(), pageSize);
+		page.setList(list);
+		return page;
+	}
+	
+	/**
+	 * 查找场地预约
+	 * @param sitename
+	 * @param statue
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public Page queryReserveSiteOrderPageDate(String sitename,String statue,int pageNum,int pageSize){
+		if("none".equals(statue)){
+			statue="";
+		}
+		int totalRecord = siteOrderDAO.getQueryReserveSiteOrderTotalRecord(sitename, statue);
+		Page page = new Page(pageSize, pageNum, totalRecord);
+		List<SiteOrderVo> list = siteOrderDAO.queryReserveSiteOrder(sitename, statue, page.getStartIndex(), pageSize);
+		page.setList(list);
+		return page;
+	}
 }

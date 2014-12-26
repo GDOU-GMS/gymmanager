@@ -71,6 +71,22 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 	}
 
 	/**
+	 * 更新场地预留
+	 * @param siteOrder
+	 */
+	public void updateReserveSiteOrder(SiteOrder siteOrder){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "update tb_siteorder set stratTime=?,endTime=?,siteId=? ,statue=? where id=?";
+			Object params[] = { siteOrder.getStratTime(),
+					siteOrder.getEndTime(), siteOrder.getSiteId(),siteOrder.getStatue(),
+					siteOrder.getId() };
+			qr.update(sql, params);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	/**
 	 * 获得所有预约
 	 * 
 	 * @return
@@ -247,6 +263,46 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	/**
+	 * 查询场地预留信息
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @param startIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public List<SiteOrderVo> queryReserveSiteOrder(String sitename,String statue, int startIndex,int pageSize){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select tb_siteorder.* ,tb_site.name as sitename from tb_siteOrder,tb_site  where  tb_site.id=tb_siteorder.siteid and userId is null and tb_site.name like ? and tb_siteorder.statue like ? limit ?,?";
+			Object params[] = {"%"+sitename+"%",statue+"%",startIndex,pageSize};
+			return (List<SiteOrderVo>)qr.query(sql, params, new BeanListHandler(SiteOrderVo.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	/**
+	 * 获得查询场地预留的总记录数
+	 * @param sitename
+	 * @param username
+	 * @param statue
+	 * @return
+	 */
+	public int getQueryReserveSiteOrderTotalRecord(String sitename,String statue){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select count(*) from tb_siteOrder,tb_site  where  tb_site.id=tb_siteorder.siteid and userId is null and tb_site.name like ? and tb_siteorder.statue like ? ";
+			Object params[] = {"%"+sitename+"%",statue+"%"};
+			long l = (Long) qr.query(sql, params,new ScalarHandler());
+			return (int) l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 	/**
 	 * 获得查询今天的总预约的总记录数
 	 * @param sitename
@@ -342,4 +398,50 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	/**
+	 * 管理员预留场地
+	 */
+	public void reserveSiteOrder(SiteOrder siteOrder){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "insert into tb_siteorder(stratTime,endTime,siteId,Statue,orderTime) values(?,?,?,?,?)";
+			Object params[] = {siteOrder.getStratTime(),siteOrder.getEndTime(),siteOrder.getSiteId(),siteOrder.getStatue(),siteOrder.getOrderTime()};
+			qr.update(sql, params);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+
+	/**
+	 * 获得所有的预留信息
+	 * @return
+	 */
+	public List<SiteOrderVo> getAllReserveSiteOrder(int startIndex,int pageSize){
+		try{
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select tb_siteorder.* ,tb_site.name as sitename from tb_siteOrder,tb_site  where  tb_site.id=tb_siteorder.siteid and userId is null limit ?,?";
+			Object params[] = {startIndex,pageSize};
+			return (List<SiteOrderVo>) qr.query(sql, params,new BeanListHandler(SiteOrderVo.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 * 获得预留场地的总记录数
+	 * @return
+	 */
+	public int getReserveSiteOrderTotalRecord(){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select count(*) from tb_siteOrder where userId is null";
+			long l = (Long)qr.query(sql,new ScalarHandler());
+			return (int)l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 }

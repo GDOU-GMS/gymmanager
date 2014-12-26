@@ -182,4 +182,19 @@ public class SiteDAOImpl implements SiteDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	/**
+	 * 查找指定场地类型的场地
+	 * @param siteTypeId
+	 * @return
+	 */
+	public List<Site> getSiteBySiteTypeId(int typeId){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select from tb_site where typeId=?";
+			return (List<Site>) qr.query(sql, typeId, new BeanListHandler(Site.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
