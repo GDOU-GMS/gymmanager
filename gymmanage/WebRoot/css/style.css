@@ -72,7 +72,10 @@ input {
 /* ------- Body ------- */
 
 body {
-	background: #eeeeee url(../images/bg2.png) top left repeat;
+	/*background: #eeeeee url(../images/bg2.png) top left repeat;*/
+	/*background-color: #eee;*/
+	background: #edf6ff url(../images/body.png) repeat-x 0 0;
+	
 }
 
 
