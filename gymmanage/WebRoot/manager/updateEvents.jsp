@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<title>addSite</title>
+<title>updateEvents</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -13,52 +13,32 @@
 </head>
 
 <body>
-	<h2 class="contentTitle">添加场地预约</h2>
+	<h2 class="contentTitle">修改赛事</h2>
 
 
 	<div class="pageContent">
 
 		<form method="post"
-			action="${pageContext.request.contextPath }/site/updateSiteOrder.action"
+			action="${pageContext.request.contextPath }/events/updateEvents.action"
 			class="pageForm required-validate"
 			onsubmit="return validateCallback(this,navTabAjaxDone)">
 			<div class="pageFormContent nowrap" layoutH="97">
-			<input type="text" name="siteOrder.id" value="${siteOrder.id }" style="display: none">
+			<input type="text" name="events.id" value="${events.id }" style="display: none;">
 				<dl>
-					<dt>学生学号</dt>
+					<dt>赛事名称</dt>
 					<dd>
-						<input name="studentNo" type="text" class="number required" minlength="12" maxlength="12" value="${user.studentNo }">
-					</dd>
-				</dl>
-				<%-- <dl>
-					<dt>选择场地类型</dt>
-					<dd>
-						<select name="siteType">
-							<c:forEach items="${siteTypes }" var="siteType">
-								<option value="${siteType.id}" <c:if test="${siteType.id eq type.id }">selected="selected"</c:if> >${siteType.type}</option>
-							</c:forEach>
-						</select>
+						<input name="events.name" type="text" class="required" value="${events.name }">
 					</dd>
 				</dl>
 				<dl>
 					<dt>选择场地</dt>
 					<dd>
-						<select name="siteOrder.siteId">
-							<c:forEach items="${sites }" var="s">
-								<option value="${s.id}" <c:if test="${s.id eq site.id }">selected="selected"</c:if> >${s.name}</option>
-							</c:forEach>
-						</select>
-					</dd>
-				</dl> --%>
-				<dl>
-					<dt>选择场地</dt>
-					<dd>
-						<select name="siteOrder.siteId">
+						<select name="Events.siteId">
 							<c:forEach items="${siteTypes }" var="siteType">
 								<optgroup label="${siteType.type }">
 									<c:forEach items="${sites }" var="s">
 										<c:if test="${siteType.id==s.typeId }">
-											<option value="${s.id }" <c:if test="${site.id eq s.id }">selected="selected"</c:if>>${s.name }</option>
+											<option value="${s.id }" <c:if test="${events.siteId eq s.id }">selected="selected"</c:if>>${s.name }</option>
 										</c:if>
 									</c:forEach>
 								</optgroup>
@@ -67,27 +47,33 @@
 					</dd>
 				</dl>
 				<dl>
-					<dt>预约开始时间：</dt>
-				
+					<dt>开始时间：</dt>
 					<dd>
-						<input type="text" name="siteOrder.stratTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${stratTime }"/>
+						<input type="text" name="events.startTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${startTime }"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 					</dd>
 					
 				</dl>
 				<dl>
-					<dt>预约结束时间：</dt>
+					<dt>结束时间：</dt>
 					<dd>
-						<input type="text" name="siteOrder.endTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${endTime }"/>
+						<input type="text" name="events.endTime" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" readonly="true" value="${endTime }"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
+					</dd>
+					
+				</dl>
+				<dl>
+					<dt>赛事描述</dt>
+					<dd>
+						<textarea rows="5" cols="50" name="events.description" >${events.description }</textarea>
 					</dd>
 					
 				</dl>
 				<dl>
 					<dt>状态</dt>
 					<dd>
-						<select name="siteOrder.statue">
-							<option value="${siteOrder.statue }" >${siteOrder.statue }</option>
+						<select name="events.statue">
+							<option value="unpassed" >未过期</option>
 						</select>
 					</dd>
 					

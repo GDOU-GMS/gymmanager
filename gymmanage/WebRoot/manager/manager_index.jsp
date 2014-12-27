@@ -177,8 +177,7 @@
 
 							<li><a>赛事管理</a>
 								<ul>
-									<li><a href="#" target="navTab">添加赛事</a></li>
-									<li><a href="#" target="navTab">所有赛事</a></li>
+									<li><a href="${pageContext.request.contextPath }/events/getAllEvents.action" target="navTab" rel="getAllEvents">赛事管理</a></li>
 								</ul></li>
 							<li><a>器材管理</a>
 								<ul>

@@ -16,5 +16,6 @@
 	<include file="user.xml"></include>
 	<include file="site.xml"></include>
 	<include file="manager.xml"></include>
+	<include file="events.xml"></include>
 	
 </struts>

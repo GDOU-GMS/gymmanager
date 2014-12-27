@@ -1,11 +1,12 @@
-package com.gms.domain;
+package com.gms.vo;
 
 import java.util.Date;
 
-public class Events {
+public class EventsVo {
 
 	private int id;
 	private int siteId;
+	private String sitename;
 	private Date startTime;
 	private Date endTime;
 	private String statue;
@@ -37,7 +38,13 @@ public class Events {
 	public void setSiteId(int siteId) {
 		this.siteId = siteId;
 	}
-	
+	public String getSitename() {
+		return sitename;
+	}
+	public void setSitename(String sitename) {
+		this.sitename = sitename;
+	}
+
 	public Date getStartTime() {
 		return startTime;
 	}
