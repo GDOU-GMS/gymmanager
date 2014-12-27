@@ -256,7 +256,7 @@ public class ManagerAction {
 		}
 		
 	}
-	/*
+	/**
 	 * 查询管理员
 	 */
 	public String getManagers(){
@@ -309,6 +309,20 @@ public class ManagerAction {
 	}
 	
 
+	/**
+	 * 管理员退出登录
+	 * @return
+	 */
+	public String logout(){
+		try {
+			ActionContext.getContext().getSession().remove("manager");
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "退出异常！", "", "", "");
+			return "message";
+		}
+	}
 	
 	
 	
