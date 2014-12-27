@@ -35,6 +35,9 @@
 		</action>
 		<action name="deleteManager" class="com.gms.web.action.ManagerAction" method="deleteManager">
 		</action>
+		<action name="logout" class="com.gms.web.action.ManagerAction" method="logout">
+			<result name="success">/manager_login.jsp</result>
+		</action>
 		
 	</package> 
 </struts>

@@ -117,7 +117,7 @@
 				<a class="logo" href="#">标志</a>
 				<ul class="nav">
 					<li><a href="#">欢迎${manager.account }</a></li>
-					<li><a href="#">退出</a></li>
+					<li><a href="${pageContext.request.contextPath }/managerAction/logout.action">退出</a></li>
 				</ul>
 				<ul class="themeList" id="themeList">
 					<li theme="default"><div class="selected">蓝色</div></li>
