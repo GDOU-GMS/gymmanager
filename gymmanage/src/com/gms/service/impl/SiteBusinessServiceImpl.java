@@ -431,4 +431,11 @@ public class SiteBusinessServiceImpl {
 		page.setList(list);
 		return page;
 	}
+	
+	/**
+	 * 处理过期预留，提前10分钟到
+	 */
+	public int dealPassed(){
+		return siteOrderDAO.dealPassed();
+	}
 }

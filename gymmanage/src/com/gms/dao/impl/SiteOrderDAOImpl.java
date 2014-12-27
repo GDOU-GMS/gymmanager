@@ -213,10 +213,28 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 			
 			Date date = new Date();
 			Date passedTime = new Date(date.getTime()+10*60*1000);
-			String sql1 = "select count(*) from tb_siteOrder where stratTime<? and statue='unpassed' ";
+			String sql1 = "select count(*) from tb_siteOrder where stratTime<? and statue='unpassed' and userId is not null ";
 			Object params[] = {passedTime};
 			long l =(Long) qr.query(sql1, params, new ScalarHandler());
-			String sql2 = "update tb_siteorder set statue='passed' where stratTime<? and statue='unpassed'";
+			String sql2 = "update tb_siteorder set statue='passed' where stratTime<? and statue='unpassed' and userId is not null";
+			qr.update(sql2, params);
+			return (int)l;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	/**
+	 * 处理过期预留，提前10分钟到
+	 */
+	public int dealPassed(){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			Date date = new Date();
+			Date passedTime = new Date(date.getTime()+10*60*1000);
+			String sql1 = "select count(*) from tb_siteOrder where stratTime<? and statue='unpassed' and userId is  null ";
+			Object params[] = {passedTime};
+			long l =(Long) qr.query(sql1, params, new ScalarHandler());
+			String sql2 = "update tb_siteorder set statue='passed' where stratTime<? and statue='unpassed' and userId is  null";
 			qr.update(sql2, params);
 			return (int)l;
 		} catch (Exception e) {

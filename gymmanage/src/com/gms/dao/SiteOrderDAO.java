@@ -167,5 +167,9 @@ public interface SiteOrderDAO {
 	 * @param statue
 	 * @return
 	 */
-	public abstract int getQueryReserveSiteOrderTotalRecord(String sitename,String statue);
+	public  int getQueryReserveSiteOrderTotalRecord(String sitename,String statue);
+	/**
+	 * 处理过期预留，提前10分钟到
+	 */
+	public abstract int dealPassed();
 }

@@ -69,6 +69,9 @@
 				<li><a class="delete"
 					href="${pageContext.request.contextPath }/site/deleteSiteOrder.action?id={siteOrder}"
 					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+				<li><a class="delete"
+					href="${pageContext.request.contextPath }/site/dealPassed.action"
+					target="ajaxTodo" title="确定要处理吗?"><span>一键处理过期</span></a></li>
 			</ul>
 		</div>
 		<table class="table" width="100%" layoutH="138">

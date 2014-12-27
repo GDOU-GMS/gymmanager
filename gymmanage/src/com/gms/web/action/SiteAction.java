@@ -671,6 +671,22 @@ public class SiteAction {
 		}
 		return "message";
 	}
+	
+	/**
+	 * 一键处理预留过期
+	 */
+	public String dealPassed(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			int count = service.dealPassed();
+			message = JSONTools.getJSONString("200", "处理成功，一共处理了"+count+"条记录！", "getAllSiteOrder", "", "");
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "处理失败，系统异常！", "", "", "");
+		}
+		return "message";
+	}
+	
 	/**
 	 * 今日预约页面，处理失约
 	 */
@@ -1000,4 +1016,6 @@ public class SiteAction {
 			return  "message";
 		}
 	}
+	
+	
 } 	
