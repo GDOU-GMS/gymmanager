@@ -191,6 +191,10 @@
 									<li><a href="${pageContext.request.contextPath }/manager/updatePassword.jsp" 
 									target="navTab">修改密码</a></li>
 								</ul></li>
+							<li><a href="#">场馆公告</a>
+								<ul>
+									<li><a href="${pageContext.request.contextPath }/notice/getAllNotice.action" target="navTab" rel="getAllNotice">公告管理</a></li>
+								</ul></li>
 							<li><a href="#">其他</a>
 								<ul>
 									<li><a href="#" target="navTab">管内设施惩罚条例</a></li>

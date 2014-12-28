@@ -5,6 +5,8 @@
 
 <struts>
 	<constant name="struts.i18n.encoding" value="UTF-8" />
+	 <constant name="struts.multipart.maxSize" value="10000000"/>
+	 <constant name="struts.multipart.saveDir" value="/tmp"/>
 	
 	<package name="base" extends="struts-default">
 		<global-results>
@@ -17,5 +19,6 @@
 	<include file="site.xml"></include>
 	<include file="manager.xml"></include>
 	<include file="events.xml"></include>
+	<include file="notice.xml"></include>
 	
 </struts>

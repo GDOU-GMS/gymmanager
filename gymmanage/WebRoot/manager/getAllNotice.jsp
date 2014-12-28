@@ -5,7 +5,7 @@
 <html>
 <head>
 
-<title>My JSP 'getAllSiteOrder.jsp' starting page</title>
+<title>My JSP 'getAllNotice.jsp' starting page</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -26,29 +26,27 @@
 	</form>
 
 	<div class="pageHeader">
-		<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath }/events/queryEvents.action" method="post">
+		<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath }/notice/queryNotice.action" method="post">
 			<div class="searchBar">
 				<table class="searchContent">
 					<tr>
-						<td>赛事名称：<input type="text" name="events.name" />
+						<td>公告标题：<input type="text" name="notice.title" />
 						</td>
-						<td>场地名称：<input type="text" name="sitename" />
+						<td>查询时间：<input type="text" name="startTime" class="date" readonly="true"/>
 						</td>
-						<td>状态</td>
-						<td><select class="combox" name="events.statue">
-								<option value="none">--请选择--</option>
-								<option value="unpassed">未过期</option>
-								<option value="passed">已过期</option>
-						</select></td>
+						<td>到：<input type="text" name="endTime" class="date" readonly="true"/>
+						</td>
 					</tr>
 				</table>
 				<div class="subBar">
 					<ul>
-						<li><div class="buttonActive">
+						<li>
+							<div class="buttonActive">
 								<div class="buttonContent">
 									<button type="submit">检索</button>
 								</div>
-							</div></li>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -58,43 +56,36 @@
 		<div class="panelBar">
 			<ul class="toolBar">
 				<li><a class="add"
-					href="${pageContext.request.contextPath }/events/getDataForAddEvents.action"
+					href="${pageContext.request.contextPath }/manager/addNotice.jsp"
 					target="navTab"><span>添加</span></a></li>
 				<li><a class="edit"
-					href="${pageContext.request.contextPath}/events/getDataForUpdateEvents.action?id={events}"
+					href="${pageContext.request.contextPath}/notice/getDataForUpdateNotice.action?id={notice}"
+					rel="updateNotice"
 					target="navTab"><span>修改</span></a></li>
 				<li><a class="delete"
-					href="${pageContext.request.contextPath }/events/deleteEvents.action?id={events}"
+					href="${pageContext.request.contextPath }/notice/deleteNotice.action?id={notice}"
 					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-					<li><a class="delete"
-					href="${pageContext.request.contextPath }/events/dealPassed.action"
-					target="ajaxTodo" title="确定要处理过期吗?"><span>一键处理过期</span></a></li>
 			</ul>
 		</div>
 		<table class="table" width="100%" layoutH="138">
 			<thead>
 				<tr>
-					<th width="60">赛事ID</th>
-					<th width="60">赛事名称</th>
-					<th width="120">赛事时间</th>
-					<th width="80">赛事地点</th>
-					<th width="200">赛事描述</th>
-					<th width="60">状态</th>
+					<th width="60">公告ID</th>
+					<th width="60">公告标题</th>
+					<th width="60">公告内容</th>
+					<th width="60">公告时间</th>
+					<th width="60">查看详情</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${page.list }" var="events">
-					<tr target="events" rel="${events.id}">
-						<td>${events.id }</td>
-						<td>${events.name }</td>
-						<td>${events.startTime }~${events.endTime }</td>
-						<td>${events.sitename }</td>
-						<%-- <td>${events.description }</td> --%>
-						<td><a href="${pageContext.request.contextPath }/events/eventsDescription.action?description=${events.description }" target="dialog">详情(点击查看)</a></td>
-						<td>
-							<c:if test="${events.statue eq 'passed' }" ><p style="color:red;">已过期</p></c:if>
-							<c:if test="${events.statue eq 'unpassed' }"><P>未过期</P></c:if>
-						</td>
+				<c:forEach items="${page.list }" var="notice">
+					<tr target="notice" rel="${notice.id}">
+						<td>${notice.id }</td>
+						<td>${notice.title }</td>
+						<%-- <td>${notice.content }</td> --%>
+						<td>请查看详情</td>
+						<td>${notice.time }</td>
+						<td><a href="${pageContext.request.contextPath }/notice/showNoticeDetail.action?id=${notice.id}" target="navTab" >查看详情</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
