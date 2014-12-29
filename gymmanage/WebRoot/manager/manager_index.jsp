@@ -177,8 +177,7 @@
 
 							<li><a>赛事管理</a>
 								<ul>
-									<li><a href="#" target="navTab">添加赛事</a></li>
-									<li><a href="#" target="navTab">所有赛事</a></li>
+									<li><a href="${pageContext.request.contextPath }/events/getAllEvents.action" target="navTab" rel="getAllEvents">赛事管理</a></li>
 								</ul></li>
 							<li><a>器材管理</a>
 								<ul>
@@ -191,6 +190,10 @@
 									target="navTab"rel="getManagerSelf">个人信息</a></li>
 									<li><a href="${pageContext.request.contextPath }/manager/updatePassword.jsp" 
 									target="navTab">修改密码</a></li>
+								</ul></li>
+							<li><a href="#">场馆公告</a>
+								<ul>
+									<li><a href="${pageContext.request.contextPath }/notice/getAllNotice.action" target="navTab" rel="getAllNotice">公告管理</a></li>
 								</ul></li>
 							<li><a href="#">其他</a>
 								<ul>

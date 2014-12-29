@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="events" namespace="/events" extends="base">
+	
+		<action name="getAllEvents" class="com.gms.web.action.EventsAction" method="getAllEvents">
+			<result name="success">/manager/getAllEvents.jsp</result>
+		</action>
+		<action name="getDataForAddEvents" class="com.gms.web.action.EventsAction" method="getDataForAddEvents">
+			<result name="success">/manager/addEvents.jsp</result>
+		</action>
+		<action name="addEvents" class="com.gms.web.action.EventsAction" method="addEvents">
+		</action>
+		<action name="deleteEvents" class="com.gms.web.action.EventsAction" method="deleteEvents">
+		</action>
+		<action name="dealPassed" class="com.gms.web.action.EventsAction" method="dealPassed">
+		</action>
+		<action name="getDataForUpdateEvents" class="com.gms.web.action.EventsAction" method="getDataForUpdateEvents">
+			<result name="success">/manager/updateEvents.jsp</result>
+		</action>
+		<action name="updateEvents" class="com.gms.web.action.EventsAction" method="updateEvents">
+		</action>
+		<action name="queryEvents" class="com.gms.web.action.EventsAction" method="queryEvents">
+			<result name="success">/manager/getAllEvents.jsp</result>
+		</action>
+		<action name="eventsDescription">
+			<result>/manager/eventsDescription.jsp</result>
+		</action>
+		
+		
+	
+	
+	</package>
+</struts>

@@ -53,7 +53,7 @@
 				<dl>
 					<dt>选择场地</dt>
 					<dd>
-						<select name="siteUsage.siteId">
+						<select name="siteOrder.siteId">
 							<c:forEach items="${siteTypes }" var="siteType">
 								<optgroup label="${siteType.type }">
 									<c:forEach items="${sites }" var="s">

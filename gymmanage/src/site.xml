@@ -67,6 +67,8 @@
 		</action>
 		<action name="dealBreach" class="com.gms.web.action.SiteAction" method="dealBreach">
 		</action>
+		<action name="dealPassed" class="com.gms.web.action.SiteAction" method="dealPassed">
+		</action>
 		<action name="dealBreachByCurrentPage" class="com.gms.web.action.SiteAction" method="dealBreachByCurrentPage">
 		</action>
 		
