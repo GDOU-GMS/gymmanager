@@ -1,5 +1,5 @@
 <c3p0-config>
-	<default-config>
+	<default-config> 
 		<property name="user">root</property>
 		<property name="password">root</property>
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
