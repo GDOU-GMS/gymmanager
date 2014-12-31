@@ -118,7 +118,7 @@
 			<span>条，共${page.totalRecord}条</span>
 		</div>
 		
-		<div class="pagination" targetType="navTab"
+		<div class="pagination" targetType="navTab"|
 				totalCount="${page.totalRecord}" numPerPage="${page.pageSize}"
 				pageNumShown="10" currentPage="${page.pageNum}"></div>
 

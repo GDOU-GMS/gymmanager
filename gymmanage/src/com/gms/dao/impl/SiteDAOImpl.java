@@ -195,6 +195,6 @@ public class SiteDAOImpl implements SiteDAO {
 			return (List<Site>) qr.query(sql, typeId, new BeanListHandler(Site.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
-		}
+		} 
 	}
 }

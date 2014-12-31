@@ -42,7 +42,7 @@
 			<div class="password-text">密码:</div>
 			<div class="username-field">
 				<input type="text" name="manager.account" value="1" placeholder="请输入用户名" />
-			</div>
+			</div> 
 			<div class="password-field">
 				<input type="password" name="manager.password" value="1" placeholder="请输入密码" />
 			</div>
