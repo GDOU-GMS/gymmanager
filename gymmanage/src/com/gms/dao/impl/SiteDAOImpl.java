@@ -191,7 +191,7 @@ public class SiteDAOImpl implements SiteDAO {
 	public List<Site> getSiteBySiteTypeId(int typeId){
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select from tb_site where typeId=?";
+			String sql = "select * from tb_site where typeId=?";
 			return (List<Site>) qr.query(sql, typeId, new BeanListHandler(Site.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
