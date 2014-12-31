@@ -33,7 +33,7 @@
 		</script>
 	</c:if>
 	<div class="top">
-	   <img alt="" src="../images/toplogo3.png"> 
+	   <img alt="" src="${pageContext.request.contextPath }/images/toplogo3.png"> 
 	</div>
 	<div id="container">
 	<div class="login">登录</div>
