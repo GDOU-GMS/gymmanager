@@ -1,16 +1,23 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html>
 
 
 <html>
 
 <head>
+	<base href="<%=basePath%>">
     <meta charset="utf-8" />
     <title>登录</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-
+	
 	<!-- BEGIN GLOBAL MANDATORY STYLES -->
 
 	<link href="${pageContext.request.contextPath }/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
