@@ -125,7 +125,13 @@
 		</action>
 		
 		
-		
+		<!-- client -->
+		<action name="clientGetDataForAddSiteOrder"  class="com.gms.web.action.SiteAction" method="clientGetDataForAddSiteOrder">
+			<result name="unlogin">/client/login.jsp</result>
+			<result name="success">/client/siteOrder.jsp</result>
+		</action>
+		<action name="clientAddSiteOrder"  class="com.gms.web.action.SiteAction" method="clientAddSiteOrder">
+		</action>
 	
 		
 	</package>

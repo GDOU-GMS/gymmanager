@@ -1017,5 +1017,53 @@ public class SiteAction {
 		}
 	}
 	
+	/**
+	 * 用户点击场地预约
+	 * @return
+	 */
+	public String clientGetDataForAddSiteOrder(){
+		try {
+			/*User user = (User)ActionContext.getContext().getSession().get("user");
+			if(user==null){
+				return "unlogin";
+			}else{*/
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			List<Site> sites = service.getAllSite();
+			List<SiteType> siteTypes = service.getAllSiteType();
+			ActionContext.getContext().put("sites", sites);
+			ActionContext.getContext().put("siteTypes", siteTypes);
+			return "success";
+			/*}*/
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "message";
+		}
+	}
+	
+	public String clientAddSiteOrder(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			boolean flat = service.getSiteOrderByTime(siteOrder.getStratTime(), siteOrder.getEndTime(),siteOrder.getSiteId());
+			if(flat==false){
+				message = JSONTools.getJSONString("300", "预约失败，该场地该时间段已经被预约！", "", "", "");
+				return "message";
+			}
+			UserBusinessServiceImpl userService = new UserBusinessServiceImpl();
+			User user = userService.getUserByStudentNo(studentNo);
+			if(user!=null){
+				siteOrder.setUserId(user.getId());
+				Date orderTime = new Date();
+				siteOrder.setOrderTime(orderTime);
+				service.addSiteOrder(siteOrder);
+				message = JSONTools.getJSONString("200", "添加预约成功！", "getAllSiteOrder", "closeCurrent", "");
+			}else{
+				message = JSONTools.getJSONString("300", "预约失败，该用户不存在！", "", "", "");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = JSONTools.getJSONString("300", "预约失败，系统异常！", "", "", "");
+		}
+		return null;
+	}
 	
 } 	

@@ -1,19 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
-    <base href="<%=basePath%>">
     <title>广东海洋大学体育馆</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="author" />
 
@@ -37,17 +27,37 @@
 
 	<!-- END GLOBAL MANDATORY STYLES -->
 
-	<!-- BEGIN PAGE LEVEL STYLES --> 
+	<!-- BEGIN PAGE LEVEL STYLES -->
 
-	<link href="${pageContext.request.contextPath }/media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/bootstrap-fileupload.css" />
 
-	<link href="${pageContext.request.contextPath }/media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/jquery.gritter.css" />
 
-	<link href="${pageContext.request.contextPath }/media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/chosen.css" />
 
-	<link href="${pageContext.request.contextPath }/media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/select2_metro.css" />
 
-	<link href="${pageContext.request.contextPath }/media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/jquery.tagsinput.css" />
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/clockface.css" />
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/bootstrap-wysihtml5.css" />
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/datepicker.css" />
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/timepicker.css" />
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/colorpicker.css" />
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/bootstrap-toggle-buttons.css" />
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/daterangepicker.css" />
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/datetimepicker.css" />
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/multi-select-metro.css" />
+
+	<link href="${pageContext.request.contextPath }/media/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 
 	<!-- END PAGE LEVEL STYLES -->
 
@@ -187,7 +197,7 @@
 
 				</li>
 
-				<li class="start active ">
+				<li class="">
 
 					<a href="#">
 
@@ -195,7 +205,6 @@
 
 					<span class="title">首页</span>
 
-					<span class="selected"></span>
 
 					</a>
 
@@ -234,46 +243,6 @@
 
 						</li>
 
-					<!-- 	<li >
-
-							<a href="layout_ajax.html">
-
-							Content Loading via Ajax</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_sidebar_closed.html">
-
-							Sidebar Closed Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_blank_page.html">
-
-							Blank Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_boxed_page.html">
-
-							Boxed Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_boxed_not_responsive.html">
-
-							Non-Responsive Boxed Layout</a>
-
-						</li>
- -->
 					</ul>
 
 				</li>
@@ -324,65 +293,19 @@
 
 						</li>
 
-						<!-- <li >
-
-							<a href="ui_jqueryui.html">
-
-							jQuery UI Components</a>
-
-						</li>
-
-						<li >
-
-							<a href="ui_sliders.html">
-
-							Sliders</a>
-
-						</li>
-
-						<li >
-
-							<a href="ui_tiles.html">
-
-							Tiles</a>
-
-						</li>
-
-						<li >
-
-							<a href="ui_typography.html">
-
-							Typography</a>
-
-						</li>
-
-						<li >
-
-							<a href="ui_tree.html">
-
-							Tree View</a>
-
-						</li>
-
-						<li >
-
-							<a href="ui_nestable.html">
-
-							Nestable List</a>
-
-						</li>
- -->
 					</ul>
 
 				</li>
 
-				<li class="">
+				<li class=" start active ">
 
 					<a href="javascript:;">
 
 					<i class="icon-qrcode"></i> 
 
 					<span class="title">场地预约</span>
+					
+					<span class="selected"></span>
 
 					<span class="arrow "></span>
 
@@ -392,7 +315,7 @@
 
 						<li >
 
-							<a href="${pageContext.request.contextPath }/site/clientGetDataForAddSiteOrder.action">
+							<a href="#">
 
 							场地预约</a>
 
@@ -406,45 +329,6 @@
 
 						</li>
 
-						<!-- <li >
-
-							<a href="form_component.html">
-
-							Form Components</a>
-
-						</li>
-
-						<li >
-
-							<a href="form_wizard.html">
-
-							Form Wizard</a>
-
-						</li>
-
-						<li >
-
-							<a href="form_validation.html">
-
-							Form Validation</a>
-
-						</li>
-
-						<li >
-
-							<a href="form_fileupload.html">
-
-							Multiple File Upload</a>
-
-						</li>
-
-						<li >
-
-							<a href="form_dropzone.html">
-
-							Dropzone File Upload</a>
-
-						</li> -->
 
 					</ul>
 
@@ -474,85 +358,6 @@
 
 						</li>
 
-						<!-- <li >
-
-							<a href="page_coming_soon.html">
-
-							<i class="icon-cogs"></i>
-
-							Coming Soon</a>
-
-						</li>
-
-						<li >
-
-							<a href="page_blog.html">
-
-							<i class="icon-comments"></i>
-
-							Blog</a>
-
-						</li>
-
-						<li >
-
-							<a href="page_blog_item.html">
-
-							<i class="icon-font"></i>
-
-							Blog Post</a>
-
-						</li>
-
-						<li >
-
-							<a href="page_news.html">
-
-							<i class="icon-coffee"></i>
-
-							News</a>
-
-						</li>
-
-						<li >
-
-							<a href="page_news_item.html">
-
-							<i class="icon-bell"></i>
-
-							News View</a>
-
-						</li>
-
-						<li >
-
-							<a href="page_about.html">
-
-							<i class="icon-group"></i>
-
-							About Us</a>
-
-						</li>
-
-						<li >
-
-							<a href="page_contact.html">
-
-							<i class="icon-envelope-alt"></i>
-
-							Contact Us</a>
-
-						</li>
-
-						<li >
-
-							<a href="page_calendar.html">
-
-							<i class="icon-calendar"></i>
-
-							Calendar</a>
-
-						</li> -->
 
 					</ul>
 
@@ -580,101 +385,6 @@
 
 						</li>
 
-						<!-- <li >
-
-							<a href="extra_lock.html">
-
-							Lock Screen</a>
-
-						</li>
-
-						<li >
-
-							<a href="extra_faq.html">
-
-							FAQ</a>
-
-						</li>
-
-						<li >
-
-							<a href="inbox.html">
-
-							Inbox</a>
-
-						</li>
-
-						<li >
-
-							<a href="extra_search.html">
-
-							Search Results</a>
-
-						</li>
-
-						<li >
-
-							<a href="extra_invoice.html">
-
-							Invoice</a>
-
-						</li>
-
-						<li >
-
-							<a href="extra_pricing_table.html">
-
-							Pricing Tables</a>
-
-						</li>
-
-						<li >
-
-							<a href="extra_image_manager.html">
-
-							Image Manager</a>
-
-						</li>
-
-						<li >
-
-							<a href="extra_404_option1.html">
-
-							404 Page Option 1</a>
-
-						</li>
-
-						<li >
-
-							<a href="extra_404_option2.html">
-
-							404 Page Option 2</a>
-
-						</li>
-
-						<li >
-
-							<a href="extra_404_option3.html">
-
-							404 Page Option 3</a>
-
-						</li>
-
-						<li >
-
-							<a href="extra_500_option1.html">
-
-							500 Page Option 1</a>
-
-						</li>
-
-						<li >
-
-							<a href="extra_500_option2.html">
-
-							500 Page Option 2</a>
-
-						</li> -->
 
 					</ul>
 
@@ -761,107 +471,6 @@
 
 				</li>
 
-				<!-- <li>
-
-					<a href="javascript:;">
-
-					<i class="icon-folder-open"></i> 
-
-					<span class="title">4 Level Menu</span>
-
-					<span class="arrow "></span>
-
-					</a>
-
-					<ul class="sub-menu">
-
-						<li>
-
-							<a href="javascript:;">
-
-							<i class="icon-cogs"></i> 
-
-							Item 1
-
-							<span class="arrow"></span>
-
-							</a>
-
-							<ul class="sub-menu">
-
-								<li>
-
-									<a href="javascript:;">
-
-									<i class="icon-user"></i>
-
-									Sample Link 1
-
-									<span class="arrow"></span>
-
-									</a>
-
-									<ul class="sub-menu">
-
-										<li><a href="#"><i class="icon-remove"></i> Sample Link 1</a></li>
-
-										<li><a href="#"><i class="icon-pencil"></i> Sample Link 1</a></li>
-
-										<li><a href="#"><i class="icon-edit"></i> Sample Link 1</a></li>
-
-									</ul>
-
-								</li>
-
-								<li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
-
-								<li><a href="#"><i class="icon-external-link"></i>  Sample Link 2</a></li>
-
-								<li><a href="#"><i class="icon-bell"></i>  Sample Link 3</a></li>
-
-							</ul>
-
-						</li>
-
-						<li>
-
-							<a href="javascript:;">
-
-							<i class="icon-globe"></i> 
-
-							Item 2
-
-							<span class="arrow"></span>
-
-							</a>
-
-							<ul class="sub-menu">
-
-								<li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
-
-								<li><a href="#"><i class="icon-external-link"></i>  Sample Link 1</a></li>
-
-								<li><a href="#"><i class="icon-bell"></i>  Sample Link 1</a></li>
-
-							</ul>
-
-						</li>
-
-						<li>
-
-							<a href="#">
-
-							<i class="icon-folder-open"></i>
-
-							Item 3
-
-							</a>
-
-						</li>
-
-					</ul>
-
-				</li> -->
 
 				<li class="">
 
@@ -904,143 +513,6 @@
 
 				</li>
 
-				<!-- <li class="">
-
-					<a href="javascript:;">
-
-					<i class="icon-th"></i> 
-
-					<span class="title">Data Tables</span>
-
-					<span class="arrow "></span>
-
-					</a>
-
-					<ul class="sub-menu">
-
-						<li >
-
-							<a href="table_basic.html">
-
-							Basic Tables</a>
-
-						</li>
-
-						<li >
-
-							<a href="table_responsive.html">
-
-							Responsive Tables</a>
-
-						</li>
-
-						<li >
-
-							<a href="table_managed.html">
-
-							Managed Tables</a>
-
-						</li>
-
-						<li >
-
-							<a href="table_editable.html">
-
-							Editable Tables</a>
-
-						</li>
-
-						<li >
-
-							<a href="table_advanced.html">
-
-							Advanced Tables</a>
-
-						</li>
-
-					</ul>
-
-				</li> -->
-
-				<!-- <li class="">
-
-					<a href="javascript:;">
-
-					<i class="icon-file-text"></i> 
-
-					<span class="title">Portlets</span>
-
-					<span class="arrow "></span>
-
-					</a>
-
-					<ul class="sub-menu">
-
-						<li >
-
-							<a href="portlet_general.html">
-
-							General Portlets</a>
-
-						</li>
-
-						<li >
-
-							<a href="portlet_draggable.html">
-
-							Draggable Portlets</a>
-
-						</li>
-
-					</ul>
-
-				</li> -->
-
-				<!-- <li class="">
-
-					<a href="javascript:;">
-
-					<i class="icon-map-marker"></i> 
-
-					<span class="title">Maps</span>
-
-					<span class="arrow "></span>
-
-					</a>
-
-					<ul class="sub-menu">
-
-						<li >
-
-							<a href="maps_google.html">
-
-							Google Maps</a>
-
-						</li>
-
-						<li >
-
-							<a href="maps_vector.html">
-
-							Vector Maps</a>
-
-						</li>
-
-					</ul>
-
-				</li>
-
-				<li class="last ">
-
-					<a href="charts.html">
-
-					<i class="icon-bar-chart"></i> 
-
-					<span class="title">Visual Charts</span>
-
-					</a>
-
-				</li> -->
 
 			</ul>
 
@@ -1178,13 +650,13 @@
 
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 
-						<h3 class="page-title">
+						<h3 class="page-title" style="font-family: 微软雅黑;">
 
-							Dashboard <small>statistics and more</small>
+							场地预约 <small>请认真填写预约表单</small>
 
 						</h3>
 
-						<ul class="breadcrumb">
+						<!-- <ul class="breadcrumb">
 
 							<li>
 
@@ -1198,21 +670,8 @@
 
 							<li><a href="#">Dashboard</a></li>
 
-							<!-- <li class="pull-right no-text-shadow">
 
-								<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
-
-									<i class="icon-calendar"></i>
-
-									<span></span>
-
-									<i class="icon-angle-down"></i>
-
-								</div>
-
-							</li> -->
-
-						</ul>
+						</ul> -->
 
 						<!-- END PAGE TITLE & BREADCRUMB-->
 
@@ -1221,10 +680,114 @@
 				</div>
 
 				<!-- END PAGE HEADER-->
+				
+				<!-- BEGIN PAGE CONTENT-->
 
-				<div id="dashboard">
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN PORTLET-->   
+
+						<div class="portlet box blue">
+
+							<div class="portlet-title">
+
+								<div class="caption"><i class="icon-reorder"></i>场地预约表单</div>
+
+
+							</div>
+
+							<div class="portlet-body form">
+
+								<!-- BEGIN FORM-->
+
+								<form action="${pageContext.request.contextPath }/site/clientAddSiteOrder.action" class="form-horizontal">
+								
+								<div class="control-group">
+
+										<label class="control-label">选择场地</label>
+
+										<div class="controls">
+
+											<select class="span3 m-wrap" data-placeholder="Choose a Category" tabindex="1" name="siteOrder.siteId">
+
+												<c:forEach items="${siteTypes }" var="siteType">
+													<optgroup label="${siteType.type }">
+														<c:forEach items="${sites }" var="site">
+															<c:if test="${siteType.id==site.typeId }">
+																<option value="${site.id }">${site.name }</option>
+															</c:if>
+														</c:forEach>
+													</optgroup>
+												</c:forEach>
+												
+											</select>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">预约开始时间</label>
+
+										<div class="controls">
+
+											<div class="input-append date form_datetime">
+
+												<input size="16" type="text" value="" readonly class="m-wrap" name="siteOrder.stratTime">
+
+												<span class="add-on"><i class="icon-calendar"></i></span>
+
+											</div>
+
+										</div>
+									</div>
+										<div class="control-group">
+
+										<label class="control-label">预约结束时间</label>
+
+										<div class="controls">
+
+											<div class="input-append date form_datetime">
+
+												<input size="16" type="text" value="" readonly class="m-wrap" name="siteOrder.endTime">
+
+												<span class="add-on"><i class="icon-calendar"></i></span>
+
+											</div>
+
+										</div>
+
+									</div>
+									<div class="form-actions">
+
+										<button type="submit" class="btn blue">提交</button>
+
+										<button type="button" class="btn">取消</button>                            
+
+									</div>
+								</form>
+
+								
+
+								<!-- END FORM-->  
+
+							</div>
+
+						</div>
+
+						<!-- END PORTLET-->
+
+					</div>
 
 				</div>
+
+			</div>
+		</div>
+	</div>
+				<!-- END PAGE CONTENT-->   
 
 	<!-- END CONTAINER -->
 
@@ -1286,73 +849,71 @@
 
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.js" type="text/javascript"></script>   
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/ckeditor.js"></script>  
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.russia.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-fileupload.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.world.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/chosen.jquery.min.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.europe.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/select2.min.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.germany.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/wysihtml5-0.3.0.js"></script> 
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.usa.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-wysihtml5.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.sampledata.js" type="text/javascript"></script>  
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/jquery.tagsinput.min.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.flot.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/jquery.toggle.buttons.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.flot.resize.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-datepicker.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.pulsate.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-datetimepicker.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/date.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/clockface.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/daterangepicker.js" type="text/javascript"></script>     
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/date.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.gritter.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/daterangepicker.js"></script> 
 
-	<script src="${pageContext.request.contextPath }/media/js/fullcalendar.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-colorpicker.js"></script>  
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.easy-pie-chart.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-timepicker.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/jquery.sparkline.min.js" type="text/javascript"></script>  
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/jquery.inputmask.bundle.min.js"></script>   
+
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/jquery.input-ip-address-control-1.0.min.js"></script>
+
+	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/jquery.multi-select.js"></script>   
+
+	<script src="${pageContext.request.contextPath }/media/js/bootstrap-modal.js" type="text/javascript" ></script>
+
+	<script src="${pageContext.request.contextPath }/media/js/bootstrap-modalmanager.js" type="text/javascript" ></script> 
 
 	<!-- END PAGE LEVEL PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 
-	<script src="${pageContext.request.contextPath }/media/js/app.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath }/media/js/app.js"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/index.js" type="text/javascript"></script>        
+	<script src="${pageContext.request.contextPath }/media/js/form-components.js"></script>     
 
-	<!-- END PAGE LEVEL SCRIPTS -->  
+	<!-- END PAGE LEVEL SCRIPTS -->
 
 	<script>
 
-		jQuery(document).ready(function() {    
+		jQuery(document).ready(function() {       
 
-		   App.init(); // initlayout and core plugins
+		   // initiate layout and plugins
 
-		   Index.init();
+		   App.init();
 
-		   Index.initJQVMAP(); // init index page's custom scripts
-
-		   Index.initCalendar(); // init index page's custom scripts
-
-		   Index.initCharts(); // init index page's custom scripts
-
-		   Index.initChat();
-
-		   Index.initMiniCharts();
-
-		   Index.initDashboardDaterange();
-
-		   Index.initIntro();
+		   FormComponents.init();
 
 		});
 
 	</script>
+
+	<!-- END JAVASCRIPTS -->  
 
 	<!-- END JAVASCRIPTS -->
 

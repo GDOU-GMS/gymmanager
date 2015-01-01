@@ -37,6 +37,7 @@ public class CheckManagerLoginFilter implements Filter {
 		if(manager==null){
 			//request.setAttribute("message", "���ȵ�¼��");
 			request.getRequestDispatcher("/manager_login.jsp").forward(request, response);
+			//response.sendRedirect("manager_login.jsp");
 			return;
 		}else{
 			
