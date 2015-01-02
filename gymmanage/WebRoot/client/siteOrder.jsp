@@ -357,7 +357,7 @@
 
 						<li >
 
-							<a href="page_timeline.html">
+							<a href="${pageContext.request.contextPath}/client/gymNews.jsp">
 
 							<!-- <i class="icon-time"></i> -->
 
