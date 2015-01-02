@@ -11,6 +11,7 @@
 	<package name="base" extends="struts-default">
 		<global-results>
 			<result name="message">/message.jsp</result>
+			<result name="error">/error.jsp</result>
 		</global-results>
 	</package>
 	

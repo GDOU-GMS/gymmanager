@@ -1023,47 +1023,78 @@ public class SiteAction {
 	 */
 	public String clientGetDataForAddSiteOrder(){
 		try {
-			/*User user = (User)ActionContext.getContext().getSession().get("user");
+			User user = (User)ActionContext.getContext().getSession().get("user");
 			if(user==null){
 				return "unlogin";
-			}else{*/
+			}else{
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			List<Site> sites = service.getAllSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);
 			return "success";
-			/*}*/
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "message";
+			return "error";
 		}
 	}
 	
+	/**
+	 * 用户添加场地预约
+	 * @return
+	 */
 	public String clientAddSiteOrder(){
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			boolean flat = service.getSiteOrderByTime(siteOrder.getStratTime(), siteOrder.getEndTime(),siteOrder.getSiteId());
 			if(flat==false){
-				message = JSONTools.getJSONString("300", "预约失败，该场地该时间段已经被预约！", "", "", "");
-				return "message";
+				ActionContext.getContext().put("message", "抱歉，预约失败，该场地已经被预约！");
+				return "error";
 			}
-			UserBusinessServiceImpl userService = new UserBusinessServiceImpl();
-			User user = userService.getUserByStudentNo(studentNo);
-			if(user!=null){
-				siteOrder.setUserId(user.getId());
-				Date orderTime = new Date();
-				siteOrder.setOrderTime(orderTime);
-				service.addSiteOrder(siteOrder);
-				message = JSONTools.getJSONString("200", "添加预约成功！", "getAllSiteOrder", "closeCurrent", "");
-			}else{
-				message = JSONTools.getJSONString("300", "预约失败，该用户不存在！", "", "", "");
-			}
+			int userId = ((User)ActionContext.getContext().getSession().get("user")).getId();
+			siteOrder.setUserId(userId);
+			siteOrder.setStatue("unpassed");
+			siteOrder.setOrderTime(new Date());
+			service.addSiteOrder(siteOrder);
+			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "预约失败，系统异常！", "", "", "");
+			ActionContext.getContext().put("message", "抱歉，系统异常，我们会尽快维护！");
+			return "error";
 		}
-		return null;
 	}
 	
+	/**
+	 * 获得收费标准数据
+	 * @return
+	 */
+	public String clientGetFeeScale(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			List<Site> sites = service.getAllSite();
+			List<SiteType> siteTypes = service.getAllSiteType();
+			ActionContext.getContext().put("sites", sites);
+			ActionContext.getContext().put("siteTypes", siteTypes);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			ActionContext.getContext().put("message", "抱歉，系统异常，我们会尽快维护！");
+			return "error";
+		}
+	}
+	
+	/**
+	 * 获得我的预约的数据
+	 * @return
+	 */
+	public String clientGetMySiteOrderData(){
+		try {
+			return  "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			ActionContext.getContext().put("message", "抱歉，系统异常，我们会尽快维护！");
+			return "error";
+		}
+	}
 } 	

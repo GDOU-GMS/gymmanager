@@ -27,37 +27,19 @@
 
 	<!-- END GLOBAL MANDATORY STYLES -->
 
-	<!-- BEGIN PAGE LEVEL STYLES -->
+	<!-- BEGIN PAGE LEVEL STYLES --> 
+	
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/media/css/DT_bootstrap.css" />
 
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/bootstrap-fileupload.css" />
+	<link href="${pageContext.request.contextPath }/media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
 
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/jquery.gritter.css" />
+	<link href="${pageContext.request.contextPath }/media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
 
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/chosen.css" />
+	<link href="${pageContext.request.contextPath }/media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
 
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/select2_metro.css" />
+	<link href="${pageContext.request.contextPath }/media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
 
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/jquery.tagsinput.css" />
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/clockface.css" />
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/bootstrap-wysihtml5.css" />
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/datepicker.css" />
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/timepicker.css" />
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/colorpicker.css" />
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/bootstrap-toggle-buttons.css" />
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/daterangepicker.css" />
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/datetimepicker.css" />
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/media/css/multi-select-metro.css" />
-
-	<link href="${pageContext.request.contextPath }/media/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
+	<link href="${pageContext.request.contextPath }/media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
 
 	<!-- END PAGE LEVEL STYLES -->
 
@@ -66,12 +48,6 @@
   </head>
   
  <body class="page-header-fixed">
-
-	<c:if test="${!empty message}">
-		<script type="text/javascript">
-			alert("${message}");
-		</script>
-	</c:if>
 
 	<!-- BEGIN HEADER -->
 
@@ -211,6 +187,7 @@
 
 					<span class="title">首页</span>
 
+					
 
 					</a>
 
@@ -303,7 +280,7 @@
 
 				</li>
 
-				<li class=" start active ">
+				<li class="start active ">
 
 					<a href="javascript:;">
 
@@ -321,7 +298,7 @@
 
 						<li >
 
-							<a href="#">
+							<a href="${pageContext.request.contextPath }/site/clientGetDataForAddSiteOrder.action">
 
 							场地预约</a>
 
@@ -329,7 +306,7 @@
 
 						<li >
 
-							<a href="#">
+							<a href="${pageContext.request.contextPath }/site/clientGetFeeScale.action">
 
 							收费标准</a>
 
@@ -519,7 +496,6 @@
 
 				</li>
 
-
 			</ul>
 
 			<!-- END SIDEBAR MENU -->
@@ -658,26 +634,9 @@
 
 						<h3 class="page-title" style="font-family: 微软雅黑;">
 
-							场地预约 <small>请认真填写预约表单</small>
+							收费标准
 
 						</h3>
-
-						<!-- <ul class="breadcrumb">
-
-							<li>
-
-								<i class="icon-home"></i>
-
-								<a href="index.html">Home</a> 
-
-								<i class="icon-angle-right"></i>
-
-							</li>
-
-							<li><a href="#">Dashboard</a></li>
-
-
-						</ul> -->
 
 						<!-- END PAGE TITLE & BREADCRUMB-->
 
@@ -687,113 +646,83 @@
 
 				<!-- END PAGE HEADER-->
 				
-				<!-- BEGIN PAGE CONTENT-->
+
+				<!-- BEGIN PAGE CONTENT-->          
 
 				<div class="row-fluid">
 
-					<div class="span12">
+					<div class="span1"></div>
+					<div class="span10">
 
-						<!-- BEGIN PORTLET-->   
+						<!-- BEGIN SAMPLE TABLE PORTLET-->
+							
+					<c:forEach items="${siteTypes }" var="siteType">
+							<div class="portlet box blue">
+								<div class="portlet-title">
 
-						<div class="portlet box blue">
+									<div class="caption">
+										<i class="icon-cogs"></i>${siteType.type }
+									</div>
 
-							<div class="portlet-title">
+								</div>
 
-								<div class="caption"><i class="icon-reorder"></i>场地预约表单</div>
+								<div class="portlet-body">
+									<table class="table table-hover">
+										<thead>
 
+											<tr>
 
+												<th>#</th>
+
+												<th>场地名称</th>
+
+												<th>收费标准(￥/h)</th>
+
+												<th>Status</th>
+
+											</tr>
+											<c:forEach items="${sites }" var="site">
+												<tbody>
+													<c:if test="${siteType.id == site.typeId }">
+															<tr>
+
+																<th>#</th>
+				
+																<th>${site.name }</th>
+				
+																<th>${site.feeScale }</th>
+				
+																<th>
+																	<c:if test="${site.statue eq 'deleted' }">
+																		<span class="label label-warning">不可使用</span>
+																	</c:if>
+																	<c:if test="${site.statue eq 'undeleted' }">
+																		<span class="label label-success">可以使用</span>
+																	</c:if>
+													
+																</th>
+				
+															</tr>
+													</c:if>
+												</tbody>
+											</c:forEach>
+
+										</thead>
+									
+									</table>
+								</div>
 							</div>
-
-							<div class="portlet-body form">
-
-								<!-- BEGIN FORM-->
-
-								<form action="${pageContext.request.contextPath }/site/clientAddSiteOrder.action" class="form-horizontal">
-								
-								<div class="control-group">
-
-										<label class="control-label">选择场地</label>
-
-										<div class="controls">
-
-											<select class="span3 m-wrap" data-placeholder="Choose a Category" tabindex="1" name="siteOrder.siteId">
-
-												<c:forEach items="${siteTypes }" var="siteType">
-													<optgroup label="${siteType.type }">
-														<c:forEach items="${sites }" var="site">
-															<c:if test="${siteType.id==site.typeId }">
-																<option value="${site.id }">${site.name }</option>
-															</c:if>
-														</c:forEach>
-													</optgroup>
-												</c:forEach>
-												
-											</select>
-
-										</div>
-
-									</div>
-
-									<div class="control-group">
-
-										<label class="control-label">预约开始时间</label>
-
-										<div class="controls">
-
-											<div class="input-append date form_datetime">
-
-												<input size="16" type="text" value="" readonly class="m-wrap" name="siteOrder.stratTime">
-
-												<span class="add-on"><i class="icon-calendar"></i></span>
-
-											</div>
-
-										</div>
-									</div>
-										<div class="control-group">
-
-										<label class="control-label">预约结束时间</label>
-
-										<div class="controls">
-
-											<div class="input-append date form_datetime">
-
-												<input size="16" type="text" value="" readonly class="m-wrap" name="siteOrder.endTime">
-
-												<span class="add-on"><i class="icon-calendar"></i></span>
-
-											</div>
-
-										</div>
-
-									</div>
-									<div class="form-actions">
-
-										<button type="submit" class="btn blue">提交</button>
-
-										<button type="button" class="btn">取消</button>                            
-
-									</div>
-								</form>
-
-								
-
-								<!-- END FORM-->  
-
-							</div>
-
-						</div>
-
-						<!-- END PORTLET-->
+						</c:forEach>
 
 					</div>
 
 				</div>
 
+						<!-- END SAMPLE TABLE PORTLET-->
+
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-				<!-- END PAGE CONTENT-->   
 
 	<!-- END CONTAINER -->
 
@@ -855,71 +784,73 @@
 
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/ckeditor.js"></script>  
+	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.js" type="text/javascript"></script>   
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-fileupload.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.russia.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/chosen.jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.world.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/select2.min.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.europe.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/wysihtml5-0.3.0.js"></script> 
+	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.germany.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-wysihtml5.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.usa.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/jquery.tagsinput.min.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/jquery.vmap.sampledata.js" type="text/javascript"></script>  
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/jquery.toggle.buttons.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/jquery.flot.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-datepicker.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/jquery.flot.resize.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-datetimepicker.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/jquery.pulsate.min.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/clockface.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/date.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/date.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/daterangepicker.js" type="text/javascript"></script>     
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/daterangepicker.js"></script> 
+	<script src="${pageContext.request.contextPath }/media/js/jquery.gritter.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-colorpicker.js"></script>  
+	<script src="${pageContext.request.contextPath }/media/js/fullcalendar.min.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/bootstrap-timepicker.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/jquery.easy-pie-chart.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/jquery.inputmask.bundle.min.js"></script>   
-
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/jquery.input-ip-address-control-1.0.min.js"></script>
-
-	<script type="text/javascript" src="${pageContext.request.contextPath }/media/js/jquery.multi-select.js"></script>   
-
-	<script src="${pageContext.request.contextPath }/media/js/bootstrap-modal.js" type="text/javascript" ></script>
-
-	<script src="${pageContext.request.contextPath }/media/js/bootstrap-modalmanager.js" type="text/javascript" ></script> 
+	<script src="${pageContext.request.contextPath }/media/js/jquery.sparkline.min.js" type="text/javascript"></script>  
 
 	<!-- END PAGE LEVEL PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 
-	<script src="${pageContext.request.contextPath }/media/js/app.js"></script>
+	<script src="${pageContext.request.contextPath }/media/js/app.js" type="text/javascript"></script>
 
-	<script src="${pageContext.request.contextPath }/media/js/form-components.js"></script>     
+	<script src="${pageContext.request.contextPath }/media/js/index.js" type="text/javascript"></script>        
 
-	<!-- END PAGE LEVEL SCRIPTS -->
+	<!-- END PAGE LEVEL SCRIPTS -->  
 
 	<script>
 
-		jQuery(document).ready(function() {       
+		jQuery(document).ready(function() {    
 
-		   // initiate layout and plugins
+		   App.init(); // initlayout and core plugins
 
-		   App.init();
+		   Index.init();
 
-		   FormComponents.init();
+		   Index.initJQVMAP(); // init index page's custom scripts
+
+		   Index.initCalendar(); // init index page's custom scripts
+
+		   Index.initCharts(); // init index page's custom scripts
+
+		   Index.initChat();
+
+		   Index.initMiniCharts();
+
+		   Index.initDashboardDaterange();
+
+		   Index.initIntro();
 
 		});
 
 	</script>
-
-	<!-- END JAVASCRIPTS -->  
 
 	<!-- END JAVASCRIPTS -->
 
