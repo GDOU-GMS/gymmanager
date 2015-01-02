@@ -17,6 +17,9 @@
 		<action name="getUserSelf" class="com.gms.web.action.UserAction" method="getUserSelf">
 			<result name="success">/client/selfInfo.jsp</result>
 		</action>
+		<action name="login" class="com.gms.web.action.UserAction" method="login">
+		
+		</action>
 	</package>
   
 

@@ -211,7 +211,7 @@
 
 		<!-- BEGIN REGISTRATION FORM -->
 
-		<form class="form-vertical register-form" action="index.html">
+		<form class="form-vertical register-form" action="${pageContext.request.contextPath }/user/login.action">
 
 			<h3 class="">Sign Up</h3>
 

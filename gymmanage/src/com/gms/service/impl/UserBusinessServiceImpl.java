@@ -68,5 +68,15 @@ public class UserBusinessServiceImpl {
 		page.setList(list);
 		return page;
 	}
+	
+	/**
+	 * 校验用户登录
+	 * @param studentNo
+	 * @param password
+	 * @return
+	 */
+	public  User checkLogin(int studentNo,String password){
+		return userDAO.checkLogin(studentNo, password);
+	}
 }
 

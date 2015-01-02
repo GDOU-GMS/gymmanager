@@ -79,77 +79,70 @@ public class UserAction {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getAcademy() {
 		return academy;
 	}
-
 	public void setAcademy(String academy) {
 		this.academy = academy;
 	}
-
 	public User getUser() {
 		return user;
 	}
-
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	
 	/**
 	 * 获得所有用户
-	 * 
 	 * @return
 	 */
-	public String getAllUsers() {
-		// try{
-		// map=new HashMap<String,Object>();
-		// UserBusinessServiceImpl service=new UserBusinessServiceImpl();
-		// listUsers=service.getAllUsers();
-		// return "success";
-		// }catch(Exception e){
-		// e.printStackTrace();
-		// return "error";
-		// }
-		try {
-			UserBusinessServiceImpl service = new UserBusinessServiceImpl();
-			Page page = service.getAllUsersPageDate(pageNum, numPerPage);
-			ActionContext.getContext().put("page", page);
-			return "success";
-		} catch (Exception e) {
-			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "查询失败", "", "", "");
-			return "message";
-		}
-	}
-
+	 public String  getAllUsers(){
+//	    	try{
+//	    	map=new HashMap<String,Object>();
+//	    	UserBusinessServiceImpl service=new UserBusinessServiceImpl();
+//	    	listUsers=service.getAllUsers();
+//	    	return "success";
+//	    	}catch(Exception e){
+//	    		e.printStackTrace();
+//	    		return "error";
+//	    	}
+		 try {
+				UserBusinessServiceImpl service = new UserBusinessServiceImpl();
+				Page page = service.getAllUsersPageDate(pageNum, numPerPage);
+				ActionContext.getContext().put("page", page);
+				return "success";
+			} catch (Exception e) {
+				e.printStackTrace();
+				message = JSONTools.getJSONString("300", "查询失败", "", "", "");
+				return "message";
+			}
+	    }
+	
 	/**
 	 * 条件查询获得用户
-	 * 
 	 * @return
 	 */
-	public String getUsers() {
-		try {
-			map = new HashMap<String, Object>();
-			if (studentNo == null) {
-				studentNo = "";
-			}
-			if (name == null) {
-				name = "";
-			}
-			if (academy == null) {
-				academy = "";
-			}
-			// UserBusinessServiceImpl service=new UserBusinessServiceImpl();
-			// listUsers=service.getUsers(studentNo, name, academy);
-			// return "success";
-			// }catch(Exception e){
-			// e.printStackTrace();
-			// return "error";
-			// }
+    public String  getUsers(){
+    	try{
+	    	map=new HashMap<String,Object>();
+	    	if(studentNo==null){
+	    		studentNo="";
+	    	}
+	    	if(name==null){
+	    		name="";
+	    	}
+	    	if(academy==null){
+	    		academy="";
+	    	}
+//    	UserBusinessServiceImpl service=new UserBusinessServiceImpl();
+//    	listUsers=service.getUsers(studentNo, name, academy);
+//    	return "success";
+//    	}catch(Exception e){
+//    		e.printStackTrace();
+//    		return "error";
+//    	}
 			UserBusinessServiceImpl service = new UserBusinessServiceImpl();
-			Page page = service.getUsersPageDate(pageNum, numPerPage,
-					studentNo, name, academy);
+			Page page = service.getUsersPageDate(pageNum,numPerPage, studentNo, name, academy);
 			ActionContext.getContext().put("page", page);
 			return "success";
 		} catch (Exception e) {
@@ -157,92 +150,97 @@ public class UserAction {
 			message = JSONTools.getJSONString("300", "查询失败", "", "", "");
 			return "message";
 		}
-
-	}
-
-	/**
-	 * 删除用户
-	 * 
-	 * @return
-	 * @throws IOException
-	 */
-	public String deleteUser() throws IOException {
-
-		// HttpServletResponse response=ServletActionContext.getResponse();
-		// PrintWriter out = response.getWriter();
-		try {
-			ActionContext ctx = ActionContext.getContext();
+		
+    }
+    /**
+     * 删除用户
+     * @return
+     * @throws IOException
+     */
+    public String deleteUser() throws IOException{
+    
+//    	 HttpServletResponse response=ServletActionContext.getResponse();
+//    	 PrintWriter out = response.getWriter(); 
+    	try{
+    		ActionContext ctx = ActionContext.getContext();
+	    	UserBusinessServiceImpl service=new UserBusinessServiceImpl();
+	    	boolean flag=service.deleteUser(id);
+	    	message = JSONTools.getJSONString("200", "删除成功", "getAllUsers","", "");
+    	}catch(Exception e){
+    		e.printStackTrace();
+			message = JSONTools.getJSONString("300", "删除失败","", "", "");
+    	}
+    	return "message";
+    
+    }
+    /**
+     * 更新用户
+     * @return
+     */
+    public String updateUser(){
+    	try{
+	    	UserBusinessServiceImpl userBusinessServiceImpl=new UserBusinessServiceImpl();
+	    	userBusinessServiceImpl.updateUser(user);
+	    	message=JSONTools.getJSONString("200","更新成功", "getUsers","closeCurrent", "");
+	    	
+    	}catch(Exception e){
+    		
+    		message=JSONTools.getJSONString("300", "更新失败", "", "", "");
+    		
+    	}
+    	return "message";
+    	
+    }
+    
+    
+    /**
+     * 更新用户密码
+     * @return
+     */
+    public String updatePassword(){
+    	try{
+    		UserBusinessServiceImpl userBusinessServiceImpl=new UserBusinessServiceImpl();
+    		userBusinessServiceImpl.updateUser(user);
+    		if(flag){
+    			message=JSONTools.getJSONString("200", "密码修改成功","", "","");
+    		}else{
+    			message=JSONTools.getJSONString("300", "密码修改失败", "","", "");
+    		}
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	  return "message";
+    		
+    }
+    /**
+     * 根据登陆的id获得用户自己的信息
+     * @return
+     */
+    public String getUserSelf(){
+    	try{
+	    	user=(User) ActionContext.getContext().getSession().get("user");
+	    	UserBusinessServiceImpl userBusinessServiceImpl=new UserBusinessServiceImpl();
+	    	user=userBusinessServiceImpl.getUserById(user.getId());
+	    	return "success";
+    	}catch(Exception e){
+    		return "error";
+    	}
+    	
+    }
+    
+    public String login(){
+    	try {
+			String path = (String) ActionContext.getContext().get("path");
 			UserBusinessServiceImpl service = new UserBusinessServiceImpl();
-			boolean flag = service.deleteUser(id);
-			message = JSONTools.getJSONString("200", "删除成功", "getAllUsers", "",
-					"");
-		} catch (Exception e) {
-			e.printStackTrace();
-			message = JSONTools.getJSONString("300", "删除失败", "", "", "");
+			User u = service.checkLogin(Integer.parseInt(user.getStudentNo()), user.getPassword());
+			return null;
+    	} catch (Exception e) {
+			// TODO: handle exception
+    		return null;
 		}
-		return "message";
+    }
+	
 
-	}
 
-	/**
-	 * 更新用户
-	 * 
-	 * @return
-	 */
-	public String updateUser() {
-		try {
-			UserBusinessServiceImpl userBusinessServiceImpl = new UserBusinessServiceImpl();
-			userBusinessServiceImpl.updateUser(user);
-			message = JSONTools.getJSONString("200", "更新成功", "getUsers",
-					"closeCurrent", "");
-
-		} catch (Exception e) {
-
-			message = JSONTools.getJSONString("300", "更新失败", "", "", "");
-
-		}
-		return "message";
-
-	}
-
-	/**
-	 * 更新用户密码
-	 * 
-	 * @return
-	 */
-	public String updatePassword() {
-		try {
-			UserBusinessServiceImpl userBusinessServiceImpl = new UserBusinessServiceImpl();
-			userBusinessServiceImpl.updateUser(user);
-			if (flag) {
-				message = JSONTools.getJSONString("200", "密码修改成功", "", "", "");
-			} else {
-				message = JSONTools.getJSONString("300", "密码修改失败", "", "", "");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "message";
-
-	}
-
-	/**
-	 * 根据登陆的id获得用户自己的信息
-	 * 
-	 * @return
-	 */
-	public String getUserSelf() {
-		try {
-			// user=(User) ActionContext.getContext().getSession().get("user");
-			UserBusinessServiceImpl userBusinessServiceImpl = new UserBusinessServiceImpl();
-			// user=userBusinessServiceImpl.getUserById(user.getId());
-			// 用户测试
-			user = userBusinessServiceImpl.getUserById(2);
-			return "success";
-		} catch (Exception e) {
-			return "error";
-		}
-
-	}
-
+	
 }
