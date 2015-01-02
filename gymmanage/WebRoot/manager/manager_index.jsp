@@ -181,8 +181,10 @@
 								</ul></li>
 							<li><a>器材管理</a>
 								<ul>
-									<li><a href="#" target="navTab">添加器材</a></li>
-									<li><a href="#" target="navTab">所有器材</a></li>
+									<li><a href="${pageContext.request.contextPath }/equipmentaction/getAllEquipmentType.action"  target="navTab">类型管理</a></li>
+									<li><a href="${pageContext.request.contextPath }/equipmentaction/getAllEquipment.action"  target="navTab">器材管理</a></li>
+									<li><a href="${pageContext.request.contextPath }/equipmentaction/getAllEquipmentRent.action" target="navTab">器材租借</a></li>
+									<li><a href="${pageContext.request.contextPath }/equipmentaction/getAllEquipmentCharge.action" target="navTab">器材租借收费标准设置</a></li>
 								</ul></li>
 							<li><a>个人信息管理</a>
 								<ul>

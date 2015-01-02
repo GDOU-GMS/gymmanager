@@ -19,7 +19,7 @@ public class EquipmentDAOImpl implements EquipmentDAO{
 	public void addEquipment(Equipment equipment) {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "insert into tb_equipment(id,name,description,totalNum,typeId,type,loanable,underRepair) values(?,?,?,?,?,?,?,?)";
+			String sql = "insert into tb_equipment(name,description,totalNum,typeId,type,loanable,underRepair) values(?,?,?,?,?,?,?)";
 			Object params[] = { equipment.getId(), equipment.getName(),equipment.getDescription(),
 					equipment.getTotalNum(),equipment.getTypeId() };
 			qr.update(sql, params);

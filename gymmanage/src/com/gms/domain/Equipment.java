@@ -13,6 +13,7 @@ public class Equipment {
 	private String type;
 	private String description;
 	private float feeScale;
+	
 	public int getId() {
 		return id;
 	}

@@ -21,5 +21,6 @@
 	<include file="manager.xml"></include>
 	<include file="events.xml"></include>
 	<include file="notice.xml"></include>
+	<include file="equipment.xml"></include>
 	
 </struts>

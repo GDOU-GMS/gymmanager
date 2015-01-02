@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+   <package name="equipmentaction" namespace="/equipmentaction" extends="base">
+     
+     <!-- 器材管理 -->
+     <action name="getAllEquipment" class="com.gms.web.action.EquipmentAction"
+      method="getAllEquipment">
+        <result name="success">/manager/getAllEquipment.jsp</result>
+     </action>
+     <action name="getDataForaddEquipment" class="com.gms.web.action.EquipmentAction"
+      method="getDataForaddEquipment">
+        <result name="success">/manager/addEquipment.jsp</result>
+     </action>
+     <action name="addEquipment" class="com.gms.web.action.EquipmentAction"
+      method="addEquipment">
+      <result name="success">/manager/getAllEquipment.jsp</result>
+     </action>
+     <action name="deleteEquipment" class="com.gms.web.action.EquipmentAction"
+     method="deleteEquipment">
+     </action>
+     <action name="queryEquipment" class="com.gms.web.action.EquipmentAction"
+     method="queryEquipment">
+      <result name="success">/manager/getAllEquipment.jsp</result>
+     </action>
+     <action name="updateEquipment" class="com.gms.web.action.EquipmentAction"
+     method="updateEquipment">
+     </action>
+     
+     <!-- 器材租借 -->
+      <action name="getAllEquipmentRent" class="com.gms.web.action.EquipmentAction"
+      method="getAllEquipmentRent">
+        <result name="success">/manager/equipRentQuery.jsp</result>
+     </action>
+     <action name="getDataForaddequipRentQuery" class="com.gms.web.action.EquipmentAction"
+      method="getDataForaddequipRentQuery">
+        <result name="success">/manager/addEquipRent.jsp</result>
+     </action>
+      <action name="addEquipRentInfo" class="com.gms.web.action.EquipmentAction"
+      method="addEquipRentInfo">
+      <result name="success">/manager/equipRentQuery.jsp</result>
+     </action>
+     <action name="deleteEquipmentInfo" class="com.gms.web.action.EquipmentAction"
+     method="deleteEquipmentInfo">
+     </action>
+         <action name="updateEquipmentInfo" class="com.gms.web.action.EquipmentAction"
+     method="updateEquipmentInfo">
+     </action>
+      <action name="queryEquipmentRent" class="com.gms.web.action.EquipmentAction"
+     method="queryEquipmentRent">
+      <result name="success">/manager/equipRentQuery.jsp</result>
+     </action>
+     
+     <!-- 器材收费标标准设置 -->
+     <action name="getAllEquipmentCharge" class="com.gms.web.action.EquipmentAction"
+      method="getAllEquipmentCharge">
+        <result name="success">/manager/getAllEquipmentCharge.jsp</result>
+     </action>
+       <action name="deleteEquipmentCharge" class="com.gms.web.action.EquipmentAction"
+     method="deleteEquipmentCharge">
+     </action>
+     <action name="getDataForsetEquipmentCharge" class="com.gms.web.action.EquipmentAction"
+      method="getDataForsetEquipmentCharge">
+        <result name="success">/manager/setEquipmentCharge.jsp</result>
+     </action>
+      <action name="setEquipmentCharge" class="com.gms.web.action.EquipmentAction"
+      method="setEquipmentCharge">
+     </action>
+      <action name="updateEquipmentCharge" class="com.gms.web.action.EquipmentAction"
+     method="updateEquipmentCharge">
+     </action>
+        <action name="queryEquipmentCharge" class="com.gms.web.action.EquipmentAction"
+     method="queryEquipmentCharge">
+     </action>
+   </package>
+   
+  
+</struts>
