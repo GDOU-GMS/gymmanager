@@ -34,22 +34,11 @@
 
 	<!-- END GLOBAL MANDATORY STYLES -->
 
-	<!-- BEGIN PAGE LEVEL STYLES --> 
+	<link href="${pageContext.request.contextPath }/media/css/promo.css" rel="stylesheet" type="text/css"/>
 
-	<link href="${pageContext.request.contextPath }/media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+	<link href="${pageContext.request.contextPath }/media/css/animate.css" rel="stylesheet" type="text/css"/>
 
-	<link href="${pageContext.request.contextPath }/media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
-
-	<link href="${pageContext.request.contextPath }/media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
-
-	<link href="${pageContext.request.contextPath }/media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
-
-	<link href="${pageContext.request.contextPath }/media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-
-	<!-- END PAGE LEVEL STYLES -->
-
-	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon1.ico" />
-
+	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon.ico" />
   </head>
   
  <body class="page-header-fixed">
@@ -214,13 +203,13 @@
 
 						<li >
 
-							<a href="#">场馆简介</a>
+							<a href="${pageContext.request.contextPath}/client/gymIntroduction.jsp">场馆简介</a>
 
 						</li>
 
 						<li >
 
-							<a href="#">场馆风采</a>
+							<a href="${pageContext.request.contextPath}/client/gymView.jsp">场馆风采</a>
 
 						</li>
 						<li >
@@ -249,7 +238,7 @@
 
 						<li >
 
-							<a href="ui_general.html">
+							<a href="${pageContext.request.contextPath}/client/badmintonHall.jsp">
 
 							羽毛球馆</a>
 
@@ -257,7 +246,7 @@
 
 						<li >
 
-							<a href="ui_buttons.html">
+							<a href="${pageContext.request.contextPath}/client/tableTennnisHall.jsp">
 
 							乒乓球馆</a>
 
@@ -265,7 +254,7 @@
 
 						<li >
 
-							<a href="ui_modals.html">
+							<a href="${pageContext.request.contextPath}/client/billiardsHall.jsp">
 
 							台球厅</a>
 
@@ -273,7 +262,7 @@
 
 						<li >
 
-							<a href="ui_tabs_accordions.html">
+							<a href="${pageContext.request.contextPath}/client/fitness.jsp">
 
 							健身房</a>
 
@@ -522,7 +511,7 @@
 
 
 			</ul>
-
+			<!-- 导航结束 -->
 			<!-- END SIDEBAR MENU -->
 
 		</div>
@@ -530,8 +519,244 @@
 		<!-- END SIDEBAR -->
 
 		<!-- BEGIN PAGE -->
+        
+        
+        
+        <div class="page-container row-fluid">
 
-		<div class="page-content">
+		<!-- BEGIN EMPTY PAGE SIDEBAR -->
+
+		<div class="page-sidebar nav-collapse collapse visible-phone visible-tablet">
+
+			<ul class="page-sidebar-menu">
+
+				<li class="visible-phone visible-tablet">
+
+					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+
+					<form class="sidebar-search">
+
+						<div class="input-box">
+
+							<a href="javascript:;" class="remove"></a>
+
+							<input type="text" placeholder="Search..." />            
+
+							<input type="button" class="submit" value=" " />
+
+						</div>
+
+					</form>
+
+					<!-- END RESPONSIVE QUICK SEARCH FORM -->
+
+				</li>
+
+				<li>
+
+					<a class="active" href="index.html">
+
+					Dashboard                        
+
+					</a>
+
+				</li>
+
+				<li  class="active">
+
+					<a href="javascript:;">
+
+					Layouts
+
+					<span class="arrow open"></span>   
+
+					<span class="selected"></span>   
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="layout_horizontal_sidebar_menu.html">
+
+							Horzontal & Sidebar Menu                     </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_horizontal_menu1.html">
+
+							Horzontal Menu 1                    </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_horizontal_menu2.html">
+
+							Horzontal Menu 2                    </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_promo.html">
+
+							Promo Page                     
+
+							</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_email.html">
+
+							Email Templates                     </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_ajax.html">
+
+							Content Loading via Ajax</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_sidebar_closed.html">
+
+							Sidebar Closed Page                    </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_blank_page.html">
+
+							Blank Page                    </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_boxed_page.html">Boxed Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_boxed_not_responsive.html">
+
+							Non-Responsive Boxed Layout                     </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_blank_page.html">
+
+							Blank Page                    </a>
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							More options
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="#">Second level link</a></li>
+
+								<li>
+
+									<a href="javascript:;">More options<span class="arrow"></span></a>
+
+									<ul class="sub-menu">
+
+										<li><a href="index.html">Third level link</a></li>
+
+										<li><a href="index.html">Third level link</a></li>
+
+										<li><a href="index.html">Third level link</a></li>
+
+										<li><a href="index.html">Third level link</a></li>
+
+										<li><a href="index.html">Third level link</a></li>
+
+									</ul>
+
+								</li>
+
+								<li><a href="index.html">Second level link</a></li>
+
+								<li><a href="index.html">Second level link</a></li>
+
+								<li><a href="index.html">Second level link</a></li>
+
+							</ul>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a href="">Tables</a>
+
+				</li>
+
+				<li>
+
+					<a href="">Extra
+
+					<span class="arrow"></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li><a href="index.html">About Us</a></li>
+
+						<li><a href="index.html">Services</a></li>
+
+						<li><a href="index.html">Pricing</a></li>
+
+						<li><a href="index.html">FAQs</a></li>
+
+						<li><a href="index.html">Gallery</a></li>
+
+						<li><a href="index.html">Registration</a></li>
+
+						<li><a href="index.html">2 Columns (Left)</a></li>
+
+						<li><a href="index.html">2 Columns (Right)</a></li>
+
+					</ul>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<!-- END EMPTY PAGE SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content no-min-height">
 
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
@@ -541,13 +766,13 @@
 
 					<button data-dismiss="modal" class="close" type="button"></button>
 
-					<h3>Widget Settings</h3>
+					<h3>portlet Settings</h3>
 
 				</div>
 
 				<div class="modal-body">
 
-					Widget settings form goes here
+					<p>Here will be a configuration form</p>
 
 				</div>
 
@@ -557,128 +782,391 @@
 
 			<!-- BEGIN PAGE CONTAINER-->
 
-			<div class="container-fluid">
+			<div class="container-fluid promo-page">
 
-				<!-- BEGIN PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
 
 				<div class="row-fluid">
 
 					<div class="span12">
 
-						<!-- BEGIN STYLE CUSTOMIZER -->
+						<div class="block-grey">
 
-						<div class="color-panel hidden-phone">
+							<div class="container">
 
-							<div class="color-mode-icons icon-color"></div>
+								<div id="promo_carousel" class="carousel slide">
 
-							<div class="color-mode-icons icon-color-close"></div>
+									<div class="carousel-inner">
 
-							<div class="color-mode">
+										<div class="active item">
 
-								<p>THEME COLOR</p>
+											<div class="row-fluid">
 
-								<ul class="inline">
+												<!--<div class="span7 margin-top-10 animated rotateInUpRight">  -->
+												<div class="span7 margin-bottom-20 animated rotateInUpRight">
+													<h1>欢迎来到海大体育馆管理系统</h1>
 
-									<li class="color-black current color-default" data-style="default"></li>
+													<!--  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
 
-									<li class="color-blue" data-style="blue"></li>
+													<p>Lunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+													-->
+													<p>广东海洋大学体育馆始建于2005年，于2005年5月施工到2010年10份正式竣工，于2010年11月17日正式投入使用。该馆共投入4000余万元。主校区体育馆位于校园中心区域，依山傍海，气势恢宏，与周围错落有致的楼群及雕塑相映成趣，构成一幅中西风格相统一、自然与人文相协调的和谐风景。</p>
+													<p>体育馆占地面积1万4平方米，建筑面积高达13500平方米，共有四层。首层作为主场馆，共设有2397个座位，主场馆内最多可以容纳5717人。主场馆内除了设有体育学院办公室、运动器材室、运动员休息室和会议室以外，还有一个标准篮球场，其面积等同于12个羽毛球场和两个排球场。除了日常可供师生进行体育锻炼外，也可举行军训动员大会、大型文艺演出等大型活动。值得注意的是，第二层除了设有台球、健身房外，还设有保龄球馆。第三、四层则分别设有乒乓球室和武术馆、体操馆。</p>
+													<!-- <a href="${pageContext.request.contextPath}/index.jsp" class="btn red big xlarge">
 
-									<li class="color-brown" data-style="brown"></li>
+													欢迎使用
 
-									<li class="color-purple" data-style="purple"></li>
+													 <i class="m-icon-big-swapright m-icon-white"></i>    -->                            
 
-									<li class="color-grey" data-style="grey"></li>
+													</a>
 
-									<li class="color-white color-light" data-style="light"></li>
+												</div>
 
-								</ul>
+												<div class="span4 animated rotateInDownLeft">
 
-								<label>
+													<a href="index.jsp"><img src="${pageContext.request.contextPath}/media/image/view11.png" alt=""></a>
 
-									<span>Layout</span>
+												</div>
 
-									<select class="layout-option m-wrap small">
+											</div>
 
-										<option value="fluid" selected>Fluid</option>
+										</div>
 
-										<option value="boxed">Boxed</option>
+										<div class="item">
 
-									</select>
+											<div class="row-fluid">
 
-								</label>
+												<div class="span5 margin-bottom-50 animated rotateInUpRight">
 
-								<label>
+													<a href="index.jsp"><img src="${pageContext.request.contextPath}/media/image/view13.png" alt=""></a>
 
-									<span>Header</span>
+												</div>
 
-									<select class="header-option m-wrap small">
+												<div class="span5 margin-bottom-20 animated rotateInDownLeft">
 
-										<option value="fixed" selected>Fixed</option>
+													<h1>Welcome to GYM</h1>
 
-										<option value="default">Default</option>
+													<!--  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
 
-									</select>
+													<p>Lunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+													-->
+													<p>广东海洋大学体育馆始建于2005年，于2005年5月施工到2010年10份正式竣工，于2010年11月17日正式投入使用。该馆共投入4000余万元。主校区体育馆位于校园中心区域，依山傍海，气势恢宏，与周围错落有致的楼群及雕塑相映成趣，构成一幅中西风格相统一、自然与人文相协调的和谐风景。</p>
+													<p>体育馆占地面积1万4平方米，建筑面积高达13500平方米，共有四层。首层作为主场馆，共设有2397个座位，主场馆内最多可以容纳5717人。主场馆内除了设有体育学院办公室、运动器材室、运动员休息室和会议室以外，还有一个标准篮球场，其面积等同于12个羽毛球场和两个排球场。除了日常可供师生进行体育锻炼外，也可举行军训动员大会、大型文艺演出等大型活动。值得注意的是，第二层除了设有台球、健身房外，还设有保龄球馆。第三、四层则分别设有乒乓球室和武术馆、体操馆。</p>
+													<!-- <a href="index.html" class="btn green big xlarge">
 
-								</label>
+													But it today
 
-								<label>
+													<i class="m-icon-big-swapright m-icon-white"></i>                                
 
-									<span>Sidebar</span>
+													</a> -->
 
-									<select class="sidebar-option m-wrap small">
+												</div>
 
-										<option value="fixed">Fixed</option>
+											</div>
 
-										<option value="default" selected>Default</option>
+										</div>
 
-									</select>
+									</div>
 
-								</label>
+									<a class="carousel-control left" href="#promo_carousel" data-slide="prev">
 
-								<label>
+									<i class="m-icon-big-swapleft m-icon-white"></i>
 
-									<span>Footer</span>
+									</a>
 
-									<select class="footer-option m-wrap small">
+									<a class="carousel-control right" style="margin-right:85px;"href="#promo_carousel" data-slide="next">
 
-										<option value="fixed">Fixed</option>
+									<i class="m-icon-big-swapright m-icon-white"></i>
 
-										<option value="default" selected>Default</option>
+									</a>
 
-									</select>
-
-								</label>
+								</div>
 
 							</div>
 
 						</div>
 
-						<!-- END BEGIN STYLE CUSTOMIZER -->    
+						<div class="block-yellow">
 
-						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+							<div class="container">
 
-						<h3 class="page-title">
+								<div class="row-fluid">
 
-							Dashboard <small>statistics and more</small>
+									<div class="span4 margin-bottom-20">
 
-						</h3>
+										<a href="index.html"><img src="${pageContext.request.contextPath}/media/image/board.png" alt=""></a>
 
-						<!-- END PAGE TITLE & BREADCRUMB-->
+									</div>
+
+									<div class="span7">
+
+										<h2>场馆公告栏</h2>
+
+										<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+
+										<p>Lunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+
+										<a href="#" class="btn blue big xlarge">
+
+										更多
+
+										<i class="m-icon-big-swapright m-icon-white"></i>                                
+
+										</a>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="block-transparent">
+
+							<div class="container">
+
+								<div class="row-fluid margin-bottom-20">
+
+									<div class="span6 margin-bottom-20">
+
+										<h2>场馆动态</h2>
+
+										<!-- <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos <a href="#">ellentesque la vehi</a> dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+
+										<p>Lunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita <a href="#">distinctio lorem ipsum dolor</a> sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+										 -->
+										 <ul >
+										 	<li> 体育馆安全检查活动圆满举办 </li>
+										 	<li> 艰难卓绝，不辱使命—体育馆党员《天河》观影活动 </li>
+										 	<li> 普及安全知识，共筑平安校园—体育馆圆满举办消防知识培训</li>
+										 	<li> “知党史，缅先烈”体育馆党小组赴中国人民抗日战争纪念馆参观学习</li>
+										 	<li> 2014年“迎春，梦想起航”体育馆大家庭联欢晚会圆满落幕</li>
+										 	<li> 广东海洋大学体育馆2014年“筑梦”员工运动会圆满举办</li>
+										 	<li> 圆奥运之梦想，扬体育之荣光——记广东海洋大学体育馆开馆周年庆</li>
+										 	<li> 体育馆组织参观高等教育领域职务犯罪警示教育展</li>
+										 	<li> 广东海洋大学体育馆召开2014年度年终总结会</li>
+										 	<li> 熔炼团队，提升自我—体育馆开展员工素质拓展培训</li>
+										 	
+										 </ul>
+									</div>
+
+									<div class="span5 margin-bottom-20">
+
+										<a href="index.html"><img src="media/image/img3.png" alt=""></a>
+
+									</div>
+
+								</div>
+
+								<!--  <div class="row-fluid">
+
+									<div class="span5">
+
+										<a href="index.html"><img src="media/image/img4.png" alt=""></a>
+
+									</div>
+
+									<div class="span6 margin-bottom-20">
+
+										<h2>Vero eos iusto odio..</h2>
+
+										<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et <a href="#">quas molestias excepturi sint</a> occaecati cupiditate non provident, similique. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+
+										<p>Lunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et <a href="#">quam lacus eusce condimentum </a> eleifend enim a feugiat.</p>
+
+									</div>
+
+								</div>-->
+
+								<hr>
+
+								<div class="row-fluid">
+
+									<div class="span3">
+
+										<h3><a href="${pageContext.request.contextPath}/client/badmintonHall.jsp">羽毛球馆</a></h3>
+
+										<p>20片羽毛球场，2400平方米的通透环境、光导管自然光照明、羽丰专业防滑地胶、victor球架，静默通风，让您的运动之旅在酣畅淋漓中感受远离都市般的宁静。</p>
+
+									</div>
+
+									<div class="span3">
+
+										<h3><a href="${pageContext.request.contextPath}/client/tableTennnisHall.jsp">乒乓球馆</a></h3>
+
+										<p>15张乒乓球台，红双喜05/06世乒赛比赛用台、超高天穹吊顶、多源无影照明，让您运动无极限！</p>
+
+									</div>
+
+									<div class="span3">
+
+										<h3><a href="${pageContext.request.contextPath}/client/billiardsHall.jsp">台球厅</a></h3>
+
+										<p>VICTOR球网、独立优雅环境、通透全覆盖照明，隔音装饰材料，带给您全新运动体验</p>
+
+									</div>
+
+									<div class="span2">
+
+										<h3><a href="${pageContext.request.contextPath}/client/fitness.jsp">健身房</a></h3>
+
+										<p>全新的设备，新的体验，新的享受，让您与您的朋友尽情释放激情！</p>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="block-footer">
+
+							<div class="container">
+
+								<div class="row-fluid">
+
+									<div class="span3">
+
+										<h3>搜索</h3>
+
+										<p></p>
+
+										<form class="form-search" action="#">
+
+											<div class="input-append">
+
+												<input type="text" class="m-wrap" placeholder=""><button type="button" class="btn blue">GO!</button>
+
+											</div>
+
+										</form>
+
+									</div>
+
+									<div class="span4">
+
+										<h3>校园风采</h3>
+
+										<ul class="unstyled blog-images">
+
+											<li><a href="#"><img src="media/image/1.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/2.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/3.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/4.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/5.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/6.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/8.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/10.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/11.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/1.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/2.jpg" alt=""></a></li>
+
+											<li><a href="#"><img src="media/image/7.jpg" alt=""></a></li>
+
+										</ul>
+
+									</div>
+
+									<div class="span4">
+
+										<h3>友情链接</h3>
+
+										<ul class="social-icons">
+
+											<li><a href="#" data-original-title="amazon" class="amazon"></a></li>
+
+											<li><a href="#" data-original-title="behance" class="behance"></a></li>
+
+											<li><a href="#" data-original-title="blogger" class="blogger"></a></li>
+
+											<li><a href="#" data-original-title="deviantart" class="deviantart"></a></li>
+
+											<li><a href="#" data-original-title="dribbble" class="dribbble"></a></li>
+
+											<li><a href="#" data-original-title="dropbox" class="dropbox"></a></li>
+
+											<li><a href="#" data-original-title="facebook" class="facebook"></a></li>
+
+											<li><a href="#" data-original-title="forrst" class="forrst"></a></li>
+
+											<li><a href="#" data-original-title="github" class="github"></a></li>
+
+											<li><a href="#" data-original-title="Goole Plus" class="googleplus"></a></li>
+
+											<li><a href="#" data-original-title="jolicloud" class="jolicloud"></a></li>
+
+											<li><a href="#" data-original-title="last-fm" class="last-fm"></a></li>
+
+											<li><a href="#" data-original-title="linkedin" class="linkedin"></a></li>
+
+											<li><a href="#" data-original-title="picasa" class="picasa"></a></li>
+
+											<li><a href="#" data-original-title="pintrest" class="pintrest"></a></li>
+
+											<li><a href="#" data-original-title="rss" class="rss"></a></li>
+
+											<li><a href="#" data-original-title="skype" class="skype"></a></li>
+
+											<li><a href="#" data-original-title="spotify" class="spotify"></a></li>
+
+											<li><a href="#" data-original-title="stumbleupon" class="stumbleupon"></a></li>
+
+											<li><a href="#" data-original-title="tumblr" class="tumblr"></a></li>
+
+											<li><a href="#" data-original-title="twitter" class="twitter"></a></li>
+
+											<li><a href="#" data-original-title="vimeo" class="vimeo"></a></li>
+
+											<li><a href="#" data-original-title="wordpress" class="wordpress"></a></li>
+
+											<li><a href="#" data-original-title="xing" class="xing"></a></li>
+
+											<li><a href="#" data-original-title="yahoo" class="yahoo"></a></li>
+
+											<li><a href="#" data-original-title="youtube" class="youtube"></a></li>
+
+											<li><a href="#" data-original-title="vk" class="vk"></a></li>
+
+											<li><a href="#" data-original-title="instagram" class="instagram"></a></li>
+
+										</ul>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
 
 					</div>
 
 				</div>
 
-				<!-- END PAGE HEADER-->
-
-				<!-- BEGIN PAGE CONTENT-->
-				<div id="dashboard">
-
-				</div>
-				<!-- END PAGE CONTAINER-->
 			</div>
-		<!-- END PAGE -->
+
+			<!-- END PAGE CONTENT-->
+
+		</div>
+
+		<!-- END PAGE CONTAINER--> 
+
 	</div>
+
+	<!-- END PAGE --> 
+		
 				
 	<!-- END CONTAINER -->
 		
