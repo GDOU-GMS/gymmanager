@@ -1,8 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html>
 <html>
   <head>
+  <base href="<%=basePath%>">
     <title>广东海洋大学体育馆</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
@@ -2380,7 +2387,7 @@
 												</ul>
 
 											</div>-->
-											<div class="span3"><img src="media/image/profile-img.png" alt="" /> <a href="#" class="profile-edit">edit</a></div>
+											<div class="span3"><img src="${pageContext.request.contextPath }/media/image/profile-img.png" alt="" /> <a href="#" class="profile-edit">edit</a></div>
 											<div class="span9">
 
 												<div class="tab-content">

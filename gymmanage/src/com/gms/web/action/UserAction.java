@@ -1,19 +1,12 @@
 package com.gms.web.action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-
 import com.gms.domain.Page;
 import com.gms.domain.User;
-import com.gms.service.impl.SiteBusinessServiceImpl;
 import com.gms.service.impl.UserBusinessServiceImpl;
 import com.gms.utils.JSONTools;
 import com.opensymphony.xwork2.ActionContext;
@@ -29,48 +22,60 @@ public class UserAction {
 	private String message;
 	private boolean flag;
 	private int pageNum = 1;
-	private int numPerPage = 20;//�൱��pagesize
+	private int numPerPage = 20;// �൱��pagesize
+
 	public int getPageNum() {
 		return pageNum;
 	}
+
 	public void setPageNum(int pageNum) {
 		this.pageNum = pageNum;
 	}
+
 	public int getNumPerPage() {
 		return numPerPage;
 	}
+
 	public void setNumPerPage(int numPerPage) {
 		this.numPerPage = numPerPage;
 	}
-	
+
 	public List<User> getListUsers() {
 		return listUsers;
 	}
+
 	public void setListUsers(List<User> listUsers) {
 		this.listUsers = listUsers;
 	}
+
 	public String getMessage() {
 		return message;
 	}
+
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getStudentNo() {
 		return studentNo;
 	}
+
 	public void setStudentNo(String studentNo) {
 		this.studentNo = studentNo;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -222,16 +227,20 @@ public class UserAction {
     	}
     	
     }
+    
     public String login(){
     	try {
 			String path = (String) ActionContext.getContext().get("path");
 			UserBusinessServiceImpl service = new UserBusinessServiceImpl();
 			User u = service.checkLogin(Integer.parseInt(user.getStudentNo()), user.getPassword());
-		
+			return null;
     	} catch (Exception e) {
 			// TODO: handle exception
+    		return null;
 		}
     }
 	
 
+
+	
 }
