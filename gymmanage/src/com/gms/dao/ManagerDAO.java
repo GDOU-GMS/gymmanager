@@ -13,37 +13,37 @@ public interface ManagerDAO {
 	
 	
 	/**
-	 * ���ӹ���Ա
+	 * 锟斤拷锟接癸拷锟斤拷员
 	 * 
 	 * @param Manager
 	 */
 	public abstract void addManager(Manager mannager);
 	
 	/**
-	 * ���¹���Ա��Ϣ
+	 * 锟斤拷锟铰癸拷锟斤拷员锟斤拷息
 	 * 
 	 * @param Manager
 	 */
 	public abstract void updateManager(Manager mannager);
 	
-	/**ɾ�����Ա��Ϣ
+	/**删锟斤拷锟斤拷锟皆憋拷锟较�
 	 * 
 	 * @param name
 	 */
 	public abstract boolean deleteManager(int id);
 	
 	/**
-	 * ������й���Ա�û�
+	 * 锟斤拷锟斤拷锟斤拷泄锟斤拷锟皆憋拷没锟�
 	 */
 	public  List<Manager>  getAllManager();
 	/**
-	 * У���¼
+	 * 校锟斤拷锟铰�
 	 * @param manager
 	 * @return
 	 */
 	public abstract Manager verifyManager(Manager manager);
 	/**
-	 * 查询管理员
+	 * 鏌ヨ绠＄悊鍛�
 	 * @param account
 	 * @param name
 	 * @return
@@ -51,7 +51,7 @@ public interface ManagerDAO {
 	
 	public abstract List<Manager> getManagers(String account,String name);
 	/**
-	 * 更新管理员密码
+	 * 鏇存柊绠＄悊鍛樺瘑鐮�
 	 * @param id
 	 * @param opassword
 	 * @param npassword

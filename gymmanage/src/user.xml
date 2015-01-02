@@ -16,6 +16,9 @@
 		</action>
 		<action name="getUserSelf" class="com.gms.web.action.UserAction" method="getUserSelf">
 		</action>
+		<action name="login" class="com.gms.web.action.UserAction" method="login">
+		
+		</action>
 	</package>
   
 

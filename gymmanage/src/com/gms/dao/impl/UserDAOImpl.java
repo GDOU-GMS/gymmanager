@@ -231,6 +231,24 @@ public class UserDAOImpl implements UserDAO{
 			}
 		
 		}
+		
+		/**
+		 * 校验用户登录
+		 * @param studentNo
+		 * @param password
+		 * @return
+		 */
+		public User checkLogin(int studentNo,String password){
+			try {
+				QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+				String sql = "select * from tb_user where studentNo=? and password=?";
+				Object params[] = {studentNo,password};
+				return (User) qr.query(sql, params, new BeanHandler(User.class));
+			} catch (Exception e) {
+				// TODO: handle exception
+				throw new RuntimeException(e);
+			}
+		}
 		 
 	}
 

@@ -64,7 +64,7 @@ public interface UserDAO {
 	 * @param academy
 	 * @return
 	 */
-	public List<User> getUsersPageData(int startIndex,int pageSize,String studentNo,String name,String academy);
+	public abstract List<User> getUsersPageData(int startIndex,int pageSize,String studentNo,String name,String academy);
 	
 	
 	/**
@@ -74,8 +74,14 @@ public interface UserDAO {
 	 * @return
 	 */
 	
-	public List<User> getAllUsersPageData(int startIndex,int pageSize);
+	public  List<User> getAllUsersPageData(int startIndex,int pageSize);
 	
-	
+	/**
+	 * 校验用户登录
+	 * @param studentNo
+	 * @param password
+	 * @return
+	 */
+	public abstract User checkLogin(int studentNo,String password);
 	
 }

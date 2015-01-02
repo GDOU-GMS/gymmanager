@@ -222,7 +222,16 @@ public class UserAction {
     	}
     	
     }
-    
+    public String login(){
+    	try {
+			String path = (String) ActionContext.getContext().get("path");
+			UserBusinessServiceImpl service = new UserBusinessServiceImpl();
+			User u = service.checkLogin(Integer.parseInt(user.getStudentNo()), user.getPassword());
+		
+    	} catch (Exception e) {
+			// TODO: handle exception
+		}
+    }
 	
 
 }
