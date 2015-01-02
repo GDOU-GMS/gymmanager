@@ -52,6 +52,11 @@
 
 	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon1.ico" />
 
+	<script type="text/javascript">
+		function confirmDelete(){
+			confirm("您确定要删除这一条数据吗？");
+		}
+	</script>
 </head>
 
 <!-- END HEAD -->
@@ -59,6 +64,12 @@
 <!-- BEGIN BODY -->
 
 <body class="page-header-fixed">
+
+	<c:if test="${!empty message}">
+		<script type="text/javascript">
+			alert("${message}");
+		</script>
+	</c:if>
 
 	<!-- BEGIN HEADER -->
 
@@ -107,9 +118,9 @@
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-							<img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />
-	
-							<span class="username">Bob Nilson</span>
+							<i class="icon-user"></i>
+							
+							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
@@ -704,11 +715,11 @@
 
 									<div class="btn-group">
 
-										<button id="sample_editable_1_new" class="btn green">
+										<a id="" class="btn green" href="${pageContext.request.contextPath }/site/clientGetDataForAddSiteOrder.action">
 
 										预约场地 <i class="icon-plus"></i>
 
-										</button>
+										</a>
 
 									</div>
 
@@ -728,9 +739,9 @@
 
 											<th>场地名称</th>
 
-											<th>状态</th>
-											
 											<th>预约时间</th>
+											
+											<th>状态</th>
 
 											<th>删除</th>
 
@@ -744,19 +755,26 @@
 										
 											<tr class="">
 
-												<td></td>
+												<td>${siteOrder.id }</td>
 	
-												<td></td>
+												<td>${siteOrder.stratTime }</td>
 	
-												<td></td>
+												<td>${siteOrder.endTime }</td>
 	
-												<td class=""></td>
+												<td class="">${siteOrder.sitename }</td>
 												
-												<td class=""></td>
+												<td class="">${siteOrder.orderTime }</td>
 												
-												<td class=""></td>
+												<td class="">
+													<c:if test="${siteOrder.statue eq 'passed' }">
+														<span class="label label-warning">已过期</span>
+													</c:if>
+													<c:if test="${siteOrder.statue eq 'unpassed' }">
+														<span class="label label-success">未过期</span>
+													</c:if>
+												</td>
 	
-												<td><a class="delete" href="javascript:;">Delete</a></td>
+												<td><a class="" href="${pageContext.request.contextPath }/site/clientDeleteSiteOrder.action?id=${siteOrder.id}" onclick="return confirmDelete();">删除</a></td>
 
 											</tr>
 										

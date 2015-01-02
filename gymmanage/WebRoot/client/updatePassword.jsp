@@ -46,6 +46,26 @@
 	<!-- END PAGE LEVEL STYLES -->
 
 	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon1.ico" />
+	
+	<script type="text/javascript">
+		function validate(psw){
+			with(document.all){
+				var password = document.getElementById('password');
+				if(oldPassword.value==""||password.value=="" ||repassword.value==""){
+					alert("密码不能为空");
+					return false;
+				}else if(oldPassword.value!=psw){
+					alert("旧密码输入不正确！");
+					return false;
+				}else if(password.value != repassword.value){
+					alert("您输入两次密码不一致！");
+					return false;
+				}else {
+				document.forms[0].submit();
+				}
+			}
+		}
+	</script>
   </head>
   
  <body class="page-header-fixed">
@@ -97,9 +117,9 @@
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-							<img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />
-	
-							<span class="username">Bob Nilson</span>
+							<i class="icon-user"></i>
+							
+							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
@@ -2387,7 +2407,7 @@
 												</ul>
 
 											</div>-->
-											<div class="span3"><img src="${pageContext.request.contextPath }/media/image/profile-img.png" alt="" /> <a href="#" class="profile-edit">edit</a></div>
+											<div class="span3"><img src="${pageContext.request.contextPath }/media/image/profile-img.png" alt="" /> <a href="#" class="profile-edit"></a></div>
 											<div class="span9">
 
 												<div class="tab-content">
@@ -2396,24 +2416,26 @@
 
 														<div style="height: auto;" id="accordion1-1" class="accordion collapse">
 
-															<form role="form" action="${pageContext.request.contextPath}/useraction/updateUser.action"onsubmit="return validateCallback(this, dialogAjaxDone);">
+															<form role="form" action="${pageContext.request.contextPath}/useraction/clientUpdatePassword.action" onsubmit="return validate('${user.password}')" method="post">
 
+																<input type="text" value="${user.id }" name="user.id" style="display: none;">
+																
 																<label class="control-label">旧密码</label>
 
-																<input type="text" placeholder="请输入原密码"name="user.studentNo" class="m-wrap span8" />
+																<input type="password" placeholder="请输入原密码"name="oldPassword" class="m-wrap span8"/>
 
 																<label class="control-label">新密码</label>
 
-																<input type="text" placeholder="请输入新密码" name="user.name"class="m-wrap span8" />
+																<input type="password" placeholder="请输入新密码" id="password"  name="user.password"class="m-wrap span8" />
 
 																<label class="control-label">确定新密码</label>
 
-																<input type="text" placeholder="请确定新密码"name="user.academy" class="m-wrap span8" />
+																<input type="password" placeholder="请确定新密码"name="repassword" class="m-wrap span8" />
 
 																
 																<div class="submit-btn">
 
-																	<a href="${pageContext.request.contextPath}/useraction/" class="btn green">保存</a>
+																	<input type="submit" class="btn green" value="保存">
 
 																	<a href="#" class="btn">取消</a>
 

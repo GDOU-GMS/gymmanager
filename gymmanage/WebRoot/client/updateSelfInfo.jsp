@@ -101,9 +101,9 @@
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-							<img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />
-	
-							<span class="username">Bob Nilson</span>
+							<i class="icon-user"></i>
+							
+							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
@@ -2391,7 +2391,7 @@
 												</ul>
 
 											</div>-->
-											<div class="span3"><img src="media/image/profile-img.png" alt="" /> <a href="#" class="profile-edit">edit</a></div>
+											<div class="span3"><img src="media/image/profile-img.png" alt="" /> <a href="#" class="profile-edit"></a></div>
 											<div class="span9">
 
 												<div class="tab-content">
@@ -2400,57 +2400,43 @@
 
 														<div style="height: auto;" id="accordion1-1" class="accordion collapse">
 
-															<form role="form" action="${pageContext.request.contextPath}/useraction/updateUser.action"onsubmit="return validateCallback(this, dialogAjaxDone);">
+															<form role="form" action="${pageContext.request.contextPath}/useraction/clientUpdateUser.action" method="post">
+															
+																<input type="text" value="${user.id }" name="user.id" style="display: none;">
 
 																<label class="control-label">用户名</label>
 
-																<input type="text" placeholder="请输入学号"name="user.studentNo" class="m-wrap span8" />
+																<input type="text" placeholder="请输入学号"name="user.studentNo" class="m-wrap span8" value="${user.studentNo }" readonly/>
 
 																<label class="control-label">姓名</label>
 
-																<input type="text" placeholder="请输入姓名" name="user.name"class="m-wrap span8" />
+																<input type="text" placeholder="请输入姓名" name="user.name"class="m-wrap span8" value="${user.name }" readonly/>
 
 																<label class="control-label">学院</label>
 
-																<input type="text" placeholder="请输入所在学院"name="user.academy" class="m-wrap span8" />
+																<input type="text" placeholder="请输入所在学院"name="user.academy" class="m-wrap span8" value="${user.academy }" />
 
 																<label class="control-label">专业</label>
 
-																<input type="text" placeholder="请输入所在专业" name="user.major"class="m-wrap span8" />
+																<input type="text" placeholder="请输入所在专业" name="user.major"class="m-wrap span8" value="${user.major }"/>
 
 																<label class="control-label">班级</label>
 
-																<input type="text" placeholder="请输入所在班级"name="className" class="m-wrap span8" />
+																<input type="text" placeholder="请输入所在班级"name="user.className" class="m-wrap span8" value="${user.className }"/>
 
 																<label class="control-label">性别</label>
 																
-																<input type="text" placeholder="请输入性别"name="user.gender" class="m-wrap span8" />
+																<input type="text" placeholder="请输入性别"name="user.gender" class="m-wrap span8" value="${user.gender }" />
 																
 																<label class="control-label">联系方式</label>
 
-																<input type="text" placeholder="请输入联系方式"name="user.telephone" class="m-wrap span8" />
+																<input type="text" placeholder="请输入联系方式"name="user.telephone" class="m-wrap span8" value="${user.telephone }" />
 
-																<!--  <div class="controls">
-
-																	<input type="text" class="span8 m-wrap" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="[&quot;Alabama&quot;,&quot;Alaska&quot;,&quot;Arizona&quot;,&quot;Arkansas&quot;,&quot;US&quot;,&quot;Colorado&quot;,&quot;Connecticut&quot;,&quot;Delaware&quot;,&quot;Florida&quot;,&quot;Georgia&quot;,&quot;Hawaii&quot;,&quot;Idaho&quot;,&quot;Illinois&quot;,&quot;Indiana&quot;,&quot;Iowa&quot;,&quot;Kansas&quot;,&quot;Kentucky&quot;,&quot;Louisiana&quot;,&quot;Maine&quot;,&quot;Maryland&quot;,&quot;Massachusetts&quot;,&quot;Michigan&quot;,&quot;Minnesota&quot;,&quot;Mississippi&quot;,&quot;Missouri&quot;,&quot;Montana&quot;,&quot;Nebraska&quot;,&quot;Nevada&quot;,&quot;New Hampshire&quot;,&quot;New Jersey&quot;,&quot;New Mexico&quot;,&quot;New York&quot;,&quot;North Dakota&quot;,&quot;North Carolina&quot;,&quot;Ohio&quot;,&quot;Oklahoma&quot;,&quot;Oregon&quot;,&quot;Pennsylvania&quot;,&quot;Rhode Island&quot;,&quot;South Carolina&quot;,&quot;South Dakota&quot;,&quot;Tennessee&quot;,&quot;Texas&quot;,&quot;Utah&quot;,&quot;Vermont&quot;,&quot;Virginia&quot;,&quot;Washington&quot;,&quot;West Virginia&quot;,&quot;Wisconsin&quot;,&quot;Wyoming&quot;]" />
-
-																	<p class="help-block"><span class="muted">Start typing to auto complete!. E.g: US</span></p>
-
-																</div>-->
-
-																<!-- <label class="control-label">About</label>
-
-																<textarea class="span8 m-wrap" rows="3"></textarea>
-
-																<label class="control-label">Website Url</label>
-
-																<input type="text" placeholder="http://www.mywebsite.com" class="m-wrap span8" />
-																-->
 																<div class="submit-btn">
 
-																	<a href="${pageContext.request.contextPath}/useraction/updateUser.action" class="btn green">保存</a>
+																	<input type="submit" class="btn green" value="保存">
 
-																	<a href="#" class="btn">取消</a>
+																	<a href="" class="btn" >取消</a>
 
 																</div>
 

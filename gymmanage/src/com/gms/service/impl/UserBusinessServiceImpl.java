@@ -47,8 +47,8 @@ public class UserBusinessServiceImpl {
 	}
 	
 	
-	public boolean updatePassword(int id,String oPassword,String nPassword){
-		return userDAO.updatePassword(id, oPassword, nPassword);
+	public void updatePassword(int id,String password){
+		 userDAO.updatePassword(id, password);
 	}
 	
 	public Page getAllUsersPageDate(int pageNum,int pageSize){
@@ -75,7 +75,7 @@ public class UserBusinessServiceImpl {
 	 * @param password
 	 * @return
 	 */
-	public  User checkLogin(int studentNo,String password){
+	public  User checkLogin(String studentNo,String password){
 		return userDAO.checkLogin(studentNo, password);
 	}
 }

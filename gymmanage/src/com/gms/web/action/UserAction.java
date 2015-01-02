@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.gms.domain.Page;
 import com.gms.domain.User;
 import com.gms.service.impl.UserBusinessServiceImpl;
@@ -23,6 +27,17 @@ public class UserAction {
 	private boolean flag;
 	private int pageNum = 1;
 	private int numPerPage = 20;// �൱��pagesize
+	private String path;
+	
+	
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
 
 	public int getPageNum() {
 		return pageNum;
@@ -218,29 +233,123 @@ public class UserAction {
      */
     public String getUserSelf(){
     	try{
-	    	user=(User) ActionContext.getContext().getSession().get("user");
-	    	UserBusinessServiceImpl userBusinessServiceImpl=new UserBusinessServiceImpl();
-	    	user=userBusinessServiceImpl.getUserById(user.getId());
-	    	return "success";
+    		User user = (User)ActionContext.getContext().getSession().get("user");
+			if(user==null){
+				String path = ServletActionContext.getRequest().getContextPath()+"/useraction/getUserSelf.action";
+				ActionContext.getContext().put("path", path);
+				return "unlogin";
+			}else{
+				user=(User) ActionContext.getContext().getSession().get("user");
+		    	UserBusinessServiceImpl userBusinessServiceImpl=new UserBusinessServiceImpl();
+		    	user=userBusinessServiceImpl.getUserById(user.getId());
+		    	return "success";
+			}
     	}catch(Exception e){
     		return "error";
     	}
-    	
     }
     
-    public String login(){
+    /**
+     * 用户登录
+     * @return
+     */
+    public String clientLogin(){
     	try {
-			String path = (String) ActionContext.getContext().get("path");
 			UserBusinessServiceImpl service = new UserBusinessServiceImpl();
-			User u = service.checkLogin(Integer.parseInt(user.getStudentNo()), user.getPassword());
-			return null;
+			user = service.checkLogin(user.getStudentNo(), user.getPassword());
+			if(user==null){
+				message = "您输入的账号密码有误，请重新登录";
+				ActionContext.getContext().put("message", message);
+				return "loginFaile";
+			}else{
+				
+				ActionContext.getContext().getSession().put("user", user);
+				
+				if(path!=null){
+					//重定向
+					 HttpServletResponse response = ServletActionContext.getResponse();
+					 response.sendRedirect(path); 
+					 //重定向后,别忘了返回null值,而不能再返回return     
+					 //mapping.findForward("****");       
+					 return null;
+				}else{
+					return "success";
+				}
+			}
     	} catch (Exception e) {
-			// TODO: handle exception
-    		return null;
+			e.printStackTrace();
+			message = "不好意思，系统异常，我们会尽快维护的！";
+    		return "error";
 		}
     }
 	
+    /**
+     * 退出登录
+     * @return
+     */
+    public String logout(){
+    	try {
+			ActionContext.getContext().getSession().remove("user");
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = "不好意思，系统异常，我们会尽快维护的！";
+    		return "error";
+		}
+    }
+    
+    /**
+     * 用户更新个人信息
+     * @return
+     */
+    public String clientUpdateUser(){
+    	try {
+			UserBusinessServiceImpl service = new UserBusinessServiceImpl();
+			service.updateUser(user);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = "不好意思，系统异常，我们会尽快维护的！";
+    		return "error";
+		}
+    }
 
-
+    /**
+     * 用户修改密码之前判断是否登录
+     * @return
+     */
+    public String checkBeforeUpdatePassword(){
+    	try {
+    		User user = (User)ActionContext.getContext().getSession().get("user");
+			if(user==null){
+				String path = ServletActionContext.getRequest().getContextPath()+"/useraction/checkBeforeUpdatePassword.action";
+				ActionContext.getContext().put("path", path);
+				return "unlogin";
+			}else{
+				return "success";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = "不好意思，系统异常，我们会尽快维护的！";
+    		return "error";
+		}
+    }
+    
+    /**
+     * 用户修改密码
+     * @return
+     */
+    public String clientUpdatePassword(){
+    	try {
+			UserBusinessServiceImpl service = new UserBusinessServiceImpl();
+			service.updatePassword(user.getId(), user.getPassword());
+			ActionContext.getContext().put("message", "修改密码成功！");
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = "不好意思，系统异常，我们会尽快维护的！";
+    		return "error";
+		}
+    }
 	
 }

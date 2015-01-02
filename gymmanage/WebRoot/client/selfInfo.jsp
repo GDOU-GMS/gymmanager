@@ -49,6 +49,12 @@
   </head>
   
  <body class="page-header-fixed">
+ 
+ 	<c:if test="${!empty message}">
+		<script type="text/javascript">
+			alert("${message}");
+		</script>
+	</c:if>
 
 	<!-- BEGIN HEADER -->
 
@@ -97,9 +103,9 @@
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-							<img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />
-	
-							<span class="username">Bob Nilson</span>
+							<i class="icon-user"></i>
+							
+							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
@@ -2318,7 +2324,7 @@
 
 								<!--  <div class="tab-pane profile-classic row-fluid" id="tab_1_2">-->
 								<div class="tab-pane profile-classic row-fluid active" id="tab_1_2">
-									<div class="span3"><img src="${pageContext.request.contextPath }/media/image/profile-img.png" alt="" /> <a href="#" class="profile-edit">edit</a></div>
+									<div class="span3"><img src="${pageContext.request.contextPath }/media/image/profile-img.png" alt="" /> <a href="#" class="profile-edit"></a></div>
 
 									<ul class="unstyled span9">
 

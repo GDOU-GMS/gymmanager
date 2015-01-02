@@ -41,6 +41,9 @@ public class SiteAction {
 	private SiteUsage siteUsage;
 	
 	
+	
+	
+	
 
 
 	public SiteUsage getSiteUsage() {
@@ -1025,13 +1028,15 @@ public class SiteAction {
 		try {
 			User user = (User)ActionContext.getContext().getSession().get("user");
 			if(user==null){
+				String path = ServletActionContext.getRequest().getContextPath()+"/site/clientGetDataForAddSiteOrder.action";
+				ActionContext.getContext().put("path", path);
 				return "unlogin";
 			}else{
-			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-			List<Site> sites = service.getAllSite();
-			List<SiteType> siteTypes = service.getAllSiteType();
-			ActionContext.getContext().put("sites", sites);
-			ActionContext.getContext().put("siteTypes", siteTypes);
+				SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+				List<Site> sites = service.getAllSite();
+				List<SiteType> siteTypes = service.getAllSiteType();
+				ActionContext.getContext().put("sites", sites);
+				ActionContext.getContext().put("siteTypes", siteTypes);
 			return "success";
 			}
 		} catch (Exception e) {
@@ -1050,14 +1055,16 @@ public class SiteAction {
 			boolean flat = service.getSiteOrderByTime(siteOrder.getStratTime(), siteOrder.getEndTime(),siteOrder.getSiteId());
 			if(flat==false){
 				ActionContext.getContext().put("message", "抱歉，预约失败，该场地已经被预约！");
-				return "error";
+				return "failure";
+			}else{
+				int userId = ((User)ActionContext.getContext().getSession().get("user")).getId();
+				siteOrder.setUserId(userId);
+				siteOrder.setStatue("unpassed");
+				siteOrder.setOrderTime(new Date());
+				service.addSiteOrder(siteOrder);
+				ActionContext.getContext().put("message", "预约成功");
+				return "success";
 			}
-			int userId = ((User)ActionContext.getContext().getSession().get("user")).getId();
-			siteOrder.setUserId(userId);
-			siteOrder.setStatue("unpassed");
-			siteOrder.setOrderTime(new Date());
-			service.addSiteOrder(siteOrder);
-			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
 			ActionContext.getContext().put("message", "抱歉，系统异常，我们会尽快维护！");
@@ -1090,7 +1097,34 @@ public class SiteAction {
 	 */
 	public String clientGetMySiteOrderData(){
 		try {
-			return  "success";
+			User user = (User)ActionContext.getContext().getSession().get("user");
+			if(user==null){
+				String path = ServletActionContext.getRequest().getContextPath()+"/site/clientGetMySiteOrderData.action";
+				ActionContext.getContext().put("path", path);
+				return "unlogin";
+			}else{
+				SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+				List<SiteOrderVo> siteOrders = service.getSiteOrderByUserId(user.getId());
+				ActionContext.getContext().put("siteOrders", siteOrders);
+				return  "success";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			ActionContext.getContext().put("message", "抱歉，系统异常，我们会尽快维护！");
+			return "error";
+		}
+	}
+	/**
+	 * 用户删除场地预约
+	 * @return
+	 */
+	public String clientDeleteSiteOrder(){
+		try {
+			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			service.deleteSiteOrder(id);
+			String path = ServletActionContext.getRequest().getContextPath()+"/site/clientGetMySiteOrderData.action";
+			ServletActionContext.getResponse().sendRedirect(path);
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			ActionContext.getContext().put("message", "抱歉，系统异常，我们会尽快维护！");

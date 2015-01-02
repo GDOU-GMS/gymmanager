@@ -37,7 +37,7 @@ public interface UserDAO {
 	 * @param nPassword
 	 * @return
 	 */
-	public abstract boolean updatePassword(int id,String oPassword,String nPassword);
+	public abstract void updatePassword(int id,String password);
 	
 	
 	/**
@@ -82,6 +82,6 @@ public interface UserDAO {
 	 * @param password
 	 * @return
 	 */
-	public abstract User checkLogin(int studentNo,String password);
+	public abstract User checkLogin(String studentNo,String password);
 	
 }

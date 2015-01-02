@@ -9,7 +9,7 @@ var Login = function () {
 	            errorClass: 'help-inline', // default input error message class
 	            focusInvalid: false, // do not focus the last invalid input
 	            rules: {
-	                username: {
+	                studentNo: {
 	                    required: true
 	                },
 	                password: {
@@ -21,7 +21,7 @@ var Login = function () {
 	            },
 
 	            messages: {
-	                username: {
+	            	studentNo: {
 	                    required: "Username is required."
 	                },
 	                password: {
@@ -48,14 +48,14 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "index.html";
+	                window.location.href = "useraction/clientLogin.action";
 	            }
 	        });
 
 	        $('.login-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.login-form').validate().form()) {
-	                    window.location.href = "index.html";
+	                    window.location.href = "useraction/clientLogin.action";
 	                }
 	                return false;
 	            }

@@ -187,7 +187,7 @@ public class SiteBusinessServiceImpl {
 	 * @param userId
 	 * @return
 	 */
-	public List<SiteOrder> getSiteOrderByUserId(int userId){
+	public List<SiteOrderVo> getSiteOrderByUserId(int userId){
 		return siteOrderDAO.getSiteOrderByUserId(userId);
 	}
 	/**

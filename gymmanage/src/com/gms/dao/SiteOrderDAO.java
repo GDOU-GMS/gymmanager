@@ -36,7 +36,7 @@ public interface SiteOrderDAO {
 	 * @param userId
 	 * @return
 	 */
-	public abstract List<SiteOrder> getSiteOrderByUserId(int userId);
+	public abstract List<SiteOrderVo> getSiteOrderByUserId(int userId);
 
 	/**
 	 * 根据预约状态查找预约

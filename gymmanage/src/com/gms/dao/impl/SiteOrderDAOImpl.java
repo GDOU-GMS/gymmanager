@@ -108,12 +108,12 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 	 * @param userId
 	 * @return
 	 */
-	public List<SiteOrder> getSiteOrderByUserId(int userId) {
+	public List<SiteOrderVo> getSiteOrderByUserId(int userId) {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select * from tb_siteorder where userId=?";
-			return (List<SiteOrder>) qr.query(sql, userId, new BeanListHandler(
-					SiteOrder.class));
+			String sql = "select tb_siteorder.*,tb_user.studentNo as studentNo ,tb_user.name as username,tb_site.name as sitename from tb_siteorder,tb_user,tb_site where tb_site.id=tb_siteorder.siteid and tb_user.id=tb_siteorder.userId and userId=? order by orderTime desc ";
+			return (List<SiteOrderVo>) qr.query(sql, userId, new BeanListHandler(
+					SiteOrderVo.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

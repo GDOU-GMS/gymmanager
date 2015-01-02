@@ -117,55 +117,30 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
-		String sql="update tb_user set studentNo=?, name=?,academy=?,major=?"
-				+ "className=?,gender=?,telephone=?where id=? ";
-		Object param[]={user.getStudentNo(),user.getName(),user.getAcademy(),
-				user.getMajor(),user.getClassName(),user.getGender(),user.getTelephone()};
 		try {
-			
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "update tb_user set studentNo=?, name=?,academy=?,major=? ,className=?,gender=?,telephone=? where id=? ";
+			Object param[] = { user.getStudentNo(), user.getName(),
+					user.getAcademy(), user.getMajor(), user.getClassName(),
+					user.getGender(), user.getTelephone() ,user.getId()};
 			qr.update(sql, param);
-			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			throw new RuntimeException();
+			throw new RuntimeException(e);
 		}
 		
 	}
 
 	@Override
-	public boolean updatePassword(int id, String oPassword, String nPassword) {
-		// TODO Auto-generated method stub
-		
-				QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
-				String sql="select password from tb_user where id=?";
-				Object param1=id;
-				String pwd;
-				try {
-					pwd = (String)qr.query(sql, param1,new ScalarHandler());
-					if(pwd.equals(oPassword)){
-						flag=true;
-					}
-					else{
-					   return flag;
-					}
-					
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					throw new RuntimeException();
-				}
-				sql="update db_user set password=?where id=?";
-				Object param2[]={nPassword,id};
-				try {
-					qr.update(sql, param2);
-					flag=true;
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					throw new RuntimeException();
-				}
-				return flag;
-			}
+	public void updatePassword(int id,String password) {
+		try {
+			QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
+			String sql="update tb_user set password=? where id=?";
+			Object params[]={password,id};
+			qr.update(sql, params);
+		}catch(Exception e){
+			throw new RuntimeException(e);
+		}
+	}
 	  
 		public int getTotalRecord(String studentNo,String name,String academy){
 			 QueryRunner qr=new QueryRunner(JDBCUtils.getDateSource());
@@ -238,7 +213,7 @@ public class UserDAOImpl implements UserDAO{
 		 * @param password
 		 * @return
 		 */
-		public User checkLogin(int studentNo,String password){
+		public User checkLogin(String studentNo,String password){
 			try {
 				QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
 				String sql = "select * from tb_user where studentNo=? and password=?";

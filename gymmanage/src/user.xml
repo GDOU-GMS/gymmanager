@@ -15,11 +15,28 @@
 			<result name="success">/manager/user_info.jsp</result>
 		</action>
 		<action name="getUserSelf" class="com.gms.web.action.UserAction" method="getUserSelf">
+			<result name="unlogin">/client/login.jsp</result>
 			<result name="success">/client/selfInfo.jsp</result>
 		</action>
-		<action name="login" class="com.gms.web.action.UserAction" method="login">
-		
+		<action name="clientLogin" class="com.gms.web.action.UserAction" method="clientLogin">
+			<result name="loginFaile">/client/login.jsp</result>
+			<result name="success" type="redirect">/index.jsp</result>
 		</action>
+		<action name="logout" class="com.gms.web.action.UserAction" method="logout">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+		<action name="clientUpdateUser" class="com.gms.web.action.UserAction" method="clientUpdateUser">
+			<result name="success">/client/selfInfo.jsp</result>
+		</action>
+		<action name="checkBeforeUpdatePassword" class="com.gms.web.action.UserAction" method="checkBeforeUpdatePassword">
+			<result name="unlogin">/client/login.jsp</result>
+			<result name="success">/client/updatePassword.jsp</result>
+		</action>
+		<action name="clientUpdatePassword" class="com.gms.web.action.UserAction" method="clientUpdatePassword">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+		
+		
 	</package>
   
 

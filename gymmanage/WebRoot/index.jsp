@@ -101,13 +101,15 @@
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-							<img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />
+							<%-- <img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />  --%>
 	
-							<span class="username">Bob Nilson</span>
+							<i class="icon-user"></i>
+							
+							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
-							</a>
+							</a> 
 	
 							<ul class="dropdown-menu">
 							
@@ -119,7 +121,7 @@
 
 								<li class="divider"></li>
 
-								<li><a href="login.html"><i class="icon-key"></i>退出</a></li>
+								<li><a href="${pageContext.request.contextPath }/useraction/logout.action"><i class="icon-key"></i>退出</a></li>
 							</ul>
 						</li>
 					</c:if>
@@ -510,7 +512,7 @@
 
 						<li >
 
-							<a href="${pageContext.request.contextPath}/client/updatePassword.jsp">
+							<a href="${pageContext.request.contextPath}/useraction/checkBeforeUpdatePassword.action">
 
 							修改密码</a>
 

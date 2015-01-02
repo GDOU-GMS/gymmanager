@@ -63,6 +63,7 @@
 
 	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon1.ico" />
 
+	<script src="${pageContext.request.contextPath }/js/dateTimePicker.js" type="text/javascript" language="javascript"></script>
   </head>
   
  <body class="page-header-fixed">
@@ -120,9 +121,9 @@
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-							<img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />
-	
-							<span class="username">Bob Nilson</span>
+							<i class="icon-user"></i>
+							
+							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
@@ -708,7 +709,7 @@
 
 								<!-- BEGIN FORM-->
 
-								<form action="${pageContext.request.contextPath }/site/clientAddSiteOrder.action" class="form-horizontal">
+								<form action="${pageContext.request.contextPath }/site/clientAddSiteOrder.action" class="form-horizontal" method="post">
 								
 								<div class="control-group">
 
@@ -740,9 +741,9 @@
 
 										<div class="controls">
 
-											<div class="input-append date form_datetime">
+											<div class="input-append date ">
 
-												<input size="16" type="text" value="" readonly class="m-wrap" name="siteOrder.stratTime">
+												<input size="16" type="text" value="" readonly  class="m-wrap" name="siteOrder.stratTime" onclick="SetDate(this,'yyyy-MM-dd hh:mm:ss')">
 
 												<span class="add-on"><i class="icon-calendar"></i></span>
 
@@ -756,9 +757,9 @@
 
 										<div class="controls">
 
-											<div class="input-append date form_datetime">
+											<div class="input-append date ">
 
-												<input size="16" type="text" value="" readonly class="m-wrap" name="siteOrder.endTime">
+												<input size="16" type="text" value="" readonly class="m-wrap" name="siteOrder.endTime" onclick="SetDate(this,'yyyy-MM-dd hh:mm:ss')">
 
 												<span class="add-on"><i class="icon-calendar"></i></span>
 

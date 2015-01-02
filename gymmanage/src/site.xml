@@ -131,13 +131,17 @@
 			<result name="success">/client/siteOrder.jsp</result>
 		</action>
 		<action name="clientAddSiteOrder"  class="com.gms.web.action.SiteAction" method="clientAddSiteOrder">
-			<result name="success">/client/siteOrder.jsp</result>
+			<result name="failure" type="chain">clientGetDataForAddSiteOrder</result>
+			<result name="success" type="chain">clientGetMySiteOrderData</result>
 		</action>
 		<action name="clientGetFeeScale"  class="com.gms.web.action.SiteAction" method="clientGetFeeScale">
 			<result name="success">/client/feeScale.jsp</result>
 		</action>
 		<action name="clientGetMySiteOrderData"  class="com.gms.web.action.SiteAction" method="clientGetMySiteOrderData">
 			<result name="success">/client/mySiteOrder.jsp</result>
+			<result name="unlogin">/client/login.jsp</result>
+		</action>
+		<action name="clientDeleteSiteOrder"  class="com.gms.web.action.SiteAction" method="clientDeleteSiteOrder">
 		</action>
 		
 	
