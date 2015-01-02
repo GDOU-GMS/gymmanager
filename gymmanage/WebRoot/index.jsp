@@ -1,8 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html>
 <html>
   <head>
+  	<base href="<%=basePath%>">
     <title>广东海洋大学体育馆</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="author" />
@@ -104,7 +111,7 @@
 	
 							<ul class="dropdown-menu">
 							
-								<li><a href="#"><i class="icon-user"></i>个人信息</a></li>
+								<li><a href="${pageContext.request.contextPath}/useraction/getUserSelf.action"><i class="icon-user"></i>个人信息</a></li>
 
 								<li><a href="#"><i class="icon-calendar"></i>我的预约</a></li>
 	
@@ -488,7 +495,7 @@
 
 						<li >
 
-							<a href="login.html">
+							<a href="${pageContext.request.contextPath}/useraction/getUserSelf.action">
 
 							个人信息</a>
 
@@ -503,7 +510,7 @@
 
 						<li >
 
-							<a href="login_soft.html">
+							<a href="${pageContext.request.contextPath}/client/updatePassword.jsp">
 
 							修改密码</a>
 

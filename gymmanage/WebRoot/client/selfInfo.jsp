@@ -1,8 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html>
 <html>
   <head>
+  <base href="<%=basePath%>">
     <title>广东海洋大学体育馆</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
@@ -2311,9 +2318,9 @@
 
 								<!--  <div class="tab-pane profile-classic row-fluid" id="tab_1_2">-->
 								<div class="tab-pane profile-classic row-fluid active" id="tab_1_2">
-									<div class="span2"><img src="media/image/profile-img.png" alt="" /> <a href="#" class="profile-edit">edit</a></div>
+									<div class="span3"><img src="${pageContext.request.contextPath }/media/image/profile-img.png" alt="" /> <a href="#" class="profile-edit">edit</a></div>
 
-									<ul class="unstyled span10">
+									<ul class="unstyled span9">
 
 										<li><span>用户名：</span>${user.studentNo}</li>
 
@@ -2327,7 +2334,7 @@
 
 										<li><span>性别：</span>${user.gender}</li>
 
-										<li><span>联系方式：</span>${user.telephone}/li>
+										<li><span>联系方式：</span>${user.telephone}</li>
 
 										<!-- <li><span>Interests:</span> Design, Web etc.</li>
 
@@ -2339,7 +2346,7 @@
 										 -->
 									</ul>
 									<div align="right">
-									<a href="${pageContext.request.contextPath}/useraction/getUserSelf.action" class="btn blue"><i class="icon-pencil"></i> 编辑个人信息</a>
+									<a href="${pageContext.request.contextPath}/client/updateSelfInfo.jsp" class="btn blue"><i class="icon-pencil"></i> 编辑个人信息</a>
 									</div>
 
 								</div>
