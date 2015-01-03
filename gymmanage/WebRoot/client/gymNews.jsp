@@ -337,7 +337,7 @@
 
 					<ul class="sub-menu">
 
-						<li >
+						<li class="active" >
 
 							<a href="${pageContext.request.contextPath}/client/gymNews.jsp">
 

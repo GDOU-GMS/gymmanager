@@ -204,7 +204,7 @@
 
 					<ul class="sub-menu">
 
-						<li >
+						<li class="active">
 
 							<a href="${pageContext.request.contextPath}/client/gymIntroduction.jsp">场馆简介</a>
 
@@ -326,7 +326,7 @@
 
 						<li >
 
-							<a href="page_timeline.html">
+							<a href="${pageContext.request.contextPath}/client/gymNews.jsp">
 
 							<!-- <i class="icon-time"></i> -->
 

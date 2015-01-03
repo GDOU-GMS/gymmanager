@@ -218,7 +218,7 @@
 
 						</li>
 
-						<li >
+						<li class="active">
 
 							<a href="${pageContext.request.contextPath}/client/gymView.jsp">场馆风采</a>
 
@@ -334,7 +334,7 @@
 
 						<li >
 
-							<a href="page_timeline.html">
+							<a href="${pageContext.request.contextPath}/client/gymNews.jsp">
 
 							<!-- <i class="icon-time"></i> -->
 

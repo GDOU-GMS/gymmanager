@@ -10,6 +10,7 @@
 <html>
   <head>
   	<base href="<%=basePath%>">
+  
     <title>广东海洋大学体育馆</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="author" />
@@ -266,7 +267,7 @@
 
 						</li>
 
-						<li >
+						<li class="active" >
 
 							<a href="${pageContext.request.contextPath}/client/fitness.jsp">
 
@@ -1164,7 +1165,7 @@
 
 								<div class="space20"></div>
 
-								<h2>Flickr</h2>
+								<h2>校园风采</h2>
 
 								<ul class="unstyled blog-images">
 

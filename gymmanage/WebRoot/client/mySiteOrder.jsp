@@ -128,11 +128,11 @@
 	
 							<ul class="dropdown-menu">
 							
-								<li><a href="#"><i class="icon-user"></i>个人信息</a></li>
+								<li><a href="${pageContext.request.contextPath}/useraction/getUserSelf.action"><i class="icon-user"></i>个人信息</a></li>
 
-								<li><a href="#"><i class="icon-calendar"></i>我的预约</a></li>
+								<li class="active"><a href="${pageContext.request.contextPath }/site/clientGetMySiteOrderData.action"><i class="icon-calendar"></i>我的预约</a></li>
 	
-								<li><a href="#"><i class="icon-edit"></i>修改密码</a></li>
+								<li><a href="${pageContext.request.contextPath}/useraction/checkBeforeUpdatePassword.action"><i class="icon-edit"></i>修改密码</a></li>
 
 								<li class="divider"></li>
 
@@ -228,13 +228,13 @@
 
 						<li >
 
-							<a href="#">场馆简介</a>
+							<a href="${pageContext.request.contextPath}/client/gymIntroduction.jsp">场馆简介</a>
 
 						</li>
 
 						<li >
 
-							<a href="#">场馆风采</a>
+							<a href="${pageContext.request.contextPath}/client/gymView.jsp">场馆风采</a>
 
 						</li>
 						<li >
@@ -263,7 +263,7 @@
 
 						<li >
 
-							<a href="ui_general.html">
+							<a href="${pageContext.request.contextPath}/client/badmintonHall.jsp">
 
 							羽毛球馆</a>
 
@@ -271,7 +271,7 @@
 
 						<li >
 
-							<a href="ui_buttons.html">
+							<a href="${pageContext.request.contextPath}/client/tableTennnisHall.jsp">
 
 							乒乓球馆</a>
 
@@ -279,7 +279,7 @@
 
 						<li >
 
-							<a href="ui_modals.html">
+							<a href="${pageContext.request.contextPath}/client/billiardsHall.jsp">
 
 							台球厅</a>
 
@@ -287,7 +287,7 @@
 
 						<li >
 
-							<a href="ui_tabs_accordions.html">
+							<a href="${pageContext.request.contextPath}/client/fitness.jsp">
 
 							健身房</a>
 
@@ -348,7 +348,7 @@
 
 						<li >
 
-							<a href="page_timeline.html">
+							<a href="${pageContext.request.contextPath}/client/gymNews.jsp">
 
 							<!-- <i class="icon-time"></i> -->
 

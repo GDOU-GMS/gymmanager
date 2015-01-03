@@ -258,7 +258,7 @@
 
 						</li>
 
-						<li >
+						<li class="active" >
 
 							<a href="${pageContext.request.contextPath}/client/billiardsHall.jsp">
 
@@ -1164,7 +1164,7 @@
 
 								<div class="space20"></div>
 
-								<h2>Flickr</h2>
+								<h2>校园风采</h2>
 
 								<ul class="unstyled blog-images">
 
