@@ -32,24 +32,19 @@
 
 	<link href="${pageContext.request.contextPath }/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
+	<link href="${pageContext.request.contextPath }/media/css/jquery.fancybox.css" rel="stylesheet" />
+
 	<!-- END GLOBAL MANDATORY STYLES -->
 
-	<!-- BEGIN PAGE LEVEL STYLES --> 
+	<!-- BEGIN PAGE LEVEL STYLES -->
 
-	<link href="${pageContext.request.contextPath }/media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
 
-	<link href="${pageContext.request.contextPath }/media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
-
-	<link href="${pageContext.request.contextPath }/media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
-
-	<link href="${pageContext.request.contextPath }/media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
-
-	<link href="${pageContext.request.contextPath }/media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link href="${pageContext.request.contextPath }/media/css/blog.css" rel="stylesheet" type="text/css"/>
 
 	<!-- END PAGE LEVEL STYLES -->
 
-	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon1.ico" />
-
+	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon.ico" />
+	
   </head>
   
  <body class="page-header-fixed">
