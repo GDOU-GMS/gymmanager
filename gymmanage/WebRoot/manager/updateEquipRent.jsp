@@ -26,15 +26,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <div class="page">
 	<div class="pageContent">
-		<form method="post" action="${pageContext.request.contextPath }/equipmentaction/addEquipRentInfo.action" 
+		<form method="post" action="${pageContext.request.contextPath }/equipmentaction/updateEquipRent.action" 
 		  class="pageForm required-validate" 
 		   onsubmit="return validateCallback(this, navTabAjaxDone);">
 			<div class="pageFormContent nowrap" layoutH="80">
 			
+				<input type="text" name="equipmentRents.id" value="${equipmentRents.id }" style="display:none;">
 				<dl>
 					<dt>学号：</dt>
 					<dd>
-						<input type="text" name="equipmentRents.studentNo" class="required  " minlength="12" maxlength="12">
+						<input type="text" name="equipmentRents.studentNo" class="required  " minlength="12" maxlength="12" value="${equipmentRents.studentNo }">
 					</dd>
 					
 				</dl>	
@@ -46,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<optgroup label="${equipmentType.type }">
 									<c:forEach items="${equipments }" var="equipment">
 										<c:if test="${equipmentType.id==equipment.typeId }">
-											<option value="${equipment.id }">${equipment.name }</option>
+											<option value="${equipment.id }" <c:if test="${equipmentRents.equipmentId eq equipment.id }">selected="selected"</c:if>  >${equipment.name }</option>
 										</c:if>
 									</c:forEach>
 								</optgroup>
@@ -58,14 +59,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<dl>
 					<dt>数量：</dt>
 					<dd>
-						<input type="text" name="equipmentRents.num" class="required">
+						<input type="text" name="oldNum" class="required" value="${equipmentRents.num }" style="display: none;">
+						<input type="text" name="equipmentRents.num" class="required" value="${equipmentRents.num }">
 					</dd>
 					
 				</dl>	
 				<dl>
 					<dt>租借日期：</dt>
 					<dd>
-                        <input type="text" name="equipmentRents.startDate" class="date" readonly="true"/>
+                        <input type="text" name="equipmentRents.startDate" class="date" readonly="true" value="${equipmentRents.startDate }"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 						<span class="info">日期格式为yyyy-MM-dd</span>					</dd>
 					
@@ -73,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<dl>
 					<dt>到期日期：</dt>
 					<dd>
-                        <input type="text" name="equipmentRents.endDate" class="date" readonly="true"/>
+                        <input type="text" name="equipmentRents.endDate" class="date" readonly="true" value="${equipmentRents.endDate }"/>
 						<a class="inputDateButton" href="javascript:;">选择</a>
 						<span class="info">日期格式为yyyy-MM-dd</span>					</dd>
 				</dl>
@@ -86,6 +88,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    <dd>
 				    <select name="equipmentRents.statue">
 							<option value="unpassed" >未过期</option>
+							<!-- <c:if test="${equipmentRents.statue eq 'unpassed' }">
+								<option value="${equipmentRents.statue }">未过期</option>
+							</c:if>
+							<c:if test="${equipmentRents.statue eq 'passed' }">
+								<option value="${equipmentRents.statue }">已过期</option>
+							</c:if> -->
 						</select>
 				    </dd>
 				</dl>

@@ -3,6 +3,7 @@ package com.gms.dao.impl;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
@@ -32,10 +33,8 @@ public class EquipmentChargeDAOImpl  implements EquipmentChargeDAO{
 		// TODO Auto-generated method stub
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "insert into tb_equipmenttype(id,feescale,type) values(?,?,?)";
-			Object params[] = { equipmentCharge.getId(), equipmentCharge.getFeescale(),
-					equipmentCharge.getType() };
-			qr.update(sql, params);
+			String sql = "update tb_equipmenttype set feescale=?";
+			qr.update(sql, equipmentCharge.getFeescale());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -84,9 +83,9 @@ public class EquipmentChargeDAOImpl  implements EquipmentChargeDAO{
 		// TODO Auto-generated method stub
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select * from tb_equipmenttype where tb_equipmenttype.type=?";
+			String sql = "select * from tb_equipmenttype where tb_equipmenttype.type like ? limit ?,?";
 			Object params[] = {"%"+type+"%",startIndex,pageSize};
-			return (List<EquipmentCharge>)qr.query(sql, params, new BeanListHandler(Equipment.class));
+			return (List<EquipmentCharge>)qr.query(sql, params, new BeanListHandler(EquipmentCharge.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -97,7 +96,7 @@ public class EquipmentChargeDAOImpl  implements EquipmentChargeDAO{
 		// TODO Auto-generated method stub
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select count(*) from tb_equipmenttype where tb_equipmenttype.type like ? ";
+			String sql = "select count(*) from tb_equipmenttype where type like ? ";
 			Object params[] = {"%"+type+"%"};
 			long l = (Long)qr.query(sql, params, new ScalarHandler());
 			return (int) l;
@@ -118,6 +117,19 @@ public class EquipmentChargeDAOImpl  implements EquipmentChargeDAO{
 		}
 	}
 
-	
+	/**
+	 * ¸ù¾Ýid²éÕÒ
+	 * @param id
+	 * @return
+	 */
+	public EquipmentCharge getEquipmentChargeById(int id ){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_equipmenttype where id=?";
+			return (EquipmentCharge) qr.query(sql, id,new BeanHandler(EquipmentCharge.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }

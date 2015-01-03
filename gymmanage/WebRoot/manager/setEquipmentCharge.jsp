@@ -29,24 +29,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  class="pageForm required-validate" 
 		   onsubmit="return validateCallback(this, navTabAjaxDone);">
 			<div class="pageFormContent nowrap" layoutH="80">
-					<dl>
-					<dt>器材收费标准号：</dt>
+				<dl>
+					<dt>器材类型ID：</dt>
 					<dd>
-						<input type="text" name="equipmentCharge.id" class="required">
+						<input type="text" name="equipmentCharge.id" class="required" value="${equipmentCharge.id }" readonly>
 					</dd>
+					</dl>
 					
+				<dl>
+					<dt>器材类型：</dt>
+					<dd>
+						<input type="text" name="equipmentCharge.type" class="required" value="${equipmentCharge.type }" readonly="readonly">
+					</dd>
+				</dl>
 				<dl>
 					<dt>器材收费标准：</dt>
 					<dd>
-						<input type="text" name="equipmentCharge.feescale" class="required">
+						<input type="text" name="equipmentCharge.feescale" class="required" value="${equipmentCharge.feescale }">
 					</dd>
 					
 				</dl>
-					<dl>
-					<dt>器材类型：</dt>
-					<dd>
-						<input type="text" name="equipmentCharge.type" class="required">
-					</dd>
 			</div>
 			<div class="formBar">
 				<ul>

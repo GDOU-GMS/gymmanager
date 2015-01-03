@@ -26,16 +26,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 <div class="page">
 	<div class="pageContent">
-		<form method="post" action="${pageContext.request.contextPath }/equipmentaction/addEquipment.action" 
+		<form method="post" action="${pageContext.request.contextPath }/equipmentaction/updateEquipment.action" 
 		  class="pageForm required-validate" 
 		   onsubmit="return validateCallback(this, navTabAjaxDone);">
 			<div class="pageFormContent nowrap" layoutH="80">
+				<input name="equipment.id" value="${equipment.id }" type="text" style="display: none;">
 				<dl>
 					<dt>器材类型：</dt>
 					<dd>
 						<select name="equipment.typeId">
-							<c:forEach items="${EquipmentTypes }" var="equipmentType">
-								<option value="${equipmentType.id }">${equipmentType.type }</option>
+							<c:forEach items="${EquipmentTypes }" var="type">
+								<option value="${type.id }"<c:if test="${type.id == equipment.typeId }">selected="selected"</c:if> >${type.type }</option>
 							</c:forEach>
 						</select>
 					</dd>
@@ -43,21 +44,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<dl>
 					<dt>器材名称：</dt>
 					<dd>
-						<input type="text" name="equipment.name" class="required">
+						<input type="text" name="equipment.name" class="required" value="${equipment.name }">
 					</dd>
 					
 				</dl>	
 				<dl>
 					<dt>器材数量：</dt>
 					<dd>
-						<input type="text" name="equipment.totalNum" class="required digits">
+						<input type="text" name="equipment.totalNum" class="required digits" value="${equipment.totalNum }">
 					</dd>
 					
 				</dl>
 				<dl>
 					<dt>正在维修：</dt>
 					<dd>
-						<input type="text" name="equipment.underRepair" class="required digits">
+						<input type="text" name="equipment.underRepair" class="required digits" value="${ equipment.underRepair}">
 					</dd>
 				</dl>
 					<!-- <dl>
@@ -69,6 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<p>
 					<label>器材作用：</label>
 					<textarea name="equipment.description" rows="5" cols="50" >
+					${equipment.description}
 					</textarea>
 				</p>
 				

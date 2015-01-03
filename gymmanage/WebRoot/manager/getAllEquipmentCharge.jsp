@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="searchBar">
 				<table class="searchContent">
 					<tr>
-						<td>器材名称：<input type="text" name="equipmentCharge.name" />
+						<td>器材类型：<input type="text" name="equipmentCharge.type" />
 						</td>
 					</tr>
 				</table>
@@ -60,14 +60,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="panelBar">
 			<ul class="toolBar">
 				<li><a class="add"
-					href="${pageContext.request.contextPath }/equipmentaction/getDataForsetEquipmentCharge.action"
+					href="${pageContext.request.contextPath }/equipmentaction/getDataForsetEquipmentCharge.action?id={equipmentCharges}"
 					target="navTab"><span>设置器材收费标准</span></a></li>
 				<li><a class="delete"
 					href="${pageContext.request.contextPath }/equipmentaction/deleteEquipmentCharge.action?id={equipmentCharges}"
 					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-				<li><a class="edit"
+				<%-- <li><a class="edit"
 					href="${pageContext.request.contextPath}/equipmentaction/updateEquipmentCharge.action?id={equipmentCharges}"
-					target="navTab"><span>修改</span></a></li>
+					target="navTab"><span>修改</span></a></li> --%>
 			</ul>
 		</div>
 		<table class="table" width="100%" layoutH="138">

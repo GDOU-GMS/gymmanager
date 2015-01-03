@@ -44,14 +44,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="searchBar">
 			<table class="searchContent">
 					<tr>
-						<td>学号：<input type="text" name="equipmentRents.userId" />
+						<td>学号：<input type="text" name="equipmentRents.studentNo" />
 						</td>
-						<td>状态:<input type="text" name="equipmentRents.statue" /></td>
-						<!--  <td><select class="combox" name="equipments.statue">
+						<td>状态:</td>
+						<td><select  name="equipmentRents.statue">
 								<option value="none">--请选择--</option>
-								<option value="undeleted">未删除</option>
-								<option value="deleted">已删除</option>
-						</select></td>-->
+								<option value="unpassed">未过期</option>
+								<option value="passed">已过期</option>
+						</select></td>
 					</tr>
 				</table>
 			<div class="subBar">
@@ -67,10 +67,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<ul class="toolBar">
 				<li><a class="add" href="${pageContext.request.contextPath }/equipmentaction/getDataForaddequipRentQuery.action" 
 				target="navTab"><span>添加</span></a></li>
-				<li><a class="delete" href="${pageContext.request.contextPath }/equipmentaction/deleteEquipmentInfo.action?id={equipmentRent}" 
-				target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-				<li><a class="edit" href="${pageContext.request.contextPath }/equipmentaction/updateEquipmentInfo.action?id={equipmentRent}"
+				<li><a class="add" href="${pageContext.request.contextPath }/equipmentaction/recoverEquipRent.action?id={equipmentRent}"
+				 target="ajaxTodo"><span>归还</span></a></li>
+				<li><a class="edit" href="${pageContext.request.contextPath }/equipmentaction/getDateForupdateEquipRent.action?id={equipmentRent}"
 				 target="navTab"><span>修改</span></a></li>
+				<%-- <li><a class="delete" href="${pageContext.request.contextPath }/equipmentaction/deleteEquipmentInfo.action?id={equipmentRent}" 
+				target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li> --%>
+				<li><a class="delete" href="${pageContext.request.contextPath }/equipmentaction/dealpassedEquipRent.action"
+				 target="ajaxTodo"><span>一件处理到期</span></a></li>
+				
 				<li class="line">line</li>
 			</ul>
 		</div>
@@ -78,13 +83,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<thead>
 				<tr>
 					<th style="width:120px;">租借号</th>
-					<th style="width:140px;">器材号</th>
-					<th style="width:140px;">器材名称</th>
 					<th style="width:100px;">学号</th>
+					<th style="width:100px;">用户名</th>
+					<th style="width:140px;">器材名称</th>
+					<th style="width:140px;">数量</th>
+					<th style="width:120px;">应付款</th>
 					<th style="width:150px;">租借日期</th>
 					<th style="width:150px;">到期日期</th>
-					<th style="width:120px;">应付款</th>
-					<th style="width:90px;">租借数量</th>
 					<th style="width:150px;">器材状态</th>
 				</tr>
 			</thead>
@@ -92,14 +97,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   <c:forEach items="${page.list }"  var="equipmentRent">
 				<tr target="equipmentRent" rel="${equipmentRent.id}">
 					<td>${equipmentRent.id}</td>
-					<td>${equipmentRent.equipmentId}</td>
-					<td>${equipmentRent.name}</td>
-					<td>${equipmentRent.userId}</td>
+					<td>${equipmentRent.studentNo}</td>
+					<td>${equipmentRent.username}</td>
+					<td>${equipmentRent.equipmentname}</td>
+					<td>${equipmentRent.num}</td>
+					<td>${equipmentRent.price}</td>
 					<td>${equipmentRent.startDate}</td>
 					<td>${equipmentRent.endDate}</td>
-					<td>${equipmentRent.price}</td>
-					<td>${equipmentRent.num}</td>
-					<td>${equipmentRent.statue}</td>
+					<td>
+					<c:if test="${equipmentRent.statue eq 'unpassed' }"><span>未到期</span></c:if>
+					<c:if test="${equipmentRent.statue eq 'passed' }"><span style="color: red;">已到期</span></c:if>
+					</td>
 				</tr>
 				</c:forEach>
 			</tbody>

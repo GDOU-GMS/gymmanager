@@ -48,5 +48,12 @@ public interface EquipmentChargeDAO {
  	  * 获得所有收费标准信息
  	  * @return
  	  */
-	public List<EquipmentCharge> getAllEquipmentCharge();
+	public abstract List<EquipmentCharge> getAllEquipmentCharge();
+	
+	/**
+	 * 根据id查找
+	 * @param id
+	 * @return
+	 */
+	public abstract EquipmentCharge getEquipmentChargeById(int id );
 }

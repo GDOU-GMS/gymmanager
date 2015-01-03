@@ -6,13 +6,37 @@ import java.util.Date;
 public class EquipmentRentQuery {
       private int id;
       private int equipmentId;
+      private String equipmentname;
       private int userId;
+      private String username;
+      private String studentNo;
       private Date startDate;
       private Date endDate;
       private float price;
       private int num;
       private String statue;
       private String name;
+      
+      
+      
+	public String getEquipmentname() {
+		return equipmentname;
+	}
+	public void setEquipmentname(String equipmentname) {
+		this.equipmentname = equipmentname;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getStudentNo() {
+		return studentNo;
+	}
+	public void setStudentNo(String studentNo) {
+		this.studentNo = studentNo;
+	}
 	public String getName() {
 		return name;
 	}

@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="searchBar">
 				<table class="searchContent">
 					<tr>
-						<td>器材名称：<input type="text" name="equipments.name" />
+						<td>器材名称：<input type="text" name="equipment.name" />
 						</td>
 					</tr>
 				</table>
@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					href="${pageContext.request.contextPath }/equipmentaction/deleteEquipment.action?id={equipments}"
 					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
 				<li><a class="edit"
-					href="${pageContext.request.contextPath}/equipmentaction/updateEquipment.action?id={equipments}"
+					href="${pageContext.request.contextPath}/equipmentaction/getDateForUpdateEquipment.action?id={equipments}"
 					target="navTab"><span>修改</span></a></li>
 			</ul>
 		</div>
@@ -77,10 +77,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<th width="100">器材名称</th>
 					<th width="150">器材作用</th>
 					<th width="100">器材数量</th>
-					<th width="100">器材类型</th>
 					<th width="80">器材类型号</th>
-					<th width="80">是否维修</th>
-					<th width="80">是否可借</th>
+					<th width="100">器材类型</th>
+					<th width="80">价格(元/天)</th>
+					<th width="80">正在维修</th>
+					<th width="80">可供借出</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -90,8 +91,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>${equipments.name}</td>
 						<td>${equipments.description}</td>
 						<td>${equipments.totalNum}</td>
-						<td>${equipments.type}</td>
 						<td>${equipments.typeId}</td>
+						<td>${equipments.type}</td>
+						<td>${equipments.feeScale}</td>
 						<td>${equipments.underRepair}</td>
 						<td>${equipments.loanable}</td>
 					</tr>

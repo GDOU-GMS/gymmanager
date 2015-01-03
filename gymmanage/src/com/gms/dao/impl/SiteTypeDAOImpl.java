@@ -19,9 +19,8 @@ public class SiteTypeDAOImpl implements SiteTypeDAO {
 	public void addType(SiteType siteType){
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "insert into tb_sitetype(id,type) values(?,?)";
-			Object params[] = {siteType.getId(),siteType.getType()};
-			qr.update(sql, params);
+			String sql = "insert into tb_sitetype(type) values(?)";
+			qr.update(sql, siteType.getType());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

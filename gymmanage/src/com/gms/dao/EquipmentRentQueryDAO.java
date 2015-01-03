@@ -7,13 +7,13 @@ import com.gms.domain.EquipmentRentQuery;
 public interface EquipmentRentQueryDAO {
      
 	/**
-	 * 器材租借信息
+	 * 鍣ㄦ潗绉熷�淇℃伅
 	 */
 	 public abstract List<EquipmentRentQuery> getAllEquipmentRent();
 	
 	 
 	 /**
-	  * 获得器材租借分页信息
+	  * 鑾峰緱鍣ㄦ潗绉熷�鍒嗛〉淇℃伅
 	  * @param startIndex
 	  * @param pageSize
 	  * @return
@@ -22,17 +22,17 @@ public interface EquipmentRentQueryDAO {
 				int pageSize);
 	 
 	 /**
-	  * 获得器材租借总记录数
+	  * 鑾峰緱鍣ㄦ潗绉熷�鎬昏褰曟暟
 	  * @return
 	  */
 	 public abstract int getTotalRecord();
 
 	 /**
-	  * 添加器材租借信息
+	  * 娣诲姞鍣ㄦ潗绉熷�淇℃伅
 	  */
 	 public abstract void addEquipRentInfo(EquipmentRentQuery equipmentRents);
 	 /**
-	  * 删除器材租借信息
+	  * 鍒犻櫎鍣ㄦ潗绉熷�淇℃伅
 	  */
 	 public abstract void deleteEquipmentInfo(int id);
      
@@ -40,7 +40,7 @@ public interface EquipmentRentQueryDAO {
 	 
 	 /**
 	  * 
-	  * 查询条件得出器材租借信息
+	  * 鏌ヨ鏉′欢寰楀嚭鍣ㄦ潗绉熷�淇℃伅
 	  * @param id
 	  * @param startIndex
 	  * @param pageSize
@@ -48,10 +48,32 @@ public interface EquipmentRentQueryDAO {
 	 public abstract List<EquipmentRentQuery> queryEquipmentRent(String name,String statue,int startIndex,int pageSize);
  
      /**
-      * 查询条件得出信息的总记录数
+      * 鏌ヨ鏉′欢寰楀嚭淇℃伅鐨勬�璁板綍鏁�
      * @param userId 
       * @return
       */
-	 public abstract int getQueryTotalRecord();
+	 public abstract int getQueryTotalRecord(String name,String statue);
+	 
 
+	/**
+	 * 根据id查找器材租赁
+	 * @param id
+	 * @return
+	 */
+	public abstract EquipmentRentQuery getEquipmentRentQueryById(int id );
+	/**
+	 * 更新租赁信息
+	 * @param equipmentRents
+	 */
+	public void updateEquipRentInfo( EquipmentRentQuery equipmentRents);
+
+	/**
+	 * 删除器材租赁
+	 * @param id
+	 */
+	public void deleteEquipmentRentQuery(int id);
+	/**
+	 * 处理过期的租赁
+	 */
+	public int dealpassedEquipRent();
 }
