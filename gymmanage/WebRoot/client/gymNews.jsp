@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -106,13 +107,15 @@
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-							<img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />
+							<%-- <img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />  --%>
 	
-							<span class="username">Bob Nilson</span>
+							<i class="icon-user"></i>
+							
+							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
-							</a>
+							</a> 
 	
 							<ul class="dropdown-menu">
 							
@@ -124,7 +127,7 @@
 
 								<li class="divider"></li>
 
-								<li><a href="login.html"><i class="icon-key"></i>退出</a></li>
+								<li><a href="${pageContext.request.contextPath }/useraction/logout.action"><i class="icon-key"></i>退出</a></li>
 							</ul>
 						</li>
 					</c:if>
@@ -862,140 +865,27 @@
 									</a>
 
 									<div class="media-body">
-
-										<h4 class="media-heading" >标题<span >时间</a></span></h4>
-
-										<p >内容</p>
-										<hr>
-
-										<!-- Nested media object -->
-
-										<div class="media">
+									
+										<c:forEach items="${notices }" var="notice">
+											<div class="media" id="${notice.id }">
 
 											<a href="#" class="pull-left">
 
-											<img alt="" src="media/image/5.jpg" class="media-object">
+											<img alt="" src="${pageContext.request.contextPath }/upload/${notice.image}" class="media-object" style="min-width:200px;min-height:200px;">
 
 											</a>
 
 											<div class="media-body">
 
-												<h4 class="media-heading">标题<span>时间</a></span></h4>
+												<h4 class="media-heading">${notice.title } <span>${notice.time }</span></h4>
 
-												<p>（内容）很喜欢这里舒适的环境，周末经常跟同学在这里，放松了心情。一直很希望是个运动健儿！体育馆平面布置应严格按照各项国际标准，如网球、排球赛场净高不低于12米。一般适应国际比赛的体育馆室内高度不低于15米。观众席要安排在最佳视觉范围内。 </p>
+												<p>${notice.content }</p>
 
 											</div>
 
 										</div>
-
-										<!--end media-->
-
 										<hr>
-
-										<div class="media">
-
-											<a href="#" class="pull-left">
-
-											<img alt="" src="media/image/7.jpg" class="media-object">
-
-											</a>
-
-											<div class="media-body">
-
-												<h4 class="media-heading">标题 <span>时间</span></h4>
-
-												<p>（内容）很喜欢这里舒适的环境，周末经常跟同学在这里，放松了心情。一直很希望是个运动健儿！体育馆平面布置应严格按照各项国际标准，如网球、排球赛场净高不低于12米。一般适应国际比赛的体育馆室内高度不低于15米。观众席要安排在最佳视觉范围内。</p>
-
-											</div>
-
-										</div>
-
-										<!--end media-->
-										<hr>
-
-										<div class="media">
-
-											<a href="#" class="pull-left">
-
-											<img alt="" src="media/image/7.jpg" class="media-object">
-
-											</a>
-
-											<div class="media-body">
-
-												<h4 class="media-heading">标题 <span>时间</span></h4>
-
-												<p>（内容）很喜欢这里舒适的环境，周末经常跟同学在这里，放松了心情。一直很希望是个运动健儿！体育馆平面布置应严格按照各项国际标准，如网球、排球赛场净高不低于12米。一般适应国际比赛的体育馆室内高度不低于15米。观众席要安排在最佳视觉范围内。</p>
-
-											</div>
-
-										</div>
-
-										<!--end media-->
-										<hr>
-
-										<div class="media">
-
-											<a href="#" class="pull-left">
-
-											<img alt="" src="media/image/7.jpg" class="media-object">
-
-											</a>
-
-											<div class="media-body">
-
-												<h4 class="media-heading">标题 <span>时间</span></h4>
-
-												<p>（内容）很喜欢这里舒适的环境，周末经常跟同学在这里，放松了心情。一直很希望是个运动健儿！体育馆平面布置应严格按照各项国际标准，如网球、排球赛场净高不低于12米。一般适应国际比赛的体育馆室内高度不低于15米。观众席要安排在最佳视觉范围内。</p>
-
-											</div>
-
-										</div>
-
-										<!--end media-->
-										<hr>
-
-										<div class="media">
-
-											<a href="#" class="pull-left">
-
-											<img alt="" src="media/image/7.jpg" class="media-object">
-
-											</a>
-
-											<div class="media-body">
-
-												<h4 class="media-heading">标题 <span>时间</span></h4>
-
-												<p>（内容）很喜欢这里舒适的环境，周末经常跟同学在这里，放松了心情。一直很希望是个运动健儿！体育馆平面布置应严格按照各项国际标准，如网球、排球赛场净高不低于12米。一般适应国际比赛的体育馆室内高度不低于15米。观众席要安排在最佳视觉范围内。</p>
-
-											</div>
-
-										</div>
-
-										<!--end media-->
-										<hr>
-
-										<div class="media">
-
-											<a href="#" class="pull-left">
-
-											<img alt="" src="media/image/7.jpg" class="media-object">
-
-											</a>
-
-											<div class="media-body">
-
-												<h4 class="media-heading">标题 <span>时间</span></h4>
-
-												<p>（内容）很喜欢这里舒适的环境，周末经常跟同学在这里，放松了心情。一直很希望是个运动健儿！体育馆平面布置应严格按照各项国际标准，如网球、排球赛场净高不低于12米。一般适应国际比赛的体育馆室内高度不低于15米。观众席要安排在最佳视觉范围内。</p>
-
-											</div>
-
-										</div>
-
-										<!--end media-->
-
+										</c:forEach>
 									</div>
 
 								</div><!-- 留言结束 -->

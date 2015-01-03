@@ -2,6 +2,7 @@ package com.gms.web.action;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
@@ -281,6 +282,22 @@ public class NoticeAction {
 			e.printStackTrace();
 			message = JSONTools.getJSONString("300", "修改失败，系统异常！", "", "", "");
 			return "message";
+		}
+	}
+	/**
+	 * 获得所有的公告
+	 * @return
+	 */
+	public String getAllGymNews(){
+		try {
+			NoticeBusinessServiceImpl service = new NoticeBusinessServiceImpl();
+			List<Notice> notices = service.getAllNotice();
+			ActionContext.getContext().put("notices", notices);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = "系统异常，我们会尽快维护！";
+			return "error";
 		}
 	}
 }

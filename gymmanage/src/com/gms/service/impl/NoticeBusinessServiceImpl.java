@@ -87,4 +87,12 @@ public class NoticeBusinessServiceImpl {
 		page.setList(list);
 		return page;
 	}
+	
+	/**
+	 * 获得所有的公告数据
+	 * @return
+	 */
+	public List<Notice> getAllNotice(){
+		return noticeDAO.getAllNotice();
+	}
 }

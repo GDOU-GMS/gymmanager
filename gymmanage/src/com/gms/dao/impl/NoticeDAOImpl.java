@@ -149,4 +149,18 @@ public class NoticeDAOImpl implements NoticeDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	/**
+	 * 获取所有的公告数据
+	 * @return
+	 */
+	public List<Notice> getAllNotice(){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_notice order by time desc";
+			return (List<Notice>)qr.query(sql, new BeanListHandler(Notice.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

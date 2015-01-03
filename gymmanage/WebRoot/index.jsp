@@ -9,7 +9,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<base href="<%=basePath%>">
+<%
+	if (request.getAttribute("flag") == null) {
+		response.sendRedirect("forwardToIndex.action");
+	}
+%>
+<base href="<%=basePath%>">
     <title>广东海洋大学体育馆</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="author" />
@@ -325,7 +330,7 @@
 
 						<li >
 
-							<a href="${pageContext.request.contextPath}/client/gymNews.jsp">
+							<a href="${pageContext.request.contextPath}/notice/getAllGymNews.action">
 
 							<!-- <i class="icon-time"></i> -->
 
@@ -903,11 +908,17 @@
 									<div class="span7">
 
 										<h2>场馆公告栏</h2>
+										<ul>
+											<c:forEach items="${notices }" var="notice">
+												<a><li>${notice.title }</li></a>
+												
+											</c:forEach>
+										</ul>
 
-										<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+										<!-- <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
 
 										<p>Lunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
-
+ -->
 										<a href="#" class="btn blue big xlarge">
 
 										更多

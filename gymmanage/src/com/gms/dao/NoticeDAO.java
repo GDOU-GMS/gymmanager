@@ -70,7 +70,12 @@ public interface NoticeDAO {
 	 * @param endTime
 	 * @return
 	 */
-	public abstract int getQueryResultTotalRecord(String title, Date startTime,
+	public  int getQueryResultTotalRecord(String title, Date startTime,
 			Date endTime);
 
+	/**
+	 * 获取所有的公告数据
+	 * @return
+	 */
+	public abstract List<Notice> getAllNotice();
 }

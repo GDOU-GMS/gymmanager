@@ -8,11 +8,14 @@
 	 <constant name="struts.multipart.maxSize" value="10000000"/>
 	 <constant name="struts.multipart.saveDir" value="/tmp"/>
 	
-	<package name="base" extends="struts-default">
+	<package name="base" namespace="/" extends="struts-default">
 		<global-results>
 			<result name="message">/message.jsp</result>
 			<result name="error">/error.jsp</result>
 		</global-results>
+		<action name="forwardToIndex" class="com.gms.web.action.ForwardToIndexAction" method="execute">
+			<result name="success">/index.jsp</result>
+		</action>
 	</package>
 	
 	

@@ -26,6 +26,9 @@
 		<action name="queryNotice" class="com.gms.web.action.NoticeAction" method="queryNotice">
 			<result name="success">/manager/getAllNotice.jsp</result>
 		</action>
+		<action name="getAllGymNews" class="com.gms.web.action.NoticeAction" method="getAllGymNews">
+			<result name="success">/client/gymNews.jsp</result>
+		</action>
 		
 		
 	</package>
