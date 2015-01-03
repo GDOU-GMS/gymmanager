@@ -1,29 +1,21 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
-    <title>广东海洋大学体育馆管理系统</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-	
-	
-	
+  	<base href="<%=basePath%>">
+    <title>广东海洋大学体育馆</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="author" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
 	<link href="${pageContext.request.contextPath }/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
 	<link href="${pageContext.request.contextPath }/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
@@ -53,11 +45,9 @@
 
 	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon.ico" />
 	
-	
-	
-
   </head>
-   <body class="page-header-fixed">
+  
+ <body class="page-header-fixed">
 
 	<!-- BEGIN HEADER -->
 
@@ -100,19 +90,21 @@
 					
 					</c:if>
 					
-					 <c:if test="${user!=null }">
+					<c:if test="${user!=null }">
 					
 						<li class="dropdown user">
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-							<img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />
+							<%-- <img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />  --%>
 	
-							<span class="username">Bob Nilson</span>
+							<i class="icon-user"></i>
+							
+							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
-							</a>
+							</a> 
 	
 							<ul class="dropdown-menu">
 							
@@ -141,7 +133,7 @@
 		<!-- END TOP NAVIGATION BAR -->
 
 	</div>
-	<!-- 头部结束 -->
+
 	<!-- END HEADER -->
     <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
 
@@ -252,7 +244,7 @@
 
 					<ul class="sub-menu">
 
-						<li class="active" >
+						<li >
 
 							<a href="${pageContext.request.contextPath}/client/badmintonHall.jsp">
 
@@ -268,7 +260,7 @@
 
 						</li>
 
-						<li >
+						<li class="active" >
 
 							<a href="${pageContext.request.contextPath}/client/billiardsHall.jsp">
 
@@ -527,14 +519,15 @@
 
 
 			</ul>
-
-			<!-- END SIDEBAR MENU -->
 			<!-- 导航结束 -->
+			<!-- END SIDEBAR MENU -->
+
 		</div>
 
 		<!-- END SIDEBAR -->
 
 		<!-- BEGIN PAGE -->
+
 		<div class="page-content">
 
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -1364,5 +1357,4 @@
 	<!-- END JAVASCRIPTS -->
 
 </body>
-  
 </html>

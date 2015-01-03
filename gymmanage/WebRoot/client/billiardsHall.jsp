@@ -96,13 +96,15 @@
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-							<img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />
+							<%-- <img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />  --%>
 	
-							<span class="username">Bob Nilson</span>
+							<i class="icon-user"></i>
+							
+							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
-							</a>
+							</a> 
 	
 							<ul class="dropdown-menu">
 							

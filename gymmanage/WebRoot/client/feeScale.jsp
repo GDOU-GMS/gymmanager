@@ -96,13 +96,15 @@
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
+							<%-- <img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />  --%>
+	
 							<i class="icon-user"></i>
 							
 							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
-							</a>
+							</a> 
 	
 							<ul class="dropdown-menu">
 							
@@ -114,7 +116,7 @@
 
 								<li class="divider"></li>
 
-								<li><a href="${pageContext.request.contextPath }/useraction/logout.actio"><i class="icon-key"></i>退出</a></li>
+								<li><a href="${pageContext.request.contextPath }/useraction/logout.action"><i class="icon-key"></i>退出</a></li>
 							</ul>
 						</li>
 					</c:if>

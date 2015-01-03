@@ -126,7 +126,7 @@
 
 		<!-- END TOP NAVIGATION BAR -->
 
-	</div>
+	</div><!-- 头部结束 -->
 
 	<!-- END HEADER -->
     <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
