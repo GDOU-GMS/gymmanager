@@ -93,25 +93,27 @@
 	
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-							<img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />
+							<%-- <img alt="" src="${pageContext.request.contextPath }/media/image/avatar1_small.jpg" />  --%>
 	
-							<span class="username">Bob Nilson</span>
+							<i class="icon-user"></i>
+							
+							<span class="username">${user.name }</span>
 	
 							<i class="icon-angle-down"></i>
 	
-							</a>
+							</a> 
 	
 							<ul class="dropdown-menu">
 							
 								<li><a href="${pageContext.request.contextPath}/useraction/getUserSelf.action"><i class="icon-user"></i>个人信息</a></li>
 
-								<li><a href="#"><i class="icon-calendar"></i>我的预约</a></li>
+								<li><a href="${pageContext.request.contextPath }/site/clientGetMySiteOrderData.action"><i class="icon-calendar"></i>我的预约</a></li>
 	
-								<li><a href="#"><i class="icon-edit"></i>修改密码</a></li>
+								<li><a href="${pageContext.request.contextPath}/useraction/checkBeforeUpdatePassword.action"><i class="icon-edit"></i>修改密码</a></li>
 
 								<li class="divider"></li>
 
-								<li><a href="login.html"><i class="icon-key"></i>退出</a></li>
+								<li><a href="${pageContext.request.contextPath }/useraction/logout.action"><i class="icon-key"></i>退出</a></li>
 							</ul>
 						</li>
 					</c:if>
@@ -204,7 +206,7 @@
 
 					<ul class="sub-menu">
 
-						<li >
+						<li class="active">
 
 							<a href="${pageContext.request.contextPath}/client/gymIntroduction.jsp">场馆简介</a>
 
@@ -326,7 +328,7 @@
 
 						<li >
 
-							<a href="page_timeline.html">
+							<a href="${pageContext.request.contextPath}/client/gymNews.jsp">
 
 							<!-- <i class="icon-time"></i> -->
 
@@ -755,7 +757,7 @@
 
 										周一至周五：上午：10:10-11：50 <br/>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下午：14:30-17：55<br/>
-										周六周日：上午：10:10-12:00<br/>
+										周六周日：&nbsp;&nbsp;&nbsp;&nbsp;上午：10:10-12:00<br/>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下午：14:30-20:00<br/>
 										
 										

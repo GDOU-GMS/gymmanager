@@ -131,15 +131,15 @@
 	
 							<ul class="dropdown-menu">
 							
-								<li><a href="#"><i class="icon-user"></i>个人信息</a></li>
+								<li><a href="${pageContext.request.contextPath}/useraction/getUserSelf.action"><i class="icon-user"></i>个人信息</a></li>
 
-								<li><a href="#"><i class="icon-calendar"></i>我的预约</a></li>
+								<li><a href="${pageContext.request.contextPath }/site/clientGetMySiteOrderData.action"><i class="icon-calendar"></i>我的预约</a></li>
 	
-								<li><a href="#"><i class="icon-edit"></i>修改密码</a></li>
+								<li><a href="${pageContext.request.contextPath}/useraction/checkBeforeUpdatePassword.action"><i class="icon-edit"></i>修改密码</a></li>
 
 								<li class="divider"></li>
 
-								<li><a href="login.html"><i class="icon-key"></i>退出</a></li>
+								<li><a href="${pageContext.request.contextPath }/useraction/logout.action"><i class="icon-key"></i>退出</a></li>
 							</ul>
 						</li>
 					</c:if>
@@ -233,7 +233,7 @@
 
 						<li >
 
-							<a href="#">场馆简介</a>
+							<a href="${pageContext.request.contextPath}/client/gymIntroduction.jsp">场馆简介</a>
 
 						</li>
 
@@ -241,7 +241,7 @@
 						
 						<li >
 
-							<a href="#">场馆风采</a>
+							<a href="${pageContext.request.contextPath}/client/gymView.jsp">场馆风采</a>
 
 						</li>
 						<li >
@@ -270,7 +270,7 @@
 
 						<li >
 
-							<a href="ui_general.html">
+							<a href="${pageContext.request.contextPath}/client/badmintonHall.jsp">
 
 							羽毛球馆</a>
 
@@ -278,7 +278,7 @@
 
 						<li >
 
-							<a href="ui_buttons.html">
+							<a href="${pageContext.request.contextPath}/client/tableTennnisHall.jsp">
 
 							乒乓球馆</a>
 
@@ -286,7 +286,7 @@
 
 						<li >
 
-							<a href="ui_modals.html">
+							<a href="${pageContext.request.contextPath}/client/billiardsHall.jsp">
 
 							台球厅</a>
 
@@ -294,7 +294,7 @@
 
 						<li >
 
-							<a href="ui_tabs_accordions.html">
+							<a href="${pageContext.request.contextPath}/client/fitness.jsp">
 
 							健身房</a>
 
@@ -320,9 +320,9 @@
 
 					<ul class="sub-menu">
 
-						<li >
+						<li class="active">
 
-							<a href="#">
+							<a href="${pageContext.request.contextPath }/site/clientGetDataForAddSiteOrder.action">
 
 							场地预约</a>
 
@@ -330,7 +330,7 @@
 
 						<li >
 
-							<a href="#">
+							<a href="${pageContext.request.contextPath }/site/clientGetFeeScale.action">
 
 							收费标准</a>
 
@@ -386,7 +386,7 @@
 
 						<li >
 
-							<a href="extra_profile.html">
+							<a href="${pageContext.request.contextPath }/document/赛事申请表.doc">
 
 							赛事申请表.doc</a>
 
@@ -424,10 +424,20 @@
 							<ul class="sub-menu">
 
 								<li><a href="http://www.gdou.edu.cn/" target="_blank">广东海洋大学</a></li>
-
-								<li><a href="#">Sample Link 2</a></li>
-
-								<li><a href="#">Sample Link 3</a></li>
+								<li><a href="http://210.38.137.116:81/scxy/" target="_blank">水产学院</a></li>
+								<li><a href="http://www1.gdou.edu.cn/spkjxy/index.asp" target="_blank">食品科技学院</a></li>
+								<li><a href="http://210.38.137.116:81/hyqx/" target="_blank">海洋与气象学院</a></li>
+								<li><a href="http://www1.gdou.edu.cn/nxy/web/" target="_blank">农学院</a></li>
+								<li><a href="http://www1.gdou.edu.cn/gcxy/" target="_blank">工程学院</a></li>
+								<li><a href="http://210.38.139.34/" target="_blank">信息学院</a></li>
+								<li><a href="http://www1.gdou.edu.cn/jgxy/j_default.asp" target="_blank">经济管理学院</a></li>
+								<li><a href="http://www1.gdou.edu.cn/hhxy/index.asp" target="_blank">航海学院</a></li>
+								<li><a href="http://210.38.137.111:81/l_index.asp" target="_blank">理学院</a></li>
+								<li><a href="http://210.38.137.93:888/w_default.asp" target="_blank">外国语学院</a></li>
+								<li><a href="http://www1.gdou.edu.cn/wxy/index.asp" target="_blank">文学院</a></li>
+								<li><a href="http://www1.gdou.edu.cn/xzxy/" target="_blank">政治与行政学院</a></li>
+								<li><a href="http://www1.gdou.edu.cn/ysxy/" target="_blank">中歌艺术院</a></li>
+								<li><a href="http://210.38.137.111:84/t_default.asp" target="_blank">体育与休闲学院</a></li>
 
 							</ul>
 
@@ -444,12 +454,18 @@
 							</a>
 
 							<ul class="sub-menu">
+<li><a href="http://cctv5.cntv.cn/" target="_blank">CCTV5</a></li>
 
-								<li><a href="http://cctv5.cntv.cn/" target="_blank">CCTV5</a></li>
+								<li><a href="http://sports.sina.com.cn/" target="_blank">新浪竞技风暴</a></li>
 
-								<li><a href="#">Sample Link 1</a></li>
-
-								<li><a href="#">Sample Link 1</a></li>
+								<li><a href="http://sports.sohu.com/" target="_blank">搜狐体育</a></li>
+								
+								<li><a href="http://sports.qq.com/" target="_blank">腾讯体育</a></li>
+								<li><a href="http://sports.tom.com/" target="_blank"> TOM体育 </a></li>
+								<li><a href="http://nba.hupu.com/" target="_blank"> 虎扑篮球 </a></li>
+								<li><a href="http://www.zhibo8.cc/" target="_blank"> 直播吧 </a></li>
+								<li><a href="http://www.titan24.com/" target="_blank"> 体坛网 </a></li>
+								<li><a href="http://sports.163.com/" target="_blank"> 网易体育 </a></li>
 
 							</ul>
 
@@ -465,10 +481,14 @@
 							<ul class="sub-menu">
 
 								<li><a href="http://www.cernet.edu.cn/" target="_blank">教育科研网</a></li>
-
-								<li><a href="#">Sample Link 1</a></li>
-
-								<li><a href="#">Sample Link 1</a></li>
+								<li><a href="http://www.jsj.edu.cn/" target="_blank">教育涉外监管信息网</a></li>
+								<li><a href="http://yz.chsi.cn/ " target="_blank">中国研究生招生信息网</a></li>
+								<li><a href="http://www.wei.moe.edu.cn/zh/ " target="_blank"> 世界教育信息网</a></li>
+								<li><a href="http://www.csc.edu.cn/" target="_blank">国家留学网</a></li>
+								<li><a href="http://www.chinaedu.edu.cn/" target="_blank">中国教育信息网</a></li>
+								<li><a href="http://www.neea.edu.cn/" target="_blank">中国教育考试网</a></li>
+								<li><a href=" http://www.cern.net.cn/" target="_blank">中国教育资源网</a></li>
+								<li><a href="http://www.paper.edu.cn/ " target="_blank">中国科技论文在线</a></li>
 
 							</ul>
 
@@ -495,14 +515,14 @@
 
 						<li >
 
-							<a href="login.html">
+							<a href="${pageContext.request.contextPath}/useraction/getUserSelf.action">
 
 							个人信息</a>
 
 						</li>
 						<li >
 
-							<a href="login.html">
+							<a href="${pageContext.request.contextPath }/site/clientGetMySiteOrderData.action">
 
 							我的预约</a>
 
@@ -510,7 +530,7 @@
 
 						<li >
 
-							<a href="login_soft.html">
+							<a href="${pageContext.request.contextPath}/useraction/checkBeforeUpdatePassword.action">
 
 							修改密码</a>
 

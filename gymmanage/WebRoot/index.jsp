@@ -109,9 +109,9 @@
 							
 								<li><a href="${pageContext.request.contextPath}/useraction/getUserSelf.action"><i class="icon-user"></i>个人信息</a></li>
 
-								<li><a href="#"><i class="icon-calendar"></i>我的预约</a></li>
+								<li><a href="${pageContext.request.contextPath }/site/clientGetMySiteOrderData.action"><i class="icon-calendar"></i>我的预约</a></li>
 	
-								<li><a href="#"><i class="icon-edit"></i>修改密码</a></li>
+								<li><a href="${pageContext.request.contextPath}/useraction/checkBeforeUpdatePassword.action"><i class="icon-edit"></i>修改密码</a></li>
 
 								<li class="divider"></li>
 
@@ -131,7 +131,7 @@
 
 		<!-- END TOP NAVIGATION BAR -->
 
-	</div>
+	</div><!-- 头部结束 -->
 
 	<!-- END HEADER -->
     <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>

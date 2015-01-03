@@ -101,7 +101,7 @@
 					
 					</c:if>
 					
-					 <c:if test="${user!=null }">
+					<c:if test="${user!=null }">
 					
 						<li class="dropdown user">
 	
@@ -121,9 +121,9 @@
 							
 								<li><a href="${pageContext.request.contextPath}/useraction/getUserSelf.action"><i class="icon-user"></i>个人信息</a></li>
 
-								<li><a href="#"><i class="icon-calendar"></i>我的预约</a></li>
+								<li><a href="${pageContext.request.contextPath }/site/clientGetMySiteOrderData.action"><i class="icon-calendar"></i>我的预约</a></li>
 	
-								<li><a href="#"><i class="icon-edit"></i>修改密码</a></li>
+								<li><a href="${pageContext.request.contextPath}/useraction/checkBeforeUpdatePassword.action"><i class="icon-edit"></i>修改密码</a></li>
 
 								<li class="divider"></li>
 
@@ -340,7 +340,7 @@
 
 					<ul class="sub-menu">
 
-						<li >
+						<li class="active" >
 
 							<a href="${pageContext.request.contextPath}/client/gymNews.jsp">
 
