@@ -136,7 +136,7 @@
 
 								<li class="divider"></li>
 
-								<li><a href="login.html"><i class="icon-key"></i>退出</a></li>
+								<li><a href="${pageContext.request.contextPath }/useraction/logout.action"><i class="icon-key"></i>退出</a></li>
 							</ul>
 						</li>
 					</c:if>
@@ -511,14 +511,14 @@
 
 						<li >
 
-							<a href="login.html">
+							<a href="${pageContext.request.contextPath}/useraction/getUserSelf.action">
 
 							个人信息</a>
 
 						</li>
 						<li >
 
-							<a href="login.html">
+							<a href="${pageContext.request.contextPath }/site/clientGetMySiteOrderData.action">
 
 							我的预约</a>
 
@@ -526,7 +526,7 @@
 
 						<li >
 
-							<a href="login_soft.html">
+							<a href="${pageContext.request.contextPath}/useraction/checkBeforeUpdatePassword.action">
 
 							修改密码</a>
 
