@@ -77,5 +77,10 @@ public interface NoticeDAO {
 	 * 获取所有的公告数据
 	 * @return
 	 */
-	public abstract List<Notice> getAllNotice();
+	public  List<Notice> getAllNotice();
+	/**
+	 * 获取指点数目的公告数据
+	 * @return
+	 */
+	public abstract List<Notice> getSomeNotice(int num);
 }

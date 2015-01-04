@@ -44,7 +44,7 @@
 
 	<!-- END PAGE LEVEL STYLES -->
 
-	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon.ico" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon1.ico" />
 	
   </head>
   

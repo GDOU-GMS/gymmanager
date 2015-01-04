@@ -52,13 +52,12 @@
 
 	<!-- END PAGE LEVEL STYLES -->
 
-	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon.ico" />
-	
+	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon1.ico" />
 	
 	
 
   </head>
-   <body class="page-header-fixed">
+   <body class="page-header-fixed" onload="position()">
 
 	<!-- BEGIN HEADER -->
 
@@ -865,11 +864,11 @@
 									</a>
 
 									<div class="media-body">
-									
 										<c:forEach items="${notices }" var="notice">
-											<div class="media" id="${notice.id }">
+										
+											<div class="media" name="${notice.title }">
 
-											<a href="#" class="pull-left">
+											<a href="#" name="${notice.id }" class="pull-left">
 
 											<img alt="" src="${pageContext.request.contextPath }/upload/${notice.image}" class="media-object" style="min-width:200px;min-height:200px;">
 
@@ -1310,7 +1309,12 @@
 	<!-- END PAGE LEVEL SCRIPTS -->  
 
 	<script>
-
+	
+		function position(){
+			var position = ${position};
+			window.location.hash = position;
+		}
+	
 		jQuery(document).ready(function() {    
 
 		   App.init(); // initlayout and core plugins
@@ -1332,7 +1336,7 @@
 		   Index.initIntro();
 
 		});
-
+		
 	</script>
 
 	<!-- END JAVASCRIPTS -->

@@ -23,6 +23,7 @@ public class NoticeAction {
 	private Notice notice;
 	private Date startTime;
 	private Date endTime;
+	private String position;//用于跳转到页面指定位置
 	
 	//处理文件上传的属性
 	private File noticeImage;
@@ -30,6 +31,15 @@ public class NoticeAction {
 	private String noticeImageFileName;
 	
 	
+	
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
 
 	public Date getStartTime() {
 		return startTime;
@@ -293,6 +303,7 @@ public class NoticeAction {
 			NoticeBusinessServiceImpl service = new NoticeBusinessServiceImpl();
 			List<Notice> notices = service.getAllNotice();
 			ActionContext.getContext().put("notices", notices);
+			ActionContext.getContext().put("position", position);
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();

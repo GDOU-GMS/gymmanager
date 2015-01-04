@@ -14,7 +14,7 @@ public class ForwardToIndexAction {
 		ActionContext.getContext().put("flag", true);
 		try{
 			NoticeBusinessServiceImpl service = new NoticeBusinessServiceImpl();
-			List<Notice> notices = service.getAllNotice();
+			List<Notice> notices = service.getSomeNotice(7);
 			ActionContext.getContext().put("notices", notices);
 			return "success";
 		}catch(Exception e){

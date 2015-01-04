@@ -163,4 +163,20 @@ public class NoticeDAOImpl implements NoticeDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	/**
+	 * 获取指点数目的公告数据
+	 * @return
+	 */
+	public List<Notice> getSomeNotice(int num){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_notice order by time desc limit 0,?";
+			return (List<Notice>)qr.query(sql, num,new BeanListHandler(Notice.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
 }

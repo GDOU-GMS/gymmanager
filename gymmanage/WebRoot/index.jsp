@@ -43,7 +43,7 @@
 
 	<link href="${pageContext.request.contextPath }/media/css/animate.css" rel="stylesheet" type="text/css"/>
 
-	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon.ico" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon1.ico" />
   </head>
   
  <body class="page-header-fixed">
@@ -908,18 +908,11 @@
 									<div class="span7">
 
 										<h2>场馆公告栏</h2>
-										<ul>
 											<c:forEach items="${notices }" var="notice">
-												<a><li>${notice.title }</li></a>
-												
+												<p style="font-family: 微软雅黑;"><a href="${pageContext.request.contextPath }/notice/getAllGymNews.action?position=${notice.id}">${notice.title }</a></p>
 											</c:forEach>
-										</ul>
 
-										<!-- <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
-
-										<p>Lunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
- -->
-										<a href="#" class="btn blue big xlarge">
+										<a href="${pageContext.request.contextPath }/notice/getAllGymNews.action" class="btn blue big xlarge">
 
 										更多
 

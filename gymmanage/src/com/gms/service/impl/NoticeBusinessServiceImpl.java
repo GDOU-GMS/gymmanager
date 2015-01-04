@@ -95,4 +95,11 @@ public class NoticeBusinessServiceImpl {
 	public List<Notice> getAllNotice(){
 		return noticeDAO.getAllNotice();
 	}
+	/**
+	 * 获取指点数目的公告数据
+	 * @return
+	 */
+	public List<Notice> getSomeNotice(int num){
+		return noticeDAO.getSomeNotice(num);
+	}
 }
