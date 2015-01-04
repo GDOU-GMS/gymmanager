@@ -246,7 +246,7 @@
 						</li>
 						<li >
 
-							<a href="#">场馆地图</a>
+							<a href="${pageContext.request.contextPath }/client/gymMap.jsp">场馆地图</a>
 
 						</li>
 
@@ -357,7 +357,7 @@
 
 						<li >
 
-							<a href="${pageContext.request.contextPath}/client/gymNews.jsp">
+							<a href="${pageContext.request.contextPath}/notice/getAllGymNews.action">
 
 							<!-- <i class="icon-time"></i> -->
 

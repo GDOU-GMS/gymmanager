@@ -5,7 +5,7 @@
 <html>
 <head>
 
-<title>My JSP 'manager_login.jsp' starting page</title>
+<title>体育馆管理系统登录</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">

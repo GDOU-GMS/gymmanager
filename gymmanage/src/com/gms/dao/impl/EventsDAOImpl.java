@@ -112,7 +112,7 @@ public class EventsDAOImpl implements EventsDAO {
 	public boolean getEventsByTime(Date startTime,Date endTime,int siteId){
 		try{
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select * from tb_events where (?>=startTime and ?<=endTime) or (?=startTime and ?<=endTime) and siteId=?";
+			String sql = "select * from tb_events where (?>=startTime and ?<=endTime) or (?>=startTime and ?<=endTime) and siteId=?";
 			Object params[] = {startTime,startTime,endTime,endTime,siteId};
 			List list = (List) qr.query(sql, params, new BeanListHandler(Events.class));
 			if(list.isEmpty()){

@@ -1,8 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html>
 <html>
   <head>
+<base href="<%=basePath%>">
     <title>广东海洋大学体育馆</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="author" />
@@ -27,24 +34,11 @@
 
 	<!-- END GLOBAL MANDATORY STYLES -->
 
-	<!-- BEGIN PAGE LEVEL STYLES --> 
-	
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/media/css/DT_bootstrap.css" />
+	<link href="${pageContext.request.contextPath }/media/css/promo.css" rel="stylesheet" type="text/css"/>
 
-	<link href="${pageContext.request.contextPath }/media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
-
-	<link href="${pageContext.request.contextPath }/media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
-
-	<link href="${pageContext.request.contextPath }/media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
-
-	<link href="${pageContext.request.contextPath }/media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
-
-	<link href="${pageContext.request.contextPath }/media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-
-	<!-- END PAGE LEVEL STYLES -->
+	<link href="${pageContext.request.contextPath }/media/css/animate.css" rel="stylesheet" type="text/css"/>
 
 	<link rel="shortcut icon" href="${pageContext.request.contextPath }/media/image/favicon1.ico" />
-
   </head>
   
  <body class="page-header-fixed">
@@ -132,7 +126,7 @@
 
 		<!-- END TOP NAVIGATION BAR -->
 
-	</div>
+	</div><!-- 头部结束 -->
 
 	<!-- END HEADER -->
     <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
@@ -181,7 +175,7 @@
 
 				</li>
 
-				<li class="">
+				<li class="start active ">
 
 					<a href="#">
 
@@ -189,7 +183,7 @@
 
 					<span class="title">首页</span>
 
-					
+					<span class="selected"></span>
 
 					</a>
 
@@ -215,8 +209,6 @@
 
 						</li>
 
-
-						
 						<li >
 
 							<a href="${pageContext.request.contextPath}/client/gymView.jsp">场馆风采</a>
@@ -272,7 +264,7 @@
 
 						<li >
 
-							<a href="ui_tabs_accordions.html">
+							<a href="${pageContext.request.contextPath}/client/fitness.jsp">
 
 							健身房</a>
 
@@ -282,15 +274,13 @@
 
 				</li>
 
-				<li class="start active ">
+				<li class="">
 
 					<a href="javascript:;">
 
 					<i class="icon-qrcode"></i> 
 
 					<span class="title">场地预约</span>
-					
-					<span class="selected"></span>
 
 					<span class="arrow "></span>
 
@@ -306,7 +296,7 @@
 
 						</li>
 
-						<li class="active">
+						<li >
 
 							<a href="${pageContext.request.contextPath }/site/clientGetFeeScale.action">
 
@@ -469,6 +459,8 @@
 								<li><a href=" http://www.cern.net.cn/" target="_blank">中国教育资源网</a></li>
 								<li><a href="http://www.paper.edu.cn/ " target="_blank">中国科技论文在线</a></li>
 
+							
+
 							</ul>
 
 						</li>
@@ -519,8 +511,9 @@
 
 				</li>
 
-			</ul>
 
+			</ul>
+			<!-- 导航结束 -->
 			<!-- END SIDEBAR MENU -->
 
 		</div>
@@ -528,8 +521,244 @@
 		<!-- END SIDEBAR -->
 
 		<!-- BEGIN PAGE -->
+        
+        
+        
+        <div class="page-container row-fluid">
 
-		<div class="page-content">
+		<!-- BEGIN EMPTY PAGE SIDEBAR -->
+
+		<div class="page-sidebar nav-collapse collapse visible-phone visible-tablet">
+
+			<ul class="page-sidebar-menu">
+
+				<li class="visible-phone visible-tablet">
+
+					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+
+					<form class="sidebar-search">
+
+						<div class="input-box">
+
+							<a href="javascript:;" class="remove"></a>
+
+							<input type="text" placeholder="Search..." />            
+
+							<input type="button" class="submit" value=" " />
+
+						</div>
+
+					</form>
+
+					<!-- END RESPONSIVE QUICK SEARCH FORM -->
+
+				</li>
+
+				<li>
+
+					<a class="active" href="index.html">
+
+					Dashboard                        
+
+					</a>
+
+				</li>
+
+				<li  class="active">
+
+					<a href="javascript:;">
+
+					Layouts
+
+					<span class="arrow open"></span>   
+
+					<span class="selected"></span>   
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="layout_horizontal_sidebar_menu.html">
+
+							Horzontal & Sidebar Menu                     </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_horizontal_menu1.html">
+
+							Horzontal Menu 1                    </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_horizontal_menu2.html">
+
+							Horzontal Menu 2                    </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_promo.html">
+
+							Promo Page                     
+
+							</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_email.html">
+
+							Email Templates                     </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_ajax.html">
+
+							Content Loading via Ajax</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_sidebar_closed.html">
+
+							Sidebar Closed Page                    </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_blank_page.html">
+
+							Blank Page                    </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_boxed_page.html">Boxed Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_boxed_not_responsive.html">
+
+							Non-Responsive Boxed Layout                     </a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_blank_page.html">
+
+							Blank Page                    </a>
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							More options
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="#">Second level link</a></li>
+
+								<li>
+
+									<a href="javascript:;">More options<span class="arrow"></span></a>
+
+									<ul class="sub-menu">
+
+										<li><a href="index.html">Third level link</a></li>
+
+										<li><a href="index.html">Third level link</a></li>
+
+										<li><a href="index.html">Third level link</a></li>
+
+										<li><a href="index.html">Third level link</a></li>
+
+										<li><a href="index.html">Third level link</a></li>
+
+									</ul>
+
+								</li>
+
+								<li><a href="index.html">Second level link</a></li>
+
+								<li><a href="index.html">Second level link</a></li>
+
+								<li><a href="index.html">Second level link</a></li>
+
+							</ul>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a href="">Tables</a>
+
+				</li>
+
+				<li>
+
+					<a href="">Extra
+
+					<span class="arrow"></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li><a href="index.html">About Us</a></li>
+
+						<li><a href="index.html">Services</a></li>
+
+						<li><a href="index.html">Pricing</a></li>
+
+						<li><a href="index.html">FAQs</a></li>
+
+						<li><a href="index.html">Gallery</a></li>
+
+						<li><a href="index.html">Registration</a></li>
+
+						<li><a href="index.html">2 Columns (Left)</a></li>
+
+						<li><a href="index.html">2 Columns (Right)</a></li>
+
+					</ul>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+		<!-- END EMPTY PAGE SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content no-min-height">
 
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
@@ -539,13 +768,13 @@
 
 					<button data-dismiss="modal" class="close" type="button"></button>
 
-					<h3>Widget Settings</h3>
+					<h3>portlet Settings</h3>
 
 				</div>
 
 				<div class="modal-body">
 
-					Widget settings form goes here
+					<p>Here will be a configuration form</p>
 
 				</div>
 
@@ -554,8 +783,7 @@
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
 			<!-- BEGIN PAGE CONTAINER-->
-
-			<div class="container-fluid">
+				<div class="container-fluid">
 
 				<!-- BEGIN PAGE HEADER-->
 
@@ -565,7 +793,7 @@
 
 						<!-- BEGIN STYLE CUSTOMIZER -->
 
-						<div class="color-panel hidden-phone">
+						<!--<div class="color-panel hidden-phone">
 
 							<div class="color-mode-icons icon-color"></div>
 
@@ -649,105 +877,101 @@
 
 							</div>
 
-						</div>
+						</div>-->
 
-						<!-- END BEGIN STYLE CUSTOMIZER -->    
+						<!-- END BEGIN STYLE CUSTOMIZER --> 
 
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 
-						<h3 class="page-title" style="font-family: 微软雅黑;">
+						<h3 class="page-title">
 
-							收费标准
+						  场馆地图<!-- <small>news view samples</small> --> 
 
 						</h3>
-
-						<!-- END PAGE TITLE & BREADCRUMB-->
 
 					</div>
 
 				</div>
 
 				<!-- END PAGE HEADER-->
-				
 
-				<!-- BEGIN PAGE CONTENT-->          
+				<!-- BEGIN PAGE CONTENT-->
 
 				<div class="row-fluid">
 
-					<div class="span1"></div>
-					<div class="span10">
+					<div class="span12 news-page blog-page">
 
-						<!-- BEGIN SAMPLE TABLE PORTLET-->
-							
-					<c:forEach items="${siteTypes }" var="siteType">
-							<div class="portlet box blue">
-								<div class="portlet-title">
+						<div class="row-fluid">
+						
+							<div class="span1"></div>
 
-									<div class="caption">
-										<i class="icon-cogs"></i>${siteType.type }
+							<div class="span10 blog-tag-data">
+
+								<div id="myCarousel" class="carousel slide">
+	
+								</div>
+
+								<h4 class="title">
+
+						  			校内地图<!-- <small>news view samples</small> --> 
+
+								</h4>
+								<hr>
+
+								<div class="media">
+
+									<div class="media-body">
+										<img alt="" src="${pageContext.request.contextPath }/images/map.jpg">
+									</div>
+
+								</div>
+								<h4 class="title">
+
+						  			馆内地图<!-- <small>news view samples</small> --> 
+
+								</h4>
+								<hr>
+
+								<div class="media">
+
+									<div class="media-body">
+										<img alt="" src="${pageContext.request.contextPath }/images/map.jpg">
 									</div>
 
 								</div>
 
-								<div class="portlet-body">
-									<table class="table table-hover">
-										<thead>
 
-											<tr>
-
-												<th>#</th>
-
-												<th>场地名称</th>
-
-												<th>收费标准(￥/h)</th>
-
-												<th>Status</th>
-
-											</tr>
-											<c:forEach items="${sites }" var="site">
-												<tbody>
-													<c:if test="${siteType.id == site.typeId }">
-															<tr>
-
-																<th>#</th>
-				
-																<th>${site.name }</th>
-				
-																<th>${site.feeScale }</th>
-				
-																<th>
-																	<c:if test="${site.statue eq 'deleted' }">
-																		<span class="label label-warning">不可使用</span>
-																	</c:if>
-																	<c:if test="${site.statue eq 'undeleted' }">
-																		<span class="label label-success">可以使用</span>
-																	</c:if>
-													
-																</th>
-				
-															</tr>
-													</c:if>
-												</tbody>
-											</c:forEach>
-
-										</thead>
-									
-									</table>
-								</div>
 							</div>
-						</c:forEach>
+
+							<div class="span4">
+
+							</div>
+
+						</div>
 
 					</div>
 
 				</div>
 
-						<!-- END SAMPLE TABLE PORTLET-->
+				<!-- END PAGE CONTENT-->
 
-					</div>
-				</div>
 			</div>
+		
 
+			<!-- END PAGE CONTENT-->
+
+		</div>
+
+		<!-- END PAGE CONTAINER--> 
+
+	</div>
+
+	<!-- END PAGE --> 
+		
+				
 	<!-- END CONTAINER -->
+		
+	</div>
 
 	<!-- BEGIN FOOTER -->
 

@@ -232,7 +232,7 @@
 						</li>
 						<li >
 
-							<a href="#">场馆地图</a>
+							<a href="${pageContext.request.contextPath }/client/gymMap.jsp">场馆地图</a>
 
 						</li>
 
@@ -341,7 +341,7 @@
 
 						<li class="active" >
 
-							<a href="${pageContext.request.contextPath}/client/gymNews.jsp">
+							<a href="${pageContext.request.contextPath}/notice/getAllGymNews.action">
 
 							<!-- <i class="icon-time"></i> -->
 
@@ -708,8 +708,10 @@
 					<div class="span12 news-page blog-page">
 
 						<div class="row-fluid">
+						
+							<div class="span1"></div>
 
-							<div class="span8 blog-tag-data">
+							<div class="span10 blog-tag-data">
 
 								<!--  <h1>风采</h1>-->
 								<div id="myCarousel" class="carousel slide">
@@ -854,14 +856,6 @@
 								<hr>-->
 
 								<div class="media">
-
-								
-
-									<a href="#" class="pull-left">
-
-									<img alt="" src="media/image/9.jpg" class="media-object">
-
-									</a>
 
 									<div class="media-body">
 										<c:forEach items="${notices }" var="notice">
@@ -1311,7 +1305,7 @@
 	<script>
 	
 		function position(){
-			var position = ${position};
+			var position = "${position}";
 			window.location.hash = position;
 		}
 	
