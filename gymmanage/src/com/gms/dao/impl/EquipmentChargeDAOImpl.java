@@ -56,8 +56,8 @@ public class EquipmentChargeDAOImpl  implements EquipmentChargeDAO{
 		// TODO Auto-generated method stub
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "update tb_equipmenttype set id=?,type=?,feescale=? where id=?";
-			Object params[] = {equipmentCharge.getId(),equipmentCharge.getType(),equipmentCharge.getFeescale()};
+			String sql = "update tb_equipmenttype set type=?,feescale=? where id=?";
+			Object params[] = {equipmentCharge.getType(),equipmentCharge.getFeescale(),equipmentCharge.getId()};
 			qr.update(sql, params);
 		} catch (Exception e) {
 			throw new RuntimeException(e);

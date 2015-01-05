@@ -82,8 +82,8 @@ public class SiteBusinessServiceImpl {
 	/**
 	 * 获取所哟的场地
 	 */
-	public List<Site> getAllSite() {
-		return siteDAO.getAllSite();
+	public List<Site> getAllUndeletedSite() {
+		return siteDAO.getAllUndeletedSite();
 	}
 	/**
 	 * 根据id查找场地

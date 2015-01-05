@@ -90,7 +90,16 @@
 						<td>${events.startTime }~${events.endTime }</td>
 						<td>${events.sitename }</td>
 						<%-- <td>${events.description }</td> --%>
-						<td><a href="${pageContext.request.contextPath }/events/eventsDescription.action?description=${events.description }" target="dialog">详情(点击查看)</a></td>
+						
+						<%-- <c:url value="${pageContext.request.contextPath }/events/eventsDescription.action">
+						 <c:param name="description" value="${events.description}"/>
+						</c:url> --%>
+						<td><a
+							href="<c:url value='/events/eventsDescription.action'>
+						 <c:param name="description" value="${events.description}"/>
+						</c:url>"
+							target="dialog">详情(点击查看)</a></td>
+						<%-- <td><a href="${pageContext.request.contextPath }/events/eventsDescription.action?description=${events.description }" target="dialog">详情(点击查看)</a></td> --%>
 						<td>
 							<c:if test="${events.statue eq 'passed' }" ><p style="color:red;">已过期</p></c:if>
 							<c:if test="${events.statue eq 'unpassed' }"><P>未过期</P></c:if>

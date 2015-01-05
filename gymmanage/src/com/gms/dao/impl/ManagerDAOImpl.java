@@ -228,7 +228,15 @@ public class ManagerDAOImpl implements ManagerDAO{
 	
 	}
 
-	
+	public Manager getMangerByAccount(String account){
+		try {
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
+			String sql = "select * from tb_admin where account=?";
+			return (Manager) qr.query(sql, account, new BeanHandler(Manager.class));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 	
 
 

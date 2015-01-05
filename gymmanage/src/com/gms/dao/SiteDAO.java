@@ -34,7 +34,7 @@ public interface SiteDAO {
 	 * 
 	 * @return
 	 */
-	public abstract List<Site> getAllSite();
+	public abstract List<Site> getAllUndeletedSite();
 	/**
 	 * 获得场地的分页数据
 	 * @param beginIndex

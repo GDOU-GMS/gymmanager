@@ -21,6 +21,7 @@ encoding//src/com/gms/domain/Page.java=GBK
 encoding//src/com/gms/domain/SiteOrder.java=UTF-8
 encoding//src/com/gms/filter/CharacterEncodingFilter.java=UTF-8
 encoding//src/com/gms/filter/HTMLCharacterFilter.java=UTF-8
+encoding//src/com/gms/service/impl/ManagerBusinessServiceImpl.java=UTF-8
 encoding//src/com/gms/service/impl/UserBusinessServiceImpl.java=UTF-8
 encoding//src/com/gms/web/action/EquipmentAction.java=UTF-8
 encoding//src/com/gms/web/action/ManagerAction.java=UTF-8

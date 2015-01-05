@@ -106,7 +106,7 @@ public class EventsAction {
 	public String getDataForAddEvents(){
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-			List<Site> sites = service.getAllSite();
+			List<Site> sites = service.getAllUndeletedSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);
@@ -179,7 +179,7 @@ public class EventsAction {
 	public String getDataForUpdateEvents(){
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-			List<Site> sites = service.getAllSite();
+			List<Site> sites = service.getAllUndeletedSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);

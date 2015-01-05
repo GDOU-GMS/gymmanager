@@ -439,7 +439,7 @@ public class SiteOrderDAOImpl implements SiteOrderDAO {
 	public List<SiteOrderVo> getAllReserveSiteOrder(int startIndex,int pageSize){
 		try{
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select tb_siteorder.* ,tb_site.name as sitename from tb_siteOrder,tb_site  where  tb_site.id=tb_siteorder.siteid and userId is null limit ?,?";
+			String sql = "select tb_siteorder.* ,tb_site.name as sitename from tb_siteOrder,tb_site  where  tb_site.id=tb_siteorder.siteid and userId is null order by stratTime desc limit ?,?";
 			Object params[] = {startIndex,pageSize};
 			return (List<SiteOrderVo>) qr.query(sql, params,new BeanListHandler(SiteOrderVo.class));
 		} catch (Exception e) {

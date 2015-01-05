@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 <div class="page">
 	<div class="pageContent">
-		<form method="post" action="${pageContext.request.contextPath }/equipmentaction/setEquipmentCharge.action" 
+		<form method="post" action="${pageContext.request.contextPath }/equipmentaction/updateEquipmentCharge.action" 
 		  class="pageForm required-validate" 
 		   onsubmit="return validateCallback(this, navTabAjaxDone);">
 			<div class="pageFormContent nowrap" layoutH="80">

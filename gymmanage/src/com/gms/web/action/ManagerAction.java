@@ -111,6 +111,11 @@ public class ManagerAction {
 		try{
 
 			ManagerBusinessServiceImpl managerBusinessServiceImpl=new ManagerBusinessServiceImpl();
+			Manager m = managerBusinessServiceImpl.getMangerByAccount(manager.getAccount());
+			if(m!=null){
+				message=JSONTools.getJSONString("300", "添加失败,该账号已经存在", "", "", "");
+				return "message";
+			}
 			managerBusinessServiceImpl.addManager(manager);
 			message=JSONTools.getJSONString("200","添加成功","getAllManager","closeCurrent","");
 		}catch(Exception e){

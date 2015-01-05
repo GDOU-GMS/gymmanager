@@ -805,9 +805,9 @@
 
 									<div class="carousel-inner">
 
-										<div class="active item">
+										<div class="active item ">
 
-											<div class="row-fluid">
+											<div class="row-fluid  ">
 
 												<!--<div class="span7 margin-top-10 animated rotateInUpRight">  -->
 												<div class="span7 margin-bottom-20 animated rotateInUpRight">
@@ -823,9 +823,9 @@
 
 													欢迎使用
 
-													 <i class="m-icon-big-swapright m-icon-white"></i>    -->                            
+													 <i class="m-icon-big-swapright m-icon-white"></i>                                
 
-													</a>
+													</a>-->
 
 												</div>
 
@@ -985,7 +985,7 @@
 
 								</div>-->
 
-								<hr>
+								
 
 								<div class="row-fluid">
 

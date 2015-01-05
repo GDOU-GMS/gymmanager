@@ -90,8 +90,8 @@ public class SiteUsageDAOImpl implements SiteUsageDAO {
 	public void updateSiteUsage(SiteUsage siteUsage){
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "update tb_siteusage set stratTime=?,endTime=?,price=?,userId=?,siteId=?,statue=?";
-			Object params[] = {siteUsage.getStratTime(),siteUsage.getEndTime(),siteUsage.getPrice(),siteUsage.getUserId(),siteUsage.getSiteId(),siteUsage.getStatue()};			
+			String sql = "update tb_siteusage set stratTime=?,endTime=?,price=?,userId=?,siteId=?,statue=? where id=?";
+			Object params[] = {siteUsage.getStratTime(),siteUsage.getEndTime(),siteUsage.getPrice(),siteUsage.getUserId(),siteUsage.getSiteId(),siteUsage.getStatue(),siteUsage.getId()};			
 			qr.update(sql, params);
 		} catch (Exception e) {
 			throw new RuntimeException(e);

@@ -64,14 +64,14 @@ public class SiteDAOImpl implements SiteDAO {
 	}
 
 	/**
-	 * 获得所有的场地
+	 * 获得所有未删除的的场地
 	 * 
 	 * @return
 	 */
-	public List<Site> getAllSite() {
+	public List<Site> getAllUndeletedSite() {
 		try {
 			QueryRunner qr = new QueryRunner(JDBCUtils.getDateSource());
-			String sql = "select * from tb_site";
+			String sql = "select * from tb_site where statue='undeleted'";
 			return (List<Site>)qr.query(sql, new BeanListHandler(Site.class));
 		} catch (Exception e) {
 			throw new RuntimeException(e);

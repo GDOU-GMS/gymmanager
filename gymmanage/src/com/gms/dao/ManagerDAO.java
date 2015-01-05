@@ -70,5 +70,5 @@ public interface ManagerDAO {
 	public abstract int getTotalRecord(String account,String name);
 	
 	public List<Manager> getManagersPageData(String account,String name,int startIndex,int pageSize);
-
+	public Manager getMangerByAccount(String account);
 }

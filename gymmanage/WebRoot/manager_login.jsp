@@ -24,6 +24,20 @@
 		<noscript><link rel="stylesheet" href="${pageContext.request.contextPath }/css/fallback.css" /></noscript>
 	<![endif]-->
 
+<script type="text/javascript">
+		function validate(){
+			with(document.all){
+				var password = document.getElementById('password');
+				var account = document.getElementById('account');
+				if(account.value==""||password.value==""){
+					alert("字段不能为空！");
+					return false;
+				}else {
+				document.forms[0].submit();
+				}
+			}
+		}
+	</script>
 </head>
 
 <body>
@@ -37,14 +51,14 @@
 	</div>
 	<div id="container">
 	<div class="login">登录</div>
-		<form action="${pageContext.request.contextPath }/managerAction/loginCheck.action" method="post">
+		<form action="${pageContext.request.contextPath }/managerAction/loginCheck.action" method="post" onsubmit="return validate()" >
 			<div class="username-text">用户名:</div>
 			<div class="password-text">密码:</div>
 			<div class="username-field">
-				<input type="text" name="manager.account" value="1" placeholder="请输入用户名" />
+				<input type="text" id="account" name="manager.account" value="" placeholder="请输入用户名" />
 			</div> 
 			<div class="password-field">
-				<input type="password" name="manager.password" value="1" placeholder="请输入密码" />
+				<input type="password" id="password" name="manager.password" value="" placeholder="请输入密码" />
 			</div>
 			<div class="permission" >
 				<input class="superAdmin" type="radio" name="manager.permission" value="superAdmin" ><span>超级管理员</span>

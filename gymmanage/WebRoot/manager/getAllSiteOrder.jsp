@@ -78,7 +78,7 @@
 					target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
 					<li><a class="delete"
 					href="${pageContext.request.contextPath }/site/dealBreach.action"
-					target="ajaxTodo" title="确定要删除吗?"><span>一键处理失约</span></a></li>
+					target="ajaxTodo" title="确定要处理吗?"><span>一键处理失约</span></a></li>
 				<%-- <li><a class="edit"
 					href="${pageContext.request.contextPath}/site/getDataForUpdateSiteOrder.action?id={siteOrder}"
 					target="ajaxTodo"><span>使用</span></a></li> --%>

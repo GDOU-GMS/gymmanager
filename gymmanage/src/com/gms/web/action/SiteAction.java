@@ -345,6 +345,11 @@ public class SiteAction {
 	public String recoverSite() {
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
+			Site site = service.getSiteDetailById(id);
+			if("undeleted".equals(site.getStatue())){
+				message = JSONTools.getJSONString("300", "该场地未经删除，是可用场地！", "", "", "");
+				return "message";
+			}
 			service.recoverSite(id);
 			message = JSONTools.getJSONString("200", "恢复成功！", "getAllSite", "",
 					"");
@@ -366,7 +371,7 @@ public class SiteAction {
 			message = JSONTools.getJSONString("200", "删除成功！", "getAllSite", "",
 					"");
 		} catch (Exception e) {
-			message = JSONTools.getJSONString("300", "删除失败，系统异常！", "",
+			message = JSONTools.getJSONString("300", "该场地可能被预约了，不可以删除，或者是系统异常！", "",
 					"", "");
 		}
 		return "message";
@@ -397,7 +402,7 @@ public class SiteAction {
 	public String getDataForAddSiteOrder(){
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-			List<Site> sites = service.getAllSite();
+			List<Site> sites = service.getAllUndeletedSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);
@@ -409,13 +414,13 @@ public class SiteAction {
 		}
 	}
 	/**
-	 * 获得数据给添加场地预约
+	 * 获得数据给添留场地预约
 	 * @return
 	 */
 	public String getDataForReserveSiteOrder(){
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-			List<Site> sites = service.getAllSite();
+			List<Site> sites = service.getAllUndeletedSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);
@@ -435,7 +440,7 @@ public class SiteAction {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			
 			//获得数据
-			List<Site> sites = service.getAllSite();
+			List<Site> sites = service.getAllUndeletedSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);
@@ -555,7 +560,7 @@ public class SiteAction {
 			UserBusinessServiceImpl userService = new UserBusinessServiceImpl();
 			
 			//获得数据
-			List<Site> sites = service.getAllSite();
+			List<Site> sites = service.getAllUndeletedSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);
@@ -801,7 +806,7 @@ public class SiteAction {
 	public String getDataForAddSiteUsage(){
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-			List<Site> sites = service.getAllSite();
+			List<Site> sites = service.getAllUndeletedSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);
@@ -865,7 +870,7 @@ public class SiteAction {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
 			UserBusinessServiceImpl userService = new UserBusinessServiceImpl();
 			//获得所有场地信息数据
-			List<Site> sites = service.getAllSite();
+			List<Site> sites = service.getAllUndeletedSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);
@@ -875,8 +880,8 @@ public class SiteAction {
 			Date date = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Date currentDate = sdf.parse(sdf.format(date));//获得日期
-			Date stratTime = new Date(currentDate.getTime()+siteUsage.getStratTime().getTime()); 
-			Date endTime = new Date(currentDate.getTime()+siteUsage.getEndTime().getTime()); 
+			Date stratTime = new Date(currentDate.getTime()+siteUsage.getStratTime().getTime()+8*60*60*1000); 
+			Date endTime = new Date(currentDate.getTime()+siteUsage.getEndTime().getTime()+8*60*60*1000); 
 			sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			ActionContext.getContext().put("stratTime", sdf.format(stratTime));
 			ActionContext.getContext().put("endTime", sdf.format(endTime));
@@ -907,8 +912,8 @@ public class SiteAction {
 			Date date = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Date currentDate = sdf.parse(sdf.format(date));//获得日期
-			Date stratTime = new Date(currentDate.getTime()+siteUsage.getStratTime().getTime()); 
-			Date endTime = new Date(currentDate.getTime()+siteUsage.getEndTime().getTime()); 
+			Date stratTime = new Date(currentDate.getTime()+siteUsage.getStratTime().getTime()+8*60*60*1000); 
+			Date endTime = new Date(currentDate.getTime()+siteUsage.getEndTime().getTime()+8*60*60*1000); 
 			boolean flat = service.getSiteOrderByTime(stratTime, endTime, siteUsage.getSiteId());
 			if(flat==false){
 				message = JSONTools.getJSONString("300", "更新失败，该场地该时间段已经被预约！", "", "", "");
@@ -1033,7 +1038,7 @@ public class SiteAction {
 				return "unlogin";
 			}else{
 				SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-				List<Site> sites = service.getAllSite();
+				List<Site> sites = service.getAllUndeletedSite();
 				List<SiteType> siteTypes = service.getAllSiteType();
 				ActionContext.getContext().put("sites", sites);
 				ActionContext.getContext().put("siteTypes", siteTypes);
@@ -1079,7 +1084,7 @@ public class SiteAction {
 	public String clientGetFeeScale(){
 		try {
 			SiteBusinessServiceImpl service = new SiteBusinessServiceImpl();
-			List<Site> sites = service.getAllSite();
+			List<Site> sites = service.getAllUndeletedSite();
 			List<SiteType> siteTypes = service.getAllSiteType();
 			ActionContext.getContext().put("sites", sites);
 			ActionContext.getContext().put("siteTypes", siteTypes);

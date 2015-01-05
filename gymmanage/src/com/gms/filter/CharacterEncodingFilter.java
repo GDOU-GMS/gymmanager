@@ -90,15 +90,11 @@ class MyRequest extends HttpServletRequestWrapper {
 				String newvalues[] = new String[values.length];
 				for (int i = 0; i < values.length; i++) {
 					String value = values[i];
-					System.out.println(value);
-					value = new String(value.getBytes("utf-8"),
+					value = new String(value.getBytes("iso-8859-1"),
 							this.request.getCharacterEncoding());
 					newvalues[i] = value; // 解决乱码后封装到Map中
 				}
 
-				if(name.equals("description")){
-					System.out.println(newvalues[0]);
-				}
 				newmap.put(name, newvalues);
 			}
 

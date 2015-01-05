@@ -16,7 +16,7 @@ public class ManagerBusinessServiceImpl {
     
 	
 	/**
-	 * ��ѯ����Ա��Ϣ
+	 * 锟斤拷询锟斤拷锟斤拷员锟斤拷息
 	 * @param account
 	 * @param name
 	 */
@@ -26,7 +26,7 @@ public class ManagerBusinessServiceImpl {
 	
 	
 	/**
-	 * ���ӹ���Ա
+	 * 锟斤拷锟接癸拷锟斤拷员
 	 * @param manager
 	 */
 	public void addManager(Manager manager){
@@ -35,7 +35,7 @@ public class ManagerBusinessServiceImpl {
 	
 	
 	/**
-	 * ���¹���Ա��Ϣ
+	 * 锟斤拷锟铰癸拷锟斤拷员锟斤拷息
 	 * @param manager
 	 */
 	public void updateManager(Manager manager){
@@ -44,7 +44,7 @@ public class ManagerBusinessServiceImpl {
 	
 	
 	/**
-	 * ɾ�����Ա
+	 * 删锟斤拷锟斤拷锟皆�
 	 * @param id
 	 */
 	public boolean deleteManger(int id ){
@@ -58,7 +58,7 @@ public class ManagerBusinessServiceImpl {
 	}
 	
 	/**
-	 * У���¼
+	 * 校锟斤拷锟铰�
 	 * @param manager
 	 * @return
 	 */
@@ -93,5 +93,7 @@ public class ManagerBusinessServiceImpl {
 		page.setList(list);
 		return page;
 	}
-	
+	public Manager getMangerByAccount(String account){
+		return managerDAO.getMangerByAccount(account);
+	}
 }

@@ -76,7 +76,7 @@
 
 		<!-- BEGIN LOGIN FORM -->
 
-		<form class="form-vertical" action="${pageContext.request.contextPath }/useraction/clientLogin.action" method="post" >
+		<form class="form-vertical" action="${pageContext.request.contextPath }/useraction/clientLogin.action" method="post" onsubmit="return validate()" >
 
 			<h3 class="form-title">输入账号密码登录</h3>
 
@@ -104,7 +104,7 @@
 
 						<i class="icon-user"></i>
 
-						<input class="m-wrap placeholder-no-fix" type="text" placeholder="StudentNo" name="user.studentNo"/>
+						<input class="m-wrap placeholder-no-fix" type="text" placeholder="StudentNo" id="account" name="user.studentNo"/>
 
 					</div>
 
@@ -122,7 +122,7 @@
 
 						<i class="icon-lock"></i>
 
-						<input class="m-wrap placeholder-no-fix" type="password" placeholder="Password" name="user.password"/>
+						<input class="m-wrap placeholder-no-fix" type="password" placeholder="Password" id="password" name="user.password"/>
 
 					</div>
 
@@ -281,6 +281,19 @@
 		  Login.init();
 
 		});
+		
+		function validate(){
+			with(document.all){
+				var password = document.getElementById('password');
+				var account = document.getElementById('account');
+				if(account.value==""||password.value==""){
+					alert("字段不能为空！");
+					return false;
+				}else {
+				document.forms[0].submit();
+				}
+			}
+		}
 
 	</script>
 
