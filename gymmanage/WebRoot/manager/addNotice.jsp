@@ -28,13 +28,13 @@
 				<dl>
 					<dt>公告标题：</dt>
 					<dd>
-						<input name="notice.title" type="text" class="required">
+						<input name="notice.title" type="text" class="required" style="width: 450px;">
 					</dd>
 				</dl>
 				<dl>
 					<dt>公告内容：</dt>
 					<dd>
-						<textarea rows="5" cols="50" name="notice.content"  class="required"></textarea>
+						<textarea rows="10" cols="72" name="notice.content"  class="required"></textarea>
 					</dd>
 				</dl>
 				<dl>
