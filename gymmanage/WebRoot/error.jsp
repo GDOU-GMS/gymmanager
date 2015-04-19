@@ -12,7 +12,7 @@
     <div class="hero-unit">
         <h2>出错了</h2>
         <p>${message }</p>
-        <p><a href="#" class="btn btn-primary btn-large">返回首页</a></p>
+        <p><a href="${pageContext.request.contextPath }/index.jsp" class="btn btn-primary btn-large">返回首页</a></p>
 	</div>
     <script src="${pageContext.request.contextPath }/media/js/jquery-1.10.1.min.js"></script>
     <script src="${pageContext.request.contextPath }/media/js/bootstrap.min.js"></script>

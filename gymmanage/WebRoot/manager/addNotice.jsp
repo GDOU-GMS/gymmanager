@@ -24,7 +24,7 @@
 			enctype="multipart/form-data"
 			onsubmit="return iframeCallback(this,navTabAjaxDone);" 
 			>
-			<div class="pageFormContent nowrap" layoutH="97">
+			<div class="pageFormContent nowrap" layoutH="56">
 				<dl>
 					<dt>公告标题：</dt>
 					<dd>
