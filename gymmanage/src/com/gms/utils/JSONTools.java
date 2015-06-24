@@ -8,21 +8,30 @@ import net.sf.json.JSONObject;
 public class JSONTools {
 
 	/**
-	 * µÃµ½jsonÊı¾İÁô·µ»Ø¸ø¿Í»§¶Ë 
-	 * @param statusCode 200³É¹¦£¬300Ê§°Ü£¬301³¬Ê±
-	 * @param message ·µ»ØµÄÏûÏ¢
-	 * @param navTabId ĞèÒªÖØĞÂ¼ÓÔØµÄnavTabµÄid
+	 * ï¿½Ãµï¿½jsonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½Í»ï¿½ï¿½ï¿½ 
+	 * @param statusCode 200ï¿½É¹ï¿½ï¿½ï¿½300Ê§ï¿½Ü£ï¿½301ï¿½ï¿½Ê±
+	 * @param message ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢
+	 * @param navTabId ï¿½ï¿½Òªï¿½ï¿½ï¿½Â¼ï¿½ï¿½Øµï¿½navTabï¿½ï¿½id
 	 * @param callbackType closeCurrent||forward
-	 * @param forwardUrl ×ª·¢Ò³ÃæµÄµØÖ·
+	 * @param forwardUrl ×ªï¿½ï¿½Ò³ï¿½ï¿½Äµï¿½Ö·
 	 * @return
+	 * 
+	 * 
+		statusCode:"200",
+		message:"è¿”å›æ•°æ®",
+		navTabId:"",
+		rel:"è¿”å›éœ€è¦åˆ·æ–°çš„DIVçš„ID",				                                                        
+		callbackType:"",
+		forwardUrl:"",
+		confirmMsg:""
 	 */
 	public static String getJSONString(String statusCode, String message,String navTabId,String callbackType,String forwardUrl){
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("statusCode", statusCode);// 200³É¹¦£¬300Ê§°Ü£¬301³¬Ê±
-		map.put("message", message);//·µ»ØµÄÏûÏ¢
-		map.put("navTabId", navTabId);//ĞèÒªÖØĞÂ¼ÓÔØµÄnavTabµÄid
-		map.put("forwardUrl", forwardUrl);//×ª·¢Ò³ÃæµÄµØÖ·
-		map.put("callbackType", callbackType);//callbackTypeÈç¹ûÊÇcloseCurrent¾Í»á¹Ø±Õµ±Ç°tab------Èç¹ûÊÇ"forward"×ª·¢µ½ÆäËûÒ³Ãæ
+		map.put("statusCode", statusCode);// 200ï¿½É¹ï¿½ï¿½ï¿½300Ê§ï¿½Ü£ï¿½301ï¿½ï¿½Ê±
+		map.put("message", message);//ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢
+		map.put("navTabId", navTabId);//ï¿½ï¿½Òªï¿½ï¿½ï¿½Â¼ï¿½ï¿½Øµï¿½navTabï¿½ï¿½id
+		map.put("forwardUrl", forwardUrl);//×ªï¿½ï¿½Ò³ï¿½ï¿½Äµï¿½Ö·
+		map.put("callbackType", callbackType);//callbackTypeï¿½ï¿½ï¿½ï¿½ï¿½closeCurrentï¿½Í»ï¿½Ø±Õµï¿½Ç°tab------ï¿½ï¿½ï¿½ï¿½ï¿½"forward"×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 		return JSONObject.fromObject(map).toString();
 	}
 }
