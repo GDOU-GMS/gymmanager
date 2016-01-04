@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="notice" namespace="/notice" extends="base">
+		<action name="getAllNotice" class="com.gms.web.action.NoticeAction" method="getAllNotice">
+			<result name="success">/manager/getAllNotice.jsp</result>
+		</action>
+		<action name="addNotice" class="com.gms.web.action.NoticeAction" method="addNotice">
+		</action>
+		<action name="showNoticeDetail" class="com.gms.web.action.NoticeAction" method="showNoticeDetail">
+			<result name="success">/manager/showNoticeDetail.jsp</result>
+		</action>
+		<action name="deleteNotice" class="com.gms.web.action.NoticeAction" method="deleteNotice">
+		</action>
+		<action name="getDataForUpdateNotice" class="com.gms.web.action.NoticeAction" method="getDataForUpdateNotice">
+			<result name="success">/manager/updateNotice.jsp</result>
+		</action>
+		<action name="updateNoticeImage" class="com.gms.web.action.NoticeAction" method="updateNoticeImage">
+		</action>
+		<action name="updateNotice" class="com.gms.web.action.NoticeAction" method="updateNotice">
+		</action>
+		<action name="queryNotice" class="com.gms.web.action.NoticeAction" method="queryNotice">
+			<result name="success">/manager/getAllNotice.jsp</result>
+		</action>
+		<action name="getAllGymNews" class="com.gms.web.action.NoticeAction" method="getAllGymNews">
+			<result name="success">/client/gymNews.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>

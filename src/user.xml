@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="useraction" namespace="/useraction" extends="base">
+		<action name="getUsers" class="com.gms.web.action.UserAction" method="getUsers">
+			<result name="success">/manager/user_info.jsp</result>
+		</action>
+		<action name="deleteUser" class="com.gms.web.action.UserAction" method="deleteUser">
+		
+		</action>
+		<action name="getAllUsers" class="com.gms.web.action.UserAction" method="getAllUsers">
+			<result name="success">/manager/user_info.jsp</result>
+		</action>
+		<action name="getUserSelf" class="com.gms.web.action.UserAction" method="getUserSelf">
+			<result name="unlogin">/client/login.jsp</result>
+			<result name="success">/client/selfInfo.jsp</result>
+		</action>
+		<action name="clientLogin" class="com.gms.web.action.UserAction" method="clientLogin">
+			<result name="loginFaile">/client/login.jsp</result>
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+		<action name="logout" class="com.gms.web.action.UserAction" method="logout">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+		<action name="clientUpdateUser" class="com.gms.web.action.UserAction" method="clientUpdateUser">
+			<result name="success">/client/selfInfo.jsp</result>
+		</action>
+		<action name="checkBeforeUpdatePassword" class="com.gms.web.action.UserAction" method="checkBeforeUpdatePassword">
+			<result name="unlogin">/client/login.jsp</result>
+			<result name="success">/client/updatePassword.jsp</result>
+		</action>
+		<action name="clientUpdatePassword" class="com.gms.web.action.UserAction" method="clientUpdatePassword">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+		
+		
+	</package>
+  
+
+	
+</struts>

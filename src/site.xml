@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="site" namespace="/site" extends="base">
+	
+		<!--场地类型管理-->
+		<action name="addSiteType" class="com.gms.web.action.SiteAction" method="addSiteType">
+		</action>
+		<action name="getAllSiteType" class="com.gms.web.action.SiteAction" method="getAllSiteType">
+			<result name="success">/manager/getAllSiteType.jsp</result>
+		</action>
+		<action name="deleteSiteType" class="com.gms.web.action.SiteAction" method="deleteSiteType">
+		</action>
+		<action name="echoData" class="com.gms.web.action.SiteAction" method="echoData">
+			<result name="success">/manager/updateSiteType.jsp</result>
+		</action>
+		<action name="updateSiteType" class="com.gms.web.action.SiteAction" method="updateSiteType">
+		</action>
+		
+		<!--场地管理-->
+		<action name="getAllSite" class="com.gms.web.action.SiteAction" method="getAllSite">
+			<result name="success">/manager/getAllSite.jsp</result>
+		</action>
+		<action name="getDataForAddSite" class="com.gms.web.action.SiteAction" method="getDataForAddSite">
+			<result name="success">/manager/addSite.jsp</result>
+		</action>
+		<action name="addSite" class="com.gms.web.action.SiteAction" method="addSite">
+		</action>
+		<action name="deleteSite" class="com.gms.web.action.SiteAction" method="deleteSite">
+		</action>
+		<action name="getDataForUpdateSite" class="com.gms.web.action.SiteAction" method="getDataForUpdateSite">
+			<result name="success">/manager/updateSite.jsp</result>
+		</action>
+		<action name="updateSite" class="com.gms.web.action.SiteAction" method="updateSite">
+		</action>
+		<action name="recoverSite" class="com.gms.web.action.SiteAction" method="recoverSite">
+		</action>
+		<action name="removeSite" class="com.gms.web.action.SiteAction" method="removeSite">
+		</action>
+		<action name="querySite" class="com.gms.web.action.SiteAction" method="querySite">
+			<result name="success">/manager/getAllSite.jsp</result>
+		</action>
+		
+		
+		<!-- 场地预约 -->
+		<action name="getAllSiteOrder" class="com.gms.web.action.SiteAction" method="getAllSiteOrder">
+			<result name="success">/manager/getAllSiteOrder.jsp</result>
+		</action>
+		<action name="getDataForAddSiteOrder" class="com.gms.web.action.SiteAction" method="getDataForAddSiteOrder">
+			<result name="success">/manager/addSiteOrder.jsp</result>
+		</action>
+		<action name="addSiteOrderByManager" class="com.gms.web.action.SiteAction" method="addSiteOrderByManager">
+		</action>
+		<action name="deleteSiteOrder" class="com.gms.web.action.SiteAction" method="deleteSiteOrder">
+		</action>
+		<action name="getDataForUpdateSiteOrder" class="com.gms.web.action.SiteAction" method="getDataForUpdateSiteOrder">
+			<result name="success">/manager/updateSiteOrder.jsp</result>
+		</action>
+		<action name="updateSiteOrder" class="com.gms.web.action.SiteAction" method="updateSiteOrder">
+			<result name="success">/manager/updateSiteOrder.jsp</result>
+		</action>
+		<action name="getCurrentSiteOrder" class="com.gms.web.action.SiteAction" method="getCurrentSiteOrder">
+			<result name="success">/manager/getCurrentSiteOrder.jsp</result>
+		</action>
+		<action name="dealBreach" class="com.gms.web.action.SiteAction" method="dealBreach">
+		</action>
+		<action name="dealPassed" class="com.gms.web.action.SiteAction" method="dealPassed">
+		</action>
+		<action name="dealBreachByCurrentPage" class="com.gms.web.action.SiteAction" method="dealBreachByCurrentPage">
+		</action>
+		
+		<action name="querySiteOrder" class="com.gms.web.action.SiteAction" method="querySiteOrder">
+			<result name="success">/manager/getAllSiteOrder.jsp</result>
+		</action>
+		<action name="queryCurrentSiteOrder" class="com.gms.web.action.SiteAction" method="queryCurrentSiteOrder">
+			<result name="success">/manager/getCurrentSiteOrder.jsp</result>
+		</action>
+		<action name="putIntoSiteUsage" class="com.gms.web.action.SiteAction" method="putIntoSiteUsage">
+		</action>
+		<action name="getDataForReserveSiteOrder" class="com.gms.web.action.SiteAction" method="getDataForReserveSiteOrder">
+			<result name="success">/manager/reserverSiteOrder.jsp</result>
+		</action>
+		<action name="reserveSiteOrder" class="com.gms.web.action.SiteAction" method="reserveSiteOrder">
+		</action>
+		<action name="getAllReserveSiteOrder" class="com.gms.web.action.SiteAction" method="getAllReserveSiteOrder">
+			<result name="success">/manager/getAllReserverSiteOrder.jsp</result>
+		</action>
+		<action name="getDataForUpdateReserveSiteOrder" class="com.gms.web.action.SiteAction" method="getDataForUpdateReserveSiteOrder">
+			<result name="success">/manager/updateReserverSiteOrder.jsp</result>
+		</action>
+		<action name="updateReserveSiteOrder" class="com.gms.web.action.SiteAction" method="updateReserveSiteOrder">
+		</action>
+		<action name="queryReserveSiteOrderPageDate" class="com.gms.web.action.SiteAction" method="queryReserveSiteOrderPageDate">
+			<result name="success">/manager/getAllReserverSiteOrder.jsp</result>
+		</action>
+		
+		
+		
+		
+		<!-- 场地使用 -->
+		<action name="getAllSiteUsage" class="com.gms.web.action.SiteAction" method="getAllSiteUsage">
+			<result name="success">/manager/getAllSiteUsage.jsp</result>
+		</action>
+		<action name="getDataForAddSiteUsage" class="com.gms.web.action.SiteAction" method="getDataForAddSiteUsage">
+			<result name="success">/manager/addSiteUsage.jsp</result>
+		</action>
+		<action name="addSiteUsage" class="com.gms.web.action.SiteAction" method="addSiteUsage">
+		</action>
+		<action name="getDataForUpdateSiteUsage" class="com.gms.web.action.SiteAction" method="getDataForUpdateSiteUsage">
+			<result name="success">/manager/updateSiteUsage.jsp</result>
+		</action>
+		<action name="updateSiteUsage" class="com.gms.web.action.SiteAction" method="updateSiteUsage">
+		</action>
+		<action name="deleteSiteUsage" class="com.gms.web.action.SiteAction" method="deleteSiteUsage">
+		</action>
+		<action name="dealTimeOutSiteUsage" class="com.gms.web.action.SiteAction" method="dealTimeOutSiteUsage">
+		</action>
+		<action name="deleteAllTimeOutSiteUsage" class="com.gms.web.action.SiteAction" method="deleteAllTimeOutSiteUsage">
+		</action>
+		<action name="querySiteUsage" class="com.gms.web.action.SiteAction" method="querySiteUsage">
+			<result name="success">/manager/getAllSiteUsage.jsp</result>
+		</action>
+		
+		
+		<!-- client -->
+		<action name="clientGetDataForAddSiteOrder"  class="com.gms.web.action.SiteAction" method="clientGetDataForAddSiteOrder">
+			<result name="unlogin">/client/login.jsp</result>
+			<result name="success">/client/siteOrder.jsp</result>
+		</action>
+		<action name="clientAddSiteOrder"  class="com.gms.web.action.SiteAction" method="clientAddSiteOrder">
+			<result name="failure" type="chain">clientGetDataForAddSiteOrder</result>
+			<result name="success" type="chain">clientGetMySiteOrderData</result>
+		</action>
+		<action name="clientGetFeeScale"  class="com.gms.web.action.SiteAction" method="clientGetFeeScale">
+			<result name="success">/client/feeScale.jsp</result>
+		</action>
+		<action name="clientGetMySiteOrderData"  class="com.gms.web.action.SiteAction" method="clientGetMySiteOrderData">
+			<result name="success">/client/mySiteOrder.jsp</result>
+			<result name="unlogin">/client/login.jsp</result>
+		</action>
+		<action name="clientDeleteSiteOrder"  class="com.gms.web.action.SiteAction" method="clientDeleteSiteOrder">
+		</action>
+		
+	
+		
+	</package>
+</struts>
